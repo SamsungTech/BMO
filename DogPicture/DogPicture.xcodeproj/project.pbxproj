@@ -14,6 +14,18 @@
 		0BF238402660C2EE007E48AC /* DogPicture.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0BF2383E2660C2EE007E48AC /* DogPicture.xcdatamodeld */; };
 		0BF238422660C2F1007E48AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0BF238412660C2F1007E48AC /* Assets.xcassets */; };
 		0BF238452660C2F1007E48AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BF238432660C2F1007E48AC /* LaunchScreen.storyboard */; };
+		0BF2384F2660D5BE007E48AC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF2384E2660D5BE007E48AC /* HomeViewController.swift */; };
+		0BF238512660D5DD007E48AC /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF238502660D5DD007E48AC /* HomePresenter.swift */; };
+		0BF238532660D5EE007E48AC /* HomeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF238522660D5EE007E48AC /* HomeProtocol.swift */; };
+		0BF238552660D5FE007E48AC /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF238542660D5FE007E48AC /* HomeRouter.swift */; };
+		0BF238572660D628007E48AC /* HomeInteracter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF238562660D628007E48AC /* HomeInteracter.swift */; };
+		0BF238592660D64D007E48AC /* MemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF238582660D64D007E48AC /* MemoViewController.swift */; };
+		0BF2385B2660D667007E48AC /* MemoViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF2385A2660D667007E48AC /* MemoViewPresenter.swift */; };
+		0BF2385D2660D693007E48AC /* MemoViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF2385C2660D693007E48AC /* MemoViewRouter.swift */; };
+		0BF2385F2660D6A6007E48AC /* MemoViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF2385E2660D6A6007E48AC /* MemoViewProtocol.swift */; };
+		0BF238612660D6CE007E48AC /* MemoViewInteracter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF238602660D6CE007E48AC /* MemoViewInteracter.swift */; };
+		0BF238632660EBF4007E48AC /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF238622660EBF4007E48AC /* HomeTableViewCell.swift */; };
+		652E208B710784652D955719 /* Pods_DogPicture.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC4945DD6F70BA9462A5133C /* Pods_DogPicture.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +38,20 @@
 		0BF238412660C2F1007E48AC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0BF238442660C2F1007E48AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0BF238462660C2F1007E48AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0BF2384E2660D5BE007E48AC /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		0BF238502660D5DD007E48AC /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
+		0BF238522660D5EE007E48AC /* HomeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProtocol.swift; sourceTree = "<group>"; };
+		0BF238542660D5FE007E48AC /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
+		0BF238562660D628007E48AC /* HomeInteracter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteracter.swift; sourceTree = "<group>"; };
+		0BF238582660D64D007E48AC /* MemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoViewController.swift; sourceTree = "<group>"; };
+		0BF2385A2660D667007E48AC /* MemoViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoViewPresenter.swift; sourceTree = "<group>"; };
+		0BF2385C2660D693007E48AC /* MemoViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoViewRouter.swift; sourceTree = "<group>"; };
+		0BF2385E2660D6A6007E48AC /* MemoViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoViewProtocol.swift; sourceTree = "<group>"; };
+		0BF238602660D6CE007E48AC /* MemoViewInteracter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoViewInteracter.swift; sourceTree = "<group>"; };
+		0BF238622660EBF4007E48AC /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
+		6719164F8D930F4F41189534 /* Pods-DogPicture.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DogPicture.debug.xcconfig"; path = "Target Support Files/Pods-DogPicture/Pods-DogPicture.debug.xcconfig"; sourceTree = "<group>"; };
+		73F0D253AF45C332428DC6CA /* Pods-DogPicture.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DogPicture.release.xcconfig"; path = "Target Support Files/Pods-DogPicture/Pods-DogPicture.release.xcconfig"; sourceTree = "<group>"; };
+		DC4945DD6F70BA9462A5133C /* Pods_DogPicture.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DogPicture.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				652E208B710784652D955719 /* Pods_DogPicture.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +71,8 @@
 			children = (
 				0BF238342660C2EE007E48AC /* DogPicture */,
 				0BF238332660C2EE007E48AC /* Products */,
+				26DCC1AEDCCD0ACC3C11726A /* Pods */,
+				D2DEA8282397FA9B6E4359B9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,6 +87,8 @@
 		0BF238342660C2EE007E48AC /* DogPicture */ = {
 			isa = PBXGroup;
 			children = (
+				0BF2384D2660D527007E48AC /* Memo */,
+				0BF2384C2660D501007E48AC /* Home */,
 				0BF238352660C2EE007E48AC /* AppDelegate.swift */,
 				0BF238372660C2EE007E48AC /* SceneDelegate.swift */,
 				0BF238392660C2EE007E48AC /* ViewController.swift */,
@@ -70,6 +101,49 @@
 			path = DogPicture;
 			sourceTree = "<group>";
 		};
+		0BF2384C2660D501007E48AC /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				0BF2384E2660D5BE007E48AC /* HomeViewController.swift */,
+				0BF238502660D5DD007E48AC /* HomePresenter.swift */,
+				0BF238522660D5EE007E48AC /* HomeProtocol.swift */,
+				0BF238542660D5FE007E48AC /* HomeRouter.swift */,
+				0BF238562660D628007E48AC /* HomeInteracter.swift */,
+				0BF238622660EBF4007E48AC /* HomeTableViewCell.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		0BF2384D2660D527007E48AC /* Memo */ = {
+			isa = PBXGroup;
+			children = (
+				0BF238582660D64D007E48AC /* MemoViewController.swift */,
+				0BF2385A2660D667007E48AC /* MemoViewPresenter.swift */,
+				0BF2385C2660D693007E48AC /* MemoViewRouter.swift */,
+				0BF2385E2660D6A6007E48AC /* MemoViewProtocol.swift */,
+				0BF238602660D6CE007E48AC /* MemoViewInteracter.swift */,
+			);
+			path = Memo;
+			sourceTree = "<group>";
+		};
+		26DCC1AEDCCD0ACC3C11726A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6719164F8D930F4F41189534 /* Pods-DogPicture.debug.xcconfig */,
+				73F0D253AF45C332428DC6CA /* Pods-DogPicture.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		D2DEA8282397FA9B6E4359B9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DC4945DD6F70BA9462A5133C /* Pods_DogPicture.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -77,9 +151,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0BF238492660C2F1007E48AC /* Build configuration list for PBXNativeTarget "DogPicture" */;
 			buildPhases = (
+				7E38BDD2A5DCCA955534E197 /* [CP] Check Pods Manifest.lock */,
 				0BF2382E2660C2EE007E48AC /* Sources */,
 				0BF2382F2660C2EE007E48AC /* Frameworks */,
 				0BF238302660C2EE007E48AC /* Resources */,
+				ED58E8449DCB65415197F3A9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -135,14 +211,67 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		7E38BDD2A5DCCA955534E197 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DogPicture-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ED58E8449DCB65415197F3A9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DogPicture/Pods-DogPicture-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DogPicture/Pods-DogPicture-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DogPicture/Pods-DogPicture-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		0BF2382E2660C2EE007E48AC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0BF2385B2660D667007E48AC /* MemoViewPresenter.swift in Sources */,
+				0BF238552660D5FE007E48AC /* HomeRouter.swift in Sources */,
+				0BF2384F2660D5BE007E48AC /* HomeViewController.swift in Sources */,
+				0BF238592660D64D007E48AC /* MemoViewController.swift in Sources */,
 				0BF2383A2660C2EE007E48AC /* ViewController.swift in Sources */,
+				0BF2385D2660D693007E48AC /* MemoViewRouter.swift in Sources */,
+				0BF238632660EBF4007E48AC /* HomeTableViewCell.swift in Sources */,
+				0BF2385F2660D6A6007E48AC /* MemoViewProtocol.swift in Sources */,
+				0BF238612660D6CE007E48AC /* MemoViewInteracter.swift in Sources */,
 				0BF238402660C2EE007E48AC /* DogPicture.xcdatamodeld in Sources */,
 				0BF238362660C2EE007E48AC /* AppDelegate.swift in Sources */,
+				0BF238532660D5EE007E48AC /* HomeProtocol.swift in Sources */,
+				0BF238572660D628007E48AC /* HomeInteracter.swift in Sources */,
+				0BF238512660D5DD007E48AC /* HomePresenter.swift in Sources */,
 				0BF238382660C2EE007E48AC /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -287,6 +416,7 @@
 		};
 		0BF2384A2660C2F1007E48AC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6719164F8D930F4F41189534 /* Pods-DogPicture.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -306,6 +436,7 @@
 		};
 		0BF2384B2660C2F1007E48AC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 73F0D253AF45C332428DC6CA /* Pods-DogPicture.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
