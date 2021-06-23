@@ -10,8 +10,20 @@ import UIKit
 class MemoViewController: UIViewController {
     var presenter: MemoViewPresenterProtocol?
     
+    var chuImage = UIImageView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter?.viewDidLoad()
+        layout()
+        attribute()
+    }
+    
+    func layout() {
+        
+    }
+    
+    func attribute() {
+        
     }
 }

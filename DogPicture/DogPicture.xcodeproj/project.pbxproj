@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -66,6 +66,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B73460126834780007CE6CF /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Camera;
+			sourceTree = "<group>";
+		};
+		0B7346022683479C007CE6CF /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		0B734603268347D6007CE6CF /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				0BF2384D2660D527007E48AC /* Memo */,
+				0BF2384C2660D501007E48AC /* Home */,
+			);
+			path = MainView;
+			sourceTree = "<group>";
+		};
 		0BF238292660C2EE007E48AC = {
 			isa = PBXGroup;
 			children = (
@@ -87,8 +110,9 @@
 		0BF238342660C2EE007E48AC /* DogPicture */ = {
 			isa = PBXGroup;
 			children = (
-				0BF2384D2660D527007E48AC /* Memo */,
-				0BF2384C2660D501007E48AC /* Home */,
+				0B734603268347D6007CE6CF /* MainView */,
+				0B7346022683479C007CE6CF /* Setting */,
+				0B73460126834780007CE6CF /* Camera */,
 				0BF238352660C2EE007E48AC /* AppDelegate.swift */,
 				0BF238372660C2EE007E48AC /* SceneDelegate.swift */,
 				0BF238392660C2EE007E48AC /* ViewController.swift */,
@@ -132,7 +156,6 @@
 				6719164F8D930F4F41189534 /* Pods-DogPicture.debug.xcconfig */,
 				73F0D253AF45C332428DC6CA /* Pods-DogPicture.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};

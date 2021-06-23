@@ -23,6 +23,7 @@ protocol HomePresenterProtocol: AnyObject {
     var interacter: HomeInteracterProtocol? { get set }
     var router: HomeRouterProtocol? { get set }
     
+    
     func showMemo(for name: String)
     
 }

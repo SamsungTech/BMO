@@ -10,8 +10,10 @@ class HomePresenter: HomePresenterProtocol {
     weak var view: HomeViewProtocol?
     var router: HomeRouterProtocol?
     
+    
+    
     func showMemo(for name: String) {
-        router?.presentMemoScreen
-        
+        router?.presentMemoScreen(from: view!, forname: name)
     }
 }
+
