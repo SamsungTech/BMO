@@ -6,7 +6,7 @@
 //
 
 class HomePresenter: HomePresenterProtocol {
-    var interacter: HomeInteracterProtocol?
+    var interacter: HomeInteracterInputProtocol?
     weak var view: HomeViewProtocol?
     var router: HomeRouterProtocol?
     

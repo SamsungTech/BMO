@@ -11,8 +11,8 @@ class HomeViewRouter: HomeRouterProtocol {
     
     class func createHomeModule() -> UIViewController {
         if let view: HomeViewProtocol = HomeViewController() as? HomeViewProtocol {
-            let presenter: HomePresenterProtocol = HomePresenter()
-            let interacter: HomeInteracterOutputProtocol = HomeInteracter() as! HomeInteracterOutputProtocol
+            let presenter: HomePresenterProtocol & HomeInteracterOutputProtocol = HomePresenter() 
+            let interacter: HomeInteracterInputProtocol = HomeInteracter()
             let router: HomeRouterProtocol = HomeViewRouter()
             
             view.presenter = presenter
