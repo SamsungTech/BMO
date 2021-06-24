@@ -26,9 +26,7 @@ class HomeViewController: UIViewController {
     func attribute() {
         tableView.do {
             $0.register(HomeTableViewCell.self, forCellReuseIdentifier: HomeTableViewCell.id)
-            // 델레게이트 왜 ?
             $0.delegate = self
-            // 데이터 소스 왜?
             $0.dataSource = self
             $0.frame = view.bounds
             $0.backgroundColor = .blue

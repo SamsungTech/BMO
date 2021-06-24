@@ -12,7 +12,7 @@ class HomeViewRouter: HomeRouterProtocol {
     class func createHomeModule() -> UIViewController {
         if let view: HomeViewProtocol = HomeViewController() as? HomeViewProtocol {
             let presenter: HomePresenterProtocol = HomePresenter()
-            let interacter: HomeInteracter = HomeInteracter()
+            let interacter: HomeInteracterOutputProtocol = HomeInteracter() as! HomeInteracterOutputProtocol
             let router: HomeRouterProtocol = HomeViewRouter()
             
             view.presenter = presenter
@@ -20,9 +20,6 @@ class HomeViewRouter: HomeRouterProtocol {
             presenter.router = router
             presenter.interacter = interacter
             interacter.presenter = presenter
-        
-        
-        
         }
         return UIViewController()
     }

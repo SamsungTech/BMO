@@ -16,11 +16,12 @@ protocol HomeRouterProtocol: AnyObject {
     
     func presentMemoScreen(from view: HomeViewProtocol, forname name: String)
     
+    
 }
 
 protocol HomePresenterProtocol: AnyObject {
     var view: HomeViewProtocol? { get set }
-    var interacter: HomeInteracterProtocol? { get set }
+    var interacter: HomeInteracterInputProtocol? { get set }
     var router: HomeRouterProtocol? { get set }
     
     
@@ -28,5 +29,14 @@ protocol HomePresenterProtocol: AnyObject {
     
 }
 
-protocol HomeInteracterProtocol: AnyObject {
+protocol HomeInteracterInputProtocol: AnyObject {
+    var presenter: HomeInteracterOutputProtocol? { get set }
+    
+    // PRESENTER -> INTERACTOR
+    func retrievePostList()
+}
+
+protocol HomeInteracterOutputProtocol: AnyObject {
+    func didRetrieveImage(_ images: [String])
+    func onError()
 }
