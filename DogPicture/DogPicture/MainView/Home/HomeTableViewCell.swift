@@ -9,31 +9,37 @@ import UIKit
 
 class HomeTableViewCell: UITableViewCell {
     static let id = "HomeTableViewCell"
-    var ImageView: UIImageView?
-    var label: UILabel?
+    var chuImageView = UIImageView()
     
-    private let myImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: "chu2")
-        imageView.contentMode = .scaleAspectFill
-        return imageView
-    }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        contentView.backgroundColor = .orange
-        contentView.addSubview(myImageView)
+        configureImageView()
+        setImageConstraints()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
+    func configureImageView() {
+        chuImageView.do {
+            $0.layer.cornerRadius = 10
+            $0.clipsToBounds = true
+        }
+    }
+    
+    func setImageConstraints() {
+        [ chuImageView ] .forEach() { addSubview($0) }
         
-        let imageSize = contentView.frame.size.height-5
-        
-        myImageView.frame = CGRect(x: contentView.frame.size.width-imageSize, y: 3, width: imageSize, height: imageSize)
+        chuImageView.do {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+            $0.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 12).isActive = true
+            $0.heightAnchor.constraint(equalToConstant: 80).isActive = true
+            $0.widthAnchor.constraint(equalTo: chuImageView.heightAnchor, multiplier: 16/9).isActive = true
+        }
     }
 }
+
+

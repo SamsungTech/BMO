@@ -45,6 +45,30 @@ class HomeViewController: UIViewController {
     }
 }
 
+//extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//
+//        let cell = tableView.dequeueReusableCell(withIdentifier: HomeTableViewCell.id, for: indexPath) as? HomeTableViewCell
+//
+//        cell?.ImageView?.image = UIImage(named: chuImage[indexPath.row])
+//
+//        return cell ?? UITableViewCell()
+//
+//    }
+//
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return chuImage.count
+//    }
+//
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        presenter?.showMemo(for: chuImage[indexPath.row])
+//    }
+//}
+//
+//extension HomeViewController: HomeViewProtocol {
+//
+//}
+
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return chuImage.count
@@ -52,7 +76,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: HomeTableViewCell.id, for: indexPath) as? HomeTableViewCell
-        cell?.ImageView?.image = UIImage(named: chuImage[indexPath.row])
+        cell?.chuImageView.image = UIImage(named: chuImage[indexPath.row])
         return cell ?? UITableViewCell()
     }
     
