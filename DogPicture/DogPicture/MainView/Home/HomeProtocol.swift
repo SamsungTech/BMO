@@ -33,10 +33,7 @@ protocol HomeInteracterInputProtocol: AnyObject {
     var presenter: HomeInteracterOutputProtocol? { get set }
     
     // PRESENTER -> INTERACTOR
-    func retrievePostList()
 }
 
 protocol HomeInteracterOutputProtocol: AnyObject {
-    func didRetrieveImage(_ images: [String])
-    func onError()
 }

@@ -6,14 +6,23 @@
 //
 
 class HomePresenter: HomePresenterProtocol {
-    var interacter: HomeInteracterInputProtocol?
     weak var view: HomeViewProtocol?
+    var interacter: HomeInteracterInputProtocol?
     var router: HomeRouterProtocol?
     
-    
+    func viewDidLoad() {
+    }
     
     func showMemo(for name: String) {
         router?.presentMemoScreen(from: view!, forname: name)
     }
 }
 
+extension HomePresenter: HomeInteracterOutputProtocol {
+    func didRetrieveImage(_ images: [String]) {
+        print(images)
+    }
+    
+    func onError() {
+    }
+}

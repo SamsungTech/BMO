@@ -36,9 +36,4 @@ class HomeTableViewCell: UITableViewCell {
         
         myImageView.frame = CGRect(x: contentView.frame.size.width-imageSize, y: 3, width: imageSize, height: imageSize)
     }
-//    
-//    func setData(data: 정보들) {
-//        imageView?.image = data.imageURL
-//        label?.text = data.tex
-//    }
 }
