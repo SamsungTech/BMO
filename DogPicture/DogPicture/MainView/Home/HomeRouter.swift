@@ -11,7 +11,6 @@ class HomeViewRouter: HomeRouterProtocol {
     
     class func createHomeModule() -> UIViewController {
         if let view: HomeViewProtocol = HomeViewController() as? HomeViewProtocol {
-            // HomePresenterProtocol == 흰티 입은애
             let presenter: HomePresenterProtocol & HomeInteracterOutputProtocol = HomePresenter()
             let interacter: HomeInteracterInputProtocol = HomeInteracter()
             let router: HomeRouterProtocol = HomeViewRouter()
@@ -22,8 +21,8 @@ class HomeViewRouter: HomeRouterProtocol {
             presenter.interacter = interacter
             interacter.presenter = presenter
             
-            if let castedView = view as? UIViewController {
-                return castedView
+            if let HomeView = view as? UIViewController {
+                return HomeView
             }
         }
         return UIViewController()

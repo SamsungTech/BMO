@@ -26,6 +26,7 @@ class HomeTableViewCell: UITableViewCell {
         chuImageView.do {
             $0.layer.cornerRadius = 10
             $0.clipsToBounds = true
+            
         }
     }
     
@@ -35,9 +36,9 @@ class HomeTableViewCell: UITableViewCell {
         chuImageView.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
             $0.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-            $0.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 12).isActive = true
-            $0.heightAnchor.constraint(equalToConstant: 80).isActive = true
-            $0.widthAnchor.constraint(equalTo: chuImageView.heightAnchor, multiplier: 16/9).isActive = true
+            $0.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+            $0.heightAnchor.constraint(equalToConstant: 190).isActive = true
+            $0.widthAnchor.constraint(equalTo: chuImageView.heightAnchor).isActive = true
         }
     }
 }

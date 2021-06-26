@@ -8,6 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		0B7346052685BBEE007CE6CF /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7346042685BBEE007CE6CF /* CameraViewController.swift */; };
+		0B73460726861CE0007CE6CF /* CameraPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B73460626861CE0007CE6CF /* CameraPresenter.swift */; };
+		0B73460926861D0B007CE6CF /* CameraProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B73460826861D0B007CE6CF /* CameraProtocol.swift */; };
+		0B73460B26861D21007CE6CF /* CameraInteracter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B73460A26861D21007CE6CF /* CameraInteracter.swift */; };
+		0B73460D26861D31007CE6CF /* CameraRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B73460C26861D31007CE6CF /* CameraRouter.swift */; };
+		0B73460F26861D62007CE6CF /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B73460E26861D62007CE6CF /* SettingViewController.swift */; };
+		0B73461126861D76007CE6CF /* SettingInteracter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B73461026861D76007CE6CF /* SettingInteracter.swift */; };
+		0B73461326861D87007CE6CF /* SettingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B73461226861D87007CE6CF /* SettingProtocol.swift */; };
+		0B73461526861D98007CE6CF /* SettingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B73461426861D98007CE6CF /* SettingPresenter.swift */; };
+		0B73461826861DB5007CE6CF /* SettingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B73461726861DB5007CE6CF /* SettingRouter.swift */; };
+		0B73461A2686F6F8007CE6CF /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7346192686F6F8007CE6CF /* Image.swift */; };
+		0B73461E26873D11007CE6CF /* CoreDataTest.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0B73461C26873D11007CE6CF /* CoreDataTest.xcdatamodeld */; };
 		0BF238362660C2EE007E48AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF238352660C2EE007E48AC /* AppDelegate.swift */; };
 		0BF238382660C2EE007E48AC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF238372660C2EE007E48AC /* SceneDelegate.swift */; };
 		0BF2383D2660C2EE007E48AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BF2383B2660C2EE007E48AC /* Main.storyboard */; };
@@ -30,6 +41,17 @@
 
 /* Begin PBXFileReference section */
 		0B7346042685BBEE007CE6CF /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		0B73460626861CE0007CE6CF /* CameraPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPresenter.swift; sourceTree = "<group>"; };
+		0B73460826861D0B007CE6CF /* CameraProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraProtocol.swift; sourceTree = "<group>"; };
+		0B73460A26861D21007CE6CF /* CameraInteracter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraInteracter.swift; sourceTree = "<group>"; };
+		0B73460C26861D31007CE6CF /* CameraRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraRouter.swift; sourceTree = "<group>"; };
+		0B73460E26861D62007CE6CF /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		0B73461026861D76007CE6CF /* SettingInteracter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingInteracter.swift; sourceTree = "<group>"; };
+		0B73461226861D87007CE6CF /* SettingProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingProtocol.swift; sourceTree = "<group>"; };
+		0B73461426861D98007CE6CF /* SettingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingPresenter.swift; sourceTree = "<group>"; };
+		0B73461726861DB5007CE6CF /* SettingRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRouter.swift; sourceTree = "<group>"; };
+		0B7346192686F6F8007CE6CF /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		0B73461D26873D11007CE6CF /* CoreDataTest.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataTest.xcdatamodel; sourceTree = "<group>"; };
 		0BF238322660C2EE007E48AC /* DogPicture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DogPicture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BF238352660C2EE007E48AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0BF238372660C2EE007E48AC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -70,6 +92,10 @@
 			isa = PBXGroup;
 			children = (
 				0B7346042685BBEE007CE6CF /* CameraViewController.swift */,
+				0B73460626861CE0007CE6CF /* CameraPresenter.swift */,
+				0B73460826861D0B007CE6CF /* CameraProtocol.swift */,
+				0B73460A26861D21007CE6CF /* CameraInteracter.swift */,
+				0B73460C26861D31007CE6CF /* CameraRouter.swift */,
 			);
 			path = Camera;
 			sourceTree = "<group>";
@@ -77,6 +103,11 @@
 		0B7346022683479C007CE6CF /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				0B73460E26861D62007CE6CF /* SettingViewController.swift */,
+				0B73461026861D76007CE6CF /* SettingInteracter.swift */,
+				0B73461226861D87007CE6CF /* SettingProtocol.swift */,
+				0B73461426861D98007CE6CF /* SettingPresenter.swift */,
+				0B73461726861DB5007CE6CF /* SettingRouter.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -84,10 +115,20 @@
 		0B734603268347D6007CE6CF /* MainView */ = {
 			isa = PBXGroup;
 			children = (
+				0B73461B2686F700007CE6CF /* Entities */,
 				0BF2384D2660D527007E48AC /* Memo */,
 				0BF2384C2660D501007E48AC /* Home */,
 			);
 			path = MainView;
+			sourceTree = "<group>";
+		};
+		0B73461B2686F700007CE6CF /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				0B73461C26873D11007CE6CF /* CoreDataTest.xcdatamodeld */,
+				0B7346192686F6F8007CE6CF /* Image.swift */,
+			);
+			path = Entities;
 			sourceTree = "<group>";
 		};
 		0BF238292660C2EE007E48AC = {
@@ -282,20 +323,31 @@
 			buildActionMask = 2147483647;
 			files = (
 				0BF2385B2660D667007E48AC /* MemoViewPresenter.swift in Sources */,
+				0B73460726861CE0007CE6CF /* CameraPresenter.swift in Sources */,
 				0BF238552660D5FE007E48AC /* HomeRouter.swift in Sources */,
 				0BF2384F2660D5BE007E48AC /* HomeViewController.swift in Sources */,
 				0BF238592660D64D007E48AC /* MemoViewController.swift in Sources */,
+				0B73460926861D0B007CE6CF /* CameraProtocol.swift in Sources */,
 				0BF2385D2660D693007E48AC /* MemoViewRouter.swift in Sources */,
+				0B73461526861D98007CE6CF /* SettingPresenter.swift in Sources */,
+				0B73460B26861D21007CE6CF /* CameraInteracter.swift in Sources */,
 				0BF238632660EBF4007E48AC /* HomeTableViewCell.swift in Sources */,
 				0BF2385F2660D6A6007E48AC /* MemoViewProtocol.swift in Sources */,
 				0BF238612660D6CE007E48AC /* MemoViewInteracter.swift in Sources */,
 				0BF238402660C2EE007E48AC /* DogPicture.xcdatamodeld in Sources */,
 				0BF238362660C2EE007E48AC /* AppDelegate.swift in Sources */,
+				0B73461E26873D11007CE6CF /* CoreDataTest.xcdatamodeld in Sources */,
 				0BF238532660D5EE007E48AC /* HomeProtocol.swift in Sources */,
+				0B73461326861D87007CE6CF /* SettingProtocol.swift in Sources */,
 				0B7346052685BBEE007CE6CF /* CameraViewController.swift in Sources */,
+				0B73460F26861D62007CE6CF /* SettingViewController.swift in Sources */,
 				0BF238572660D628007E48AC /* HomeInteracter.swift in Sources */,
 				0BF238512660D5DD007E48AC /* HomePresenter.swift in Sources */,
+				0B73461126861D76007CE6CF /* SettingInteracter.swift in Sources */,
+				0B73461826861DB5007CE6CF /* SettingRouter.swift in Sources */,
 				0BF238382660C2EE007E48AC /* SceneDelegate.swift in Sources */,
+				0B73460D26861D31007CE6CF /* CameraRouter.swift in Sources */,
+				0B73461A2686F6F8007CE6CF /* Image.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -501,6 +553,16 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
+		0B73461C26873D11007CE6CF /* CoreDataTest.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				0B73461D26873D11007CE6CF /* CoreDataTest.xcdatamodel */,
+			);
+			currentVersion = 0B73461D26873D11007CE6CF /* CoreDataTest.xcdatamodel */;
+			path = CoreDataTest.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
 		0BF2383E2660C2EE007E48AC /* DogPicture.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (

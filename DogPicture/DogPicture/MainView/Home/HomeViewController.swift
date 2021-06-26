@@ -45,30 +45,6 @@ class HomeViewController: UIViewController {
     }
 }
 
-//extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//
-//        let cell = tableView.dequeueReusableCell(withIdentifier: HomeTableViewCell.id, for: indexPath) as? HomeTableViewCell
-//
-//        cell?.ImageView?.image = UIImage(named: chuImage[indexPath.row])
-//
-//        return cell ?? UITableViewCell()
-//
-//    }
-//
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return chuImage.count
-//    }
-//
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        presenter?.showMemo(for: chuImage[indexPath.row])
-//    }
-//}
-//
-//extension HomeViewController: HomeViewProtocol {
-//
-//}
-
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return chuImage.count
@@ -76,7 +52,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: HomeTableViewCell.id, for: indexPath) as? HomeTableViewCell
-        cell?.chuImageView.image = UIImage(named: chuImage[indexPath.row])
+        let image = chuImage[indexPath.row]
+        cell?.chuImageView.image = UIImage(named: image)
         return cell ?? UITableViewCell()
     }
     
@@ -84,7 +61,19 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         presenter?.showMemo(for: chuImage[indexPath.row])
     }
     
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return CGFloat(300)
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.layoutIfNeeded()
+    }
 }
+
 extension HomeViewController: HomeViewProtocol {
     
 }

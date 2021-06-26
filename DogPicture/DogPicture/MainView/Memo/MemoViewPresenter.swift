@@ -8,8 +8,9 @@
 class MemoViewPresenter: MemoViewPresenterProtocol {
     weak var view: MemoViewProtocol?
     var wireFrame: MemoViewRouterProtocol?
+    var name: String?
     
     func viewDidLoad() {
-        view?.showMemoView()
+        view?.showMemoView(forImage: name ?? "")
     }
 }

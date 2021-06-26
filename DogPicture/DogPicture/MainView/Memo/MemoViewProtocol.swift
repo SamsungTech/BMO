@@ -11,7 +11,7 @@ protocol MemoViewProtocol: AnyObject {
     var presenter: MemoViewPresenterProtocol? { get set }
     
     // PRESENTER -> VIEW
-    func showMemoView()
+    func showMemoView(forImage name: String)
 }
 
 protocol MemoViewRouterProtocol: AnyObject {
@@ -21,6 +21,7 @@ protocol MemoViewRouterProtocol: AnyObject {
 protocol MemoViewPresenterProtocol: AnyObject {
     var view: MemoViewProtocol? { get set }
     var wireFrame: MemoViewRouterProtocol? { get set }
+    var name: String? { get set }
     
     // VIEW -> PRESENTER
     func viewDidLoad()
