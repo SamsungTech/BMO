@@ -40,7 +40,6 @@ class MemoViewController: UIViewController {
 }
 
 extension MemoViewController: MemoViewProtocol {
-    
     func showMemoView(forImage name: String) {
         chuImage.image = UIImage(named: name)
     }

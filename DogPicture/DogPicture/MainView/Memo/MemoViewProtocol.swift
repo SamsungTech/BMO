@@ -20,10 +20,20 @@ protocol MemoViewRouterProtocol: AnyObject {
 
 protocol MemoViewPresenterProtocol: AnyObject {
     var view: MemoViewProtocol? { get set }
-    var wireFrame: MemoViewRouterProtocol? { get set }
+    var interacter: MemoViewInteracterInputProtocol? { get set }
+    var router: MemoViewRouterProtocol? { get set }
     var name: String? { get set }
     
     // VIEW -> PRESENTER
     func viewDidLoad()
+    
+}
+
+protocol MemoViewInteracterInputProtocol: AnyObject {
+    var presenter: MemoViewInteracterOutputProtocol? { get set }
+    func getAllItems()
+}
+
+protocol MemoViewInteracterOutputProtocol: AnyObject {
     
 }

@@ -7,10 +7,15 @@
 
 class MemoViewPresenter: MemoViewPresenterProtocol {
     weak var view: MemoViewProtocol?
-    var wireFrame: MemoViewRouterProtocol?
+    var interacter: MemoViewInteracterInputProtocol?
+    var router: MemoViewRouterProtocol?
     var name: String?
     
     func viewDidLoad() {
         view?.showMemoView(forImage: name ?? "")
     }
+}
+
+extension MemoViewPresenter: MemoViewInteracterOutputProtocol {
+    
 }

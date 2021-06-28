@@ -33,7 +33,9 @@ protocol HomeInteracterInputProtocol: AnyObject {
     var presenter: HomeInteracterOutputProtocol? { get set }
     
     // PRESENTER -> INTERACTOR
+    
 }
 
 protocol HomeInteracterOutputProtocol: AnyObject {
+    
 }
