@@ -17,8 +17,5 @@ class CameraViewController: UIViewController {
 }
 
 extension CameraViewController: CameraViewControllerProtocol {
-    var presenter: CameraPresenterProtocol? {
-    }
-    
     
 }
