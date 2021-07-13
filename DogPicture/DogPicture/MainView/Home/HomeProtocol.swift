@@ -15,8 +15,6 @@ protocol HomeRouterProtocol: AnyObject {
     static func createHomeModule() -> UIViewController
     
     func presentMemoScreen(from view: HomeViewProtocol, forname name: String)
-    
-    
 }
 
 protocol HomePresenterProtocol: AnyObject {

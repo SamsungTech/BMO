@@ -41,9 +41,7 @@ extension MemoViewInteracter: MemoViewInteracterOutputProtocol {
         }
     }
     
-    func deleteItem(item: MemoContent) {
-        <#code#>
-    }
+    
     
     func updateItem(item: MemoContent, newTitle: String) {
         item.title = newTitle

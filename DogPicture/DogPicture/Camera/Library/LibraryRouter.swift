@@ -8,5 +8,9 @@
 import UIKit
 
 class LibraryRouter: LibraryRouterProtocol {
+    static func createLibraryModule() -> UIViewController {
+        <#code#>
+    }
+    
     
 }

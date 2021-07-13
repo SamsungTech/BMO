@@ -8,13 +8,15 @@
 import UIKit
 
 class CameraPresenter: CameraPresenterProtocol {
+    func showCamera() {
+        <#code#>
+    }
+    
     weak var view: CameraViewControllerProtocol?
     var interacter: CameraInteracterInputProtocol?
     var router: CameraRouterProtocol?
 
-    func showCamera() {
-        <#code#>
-    }
+    
     
     
 }
