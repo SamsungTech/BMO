@@ -19,7 +19,12 @@ class CameraRouter: CameraRouterProtocol {
             presenter.router = router
             presenter.interacter = interacter
             interacter.presenter = presenter
+            
+            if let cameraView = view as? UIViewController {
+                return cameraView
+            }
         }
+        return UIViewController()
     }
     
     

@@ -9,7 +9,7 @@ import UIKit
 
 class CameraPresenter: CameraPresenterProtocol {
     func showCamera() {
-        <#code#>
+        print("x")
     }
     
     weak var view: CameraViewControllerProtocol?

@@ -7,12 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0B10B797269DD06E007FA8DF /* MenuPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B10B796269DD06E007FA8DF /* MenuPresenter.swift */; };
-		0B7346052685BBEE007CE6CF /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7346042685BBEE007CE6CF /* CameraViewController.swift */; };
-		0B73460726861CE0007CE6CF /* CameraPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B73460626861CE0007CE6CF /* CameraPresenter.swift */; };
-		0B73460926861D0B007CE6CF /* CameraProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B73460826861D0B007CE6CF /* CameraProtocol.swift */; };
-		0B73460B26861D21007CE6CF /* CameraInteracter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B73460A26861D21007CE6CF /* CameraInteracter.swift */; };
-		0B73460D26861D31007CE6CF /* CameraRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B73460C26861D31007CE6CF /* CameraRouter.swift */; };
+		0B10B797269DD06E007FA8DF /* MenuViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B10B796269DD06E007FA8DF /* MenuViewPresenter.swift */; };
+		0B10B799269E99FD007FA8DF /* MenuViewInteracter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B10B798269E99FD007FA8DF /* MenuViewInteracter.swift */; };
 		0B73460F26861D62007CE6CF /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B73460E26861D62007CE6CF /* SettingViewController.swift */; };
 		0B73461126861D76007CE6CF /* SettingInteracter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B73461026861D76007CE6CF /* SettingInteracter.swift */; };
 		0B73461326861D87007CE6CF /* SettingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B73461226861D87007CE6CF /* SettingProtocol.swift */; };
@@ -22,25 +18,18 @@
 		0B73461E26873D11007CE6CF /* CoreDataTest.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0B73461C26873D11007CE6CF /* CoreDataTest.xcdatamodeld */; };
 		0B7346212689A637007CE6CF /* MemoContent+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7346202689A637007CE6CF /* MemoContent+CoreDataClass.swift */; };
 		0B7346222689A637007CE6CF /* MemoContent+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B73461F2689A637007CE6CF /* MemoContent+CoreDataProperties.swift */; };
-		0B734625268B1A10007CE6CF /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B734624268B1A10007CE6CF /* LibraryViewController.swift */; };
-		0B734627268B2C4F007CE6CF /* LibraryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B734626268B2C4F007CE6CF /* LibraryProtocol.swift */; };
-		0B734629268B2C64007CE6CF /* LibraryInteracter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B734628268B2C64007CE6CF /* LibraryInteracter.swift */; };
-		0B73462B268B2C72007CE6CF /* LibraryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B73462A268B2C71007CE6CF /* LibraryPresenter.swift */; };
-		0B73462D268B2C86007CE6CF /* LibraryRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B73462C268B2C86007CE6CF /* LibraryRouter.swift */; };
 		0B734631268CA2C7007CE6CF /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B734630268CA2C7007CE6CF /* MenuViewController.swift */; };
-		0B734634268CA2E6007CE6CF /* MenuRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B734633268CA2E6007CE6CF /* MenuRouter.swift */; };
-		0B734638268CA3BA007CE6CF /* MenuModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B734637268CA3BA007CE6CF /* MenuModuleBuilder.swift */; };
-		0B73463A268CB1FD007CE6CF /* MenuProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B734639268CB1FD007CE6CF /* MenuProtocol.swift */; };
+		0B734634268CA2E6007CE6CF /* MenuViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B734633268CA2E6007CE6CF /* MenuViewRouter.swift */; };
+		0B73463A268CB1FD007CE6CF /* MenuViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B734639268CB1FD007CE6CF /* MenuViewProtocol.swift */; };
 		0BF238362660C2EE007E48AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF238352660C2EE007E48AC /* AppDelegate.swift */; };
 		0BF238382660C2EE007E48AC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF238372660C2EE007E48AC /* SceneDelegate.swift */; };
-		0BF2383D2660C2EE007E48AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BF2383B2660C2EE007E48AC /* Main.storyboard */; };
 		0BF238402660C2EE007E48AC /* DogPicture.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0BF2383E2660C2EE007E48AC /* DogPicture.xcdatamodeld */; };
 		0BF238422660C2F1007E48AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0BF238412660C2F1007E48AC /* Assets.xcassets */; };
 		0BF238452660C2F1007E48AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BF238432660C2F1007E48AC /* LaunchScreen.storyboard */; };
 		0BF2384F2660D5BE007E48AC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF2384E2660D5BE007E48AC /* HomeViewController.swift */; };
 		0BF238512660D5DD007E48AC /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF238502660D5DD007E48AC /* HomePresenter.swift */; };
 		0BF238532660D5EE007E48AC /* HomeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF238522660D5EE007E48AC /* HomeProtocol.swift */; };
-		0BF238552660D5FE007E48AC /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF238542660D5FE007E48AC /* HomeRouter.swift */; };
+		0BF238552660D5FE007E48AC /* HomeViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF238542660D5FE007E48AC /* HomeViewRouter.swift */; };
 		0BF238572660D628007E48AC /* HomeInteracter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF238562660D628007E48AC /* HomeInteracter.swift */; };
 		0BF238592660D64D007E48AC /* MemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF238582660D64D007E48AC /* MemoViewController.swift */; };
 		0BF2385B2660D667007E48AC /* MemoViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF2385A2660D667007E48AC /* MemoViewPresenter.swift */; };
@@ -52,12 +41,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0B10B796269DD06E007FA8DF /* MenuPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuPresenter.swift; sourceTree = "<group>"; };
-		0B7346042685BBEE007CE6CF /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
-		0B73460626861CE0007CE6CF /* CameraPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPresenter.swift; sourceTree = "<group>"; };
-		0B73460826861D0B007CE6CF /* CameraProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraProtocol.swift; sourceTree = "<group>"; };
-		0B73460A26861D21007CE6CF /* CameraInteracter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraInteracter.swift; sourceTree = "<group>"; };
-		0B73460C26861D31007CE6CF /* CameraRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraRouter.swift; sourceTree = "<group>"; };
+		0B10B796269DD06E007FA8DF /* MenuViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewPresenter.swift; sourceTree = "<group>"; };
+		0B10B798269E99FD007FA8DF /* MenuViewInteracter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewInteracter.swift; sourceTree = "<group>"; };
 		0B73460E26861D62007CE6CF /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		0B73461026861D76007CE6CF /* SettingInteracter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingInteracter.swift; sourceTree = "<group>"; };
 		0B73461226861D87007CE6CF /* SettingProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingProtocol.swift; sourceTree = "<group>"; };
@@ -67,19 +52,12 @@
 		0B73461D26873D11007CE6CF /* CoreDataTest.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataTest.xcdatamodel; sourceTree = "<group>"; };
 		0B73461F2689A637007CE6CF /* MemoContent+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "MemoContent+CoreDataProperties.swift"; path = "/Users/dongwoo/Desktop/Projects/BMO/DogPicture/DogPicture/MainView/Entities/MemoContent+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		0B7346202689A637007CE6CF /* MemoContent+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "MemoContent+CoreDataClass.swift"; path = "/Users/dongwoo/Desktop/Projects/BMO/DogPicture/DogPicture/MainView/Entities/MemoContent+CoreDataClass.swift"; sourceTree = "<absolute>"; };
-		0B734624268B1A10007CE6CF /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
-		0B734626268B2C4F007CE6CF /* LibraryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryProtocol.swift; sourceTree = "<group>"; };
-		0B734628268B2C64007CE6CF /* LibraryInteracter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryInteracter.swift; sourceTree = "<group>"; };
-		0B73462A268B2C71007CE6CF /* LibraryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryPresenter.swift; sourceTree = "<group>"; };
-		0B73462C268B2C86007CE6CF /* LibraryRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryRouter.swift; sourceTree = "<group>"; };
 		0B734630268CA2C7007CE6CF /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
-		0B734633268CA2E6007CE6CF /* MenuRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuRouter.swift; sourceTree = "<group>"; };
-		0B734637268CA3BA007CE6CF /* MenuModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuModuleBuilder.swift; sourceTree = "<group>"; };
-		0B734639268CB1FD007CE6CF /* MenuProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuProtocol.swift; sourceTree = "<group>"; };
+		0B734633268CA2E6007CE6CF /* MenuViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewRouter.swift; sourceTree = "<group>"; };
+		0B734639268CB1FD007CE6CF /* MenuViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewProtocol.swift; sourceTree = "<group>"; };
 		0BF238322660C2EE007E48AC /* DogPicture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DogPicture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BF238352660C2EE007E48AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0BF238372660C2EE007E48AC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		0BF2383C2660C2EE007E48AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0BF2383F2660C2EE007E48AC /* DogPicture.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DogPicture.xcdatamodel; sourceTree = "<group>"; };
 		0BF238412660C2F1007E48AC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0BF238442660C2F1007E48AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -87,7 +65,7 @@
 		0BF2384E2660D5BE007E48AC /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		0BF238502660D5DD007E48AC /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		0BF238522660D5EE007E48AC /* HomeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProtocol.swift; sourceTree = "<group>"; };
-		0BF238542660D5FE007E48AC /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
+		0BF238542660D5FE007E48AC /* HomeViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewRouter.swift; sourceTree = "<group>"; };
 		0BF238562660D628007E48AC /* HomeInteracter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteracter.swift; sourceTree = "<group>"; };
 		0BF238582660D64D007E48AC /* MemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoViewController.swift; sourceTree = "<group>"; };
 		0BF2385A2660D667007E48AC /* MemoViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoViewPresenter.swift; sourceTree = "<group>"; };
@@ -157,11 +135,6 @@
 		0B734623268B19C3007CE6CF /* Library */ = {
 			isa = PBXGroup;
 			children = (
-				0B734624268B1A10007CE6CF /* LibraryViewController.swift */,
-				0B734626268B2C4F007CE6CF /* LibraryProtocol.swift */,
-				0B734628268B2C64007CE6CF /* LibraryInteracter.swift */,
-				0B73462A268B2C71007CE6CF /* LibraryPresenter.swift */,
-				0B73462C268B2C86007CE6CF /* LibraryRouter.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -169,11 +142,6 @@
 		0B73462E268B36F9007CE6CF /* CameraView */ = {
 			isa = PBXGroup;
 			children = (
-				0B7346042685BBEE007CE6CF /* CameraViewController.swift */,
-				0B73460626861CE0007CE6CF /* CameraPresenter.swift */,
-				0B73460826861D0B007CE6CF /* CameraProtocol.swift */,
-				0B73460A26861D21007CE6CF /* CameraInteracter.swift */,
-				0B73460C26861D31007CE6CF /* CameraRouter.swift */,
 			);
 			path = CameraView;
 			sourceTree = "<group>";
@@ -182,10 +150,10 @@
 			isa = PBXGroup;
 			children = (
 				0B734630268CA2C7007CE6CF /* MenuViewController.swift */,
-				0B734633268CA2E6007CE6CF /* MenuRouter.swift */,
-				0B734637268CA3BA007CE6CF /* MenuModuleBuilder.swift */,
-				0B734639268CB1FD007CE6CF /* MenuProtocol.swift */,
-				0B10B796269DD06E007FA8DF /* MenuPresenter.swift */,
+				0B734633268CA2E6007CE6CF /* MenuViewRouter.swift */,
+				0B734639268CB1FD007CE6CF /* MenuViewProtocol.swift */,
+				0B10B796269DD06E007FA8DF /* MenuViewPresenter.swift */,
+				0B10B798269E99FD007FA8DF /* MenuViewInteracter.swift */,
 			);
 			path = TabBar;
 			sourceTree = "<group>";
@@ -217,7 +185,6 @@
 				0B7346022683479C007CE6CF /* Setting */,
 				0BF238352660C2EE007E48AC /* AppDelegate.swift */,
 				0BF238372660C2EE007E48AC /* SceneDelegate.swift */,
-				0BF2383B2660C2EE007E48AC /* Main.storyboard */,
 				0BF238412660C2F1007E48AC /* Assets.xcassets */,
 				0BF238432660C2F1007E48AC /* LaunchScreen.storyboard */,
 				0BF238462660C2F1007E48AC /* Info.plist */,
@@ -232,7 +199,7 @@
 				0BF2384E2660D5BE007E48AC /* HomeViewController.swift */,
 				0BF238502660D5DD007E48AC /* HomePresenter.swift */,
 				0BF238522660D5EE007E48AC /* HomeProtocol.swift */,
-				0BF238542660D5FE007E48AC /* HomeRouter.swift */,
+				0BF238542660D5FE007E48AC /* HomeViewRouter.swift */,
 				0BF238562660D628007E48AC /* HomeInteracter.swift */,
 				0BF238622660EBF4007E48AC /* HomeTableViewCell.swift */,
 			);
@@ -329,7 +296,6 @@
 			files = (
 				0BF238452660C2F1007E48AC /* LaunchScreen.storyboard in Resources */,
 				0BF238422660C2F1007E48AC /* Assets.xcassets in Resources */,
-				0BF2383D2660C2EE007E48AC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,42 +349,32 @@
 			buildActionMask = 2147483647;
 			files = (
 				0BF2385B2660D667007E48AC /* MemoViewPresenter.swift in Sources */,
-				0B73460726861CE0007CE6CF /* CameraPresenter.swift in Sources */,
-				0BF238552660D5FE007E48AC /* HomeRouter.swift in Sources */,
+				0BF238552660D5FE007E48AC /* HomeViewRouter.swift in Sources */,
 				0BF2384F2660D5BE007E48AC /* HomeViewController.swift in Sources */,
 				0BF238592660D64D007E48AC /* MemoViewController.swift in Sources */,
-				0B734638268CA3BA007CE6CF /* MenuModuleBuilder.swift in Sources */,
-				0B734625268B1A10007CE6CF /* LibraryViewController.swift in Sources */,
-				0B73460926861D0B007CE6CF /* CameraProtocol.swift in Sources */,
 				0BF2385D2660D693007E48AC /* MemoViewRouter.swift in Sources */,
-				0B734634268CA2E6007CE6CF /* MenuRouter.swift in Sources */,
+				0B734634268CA2E6007CE6CF /* MenuViewRouter.swift in Sources */,
 				0B7346222689A637007CE6CF /* MemoContent+CoreDataProperties.swift in Sources */,
 				0B73461526861D98007CE6CF /* SettingPresenter.swift in Sources */,
-				0B73460B26861D21007CE6CF /* CameraInteracter.swift in Sources */,
+				0B10B799269E99FD007FA8DF /* MenuViewInteracter.swift in Sources */,
 				0B734631268CA2C7007CE6CF /* MenuViewController.swift in Sources */,
 				0BF238632660EBF4007E48AC /* HomeTableViewCell.swift in Sources */,
 				0BF2385F2660D6A6007E48AC /* MemoViewProtocol.swift in Sources */,
 				0BF238612660D6CE007E48AC /* MemoViewInteracter.swift in Sources */,
-				0B10B797269DD06E007FA8DF /* MenuPresenter.swift in Sources */,
+				0B10B797269DD06E007FA8DF /* MenuViewPresenter.swift in Sources */,
 				0BF238402660C2EE007E48AC /* DogPicture.xcdatamodeld in Sources */,
 				0BF238362660C2EE007E48AC /* AppDelegate.swift in Sources */,
-				0B73462D268B2C86007CE6CF /* LibraryRouter.swift in Sources */,
 				0B73461E26873D11007CE6CF /* CoreDataTest.xcdatamodeld in Sources */,
 				0BF238532660D5EE007E48AC /* HomeProtocol.swift in Sources */,
 				0B73461326861D87007CE6CF /* SettingProtocol.swift in Sources */,
-				0B7346052685BBEE007CE6CF /* CameraViewController.swift in Sources */,
 				0B73460F26861D62007CE6CF /* SettingViewController.swift in Sources */,
-				0B73463A268CB1FD007CE6CF /* MenuProtocol.swift in Sources */,
+				0B73463A268CB1FD007CE6CF /* MenuViewProtocol.swift in Sources */,
 				0BF238572660D628007E48AC /* HomeInteracter.swift in Sources */,
-				0B734629268B2C64007CE6CF /* LibraryInteracter.swift in Sources */,
 				0BF238512660D5DD007E48AC /* HomePresenter.swift in Sources */,
-				0B734627268B2C4F007CE6CF /* LibraryProtocol.swift in Sources */,
 				0B73461126861D76007CE6CF /* SettingInteracter.swift in Sources */,
 				0B7346212689A637007CE6CF /* MemoContent+CoreDataClass.swift in Sources */,
 				0B73461826861DB5007CE6CF /* SettingRouter.swift in Sources */,
 				0BF238382660C2EE007E48AC /* SceneDelegate.swift in Sources */,
-				0B73460D26861D31007CE6CF /* CameraRouter.swift in Sources */,
-				0B73462B268B2C72007CE6CF /* LibraryPresenter.swift in Sources */,
 				0B73461A2686F6F8007CE6CF /* Image.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -426,14 +382,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		0BF2383B2660C2EE007E48AC /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0BF2383C2660C2EE007E48AC /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		0BF238432660C2F1007E48AC /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

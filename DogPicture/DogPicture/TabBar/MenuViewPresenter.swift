@@ -7,8 +7,8 @@
 
 import Foundation
 
-class MenuPresenter: MenuPresenterProtocol {
+class MenuViewPresenter: MenuViewPresenterProtocol {
     var view: MenuViewProtocol?
-    var router: MenuRouterProtocol?
+    var router: MenuViewRouterProtocol?
     
 }

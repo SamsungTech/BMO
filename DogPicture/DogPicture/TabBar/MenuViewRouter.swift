@@ -7,11 +7,12 @@
 
 import UIKit
 
-class MenuRouter: MenuRouterProtocol {
+class MenuViewRouter: MenuViewRouterProtocol {
     class func createMenuModule() -> UIViewController {
         if let view: MenuViewProtocol = MenuViewController() as? MenuViewProtocol {
-            let presenter: MenuPresenterProtocol = MenuPresenter()
-            let router: MenuRouterProtocol = MenuRouter()
+            let presenter: MenuViewPresenterProtocol = MenuViewPresenter()
+            let interacter: MenuViewInteracterInputProtocol = MenuViewInteracter()
+            let router: MenuViewRouterProtocol = MenuViewRouter()
             
             view.presenter = presenter
             presenter.view = view
@@ -24,3 +25,4 @@ class MenuRouter: MenuRouterProtocol {
         return UIViewController()
     }
 }
+
