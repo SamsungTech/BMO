@@ -8,7 +8,12 @@
 import Foundation
 
 class MenuViewPresenter: MenuViewPresenterProtocol {
-    var view: MenuViewProtocol?
+    weak var view: MenuViewProtocol?
+    var interacter: MenuViewInteracterInputProtocol?
     var router: MenuViewRouterProtocol?
+    
+}
+
+extension MenuViewPresenter: MenuViewInteracterOutputProtocol {
     
 }

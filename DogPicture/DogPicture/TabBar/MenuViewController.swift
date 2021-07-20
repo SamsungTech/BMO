@@ -10,42 +10,44 @@ import Then
 
 class MenuViewController: UIViewController {
     
-    var menuView = UIView()
+    weak var presenter: MenuViewPresenterProtocol?
     
-    var togleButton = UIButton()
+    let tabBar = UITabBarController()
+    let homeVC = HomeViewRouter.createHomeModule()
+    let settingVC = UIViewController()
     
-    var homeButton = UIButton()
-    var cameraButton = UIButton()
-    var settingButton = UIButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        attribute()
-        layout()
+        createTabBarController()
     }
     
-    func attribute() {
-        togleButton.do {
-            $0.frame = CGRect(x: 0, y: 0, width: 130, height: 130)
-            $0.layer.cornerRadius = 100
-            $0.layer.borderWidth = 10
-            $0.layer.borderColor = UIColor.gray.cgColor
-            $0.layer.shadowColor = UIColor.gray.cgColor
-            $0.layer.shadowOffset = CGSize(width: 4, height: 4)
+    func createTabBarController() {
+        [ tabBar.view ].forEach() { view.addSubview($0)}
+        
+        tabBar.do {
+            $0.tabBar.tintColor = UIColor.black
         }
+        
+        homeVC.do {
+            $0.title = "홈"
+            $0.view.backgroundColor = UIColor.red
+            $0.tabBarItem = UITabBarItem.init(title: "홈", image: UIImage(named: "house"), tag: 0)
+        }
+        
+        settingVC.do {
+            $0.title = "설정"
+            $0.view.backgroundColor = UIColor.blue
+            $0.tabBarItem = UITabBarItem.init(title: "설정", image: UIImage(named: "gearshape.fill"), tag: 0)
+        }
+        
+        let controllerArray = [ homeVC, settingVC ]
+        tabBar.viewControllers = controllerArray.map(UINavigationController.init(rootViewController: MenuViewRouter.createMenuModule()))
+        
+        
     }
+}
+
+extension MenuViewController: MenuViewProtocol {
     
-    func layout() {
-        [ togleButton ].forEach { view.addSubview($0) }
-        
-        togleButton.do {
-            $0.translatesAutoresizingMaskIntoConstraints = false
-            $0.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-            $0.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-            $0.widthAnchor.constraint(equalToConstant: 40).isActive = true
-            $0.heightAnchor.constraint(equalToConstant: 40).isActive = true
-            
-        }
-        
-    }
 }

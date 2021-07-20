@@ -17,11 +17,13 @@ protocol MenuViewRouterProtocol: AnyObject {
 
 protocol MenuViewPresenterProtocol: AnyObject {
     var view: MenuViewProtocol? { get set }
+    var interacter: MenuViewInteracterInputProtocol? { get set }
     var router: MenuViewRouterProtocol? { get set }
+    
 }
 
 protocol MenuViewInteracterInputProtocol: AnyObject {
-    
+    var presenter: MenuViewInteracterOutputProtocol? { get set }
 }
 
 protocol MenuViewInteracterOutputProtocol: AnyObject {
