@@ -12,7 +12,7 @@ class CameraPresenter: CameraPresenterProtocol {
         print("x")
     }
     
-    weak var view: CameraViewControllerProtocol?
+    weak var view: CameraViewProtocol?
     var interacter: CameraInteracterInputProtocol?
     var router: CameraRouterProtocol?
 

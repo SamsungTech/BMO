@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		0B10B797269DD06E007FA8DF /* MenuViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B10B796269DD06E007FA8DF /* MenuViewPresenter.swift */; };
 		0B10B799269E99FD007FA8DF /* MenuViewInteracter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B10B798269E99FD007FA8DF /* MenuViewInteracter.swift */; };
+		0B51B1FE26A8210E00216054 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B51B1F926A8210E00216054 /* CameraViewController.swift */; };
+		0B51B1FF26A8210E00216054 /* CameraRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B51B1FA26A8210E00216054 /* CameraRouter.swift */; };
+		0B51B20026A8210E00216054 /* CameraInteracter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B51B1FB26A8210E00216054 /* CameraInteracter.swift */; };
+		0B51B20126A8210E00216054 /* CameraProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B51B1FC26A8210E00216054 /* CameraProtocol.swift */; };
+		0B51B20226A8210E00216054 /* CameraPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B51B1FD26A8210E00216054 /* CameraPresenter.swift */; };
 		0B73460F26861D62007CE6CF /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B73460E26861D62007CE6CF /* SettingViewController.swift */; };
 		0B73461126861D76007CE6CF /* SettingInteracter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B73461026861D76007CE6CF /* SettingInteracter.swift */; };
 		0B73461326861D87007CE6CF /* SettingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B73461226861D87007CE6CF /* SettingProtocol.swift */; };
@@ -43,6 +48,11 @@
 /* Begin PBXFileReference section */
 		0B10B796269DD06E007FA8DF /* MenuViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewPresenter.swift; sourceTree = "<group>"; };
 		0B10B798269E99FD007FA8DF /* MenuViewInteracter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewInteracter.swift; sourceTree = "<group>"; };
+		0B51B1F926A8210E00216054 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		0B51B1FA26A8210E00216054 /* CameraRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraRouter.swift; sourceTree = "<group>"; };
+		0B51B1FB26A8210E00216054 /* CameraInteracter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraInteracter.swift; sourceTree = "<group>"; };
+		0B51B1FC26A8210E00216054 /* CameraProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraProtocol.swift; sourceTree = "<group>"; };
+		0B51B1FD26A8210E00216054 /* CameraPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraPresenter.swift; sourceTree = "<group>"; };
 		0B73460E26861D62007CE6CF /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		0B73461026861D76007CE6CF /* SettingInteracter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingInteracter.swift; sourceTree = "<group>"; };
 		0B73461226861D87007CE6CF /* SettingProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingProtocol.swift; sourceTree = "<group>"; };
@@ -142,6 +152,11 @@
 		0B73462E268B36F9007CE6CF /* CameraView */ = {
 			isa = PBXGroup;
 			children = (
+				0B51B1F926A8210E00216054 /* CameraViewController.swift */,
+				0B51B1FD26A8210E00216054 /* CameraPresenter.swift */,
+				0B51B1FB26A8210E00216054 /* CameraInteracter.swift */,
+				0B51B1FA26A8210E00216054 /* CameraRouter.swift */,
+				0B51B1FC26A8210E00216054 /* CameraProtocol.swift */,
 			);
 			path = CameraView;
 			sourceTree = "<group>";
@@ -350,6 +365,7 @@
 			files = (
 				0BF2385B2660D667007E48AC /* MemoViewPresenter.swift in Sources */,
 				0BF238552660D5FE007E48AC /* HomeViewRouter.swift in Sources */,
+				0B51B20026A8210E00216054 /* CameraInteracter.swift in Sources */,
 				0BF2384F2660D5BE007E48AC /* HomeViewController.swift in Sources */,
 				0BF238592660D64D007E48AC /* MemoViewController.swift in Sources */,
 				0BF2385D2660D693007E48AC /* MemoViewRouter.swift in Sources */,
@@ -357,11 +373,13 @@
 				0B7346222689A637007CE6CF /* MemoContent+CoreDataProperties.swift in Sources */,
 				0B73461526861D98007CE6CF /* SettingPresenter.swift in Sources */,
 				0B10B799269E99FD007FA8DF /* MenuViewInteracter.swift in Sources */,
+				0B51B20126A8210E00216054 /* CameraProtocol.swift in Sources */,
 				0B734631268CA2C7007CE6CF /* MenuViewController.swift in Sources */,
 				0BF238632660EBF4007E48AC /* HomeTableViewCell.swift in Sources */,
 				0BF2385F2660D6A6007E48AC /* MemoViewProtocol.swift in Sources */,
 				0BF238612660D6CE007E48AC /* MemoViewInteracter.swift in Sources */,
 				0B10B797269DD06E007FA8DF /* MenuViewPresenter.swift in Sources */,
+				0B51B1FE26A8210E00216054 /* CameraViewController.swift in Sources */,
 				0BF238402660C2EE007E48AC /* DogPicture.xcdatamodeld in Sources */,
 				0BF238362660C2EE007E48AC /* AppDelegate.swift in Sources */,
 				0B73461E26873D11007CE6CF /* CoreDataTest.xcdatamodeld in Sources */,
@@ -369,7 +387,9 @@
 				0B73461326861D87007CE6CF /* SettingProtocol.swift in Sources */,
 				0B73460F26861D62007CE6CF /* SettingViewController.swift in Sources */,
 				0B73463A268CB1FD007CE6CF /* MenuViewProtocol.swift in Sources */,
+				0B51B20226A8210E00216054 /* CameraPresenter.swift in Sources */,
 				0BF238572660D628007E48AC /* HomeInteracter.swift in Sources */,
+				0B51B1FF26A8210E00216054 /* CameraRouter.swift in Sources */,
 				0BF238512660D5DD007E48AC /* HomePresenter.swift in Sources */,
 				0B73461126861D76007CE6CF /* SettingInteracter.swift in Sources */,
 				0B7346212689A637007CE6CF /* MemoContent+CoreDataClass.swift in Sources */,

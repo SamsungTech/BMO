@@ -7,21 +7,18 @@
 
 import UIKit
 
-protocol CameraViewControllerProtocol: AnyObject {
+protocol CameraViewProtocol: AnyObject {
     var presenter: CameraPresenterProtocol? { get set }
-    
-    
     
 }
 
 protocol CameraRouterProtocol: AnyObject {
     static func createCameraModule() -> UIViewController
     
-    
 }
 
 protocol CameraPresenterProtocol: AnyObject {
-    var view: CameraViewControllerProtocol? { get set }
+    var view: CameraViewProtocol? { get set }
     var interacter: CameraInteracterInputProtocol? { get set }
     var router: CameraRouterProtocol? { get set }
     
@@ -32,11 +29,8 @@ protocol CameraPresenterProtocol: AnyObject {
 protocol CameraInteracterInputProtocol: AnyObject {
     var presenter: CameraInteracterOutputProtocol? { get set }
     
-    
 }
 
 protocol CameraInteracterOutputProtocol: AnyObject {
-    
-    
     
 }

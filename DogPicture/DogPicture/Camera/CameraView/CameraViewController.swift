@@ -8,7 +8,7 @@
 import UIKit
 
 class CameraViewController: UIViewController {
-    
+    var presenter: CameraPresenterProtocol?
     let captureButton = UIButton()
     let photoViewButton = UIImageView()
     
@@ -24,7 +24,6 @@ class CameraViewController: UIViewController {
             $0.layer.cornerRadius = 50
             $0.layer.borderWidth = 10
             $0.layer.borderColor = UIColor.white.cgColor
-            
         }
         photoViewButton.do {
             $0.frame = view.bounds
@@ -46,14 +45,8 @@ class CameraViewController: UIViewController {
     }
 }
 
-extension CameraViewController: CameraViewControllerProtocol {
-    var presenter: CameraPresenterProtocol? {
-        get {
-            
-        } set {
-            
-        }
-    }
+extension CameraViewController: CameraViewProtocol {
+    
 }
 
 extension CameraViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {

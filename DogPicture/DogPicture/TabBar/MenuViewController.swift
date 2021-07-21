@@ -42,10 +42,9 @@ class MenuViewController: UIViewController {
         }
         
         let controllerArray = [ homeVC, settingVC ]
-        tabBar.viewControllers = controllerArray.map(UINavigationController.init(rootViewController: MenuViewRouter.createMenuModule()))
+//        tabBar.viewControllers = controllerArray.map(U)
         
-        
-    }
+        }
 }
 
 extension MenuViewController: MenuViewProtocol {

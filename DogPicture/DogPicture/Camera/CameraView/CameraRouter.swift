@@ -9,7 +9,7 @@ import UIKit
 
 class CameraRouter: CameraRouterProtocol {
     static func createCameraModule() -> UIViewController {
-        if let view: CameraViewControllerProtocol = CameraViewController() as? CameraViewControllerProtocol {
+        if let view: CameraViewProtocol = CameraViewController() as? CameraViewProtocol {
             let presenter: CameraPresenterProtocol & CameraInteracterOutputProtocol = CameraPresenter()
             let interacter: CameraInteracterInputProtocol = CameraInteracter()
             let router: CameraRouterProtocol = CameraRouter()
