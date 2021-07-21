@@ -15,10 +15,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        let menu = MenuViewRouter.createMenuModule()
-        menu.view.backgroundColor = UIColor.white
+        let tabVC = TabViewController()
+        tabVC.view.backgroundColor = UIColor.white
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = menu
+        window?.rootViewController = tabVC
         window?.makeKeyAndVisible()
         return true
     }

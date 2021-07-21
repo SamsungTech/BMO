@@ -16,6 +16,7 @@ class CameraViewController: UIViewController {
         super.viewDidLoad()
         attribute()
         layout()
+        self.title = "Tab_Camera"
     }
     
     func attribute() {

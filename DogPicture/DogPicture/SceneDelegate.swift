@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         
         /// 3. Create your view hierachy programmatically
-        let viewController = MenuViewRouter.createMenuModule()
+        let viewController = TabViewController()
         
         /// 4. Set the root view controller of the window with your view controller
         window.rootViewController = viewController

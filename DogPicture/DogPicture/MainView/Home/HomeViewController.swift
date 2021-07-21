@@ -17,8 +17,10 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Tab_Home"
         attribute()
         layout()
+        
     }
     
     func attribute() {

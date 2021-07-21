@@ -9,8 +9,15 @@ import UIKit
 
 class SettingViewController: UIViewController {
     
+    let house = UIButton()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Tab_Setting"
+        self.view.backgroundColor = .red
+    }
+    
+    func attribute() {
     }
     
 }
