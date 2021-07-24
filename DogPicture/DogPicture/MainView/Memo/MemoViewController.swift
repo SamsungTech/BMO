@@ -10,6 +10,8 @@ import UIKit
 class MemoViewController: UIViewController {
     var presenter: MemoViewPresenterProtocol?
     var chuImage = UIImageView()
+    let memoNavBar = UINavigationBar()
+    let memoNavBarItem = UINavigationItem()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,13 +22,19 @@ class MemoViewController: UIViewController {
     }
     
     func layout() {
+        memoNavBar.do {
+            $0.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: 44)
+        }
+        memoNavBarItem.do {
+            $0.title = "MemoView"
+        }
         chuImage.do {
             $0.frame = view.bounds
         }
     }
     
     func attribute() {
-        [ chuImage ] .forEach() { view.addSubview($0) }
+        [ memoNavBar, chuImage ] .forEach() { view.addSubview($0) }
         
         chuImage.do {
             $0.translatesAutoresizingMaskIntoConstraints = false

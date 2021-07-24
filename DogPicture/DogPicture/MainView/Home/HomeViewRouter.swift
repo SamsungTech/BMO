@@ -32,7 +32,7 @@ class HomeViewRouter: HomeRouterProtocol {
     func presentMemoScreen(from view: HomeViewProtocol, forname name: String) {
         let MemoViewController = MemoViewRouter.createMemoViewRouter(from: name)
         if let memoView = view as? UIViewController {
-            memoView.navigationController?.pushViewController(MemoViewController, animated: true)
+            memoView.present(MemoViewController, animated: true)
         }
     }
 }

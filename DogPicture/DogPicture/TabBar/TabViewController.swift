@@ -20,10 +20,17 @@ class TabViewController: UITabBarController, UITabBarControllerDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         createTabItem()
+        customTabBarController()
+    }
+    
+    func customTabBarController() {
+        self.do {
+            $0.tabBar.barStyle = .black
+        }
     }
     
     func createTabItem() {
-        let tabHomeItem = UITabBarItem(title: "Tab_Home", image: UIImage(systemName: "house"), tag: 0)
+        let tabHomeItem = UITabBarItem(title: "Tab_Home", image: UIImage(systemName: "house"), selectedImage: UIImage(named: "house"))
         let tabCameraItem = UITabBarItem(title: "Tab_Camera", image: UIImage(systemName: "camera"), selectedImage: UIImage(named: "camera"))
         let tabSettingItem = UITabBarItem(title: "Tab_Setting", image: UIImage(systemName: "gear"), selectedImage: UIImage(named: "gear"))
         
