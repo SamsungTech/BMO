@@ -8,6 +8,9 @@
 import UIKit
 
 class TabViewController: UITabBarController, UITabBarControllerDelegate {
+    
+    let centerButton = UIButton()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
@@ -17,6 +20,7 @@ class TabViewController: UITabBarController, UITabBarControllerDelegate {
         super.viewWillAppear(animated)
         createTabItem()
         setupTabBarStyle()
+        createTabBarCenterButton()
     }
     
     func setupTabBarStyle() {
@@ -45,10 +49,25 @@ class TabViewController: UITabBarController, UITabBarControllerDelegate {
                                           title: "SettingView",
                                           image: tabSettingImage,
                                           selectedImage: tabSettingSelectedIamge)
-        
+        centerButton.do {
+            $0.buttonRadius(view: $0, cornerRadius: 50, maskToBounds: false)
+            $0.backgroundColor = .white
+            
+        }
         UINavigationBar.appearance().prefersLargeTitles = true
         
         self.viewControllers = [ tabHome, tabCamera, tabSetting ]
+    }
+    
+    func createTabBarCenterButton() {
+        tabBar.addSubview(centerButton)
+        centerButton.do {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.widthAnchor.constraint(equalToConstant: 50).isActive = true
+            $0.heightAnchor.constraint(equalToConstant: 50).isActive = true
+            $0.centerYAnchor.constraint(equalTo: tabBar.topAnchor).isActive = true
+            $0.centerXAnchor.constraint(equalTo: tabBar.centerXAnchor).isActive = true
+        }
     }
     
     fileprivate func generateNavigationAndTabBar(vc: UIViewController, title: String, image: UIImage, selectedImage: UIImage) -> UINavigationController {
@@ -63,9 +82,16 @@ class TabViewController: UITabBarController, UITabBarControllerDelegate {
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         print("Selected \(viewController.title!)")
+        
     }
 }
 
 extension UITabBar {
     
+}
+extension UIView {
+    func buttonRadius(view: UIView, cornerRadius: Int, maskToBounds: Bool) {
+        view.layer.cornerRadius = CGFloat(cornerRadius)
+        view.layer.masksToBounds = maskToBounds
+    }
 }
