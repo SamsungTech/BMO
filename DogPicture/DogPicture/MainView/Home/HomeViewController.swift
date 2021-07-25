@@ -20,6 +20,7 @@ class HomeViewController: UIViewController {
         self.title = "Tab_Home"
         attribute()
         layout()
+        self.view.backgroundColor = .white
         
     }
     

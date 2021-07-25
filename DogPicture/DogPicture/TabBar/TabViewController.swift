@@ -8,10 +8,6 @@
 import UIKit
 
 class TabViewController: UITabBarController, UITabBarControllerDelegate {
-    let tabHome = HomeViewRouter.createHomeModule()
-    let tabCamera = CameraRouter.createCameraModule()
-    let tabSetting = SettingViewController()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
@@ -20,28 +16,56 @@ class TabViewController: UITabBarController, UITabBarControllerDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         createTabItem()
-        customTabBarController()
+        setupTabBarStyle()
     }
     
-    func customTabBarController() {
+    func setupTabBarStyle() {
         self.do {
             $0.tabBar.barStyle = .black
         }
     }
     
     func createTabItem() {
-        let tabHomeItem = UITabBarItem(title: "Tab_Home", image: UIImage(systemName: "house"), selectedImage: UIImage(named: "house"))
-        let tabCameraItem = UITabBarItem(title: "Tab_Camera", image: UIImage(systemName: "camera"), selectedImage: UIImage(named: "camera"))
-        let tabSettingItem = UITabBarItem(title: "Tab_Setting", image: UIImage(systemName: "gear"), selectedImage: UIImage(named: "gear"))
+        guard let tabHomeImage = UIImage(systemName: "house"),
+              let tabHomeSelectedImage = UIImage(systemName: "house.fill"),
+              let tabCameraImage = UIImage(systemName: "camera"),
+              let tabCameraSelectedImage = UIImage(systemName: "camera.fill"),
+              let tabSettingImage = UIImage(systemName: "gearshape"),
+              let tabSettingSelectedIamge = UIImage(systemName: "gearshape.fill") else { return }
         
-        tabHome.tabBarItem = tabHomeItem
-        tabCamera.tabBarItem = tabCameraItem
-        tabSetting.tabBarItem = tabSettingItem
+        let tabHome = generateNavigationAndTabBar(vc: HomeViewRouter.createHomeModule(),
+                                        title: "Tab_Home",
+                                        image: tabHomeImage,
+                                        selectedImage: tabHomeSelectedImage)
+        let tabCamera = generateNavigationAndTabBar(vc: CameraRouter.createCameraModule(),
+                                          title: "Tab_Camera",
+                                          image: tabCameraImage,
+                                          selectedImage: tabCameraSelectedImage)
+        let tabSetting = generateNavigationAndTabBar(vc: SettingViewController(),
+                                          title: "SettingView",
+                                          image: tabSettingImage,
+                                          selectedImage: tabSettingSelectedIamge)
+        
+        UINavigationBar.appearance().prefersLargeTitles = true
         
         self.viewControllers = [ tabHome, tabCamera, tabSetting ]
+    }
+    
+    fileprivate func generateNavigationAndTabBar(vc: UIViewController, title: String, image: UIImage, selectedImage: UIImage) -> UINavigationController {
+        let navigationController = UINavigationController(rootViewController: vc)
+        let item = UITabBarItem(title: title, image: image, selectedImage: selectedImage)
+        navigationController.title = title
+        navigationController.tabBarItem.image = image
+        vc.navigationItem.title = title
+        vc.tabBarItem = item
+        return navigationController
     }
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         print("Selected \(viewController.title!)")
     }
+}
+
+extension UITabBar {
+    
 }
