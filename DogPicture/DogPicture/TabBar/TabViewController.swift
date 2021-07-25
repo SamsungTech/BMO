@@ -25,7 +25,7 @@ class TabViewController: UITabBarController, UITabBarControllerDelegate {
     
     func setupTabBarStyle() {
         self.do {
-            $0.tabBar.barStyle = .black
+            $0.tabBar.tintColor = .darkGray
         }
     }
     
@@ -49,40 +49,58 @@ class TabViewController: UITabBarController, UITabBarControllerDelegate {
                                           title: "SettingView",
                                           image: tabSettingImage,
                                           selectedImage: tabSettingSelectedIamge)
-        centerButton.do {
-            $0.buttonRadius(view: $0, cornerRadius: 50, maskToBounds: false)
-            $0.backgroundColor = .white
-            
-        }
+        
         UINavigationBar.appearance().prefersLargeTitles = true
+        
+        
         
         self.viewControllers = [ tabHome, tabCamera, tabSetting ]
     }
     
     func createTabBarCenterButton() {
+        centerButton.do {
+            $0.buttonRadius(view: $0, cornerRadius: 30, maskToBounds: false)
+            $0.backgroundColor = .darkGray
+            $0.layer.shadowColor = UIColor.black.cgColor
+            $0.layer.shadowOffset = CGSize(width: 1, height: 1)
+            $0.layer.shadowRadius = 3
+            $0.layer.shadowOpacity = 0.5
+            $0.setImage(UIImage(systemName: "plus"), for: .normal)
+            $0.tintColor = .white
+        }
+        
+        
         tabBar.addSubview(centerButton)
         centerButton.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
-            $0.widthAnchor.constraint(equalToConstant: 50).isActive = true
-            $0.heightAnchor.constraint(equalToConstant: 50).isActive = true
+            $0.widthAnchor.constraint(equalToConstant: 60).isActive = true
+            $0.heightAnchor.constraint(equalToConstant: 60).isActive = true
             $0.centerYAnchor.constraint(equalTo: tabBar.topAnchor).isActive = true
             $0.centerXAnchor.constraint(equalTo: tabBar.centerXAnchor).isActive = true
         }
     }
     
-    fileprivate func generateNavigationAndTabBar(vc: UIViewController, title: String, image: UIImage, selectedImage: UIImage) -> UINavigationController {
-        let navigationController = UINavigationController(rootViewController: vc)
+    fileprivate func generateNavigationAndTabBar(vc: UIViewController,
+                                                 title: String,
+                                                 image: UIImage,
+                                                 selectedImage: UIImage) -> UINavigationController {
         let item = UITabBarItem(title: title, image: image, selectedImage: selectedImage)
-        navigationController.title = title
-        navigationController.tabBarItem.image = image
+        let navi = createNavi()
         vc.navigationItem.title = title
         vc.tabBarItem = item
-        return navigationController
+        return navi
+    }
+    
+    func createNavi() -> UINavigationController {
+        //        let navigationController = UINavigationController(rootViewController: vc)
+        //        navigationController.title = title
+        //        navigationController.tabBarItem.image = image
+        //        navigationController.tabBarItem.image?.withTintColor(.white)
+        return UINavigationController()
     }
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         print("Selected \(viewController.title!)")
-        
     }
 }
 
@@ -90,8 +108,8 @@ extension UITabBar {
     
 }
 extension UIView {
-    func buttonRadius(view: UIView, cornerRadius: Int, maskToBounds: Bool) {
-        view.layer.cornerRadius = CGFloat(cornerRadius)
+    func buttonRadius(view: UIView, cornerRadius: CGFloat, maskToBounds: Bool) {
+        view.layer.cornerRadius = cornerRadius
         view.layer.masksToBounds = maskToBounds
     }
 }
