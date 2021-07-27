@@ -10,6 +10,7 @@ import UIKit
 class TabViewController: UITabBarController, UITabBarControllerDelegate {
     
     let centerButton = UIButton()
+    let person = UIViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,9 +19,12 @@ class TabViewController: UITabBarController, UITabBarControllerDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        createTabBarCenterButton()
         createTabItem()
         setupTabBarStyle()
-        createTabBarCenterButton()
+        self.tabBar.itemPositioning = .centered
+        self.tabBar.itemWidth = 20
+        self.tabBar.itemSpacing = 100
     }
     
     func setupTabBarStyle() {
@@ -34,6 +38,8 @@ class TabViewController: UITabBarController, UITabBarControllerDelegate {
               let tabHomeSelectedImage = UIImage(systemName: "house.fill"),
               let tabCameraImage = UIImage(systemName: "camera"),
               let tabCameraSelectedImage = UIImage(systemName: "camera.fill"),
+              let tabPersonImage = UIImage(systemName: "person"),
+              let tabPersonSelectedImage = UIImage(systemName: "person.fill"),
               let tabSettingImage = UIImage(systemName: "gearshape"),
               let tabSettingSelectedIamge = UIImage(systemName: "gearshape.fill") else { return }
         
@@ -45,6 +51,10 @@ class TabViewController: UITabBarController, UITabBarControllerDelegate {
                                           title: "Tab_Camera",
                                           image: tabCameraImage,
                                           selectedImage: tabCameraSelectedImage)
+        let tabPerson = generateNavigationAndTabBar(vc: person,
+                                          title: "PersonView",
+                                          image: tabPersonImage,
+                                          selectedImage: tabPersonSelectedImage)
         let tabSetting = generateNavigationAndTabBar(vc: SettingViewController(),
                                           title: "SettingView",
                                           image: tabSettingImage,
@@ -52,9 +62,7 @@ class TabViewController: UITabBarController, UITabBarControllerDelegate {
         
         UINavigationBar.appearance().prefersLargeTitles = true
         
-        
-        
-        self.viewControllers = [ tabHome, tabCamera, tabSetting ]
+        self.viewControllers = [ tabHome, tabCamera, tabPerson, tabSetting ]
     }
     
     func createTabBarCenterButton() {
@@ -68,7 +76,6 @@ class TabViewController: UITabBarController, UITabBarControllerDelegate {
             $0.setImage(UIImage(systemName: "plus"), for: .normal)
             $0.tintColor = .white
         }
-        
         
         tabBar.addSubview(centerButton)
         centerButton.do {
@@ -85,22 +92,18 @@ class TabViewController: UITabBarController, UITabBarControllerDelegate {
                                                  image: UIImage,
                                                  selectedImage: UIImage) -> UINavigationController {
         let item = UITabBarItem(title: title, image: image, selectedImage: selectedImage)
-        let navi = createNavi()
+        let navigationController = UINavigationController(rootViewController: vc)
+        navigationController.title = title
+        navigationController.tabBarItem.image = image
+        navigationController.tabBarItem.image?.withTintColor(.white)
         vc.navigationItem.title = title
         vc.tabBarItem = item
-        return navi
-    }
-    
-    func createNavi() -> UINavigationController {
-        //        let navigationController = UINavigationController(rootViewController: vc)
-        //        navigationController.title = title
-        //        navigationController.tabBarItem.image = image
-        //        navigationController.tabBarItem.image?.withTintColor(.white)
-        return UINavigationController()
+        return navigationController
     }
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         print("Selected \(viewController.title!)")
+        //여기서 탭바 아이템 애니메이션 넣기
     }
 }
 
