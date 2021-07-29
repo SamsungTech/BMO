@@ -9,8 +9,10 @@ import UIKit
 
 class TabViewController: UITabBarController, UITabBarControllerDelegate {
     
+    let tabBarLayer = CAShapeLayer()
     let centerButton = UIButton()
     let person = UIViewController()
+    let path = CAShapeLayer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,17 +21,23 @@ class TabViewController: UITabBarController, UITabBarControllerDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        createTabBarCenterButton()
-        createTabItem()
         setupTabBarStyle()
-        self.tabBar.itemPositioning = .centered
-        self.tabBar.itemWidth = 20
-        self.tabBar.itemSpacing = 100
+        createTabBarItemsAttribute()
+        createTabBarItemsLayout()
+        createTabItem()
     }
     
     func setupTabBarStyle() {
-        self.do {
-            $0.tabBar.tintColor = .darkGray
+        self.tabBar.do {
+            $0.itemPositioning = .automatic
+            $0.itemWidth = 10
+            $0.itemSpacing = 50
+            $0.tintColor = .white
+            $0.barTintColor = UIColor.systemBlue
+            $0.barStyle = .default
+            $0.isTranslucent = true
+            $0.viewRadius(view: $0, cornerRadius: 30, maskToBounds: true)
+            $0.viewShadow(view: $0)
         }
     }
     
@@ -62,22 +70,23 @@ class TabViewController: UITabBarController, UITabBarControllerDelegate {
         
         UINavigationBar.appearance().prefersLargeTitles = true
         
-        self.viewControllers = [ tabHome, tabCamera, tabPerson, tabSetting ]
+        self.setViewControllers([tabHome, tabCamera, tabPerson, tabSetting], animated: false)
     }
     
-    func createTabBarCenterButton() {
+    func createTabBarItemsAttribute() {
         centerButton.do {
-            $0.buttonRadius(view: $0, cornerRadius: 30, maskToBounds: false)
             $0.backgroundColor = .darkGray
-            $0.layer.shadowColor = UIColor.black.cgColor
-            $0.layer.shadowOffset = CGSize(width: 1, height: 1)
-            $0.layer.shadowRadius = 3
-            $0.layer.shadowOpacity = 0.5
             $0.setImage(UIImage(systemName: "plus"), for: .normal)
             $0.tintColor = .white
+            $0.viewRadius(view: $0, cornerRadius: 30, maskToBounds: false)
+            $0.viewShadow(view: $0)
+            $0.addTarget(self, action: #selector(self.centerButtonDipTap), for: .touchUpInside)
         }
+    }
+    
+    func createTabBarItemsLayout() {
+        [ centerButton ].forEach() { view.addSubview($0) }
         
-        tabBar.addSubview(centerButton)
         centerButton.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
             $0.widthAnchor.constraint(equalToConstant: 60).isActive = true
@@ -92,12 +101,19 @@ class TabViewController: UITabBarController, UITabBarControllerDelegate {
                                                  image: UIImage,
                                                  selectedImage: UIImage) -> UINavigationController {
         let item = UITabBarItem(title: title, image: image, selectedImage: selectedImage)
+        
         let navigationController = UINavigationController(rootViewController: vc)
+        
         navigationController.title = title
+        
         navigationController.tabBarItem.image = image
+        
         navigationController.tabBarItem.image?.withTintColor(.white)
+        
         vc.navigationItem.title = title
+        
         vc.tabBarItem = item
+        
         return navigationController
     }
     
@@ -105,14 +121,24 @@ class TabViewController: UITabBarController, UITabBarControllerDelegate {
         print("Selected \(viewController.title!)")
         //여기서 탭바 아이템 애니메이션 넣기
     }
+    
+    @objc func centerButtonDipTap(sender: UIButton) {
+        self.selectedIndex = 0
+        print("press")
+        // centerButton 애니메이션 넣기
+        
+    }
 }
 
-extension UITabBar {
-    
-}
 extension UIView {
-    func buttonRadius(view: UIView, cornerRadius: CGFloat, maskToBounds: Bool) {
+    func viewRadius(view: UIView, cornerRadius: CGFloat, maskToBounds: Bool) {
         view.layer.cornerRadius = cornerRadius
         view.layer.masksToBounds = maskToBounds
+    }
+    func viewShadow(view: UIView) {
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOffset = CGSize(width: 1, height: 1)
+        view.layer.shadowRadius = 3
+        view.layer.shadowOpacity = 0.5
     }
 }
