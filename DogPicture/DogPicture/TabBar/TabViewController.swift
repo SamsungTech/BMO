@@ -7,12 +7,9 @@
 
 import UIKit
 
-class TabViewController: UITabBarController, UITabBarControllerDelegate {
-    
-    let tabBarLayer = CAShapeLayer()
+class TabViewController: UITabBarController {
     let centerButton = UIButton()
     let person = UIViewController()
-    let path = CAShapeLayer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,11 +26,10 @@ class TabViewController: UITabBarController, UITabBarControllerDelegate {
     
     func setupTabBarStyle() {
         self.tabBar.do {
-            $0.itemPositioning = .automatic
+            $0.itemPositioning = .fill
             $0.itemWidth = 10
-            $0.itemSpacing = 50
             $0.tintColor = .white
-            $0.barTintColor = UIColor.systemBlue
+            $0.barTintColor = UIColor.lightGray
             $0.barStyle = .default
             $0.isTranslucent = true
             $0.viewRadius(view: $0, cornerRadius: 30, maskToBounds: true)
@@ -68,9 +64,15 @@ class TabViewController: UITabBarController, UITabBarControllerDelegate {
                                           image: tabSettingImage,
                                           selectedImage: tabSettingSelectedIamge)
         
+        
         UINavigationBar.appearance().prefersLargeTitles = true
         
+        tabCamera.tabBarItem.titlePositionAdjustment.horizontal = -20
+        tabPerson.tabBarItem.titlePositionAdjustment.horizontal = 20
+        
         self.setViewControllers([tabHome, tabCamera, tabPerson, tabSetting], animated: false)
+        
+        
     }
     
     func createTabBarItemsAttribute() {
@@ -101,34 +103,39 @@ class TabViewController: UITabBarController, UITabBarControllerDelegate {
                                                  image: UIImage,
                                                  selectedImage: UIImage) -> UINavigationController {
         let item = UITabBarItem(title: title, image: image, selectedImage: selectedImage)
-        
         let navigationController = UINavigationController(rootViewController: vc)
-        
         navigationController.title = title
-        
         navigationController.tabBarItem.image = image
-        
         navigationController.tabBarItem.image?.withTintColor(.white)
-        
         vc.navigationItem.title = title
-        
         vc.tabBarItem = item
-        
         return navigationController
     }
     
-    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        print("Selected \(viewController.title!)")
-        //여기서 탭바 아이템 애니메이션 넣기
-    }
-    
     @objc func centerButtonDipTap(sender: UIButton) {
-        self.selectedIndex = 0
         print("press")
         // centerButton 애니메이션 넣기
         
     }
 }
+
+extension TabViewController: UITabBarControllerDelegate {
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        print("Selected \(viewController.title!)")
+        //여기서 탭바 아이템 애니메이션 넣기
+        
+    }
+}
+
+//extension TabViewController: UIViewControllerAnimatedTransitioning {
+//    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+//        <#code#>
+//    }
+//    
+//    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+//        <#code#>
+//    }
+//}
 
 extension UIView {
     func viewRadius(view: UIView, cornerRadius: CGFloat, maskToBounds: Bool) {
@@ -142,3 +149,5 @@ extension UIView {
         view.layer.shadowOpacity = 0.5
     }
 }
+
+
