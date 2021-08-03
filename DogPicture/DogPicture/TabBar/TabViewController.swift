@@ -9,7 +9,14 @@ import UIKit
 
 class TabViewController: UITabBarController {
     let centerButton = UIButton()
+    let cameraButton = UIButton()
+    let libraryButton = UIButton()
+    var centerButtonExpanded: Bool = true
+    var widthConstraint: NSLayoutConstraint!
+    var heightConstraint: NSLayoutConstraint!
+    
     let person = UIViewController()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,17 +91,48 @@ class TabViewController: UITabBarController {
             $0.viewShadow(view: $0)
             $0.addTarget(self, action: #selector(self.centerButtonDipTap), for: .touchUpInside)
         }
+        cameraButton.do {
+            $0.backgroundColor = .lightGray
+            $0.setImage(UIImage(systemName: "camera"), for: .normal)
+            $0.tintColor = .white
+            $0.viewRadius(view: $0, cornerRadius: 27.5, maskToBounds: false)
+            $0.viewShadow(view: $0)
+            
+        }
+        libraryButton.do {
+            $0.backgroundColor = .lightGray
+            $0.setImage(UIImage(systemName: "rectangle.on.rectangle"), for: .normal)
+            $0.tintColor = .white
+            $0.viewRadius(view: $0, cornerRadius: 27.5, maskToBounds: false)
+            $0.viewShadow(view: $0)
+            
+        }
     }
     
     func createTabBarItemsLayout() {
-        [ centerButton ].forEach() { view.addSubview($0) }
+        [ centerButton, cameraButton, libraryButton ].forEach() { view.addSubview($0) }
         
         centerButton.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
             $0.widthAnchor.constraint(equalToConstant: 60).isActive = true
             $0.heightAnchor.constraint(equalToConstant: 60).isActive = true
-            $0.centerYAnchor.constraint(equalTo: tabBar.topAnchor).isActive = true
             $0.centerXAnchor.constraint(equalTo: tabBar.centerXAnchor).isActive = true
+            $0.centerYAnchor.constraint(equalTo: tabBar.topAnchor).isActive = true
+        }
+        cameraButton.do {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.widthAnchor.constraint(equalToConstant: 55).isActive = true
+            $0.heightAnchor.constraint(equalToConstant: 55).isActive = true
+            $0.centerXAnchor.constraint(equalTo: centerButton.leadingAnchor, constant: -20).isActive = true
+            $0.centerYAnchor.constraint(equalTo: centerButton.topAnchor, constant: -25).isActive = true
+            
+        }
+        libraryButton.do {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.widthAnchor.constraint(equalToConstant: 55).isActive = true
+            $0.heightAnchor.constraint(equalToConstant: 55).isActive = true
+            $0.centerXAnchor.constraint(equalTo: centerButton.trailingAnchor, constant: 20).isActive = true
+            $0.centerYAnchor.constraint(equalTo: centerButton.topAnchor, constant: -25).isActive = true
         }
     }
     
@@ -114,8 +152,34 @@ class TabViewController: UITabBarController {
     
     @objc func centerButtonDipTap(sender: UIButton) {
         print("press")
-        // centerButton 애니메이션 넣기
-        
+        if (centerButtonExpanded == true) {
+            print("애니메이션 실행!")
+            
+//            UIView.animate(withDuration: 3, delay: 0, options: [], animations: {
+//                UIView.animate(withDuration: 0.5, delay: 0, options: [.overrideInheritedDuration], animations: {
+//                    UIView.animate(withDuration: 6.0, animations: {
+//                        self.cameraButton.transform = CGAffineTransform(scaleX: 10, y: 10)
+//                        self.cameraButton.frame = CGRect(x: <#T##CGFloat#>, y: <#T##CGFloat#>, width: <#T##CGFloat#>, height: <#T##CGFloat#>)
+//
+//                    })
+//                    self.cameraButton.center.y = 100
+//                    self.cameraButton.center.x = 100
+//                })
+//            })
+            
+            UIView.animate(withDuration: 2, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseInOut, animations: {
+                self.cameraButton.frame = CGRect(x: self.centerButton.alpha, y: self.centerButton.alpha, width: 55, height: 55)
+            }, completion: nil)
+            UIView.animate(withDuration: 2, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseInOut, animations: {
+                self.libraryButton.frame = CGRect(x: 200, y: 500, width: 55, height: 55)
+            }, completion: nil)
+            
+            centerButtonExpanded = false
+        } else {
+            print("애니메이션 되감기!")
+            
+            centerButtonExpanded = true
+        }
     }
 }
 
@@ -131,7 +195,7 @@ extension TabViewController: UITabBarControllerDelegate {
 //    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
 //        <#code#>
 //    }
-//    
+//
 //    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
 //        <#code#>
 //    }
@@ -149,5 +213,3 @@ extension UIView {
         view.layer.shadowOpacity = 0.5
     }
 }
-
-
