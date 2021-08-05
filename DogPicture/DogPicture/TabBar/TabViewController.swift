@@ -12,9 +12,7 @@ class TabViewController: UITabBarController {
     let cameraButton = UIButton()
     let libraryButton = UIButton()
     var centerButtonExpanded: Bool = true
-    
     let person = UIViewController()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,10 +31,12 @@ class TabViewController: UITabBarController {
         self.tabBar.do {
             $0.itemPositioning = .fill
             $0.itemWidth = 10
-            $0.tintColor = .white
-            $0.barTintColor = UIColor.lightGray
+            $0.barTintColor = UIColor.black
             $0.barStyle = .default
             $0.isTranslucent = true
+            $0.tintColor = UIColor.cyan
+            $0.unselectedItemTintColor = .white
+            
             $0.viewRadius(view: $0, cornerRadius: 30, maskToBounds: true)
             $0.viewShadow(view: $0)
         }
@@ -52,23 +52,22 @@ class TabViewController: UITabBarController {
               let tabSettingImage = UIImage(systemName: "gearshape"),
               let tabSettingSelectedIamge = UIImage(systemName: "gearshape.fill") else { return }
         
-        let tabHome = generateNavigationAndTabBar(vc: HomeViewRouter.createHomeModule(),
+        let tabHome = generateNavigationControllerAndTabBarController(vc: HomeViewRouter.createHomeModule(),
                                         title: "Tab_Home",
                                         image: tabHomeImage,
                                         selectedImage: tabHomeSelectedImage)
-        let tabCamera = generateNavigationAndTabBar(vc: CameraRouter.createCameraModule(),
+        let tabCamera = generateNavigationControllerAndTabBarController(vc: CameraRouter.createCameraModule(),
                                           title: "Tab_Camera",
                                           image: tabCameraImage,
                                           selectedImage: tabCameraSelectedImage)
-        let tabPerson = generateNavigationAndTabBar(vc: person,
+        let tabPerson = generateNavigationControllerAndTabBarController(vc: person,
                                           title: "PersonView",
                                           image: tabPersonImage,
                                           selectedImage: tabPersonSelectedImage)
-        let tabSetting = generateNavigationAndTabBar(vc: SettingViewController(),
+        let tabSetting = generateNavigationControllerAndTabBarController(vc: SettingViewController(),
                                           title: "SettingView",
                                           image: tabSettingImage,
                                           selectedImage: tabSettingSelectedIamge)
-        
         
         UINavigationBar.appearance().prefersLargeTitles = true
         
@@ -76,8 +75,6 @@ class TabViewController: UITabBarController {
         tabPerson.tabBarItem.titlePositionAdjustment.horizontal = 20
         
         self.setViewControllers([tabHome, tabCamera, tabPerson, tabSetting], animated: false)
-        
-        
     }
     
     func createTabBarItemsAttribute() {
@@ -96,8 +93,6 @@ class TabViewController: UITabBarController {
             $0.viewRadius(view: $0, cornerRadius: 27.5, maskToBounds: false)
             $0.viewShadow(view: $0)
             $0.isHidden = true
-            
-            
         }
         libraryButton.do {
             $0.backgroundColor = .lightGray
@@ -125,7 +120,6 @@ class TabViewController: UITabBarController {
             $0.heightAnchor.constraint(equalToConstant: 55).isActive = true
             $0.centerXAnchor.constraint(equalTo: centerButton.centerXAnchor).isActive = true
             $0.centerYAnchor.constraint(equalTo: centerButton.centerYAnchor).isActive = true
-            
         }
         libraryButton.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
@@ -136,7 +130,7 @@ class TabViewController: UITabBarController {
         }
     }
     
-    fileprivate func generateNavigationAndTabBar(vc: UIViewController,
+    fileprivate func generateNavigationControllerAndTabBarController(vc: UIViewController,
                                                  title: String,
                                                  image: UIImage,
                                                  selectedImage: UIImage) -> UINavigationController {
@@ -159,7 +153,9 @@ class TabViewController: UITabBarController {
                            options: .curveEaseInOut,
                            animations: {
                 self.cameraButton.isHidden = false
-                self.cameraButton.frame = CGRect(x: self.view.bounds.width/3, y: self.view.bounds.height/1.24, width: 55, height: 55)
+                self.cameraButton.frame = CGRect(x: self.view.bounds.width/3,
+                                                 y: self.view.bounds.height/1.24,
+                                                 width: 55, height: 55)
             }, completion: nil)
             UIView.animate(withDuration: 2,
                            delay: 0,
@@ -168,7 +164,9 @@ class TabViewController: UITabBarController {
                            options: .curveEaseInOut,
                            animations: {
                 self.libraryButton.isHidden = false
-                self.libraryButton.frame = CGRect(x: self.view.bounds.width/1.9, y: self.view.bounds.height/1.24, width: 55, height: 55)
+                self.libraryButton.frame = CGRect(x: self.view.bounds.width/1.9,
+                                                  y: self.view.bounds.height/1.24,
+                                                  width: 55, height: 55)
             }, completion: nil)
             centerButton.setImage(UIImage(systemName: "xmark"), for: .normal)
             centerButtonExpanded = false
@@ -180,7 +178,9 @@ class TabViewController: UITabBarController {
                            options: .curveEaseInOut,
                            animations: {
                 self.cameraButton.isHidden = false
-                self.cameraButton.frame = CGRect(x: self.view.bounds.width/2, y: self.view.bounds.height/1.15, width: 55, height: 55)
+                self.cameraButton.frame = CGRect(x: self.view.bounds.width/2,
+                                                 y: self.view.bounds.height/1.15,
+                                                 width: 55, height: 55)
             }, completion: nil)
             UIView.animate(withDuration: 2,
                            delay: 0,
@@ -189,7 +189,9 @@ class TabViewController: UITabBarController {
                            options: .curveEaseInOut,
                            animations: {
                 self.libraryButton.isHidden = false
-                self.libraryButton.frame = CGRect(x: self.centerButton.center.x, y: self.centerButton.center.y, width: 55, height: 55)
+                self.libraryButton.frame = CGRect(x: self.centerButton.center.x,
+                                                  y: self.centerButton.center.y,
+                                                  width: 55, height: 55)
             }, completion: nil)
             centerButton.setImage(UIImage(systemName: "plus"), for: .normal)
             centerButtonExpanded = true
@@ -199,7 +201,7 @@ class TabViewController: UITabBarController {
 
 extension TabViewController: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        UITabBar.appearance().tintColor = UIColor.systemRed
+        
     }
 }
 
@@ -213,6 +215,11 @@ extension TabViewController: UITabBarControllerDelegate {
 //    }
 //}
 
+extension UIImage {
+    func selectedTabBarItemBackgroundColor() {
+        
+    }
+}
 
 extension UIView {
     func viewRadius(view: UIView, cornerRadius: CGFloat, maskToBounds: Bool) {
