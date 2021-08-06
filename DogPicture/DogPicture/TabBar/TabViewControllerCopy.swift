@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TabViewController: UITabBarController {
+class TabViewControllerCopy: UITabBarController {
     let centerButton = UIButton()
     let cameraButton = UIButton()
     let libraryButton = UIButton()
@@ -17,24 +17,21 @@ class TabViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
-        // 여기서 centerButton layout을 잡아주고
+        //여기서 centerButton layout 잡아주고
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        UINavigationBar.appearance().prefersLargeTitles = true
-        
         setupTabBarStyle()
         createTabBarItemsAttribute()
         createTabBarItemsLayout()
         createTabItem()
-        view.bringSubviewToFront(centerButton)
     }
+
     override func viewDidAppear(_ animated: Bool) {
-        // centerButton으로부터 좌표 가져와서 라이브러리 찍어주는 곳
-        
+        //centerButton으로부터 좌표 가져와서 라이브러리 찍어주는거
     }
-    
+
     func setupTabBarStyle() {
         self.tabBar.do {
             $0.itemPositioning = .fill
@@ -58,25 +55,28 @@ class TabViewController: UITabBarController {
               let tabPersonImage = UIImage(systemName: "person"),
               let tabPersonSelectedImage = UIImage(systemName: "person.fill"),
               let tabSettingImage = UIImage(systemName: "gearshape"),
-              let tabSettingSelectedIamge = UIImage(systemName: "gearshape.fill") else { return }
+              let tabSettingSelectedIamge = UIImage(systemName: "gearshape.fill") else {
+            return
+        }
         
         let tabHome = generateNavigationControllerAndTabBarController(vc: HomeViewRouter.createHomeModule(),
-                                        title: "Tab_Home",
-                                        image: tabHomeImage,
-                                        selectedImage: tabHomeSelectedImage)
+                                                                      title: "Tab_Home",
+                                                                      image: tabHomeImage,
+                                                                      selectedImage: tabHomeSelectedImage)
         let tabCamera = generateNavigationControllerAndTabBarController(vc: CameraRouter.createCameraModule(),
-                                          title: "Tab_Camera",
-                                          image: tabCameraImage,
-                                          selectedImage: tabCameraSelectedImage)
+                                                                        title: "Tab_Camera",
+                                                                        image: tabCameraImage,
+                                                                        selectedImage: tabCameraSelectedImage)
         let tabPerson = generateNavigationControllerAndTabBarController(vc: person,
-                                          title: "PersonView",
-                                          image: tabPersonImage,
-                                          selectedImage: tabPersonSelectedImage)
+                                                                        title: "PersonView",
+                                                                        image: tabPersonImage,
+                                                                        selectedImage: tabPersonSelectedImage)
         let tabSetting = generateNavigationControllerAndTabBarController(vc: SettingViewController(),
-                                          title: "SettingView",
-                                          image: tabSettingImage,
-                                          selectedImage: tabSettingSelectedIamge)
+                                                                         title: "SettingView",
+                                                                         image: tabSettingImage,
+                                                                         selectedImage: tabSettingSelectedIamge)
         
+        UINavigationBar.appearance().prefersLargeTitles = true
         
         tabCamera.tabBarItem.titlePositionAdjustment.horizontal = -20
         tabPerson.tabBarItem.titlePositionAdjustment.horizontal = 20
@@ -85,12 +85,14 @@ class TabViewController: UITabBarController {
     }
     
     func createTabBarItemsAttribute() {
+        //        view.bringSubviewToFront(centerButton)
         centerButton.do {
             $0.backgroundColor = .darkGray
             $0.setImage(UIImage(systemName: "plus"), for: .normal)
             $0.tintColor = .white
             $0.viewRadius(view: $0, cornerRadius: 30, maskToBounds: false)
             $0.viewShadow(view: $0)
+            //            $0.bringSubviewToFront(view)
             $0.addTarget(self, action: #selector(self.centerButtonDipTap), for: .touchUpInside)
         }
         cameraButton.do {
@@ -138,9 +140,10 @@ class TabViewController: UITabBarController {
     }
     
     fileprivate func generateNavigationControllerAndTabBarController(vc: UIViewController,
-                                                 title: String,
-                                                 image: UIImage,
-                                                 selectedImage: UIImage) -> UINavigationController {
+                                                                     title: String,
+                                                                     image: UIImage,
+                                                                     selectedImage: UIImage) -> UINavigationController {
+
         let item = UITabBarItem(title: title, image: image, selectedImage: selectedImage)
         let navigationController = UINavigationController(rootViewController: vc)
         navigationController.title = title
@@ -161,6 +164,7 @@ class TabViewController: UITabBarController {
                            initialSpringVelocity: 1,
                            options: .curveEaseInOut,
                            animations: {
+                            self.cameraButton.alpha = 1
                             self.cameraButton.isHidden = false
                             self.cameraButton.frame = CGRect(x: self.view.bounds.width/3,
                                                              y: self.view.bounds.height/1.24,
@@ -168,16 +172,21 @@ class TabViewController: UITabBarController {
                            }) { _ in
                 self.centerButton.isUserInteractionEnabled = true
             }
+            let screenWidth = UIScreen.main.bounds.width
             UIView.animate(withDuration: 2,
                            delay: 0,
                            usingSpringWithDamping: 1,
                            initialSpringVelocity: 1,
                            options: .curveEaseInOut,
                            animations: {
+                            self.libraryButton.alpha = 1
                             self.libraryButton.isHidden = false
                             self.libraryButton.frame = CGRect(x: self.view.bounds.width/1.9,
                                                               y: self.view.bounds.height/1.24,
-                                                              width: 55, height: 55)
+                                                              width: DogPicture.convertWidth(screenWidth),
+                                                              height: DogPicture.convertWidth(screenWidth))
+                            //                          싱글턴
+                            //                          (singleton)
                            }) { [weak self] _ in
                 guard let self = self else {
                     return
@@ -193,7 +202,7 @@ class TabViewController: UITabBarController {
                            initialSpringVelocity: 1,
                            options: .curveEaseInOut,
                            animations: {
-                            self.cameraButton.isHidden = false
+                            self.cameraButton.alpha = 0
                             self.cameraButton.center = self.centerButton.center
                            }) { [weak self] _ in
                 guard let self = self else {
@@ -208,7 +217,7 @@ class TabViewController: UITabBarController {
                            initialSpringVelocity: 1,
                            options: .curveEaseInOut,
                            animations: {
-                            self.libraryButton.isHidden = false
+                            self.libraryButton.alpha = 0
                             self.libraryButton.center = self.centerButton.center
                            }) { [weak self] _ in
                 guard let self = self else {
@@ -223,37 +232,9 @@ class TabViewController: UITabBarController {
     }
 }
 
-extension TabViewController: UITabBarControllerDelegate {
+extension TabViewControllerCopy: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         
     }
 }
 
-//extension TabViewController: UIViewControllerAnimatedTransitioning {
-//    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-//        <#code#>
-//    }
-//
-//    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-//        <#code#>
-//    }
-//}
-
-extension UIImage {
-    func selectedTabBarItemBackgroundColor() {
-        
-    }
-}
-
-extension UIView {
-    func viewRadius(view: UIView, cornerRadius: CGFloat, maskToBounds: Bool) {
-        view.layer.cornerRadius = cornerRadius
-        view.layer.masksToBounds = maskToBounds
-    }
-    func viewShadow(view: UIView) {
-        view.layer.shadowColor = UIColor.black.cgColor
-        view.layer.shadowOffset = CGSize(width: 1, height: 1)
-        view.layer.shadowRadius = 3
-        view.layer.shadowOpacity = 0.5
-    }
-}
