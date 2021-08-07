@@ -18,12 +18,12 @@ class TabViewController: UITabBarController {
         super.viewDidLoad()
         self.delegate = self
         // 여기서 centerButton layout을 잡아주고
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         UINavigationBar.appearance().prefersLargeTitles = true
-        
         setupTabBarStyle()
         createTabBarItemsAttribute()
         createTabBarItemsLayout()
@@ -32,7 +32,6 @@ class TabViewController: UITabBarController {
     }
     override func viewDidAppear(_ animated: Bool) {
         // centerButton으로부터 좌표 가져와서 라이브러리 찍어주는 곳
-        
     }
     
     func setupTabBarStyle() {
@@ -77,11 +76,11 @@ class TabViewController: UITabBarController {
                                           image: tabSettingImage,
                                           selectedImage: tabSettingSelectedIamge)
         
-        
         tabCamera.tabBarItem.titlePositionAdjustment.horizontal = -20
         tabPerson.tabBarItem.titlePositionAdjustment.horizontal = 20
         
         self.setViewControllers([tabHome, tabCamera, tabPerson, tabSetting], animated: false)
+        
     }
     
     func createTabBarItemsAttribute() {
@@ -100,6 +99,10 @@ class TabViewController: UITabBarController {
             $0.viewRadius(view: $0, cornerRadius: 27.5, maskToBounds: false)
             $0.viewShadow(view: $0)
             $0.isHidden = true
+            $0.frame = CGRect(x: UIScreen.main.bounds.maxX*(167.5/390),
+                              y: UIScreen.main.bounds.maxY*(733.91/844),
+                              width: UIScreen.main.bounds.maxX*(55/390),
+                              height: UIScreen.main.bounds.maxY*(55/844))
         }
         libraryButton.do {
             $0.backgroundColor = .lightGray
@@ -108,6 +111,10 @@ class TabViewController: UITabBarController {
             $0.viewRadius(view: $0, cornerRadius: 27.5, maskToBounds: false)
             $0.viewShadow(view: $0)
             $0.isHidden = true
+            $0.frame = CGRect(x: UIScreen.main.bounds.maxX*(167.5/390),
+                              y: UIScreen.main.bounds.maxY*(733.91/844),
+                              width: UIScreen.main.bounds.maxX*(55/390),
+                              height: UIScreen.main.bounds.maxY*(55/844))
         }
     }
     
@@ -116,24 +123,10 @@ class TabViewController: UITabBarController {
         
         centerButton.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
-            $0.widthAnchor.constraint(equalToConstant: 60).isActive = true
-            $0.heightAnchor.constraint(equalToConstant: 60).isActive = true
+            $0.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.maxX*(60/390)).isActive = true
+            $0.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.maxY*(60/844)).isActive = true
             $0.centerXAnchor.constraint(equalTo: tabBar.centerXAnchor).isActive = true
             $0.centerYAnchor.constraint(equalTo: tabBar.topAnchor).isActive = true
-        }
-        cameraButton.do {
-            $0.translatesAutoresizingMaskIntoConstraints = false
-            $0.widthAnchor.constraint(equalToConstant: 55).isActive = true
-            $0.heightAnchor.constraint(equalToConstant: 55).isActive = true
-            $0.centerXAnchor.constraint(equalTo: centerButton.centerXAnchor).isActive = true
-            $0.centerYAnchor.constraint(equalTo: centerButton.centerYAnchor).isActive = true
-        }
-        libraryButton.do {
-            $0.translatesAutoresizingMaskIntoConstraints = false
-            $0.widthAnchor.constraint(equalToConstant: 55).isActive = true
-            $0.heightAnchor.constraint(equalToConstant: 55).isActive = true
-            $0.centerXAnchor.constraint(equalTo: centerButton.centerXAnchor).isActive = true
-            $0.centerYAnchor.constraint(equalTo: centerButton.centerYAnchor).isActive = true
         }
     }
     
@@ -162,11 +155,14 @@ class TabViewController: UITabBarController {
                            options: .curveEaseInOut,
                            animations: {
                             self.cameraButton.isHidden = false
-                            self.cameraButton.frame = CGRect(x: self.view.bounds.width/3,
-                                                             y: self.view.bounds.height/1.24,
-                                                             width: 55, height: 55)
+                            self.cameraButton.frame = CGRect(x: UIScreen.main.bounds.maxX*(130/390),
+                                                             y: UIScreen.main.bounds.maxY*(680.64/844),
+                                                             width: UIScreen.main.bounds.maxX*(55/390),
+                                                             height: UIScreen.main.bounds.maxY*(55/844))
+                            print("여기")
                            }) { _ in
                 self.centerButton.isUserInteractionEnabled = true
+                
             }
             UIView.animate(withDuration: 2,
                            delay: 0,
@@ -175,14 +171,16 @@ class TabViewController: UITabBarController {
                            options: .curveEaseInOut,
                            animations: {
                             self.libraryButton.isHidden = false
-                            self.libraryButton.frame = CGRect(x: self.view.bounds.width/1.9,
-                                                              y: self.view.bounds.height/1.24,
-                                                              width: 55, height: 55)
+                            self.libraryButton.frame = CGRect(x: UIScreen.main.bounds.maxX*(205.26/390),
+                                                              y: UIScreen.main.bounds.maxY*(680.64/844),
+                                                              width: UIScreen.main.bounds.maxX*(55/390),
+                                                              height: UIScreen.main.bounds.maxY*(55/844))
                            }) { [weak self] _ in
                 guard let self = self else {
                     return
                 }
                 self.centerButton.isUserInteractionEnabled = true
+                self.view.isUserInteractionEnabled = true
             }
             centerButton.setImage(UIImage(systemName: "xmark"), for: .normal)
             centerButtonExpanded = false
@@ -201,6 +199,7 @@ class TabViewController: UITabBarController {
                 }
                 self.cameraButton.isHidden = true
                 self.centerButton.isUserInteractionEnabled = true
+                self.view.isUserInteractionEnabled = true
             }
             UIView.animate(withDuration: 2,
                            delay: 0,
@@ -209,6 +208,7 @@ class TabViewController: UITabBarController {
                            options: .curveEaseInOut,
                            animations: {
                             self.libraryButton.isHidden = false
+                            self.libraryButton.frame = CGRect(x: <#T##CGFloat#>, y: <#T##CGFloat#>, width: <#T##CGFloat#>, height: <#T##CGFloat#>)
                             self.libraryButton.center = self.centerButton.center
                            }) { [weak self] _ in
                 guard let self = self else {
@@ -216,6 +216,7 @@ class TabViewController: UITabBarController {
                 }
                 self.libraryButton.isHidden = true
                 self.centerButton.isUserInteractionEnabled = true
+                self.view.isUserInteractionEnabled = true
             }
             centerButton.setImage(UIImage(systemName: "plus"), for: .normal)
             centerButtonExpanded = true
@@ -238,6 +239,7 @@ extension TabViewController: UITabBarControllerDelegate {
 //        <#code#>
 //    }
 //}
+
 
 extension UIImage {
     func selectedTabBarItemBackgroundColor() {
