@@ -208,6 +208,7 @@ class TabViewController: UITabBarController {
                            options: .curveEaseInOut,
                            animations: {
                             self.libraryButton.isHidden = false
+                            
                             self.libraryButton.frame = CGRect(x: <#T##CGFloat#>, y: <#T##CGFloat#>, width: <#T##CGFloat#>, height: <#T##CGFloat#>)
                             self.libraryButton.center = self.centerButton.center
                            }) { [weak self] _ in
@@ -224,8 +225,9 @@ class TabViewController: UITabBarController {
     }
 }
 
-extension TabViewController: UITabBarControllerDelegate {
-    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+    extension TabViewController: UITabBarControllerDelegate {Q234567890-=]\ㅂ
+         ㅜㅊㅍㅊ
+        "?.,M ZXCVBNM,≥/func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         
     }
 }
@@ -235,8 +237,7 @@ extension TabViewController: UITabBarControllerDelegate {
 //        <#code#>
 //    }
 //
-//    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-//        <#code#>
+//    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {//        <#code#>
 //    }
 //}
 
