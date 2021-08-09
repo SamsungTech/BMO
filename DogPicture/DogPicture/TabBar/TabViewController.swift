@@ -24,6 +24,7 @@ class TabViewController: UITabBarController {
         super.viewDidLoad()
         // 여기서 centerButton layout을 잡아주고
         self.tabBar.isHidden = true
+        self.onTabBarItemClick(self.tabItem01)
         createCustomTabBarController()
     }
     
@@ -98,6 +99,15 @@ class TabViewController: UITabBarController {
     
     @objc func onTabBarItemClick(_ sender: UIButton) {
         // UIButton의 프로퍼티에도 isSelected 가 존재
+        
+        tabItem01.isSelected = false
+        tabItem02.isSelected = false
+        tabItem03.isSelected = false
+        
+        sender.isSelected = true
+        
+        selectedIndex = sender.tag
+        
     }
     
     func createTabItem() {
@@ -215,7 +225,6 @@ class TabViewController: UITabBarController {
                            }) { _ in
                 self.centerButton.isUserInteractionEnabled = true
                 self.view.isUserInteractionEnabled = true
-                
             }
             UIView.animate(withDuration: 2,
                            delay: 0,
