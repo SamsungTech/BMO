@@ -11,14 +11,20 @@ class TabViewController: UITabBarController {
     let centerButton = UIButton()
     let cameraButton = UIButton()
     let libraryButton = UIButton()
+    
+    let customTabBar = UIView()
+    let tabItem01 = UIButton(type: .system)
+    let tabItem02 = UIButton(type: .system)
+    let tabItem03 = UIButton(type: .system)
+    
     var centerButtonExpanded: Bool = true
     let person = UIViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.delegate = self
         // 여기서 centerButton layout을 잡아주고
-        
+        self.tabBar.isHidden = true
+        createCustomTabBarController()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -34,6 +40,8 @@ class TabViewController: UITabBarController {
         // centerButton으로부터 좌표 가져와서 라이브러리 찍어주는 곳
     }
     
+    
+    
     func setupTabBarStyle() {
         self.tabBar.do {
             $0.itemPositioning = .fill
@@ -47,6 +55,49 @@ class TabViewController: UITabBarController {
             $0.viewRadius(view: $0, cornerRadius: 30, maskToBounds: true)
             $0.viewShadow(view: $0)
         }
+    }
+    
+    func createCustomTabBarController() {
+        view.addSubview(customTabBar)
+        customTabBar.do {
+            $0.frame = CGRect(x: UIScreen.main.bounds.maxX/10,
+                              y: UIScreen.main.bounds.maxY/1.2,
+                              width: UIScreen.main.bounds.maxX*(8/10),
+                              height: UIScreen.main.bounds.maxY*(100/844))
+            $0.backgroundColor = .systemBlue
+            $0.viewRadius(view: customTabBar, cornerRadius: 20, maskToBounds: true)
+            $0.viewShadow(view: customTabBar)
+        }
+        self.do {
+            $0.tabItem01.frame = CGRect(x: 0,
+                                        y: 0,
+                                        width: customTabBar.frame.size.width/3,
+                                        height: customTabBar.frame.height)
+            $0.tabItem02.frame = CGRect(x: customTabBar.frame.size.width/3,
+                                        y: 0,
+                                        width: customTabBar.frame.size.width/3,
+                                        height: customTabBar.frame.height)
+            $0.tabItem03.frame = CGRect(x: customTabBar.frame.size.width*(2/3),
+                                        y: 0,
+                                        width: customTabBar.frame.size.width/3,
+                                        height: customTabBar.frame.height)
+        }
+        self.createCustomTabBarItem(btn: self.tabItem01, title: "첫번째 버튼", tag: 0)
+        self.createCustomTabBarItem(btn: self.tabItem02, title: "두번째 버튼", tag: 1)
+        self.createCustomTabBarItem(btn: self.tabItem03, title: "세번째 버튼", tag: 2)
+    }
+    
+    func createCustomTabBarItem(btn: UIButton, title: String, tag: Int) {
+        btn.setTitle(title, for: .normal)
+        btn.tag = tag
+        btn.setTitleColor(.white, for: .normal)
+        btn.setTitleColor(.yellow, for: .selected)
+        btn.addTarget(self, action: #selector(onTabBarItemClick(_:)), for: .touchUpInside)
+        self.customTabBar.addSubview(btn)
+    }
+    
+    @objc func onTabBarItemClick(_ sender: UIButton) {
+        // UIButton의 프로퍼티에도 isSelected 가 존재
     }
     
     func createTabItem() {
@@ -147,6 +198,8 @@ class TabViewController: UITabBarController {
     
     @objc func centerButtonDipTap(sender: UIButton) {
         centerButton.isUserInteractionEnabled = false
+        view.isUserInteractionEnabled = false
+        
         if (centerButtonExpanded == true) {
             UIView.animate(withDuration: 2,
                            delay: 0,
@@ -159,9 +212,9 @@ class TabViewController: UITabBarController {
                                                              y: UIScreen.main.bounds.maxY*(680.64/844),
                                                              width: UIScreen.main.bounds.maxX*(55/390),
                                                              height: UIScreen.main.bounds.maxY*(55/844))
-                            print("여기")
                            }) { _ in
                 self.centerButton.isUserInteractionEnabled = true
+                self.view.isUserInteractionEnabled = true
                 
             }
             UIView.animate(withDuration: 2,
@@ -181,6 +234,7 @@ class TabViewController: UITabBarController {
                 }
                 self.centerButton.isUserInteractionEnabled = true
                 self.view.isUserInteractionEnabled = true
+                
             }
             centerButton.setImage(UIImage(systemName: "xmark"), for: .normal)
             centerButtonExpanded = false
@@ -208,8 +262,6 @@ class TabViewController: UITabBarController {
                            options: .curveEaseInOut,
                            animations: {
                             self.libraryButton.isHidden = false
-                            
-                            self.libraryButton.frame = CGRect(x: <#T##CGFloat#>, y: <#T##CGFloat#>, width: <#T##CGFloat#>, height: <#T##CGFloat#>)
                             self.libraryButton.center = self.centerButton.center
                            }) { [weak self] _ in
                 guard let self = self else {
@@ -224,23 +276,6 @@ class TabViewController: UITabBarController {
         }
     }
 }
-
-    extension TabViewController: UITabBarControllerDelegate {Q234567890-=]\ㅂ
-         ㅜㅊㅍㅊ
-        "?.,M ZXCVBNM,≥/func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        
-    }
-}
-
-//extension TabViewController: UIViewControllerAnimatedTransitioning {
-//    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-//        <#code#>
-//    }
-//
-//    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {//        <#code#>
-//    }
-//}
-
 
 extension UIImage {
     func selectedTabBarItemBackgroundColor() {
