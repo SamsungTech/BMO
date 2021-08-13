@@ -31,27 +31,12 @@ class TabViewController: UITabBarController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         UINavigationBar.appearance().prefersLargeTitles = true
-        setupTabBarStyle()
         createTabBarItemsAttribute()
         createTabItem()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         // centerButton으로부터 좌표 가져와서 라이브러리 찍어주는 곳
-    }
-    
-    func setupTabBarStyle() {
-        self.tabBar.do {
-            $0.itemPositioning = .fill
-            $0.itemWidth = 10
-            $0.barTintColor = UIColor.black
-            $0.barStyle = .default
-            $0.isTranslucent = true
-            $0.tintColor = UIColor.cyan
-            $0.unselectedItemTintColor = .white
-            $0.viewRadius(view: $0, cornerRadius: 30, maskToBounds: true)
-            $0.viewShadow(view: $0)
-        }
     }
     
     func createCustomTabBarController() {
@@ -94,9 +79,6 @@ class TabViewController: UITabBarController {
                                           image: tabSettingImage,
                                           selectedImage: tabSettingSelectedIamge)
         
-        tabCamera.tabBarItem.titlePositionAdjustment.horizontal = -20
-        tabPerson.tabBarItem.titlePositionAdjustment.horizontal = 20
-
         self.setViewControllers([tabHome, tabCamera, tabPerson, tabSetting], animated: false)
     }
     
@@ -237,16 +219,7 @@ class TabViewController: UITabBarController {
         settingButton.alpha = 0.0
         centerView.isUserInteractionEnabled = true
         view.isUserInteractionEnabled = true
-        centerButton.setImage(UIImage(systemName: "plus"), for: .normal)
         centerButtonExpanded = true
-        print(sender.tag)
-        switch sender.tag {
-        case 0:
-            writeButton.isHidden = false
-            animationWhenRollingTabBarItemFromLeftside(button: writeButton)
-        default:
-            print("클릭을 잘못 했습니다.")
-        }
     }
     
     @objc func centerButtonDipTap(sender: UIButton) {
@@ -277,7 +250,6 @@ class TabViewController: UITabBarController {
             libraryButton.alpha = 0.0
             settingButton.alpha = 0.0
             view.isUserInteractionEnabled = true
-            centerButton.setImage(UIImage(systemName: "plus"), for: .normal)
             centerButtonExpanded = true
         }
     }
@@ -298,20 +270,20 @@ extension TabViewController {
             }
             //새로운 각도
             UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.1) {
-                button.transform = CGAffineTransform(rotationAngle: -(370.0 * .pi) / 180)
+                button.transform = CGAffineTransform(rotationAngle: -(405.0 * .pi) / 180)
             }
             //흔들기 시작
             UIView.addKeyframe(withRelativeStartTime: 0.60, relativeDuration: 0.15) {
-                button.transform = CGAffineTransform(rotationAngle: -(350.0 * .pi) / 180)
+                button.transform = CGAffineTransform(rotationAngle: -(395.0 * .pi) / 180)
             }
             UIView.addKeyframe(withRelativeStartTime: 0.75, relativeDuration: 0.125) {
-                button.transform = CGAffineTransform(rotationAngle: -(363.0 * .pi) / 180)
+                button.transform = CGAffineTransform(rotationAngle: -(408.0 * .pi) / 180)
             }
             UIView.addKeyframe(withRelativeStartTime: 0.775, relativeDuration: 0.05) {
-                button.transform = CGAffineTransform(rotationAngle: -(360.0 * .pi) / 180)
+                button.transform = CGAffineTransform(rotationAngle: -(405.0 * .pi) / 180)
             }
             UIView.addKeyframe(withRelativeStartTime: 0.9, relativeDuration: 0.1) {
-                button.transform = CGAffineTransform.identity
+                button.transform = CGAffineTransform(rotationAngle: -(405.0 * .pi) / 180)
             }
         })
     }
@@ -327,20 +299,20 @@ extension TabViewController {
                                             y: UIScreen.main.bounds.maxY*(9/10),
                                             width: UIScreen.main.bounds.maxX*(70/390),
                                             height: UIScreen.main.bounds.maxY*(70/844))
-                        UIView.animateKeyframes(withDuration: 0.5, delay: 0.1, options: [], animations: {
-                            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.5) {
-                                button.transform = CGAffineTransform(rotationAngle: (180.0 * .pi) / 180)
+                        UIView.animateKeyframes(withDuration: 1, delay: 0.1, options: [], animations: {
+                            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.6) {
+                                button.transform = CGAffineTransform.identity
                             }
-                            UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.3) {
-                                button.transform = CGAffineTransform(rotationAngle: -((270.0 * .pi) / 180))
+                            UIView.addKeyframe(withRelativeStartTime: 0.60, relativeDuration: 0.1) {
+                                button.transform = CGAffineTransform(rotationAngle: (5.0 * .pi) / 180)
+                            }
+                            UIView.addKeyframe(withRelativeStartTime: 0.7, relativeDuration: 0.1) {
+                                button.transform = CGAffineTransform(rotationAngle: -(5.0 * .pi) / 180)
                             }
                             UIView.addKeyframe(withRelativeStartTime: 0.8, relativeDuration: 0.1) {
-                                button.transform = CGAffineTransform(rotationAngle: -(360.0 * .pi) / 180)
+                                button.transform = CGAffineTransform(rotationAngle: (3.0 * .pi) / 180)
                             }
                             UIView.addKeyframe(withRelativeStartTime: 0.9, relativeDuration: 0.1) {
-                                button.transform = CGAffineTransform(rotationAngle: -(405.0 * .pi) / 180)
-                            }
-                            UIView.addKeyframe(withRelativeStartTime: 0.99, relativeDuration: 0.01) {
                                 button.transform = CGAffineTransform.identity
                             }
                         })
