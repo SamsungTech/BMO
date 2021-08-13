@@ -98,13 +98,12 @@ class TabViewController: UITabBarController {
         tabPerson.tabBarItem.titlePositionAdjustment.horizontal = 20
 
         self.setViewControllers([tabHome, tabCamera, tabPerson, tabSetting], animated: false)
-        
     }
     
     func createTabBarItemsAttribute() {
         
-        [ centerView, centerButton, homeButton, cameraButton, libraryButton, settingButton, writeButton ].forEach()
-        { view.addSubview($0) }
+        [ centerView, centerButton, homeButton, cameraButton, libraryButton, settingButton ]
+            .forEach() { view.addSubview($0) }
         
         centerView.do {
             $0.backgroundColor = .darkGray
@@ -134,6 +133,7 @@ class TabViewController: UITabBarController {
         }
         homeButton.do {
             $0.setImage(UIImage(systemName: "house"), for: .normal)
+            $0.setImage(UIImage(systemName: "house.fill"), for: .selected)
             $0.tintColor = .white
             $0.viewRadius(view: $0, cornerRadius: (UIScreen.main.bounds.maxX*(55/390))/2, maskToBounds: false)
             $0.viewShadow(view: $0)
@@ -144,10 +144,14 @@ class TabViewController: UITabBarController {
                               width: UIScreen.main.bounds.maxX*(55/390),
                               height: UIScreen.main.bounds.maxY*(55/844))
             $0.imageView?.contentMode = .scaleAspectFit
-            $0.imageEdgeInsets = UIEdgeInsets(top: 45, left: 45, bottom: 45, right: 45)
+            $0.imageEdgeInsets = UIEdgeInsets(top: UIScreen.main.bounds.maxX*(45/390),
+                                              left: UIScreen.main.bounds.maxX*(45/390),
+                                              bottom: UIScreen.main.bounds.maxX*(45/390),
+                                              right: UIScreen.main.bounds.maxX*(45/390))
         }
         cameraButton.do {
             $0.setImage(UIImage(systemName: "camera"), for: .normal)
+            $0.setImage(UIImage(systemName: "camera.fill"), for: .selected)
             $0.tintColor = .white
             $0.viewRadius(view: $0, cornerRadius: (UIScreen.main.bounds.maxX*(55/390))/2, maskToBounds: false)
             $0.viewShadow(view: $0)
@@ -158,10 +162,14 @@ class TabViewController: UITabBarController {
                               width: UIScreen.main.bounds.maxX*(55/390),
                               height: UIScreen.main.bounds.maxY*(55/844))
             $0.imageView?.contentMode = .scaleAspectFit
-            $0.imageEdgeInsets = UIEdgeInsets(top: 45, left: 45, bottom: 45, right: 45)
+            $0.imageEdgeInsets = UIEdgeInsets(top: UIScreen.main.bounds.maxX*(45/390),
+                                              left: UIScreen.main.bounds.maxX*(45/390),
+                                              bottom: UIScreen.main.bounds.maxX*(45/390),
+                                              right: UIScreen.main.bounds.maxX*(45/390))
         }
         libraryButton.do {
-            $0.setImage(UIImage(systemName: "rectangle.on.rectangle"), for: .normal)
+            $0.setImage(UIImage(systemName: "rectangle.3.offgrid"), for: .normal)
+            $0.setImage(UIImage(systemName: "rectangle.3.offgrid.fill"), for: .selected)
             $0.tintColor = .white
             $0.viewRadius(view: $0, cornerRadius: (UIScreen.main.bounds.maxX*(55/390))/2, maskToBounds: false)
             $0.viewShadow(view: $0)
@@ -172,32 +180,18 @@ class TabViewController: UITabBarController {
                               width: UIScreen.main.bounds.maxX*(55/390),
                               height: UIScreen.main.bounds.maxY*(55/844))
             $0.imageView?.contentMode = .scaleAspectFit
-            $0.imageEdgeInsets = UIEdgeInsets(top: 45, left: 45, bottom: 45, right: 45)
-        }
-        settingButton.do {
-            $0.setImage(UIImage(systemName: "gearshape"), for: .normal)
-            $0.tintColor = .white
-            $0.viewRadius(view: $0, cornerRadius: (UIScreen.main.bounds.maxX*(55/390))/2, maskToBounds: false)
-            $0.viewShadow(view: $0)
-            $0.alpha = 0.0
-            $0.isHidden = true
-            $0.frame = CGRect(x: UIScreen.main.bounds.maxX*(305/390),
-                              y: UIScreen.main.bounds.maxY*(9.1/10),
-                              width: UIScreen.main.bounds.maxX*(55/390),
-                              height: UIScreen.main.bounds.maxY*(55/844))
-            $0.imageView?.contentMode = .scaleAspectFit
             $0.imageEdgeInsets = UIEdgeInsets(top: UIScreen.main.bounds.maxX*(45/390),
                                               left: UIScreen.main.bounds.maxX*(45/390),
                                               bottom: UIScreen.main.bounds.maxX*(45/390),
                                               right: UIScreen.main.bounds.maxX*(45/390))
-            
         }
-        writeButton.do {
-            $0.backgroundColor = .lightGray
-            $0.setImage(UIImage(systemName: "pencil"), for: .normal)
+        settingButton.do {
+            $0.setImage(UIImage(systemName: "gearshape"), for: .normal)
+            $0.setImage(UIImage(systemName: "gearshape.fill"), for: .selected)
             $0.tintColor = .white
             $0.viewRadius(view: $0, cornerRadius: (UIScreen.main.bounds.maxX*(55/390))/2, maskToBounds: false)
             $0.viewShadow(view: $0)
+            $0.alpha = 0.0
             $0.isHidden = true
             $0.frame = CGRect(x: UIScreen.main.bounds.maxX*(305/390),
                               y: UIScreen.main.bounds.maxY*(9.1/10),
@@ -226,24 +220,33 @@ class TabViewController: UITabBarController {
         return navigationController
     }
     
-    
-    
     @objc func onTabBarItemClick(_ sender: UIButton) {
         homeButton.isSelected = false
         cameraButton.isSelected = false
         settingButton.isSelected = false
         sender.isSelected = true
         selectedIndex = sender.tag
-        
-        contractCenterTabViewAndCenterButton(view: centerView, button: centerButton)
+        animationThatRotatingAndContractCenterButtonWhenCenterTabViewAndCenterButtonContract(view: centerView, button: centerButton)
         homeButton.isHidden = true
         cameraButton.isHidden = true
         libraryButton.isHidden = true
         settingButton.isHidden = true
+        homeButton.alpha = 0.0
+        cameraButton.alpha = 0.0
+        libraryButton.alpha = 0.0
+        settingButton.alpha = 0.0
         centerView.isUserInteractionEnabled = true
         view.isUserInteractionEnabled = true
         centerButton.setImage(UIImage(systemName: "plus"), for: .normal)
         centerButtonExpanded = true
+        print(sender.tag)
+        switch sender.tag {
+        case 0:
+            writeButton.isHidden = false
+            animationWhenRollingTabBarItemFromLeftside(button: writeButton)
+        default:
+            print("클릭을 잘못 했습니다.")
+        }
     }
     
     @objc func centerButtonDipTap(sender: UIButton) {
@@ -252,20 +255,19 @@ class TabViewController: UITabBarController {
         
         if (centerButtonExpanded == true) {
             view.isUserInteractionEnabled = true
-            xmarkButton(button: centerButton)
-            shakeCenterTabView(view: self.centerView)
-            spinTabBarItem(button: homeButton)
-            spinTabBarItem(button: cameraButton)
-            spinTabBarItem(button: libraryButton)
-            spinTabBarItem(button: settingButton)
+            animationThatShakesCenterTabViewWhenCenterTabViewExpanded(view: self.centerView)
+            animationThatRotatingCenterButtonWhenCenterViewExpands(button: centerButton)
+            animationThatSpinAndShakeTabBarItemWhenTabViewExpanded(button: homeButton)
+            animationThatSpinAndShakeTabBarItemWhenTabViewExpanded(button: cameraButton)
+            animationThatSpinAndShakeTabBarItemWhenTabViewExpanded(button: libraryButton)
+            animationThatSpinAndShakeTabBarItemWhenTabViewExpanded(button: settingButton)
             homeButton.isHidden = false
             cameraButton.isHidden = false
             libraryButton.isHidden = false
             settingButton.isHidden = false
             centerButtonExpanded = false
-            
         } else {
-            contractCenterTabViewAndCenterButton(view: centerView, button: centerButton)
+            animationThatRotatingAndContractCenterButtonWhenCenterTabViewAndCenterButtonContract(view: centerView, button: centerButton)
             homeButton.isHidden = true
             cameraButton.isHidden = true
             libraryButton.isHidden = true
@@ -282,22 +284,39 @@ class TabViewController: UITabBarController {
 }
 
 extension TabViewController {
-    func xmarkButton(button: UIButton) {
-        UIView.animate(withDuration: 0.6,
-                       delay: 0,
-                       usingSpringWithDamping: 1,
-                       initialSpringVelocity: 1,
-                       options: .curveEaseOut,
-                       animations: {
-                        button.setImage(UIImage(systemName: "xmark"), for: .normal)
-                        button.imageView?.contentMode = .scaleAspectFit
-                        button.imageEdgeInsets = UIEdgeInsets(top: UIScreen.main.bounds.maxX*(55/390),
-                                                              left: UIScreen.main.bounds.maxX*(55/390),
-                                                              bottom: UIScreen.main.bounds.maxX*(55/390),
-                                                              right: UIScreen.main.bounds.maxX*(55/390))
-                       })
+    
+    func animationThatRotatingCenterButtonWhenCenterViewExpands(button: UIButton) {
+        UIView.animateKeyframes(withDuration: 0.9, delay: 0.1, options: [], animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.25) {
+                button.transform = CGAffineTransform(rotationAngle: (180.0 * .pi) / 180)
+            }
+            UIView.addKeyframe(withRelativeStartTime: 0.25, relativeDuration: 0.1) {
+                button.transform = CGAffineTransform(rotationAngle: -((270.0 * .pi) / 180))
+            }
+            UIView.addKeyframe(withRelativeStartTime: 0.35, relativeDuration: 0.15) {
+                button.transform = CGAffineTransform(rotationAngle: -(360.0 * .pi) / 180)
+            }
+            //새로운 각도
+            UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.1) {
+                button.transform = CGAffineTransform(rotationAngle: -(370.0 * .pi) / 180)
+            }
+            //흔들기 시작
+            UIView.addKeyframe(withRelativeStartTime: 0.60, relativeDuration: 0.15) {
+                button.transform = CGAffineTransform(rotationAngle: -(350.0 * .pi) / 180)
+            }
+            UIView.addKeyframe(withRelativeStartTime: 0.75, relativeDuration: 0.125) {
+                button.transform = CGAffineTransform(rotationAngle: -(363.0 * .pi) / 180)
+            }
+            UIView.addKeyframe(withRelativeStartTime: 0.775, relativeDuration: 0.05) {
+                button.transform = CGAffineTransform(rotationAngle: -(360.0 * .pi) / 180)
+            }
+            UIView.addKeyframe(withRelativeStartTime: 0.9, relativeDuration: 0.1) {
+                button.transform = CGAffineTransform.identity
+            }
+        })
     }
-    func contractCenterTabViewAndCenterButton(view: UIView, button: UIButton) {
+    
+    func animationThatRotatingAndContractCenterButtonWhenCenterTabViewAndCenterButtonContract(view: UIView, button: UIButton) {
         UIView.animate(withDuration: 0.5,
                        delay: 0,
                        usingSpringWithDamping: 1,
@@ -308,15 +327,27 @@ extension TabViewController {
                                             y: UIScreen.main.bounds.maxY*(9/10),
                                             width: UIScreen.main.bounds.maxX*(70/390),
                                             height: UIScreen.main.bounds.maxY*(70/844))
-                        button.imageView?.contentMode = .scaleAspectFit
-                        button.imageEdgeInsets = UIEdgeInsets(top: UIScreen.main.bounds.maxX*(60/390),
-                                                              left: UIScreen.main.bounds.maxX*(60/390),
-                                                              bottom: UIScreen.main.bounds.maxX*(60/390),
-                                                              right: UIScreen.main.bounds.maxX*(60/390))
+                        UIView.animateKeyframes(withDuration: 0.5, delay: 0.1, options: [], animations: {
+                            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.5) {
+                                button.transform = CGAffineTransform(rotationAngle: (180.0 * .pi) / 180)
+                            }
+                            UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.3) {
+                                button.transform = CGAffineTransform(rotationAngle: -((270.0 * .pi) / 180))
+                            }
+                            UIView.addKeyframe(withRelativeStartTime: 0.8, relativeDuration: 0.1) {
+                                button.transform = CGAffineTransform(rotationAngle: -(360.0 * .pi) / 180)
+                            }
+                            UIView.addKeyframe(withRelativeStartTime: 0.9, relativeDuration: 0.1) {
+                                button.transform = CGAffineTransform(rotationAngle: -(405.0 * .pi) / 180)
+                            }
+                            UIView.addKeyframe(withRelativeStartTime: 0.99, relativeDuration: 0.01) {
+                                button.transform = CGAffineTransform.identity
+                            }
+                        })
                        })
     }
     
-    func shakeCenterTabView(view: UIView) {
+    func animationThatShakesCenterTabViewWhenCenterTabViewExpanded(view: UIView) {
         UIView.animateKeyframes(withDuration: 1, delay: 0, options: [], animations: {
             UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.2, animations: {
                 view.frame = CGRect(x: UIScreen.main.bounds.maxX*(5/390),
@@ -346,36 +377,47 @@ extension TabViewController {
         })
     }
     
-    func shakeButton(button: UIButton) {
+    func animationThatSpinAndShakeTabBarItemWhenTabViewExpanded(button: UIButton) {
+        UIView.animateKeyframes(withDuration: 0.9, delay: 0.1, options: [], animations: {
+            // 점차 커지는 scale animation 넣기
+            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.25) {
+                button.transform = CGAffineTransform(rotationAngle: (180.0 * .pi) / 180)
+                button.alpha = 0.7
+            }
+            UIView.addKeyframe(withRelativeStartTime: 0.25, relativeDuration: 0.1) {
+                button.transform = CGAffineTransform(rotationAngle: -((270.0 * .pi) / 180))
+                button.alpha = 0.8
+            }
+            UIView.addKeyframe(withRelativeStartTime: 0.35, relativeDuration: 0.15) {
+                button.transform = CGAffineTransform(rotationAngle: -(360.0 * .pi) / 180)
+                button.alpha = 0.9
+            }
+            //새로운 각도
+            UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.1) {
+                button.transform = CGAffineTransform(rotationAngle: -(370.0 * .pi) / 180)
+                button.alpha = 1.0
+            }
+            // shake scale rotate button 시작
+            UIView.addKeyframe(withRelativeStartTime: 0.60, relativeDuration: 0.15) {
+                button.transform = CGAffineTransform(rotationAngle: -(350.0 * .pi) / 180)
+            }
+            UIView.addKeyframe(withRelativeStartTime: 0.75, relativeDuration: 0.125) {
+                button.transform = CGAffineTransform(rotationAngle: -(363.0 * .pi) / 180)
+            }
+            UIView.addKeyframe(withRelativeStartTime: 0.775, relativeDuration: 0.05) {
+                button.transform = CGAffineTransform(rotationAngle: -(360.0 * .pi) / 180)
+            }
+            UIView.addKeyframe(withRelativeStartTime: 0.9, relativeDuration: 0.1) {
+                button.transform = CGAffineTransform.identity
+            }
+        })
+    }
+    
+    func animationWhenRollingTabBarItemFromLeftside(button: UIButton) {
         
     }
     
-    func spinTabBarItem(button: UIButton) {
-        UIView.animate(withDuration: 0.5, animations: {
-            UIView.animateKeyframes(withDuration: 0.4, delay: 0.5, options: [], animations: {
-                UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.5) {
-                    button.transform = CGAffineTransform(rotationAngle: (180.0 * .pi) / 180)
-                    button.alpha = 0.7
-                }
-                UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.3) {
-                    button.transform = CGAffineTransform(rotationAngle: -((270.0 * .pi) / 180))
-                    button.alpha = 0.8
-                }
-                UIView.addKeyframe(withRelativeStartTime: 0.8, relativeDuration: 0.1) {
-                    button.transform = CGAffineTransform(rotationAngle: -(360.0 * .pi) / 180)
-                    button.alpha = 0.9
-                }
-                UIView.addKeyframe(withRelativeStartTime: 0.9, relativeDuration: 0.1) {
-                    button.transform = CGAffineTransform.identity
-                    button.alpha = 1.0
-                }
-            })
-        })
-    }
-    func rollingTabBarItemFromLeftside(button: UIButton) {
-        
-    }
-    func rollingTabBarItemFromLightside(button: UIButton) {
+    func animationWhenRollingTabBarItemFromLightside(button: UIButton) {
         
     }
 }
