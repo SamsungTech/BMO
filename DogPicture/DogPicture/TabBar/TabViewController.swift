@@ -208,7 +208,7 @@ class TabViewController: UITabBarController {
         settingButton.isSelected = false
         sender.isSelected = true
         selectedIndex = sender.tag
-        animationThatRotatingAndContractCenterButtonWhenCenterTabViewAndCenterButtonContract(view: centerView, button: centerButton)
+        animateCenterButtonRotatedAndExpandedAnimation(view: centerView, button: centerButton)
         homeButton.isHidden = true
         cameraButton.isHidden = true
         libraryButton.isHidden = true
@@ -240,7 +240,7 @@ class TabViewController: UITabBarController {
             settingButton.isHidden = false
             centerButtonExpanded = false
         } else {
-            animationThatRotatingAndContractCenterButtonWhenCenterTabViewAndCenterButtonContract(view: centerView, button: centerButton)
+            animateCenterButtonRotatedAndExpandedAnimation(view: centerView, button: centerButton)
             homeButton.isHidden = true
             cameraButton.isHidden = true
             libraryButton.isHidden = true
@@ -288,7 +288,7 @@ extension TabViewController {
         })
     }
     
-    func animationThatRotatingAndContractCenterButtonWhenCenterTabViewAndCenterButtonContract(view: UIView, button: UIButton) {
+    func animateCenterButtonRotatedAndExpandedAnimation(view: UIView, button: UIButton) {
         UIView.animate(withDuration: 0.5,
                        delay: 0,
                        usingSpringWithDamping: 1,
@@ -319,7 +319,7 @@ extension TabViewController {
                        })
     }
     
-    func animationThatShakesCenterTabViewWhenCenterTabViewExpanded(view: UIView) {
+    func animateCenterTabViewShakeWhenCenterTabViewExpanded(view: UIView) {
         UIView.animateKeyframes(withDuration: 1, delay: 0, options: [], animations: {
             UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.2, animations: {
                 view.frame = CGRect(x: UIScreen.main.bounds.maxX*(5/390),
@@ -349,7 +349,7 @@ extension TabViewController {
         })
     }
     
-    func animationThatSpinAndShakeTabBarItemWhenTabViewExpanded(button: UIButton) {
+    func animateSpinAndShakeTabBarItemWhenTabViewExpanded(button: UIButton) {
         UIView.animateKeyframes(withDuration: 0.9, delay: 0.1, options: [], animations: {
             // 점차 커지는 scale animation 넣기
             UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.25) {
