@@ -10,6 +10,10 @@ import Then
 
 
 class HomeViewController: UIViewController {
+    
+    private var collectionView: UICollectionView?
+    
+    
     var presenter: HomePresenterProtocol?
     
     let chuImage = [ "chu2", "chu3", "chu4", "chu5" ]
@@ -18,33 +22,40 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Tab_Home"
-        attribute()
-        layout()
+        let layout = UICollectionViewFlowLayout() // 얜 뭘까
+        layout.scrollDirection = .vertical
+        layout.minimumLineSpacing = 1
+        layout.minimumInteritemSpacing = 1
+        layout.itemSize = CGSize(width: (view.frame.size.width/3)-4,
+                                 height: (view.frame.size.width/3)-4)
         self.view.backgroundColor = .white
+        collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         
+        guard let collectionView = collectionView else { return }
+        collectionView.register(HomeViewCollectionViewCell.self,
+                                forCellWithReuseIdentifier: HomeViewCollectionViewCell.identifier)
+        collectionView.dataSource = self // dataSource에 대한 이해 필요
+        collectionView.delegate = self
+        view.addSubview(collectionView)
+        collectionView.frame = view.bounds
     }
     
-    func attribute() {
-        tableView.do {
-            $0.register(HomeTableViewCell.self, forCellReuseIdentifier: HomeTableViewCell.id)
-            $0.delegate = self
-            $0.dataSource = self
-            $0.frame = view.bounds
-            $0.backgroundColor = .blue
-        }
+    
+}
+
+extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return chuImage.count
     }
     
-    func layout() {
-        [ tableView ].forEach { view.addSubview($0) }
-        
-        tableView.do {
-            $0.translatesAutoresizingMaskIntoConstraints = false
-            $0.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-            $0.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-            $0.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-            $0.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeViewCollectionViewCell.identifier,
+                                                      for: indexPath) as! HomeViewCollectionViewCell// dequeueReusableCell 에 대한 이해 필요
+        cell.configure(label: "Custom \(indexPath.row)") // as! HomeViewCollectionViewCell 을 넣었더니 이 문이 됐다 왜일까?
+        return cell
     }
+    
+    
 }
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {

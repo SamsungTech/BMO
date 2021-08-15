@@ -228,12 +228,12 @@ class TabViewController: UITabBarController {
         
         if (centerButtonExpanded == true) {
             view.isUserInteractionEnabled = true
-            animationThatShakesCenterTabViewWhenCenterTabViewExpanded(view: self.centerView)
-            animationThatRotatingCenterButtonWhenCenterViewExpands(button: centerButton)
-            animationThatSpinAndShakeTabBarItemWhenTabViewExpanded(button: homeButton)
-            animationThatSpinAndShakeTabBarItemWhenTabViewExpanded(button: cameraButton)
-            animationThatSpinAndShakeTabBarItemWhenTabViewExpanded(button: libraryButton)
-            animationThatSpinAndShakeTabBarItemWhenTabViewExpanded(button: settingButton)
+            animateCenterTabViewShakeWhenCenterTabViewExpanded(view: self.centerView)
+            animateSpinAndShakeTabBarItemWhenTabViewExpanded(button: centerButton)
+            animateSpinAndShakeTabBarItemWhenTabViewExpanded(button: homeButton)
+            animateSpinAndShakeTabBarItemWhenTabViewExpanded(button: cameraButton)
+            animateSpinAndShakeTabBarItemWhenTabViewExpanded(button: libraryButton)
+            animateSpinAndShakeTabBarItemWhenTabViewExpanded(button: settingButton)
             homeButton.isHidden = false
             cameraButton.isHidden = false
             libraryButton.isHidden = false
@@ -350,7 +350,7 @@ extension TabViewController {
     }
     
     func animateSpinAndShakeTabBarItemWhenTabViewExpanded(button: UIButton) {
-        UIView.animateKeyframes(withDuration: 0.9, delay: 0.1, options: [], animations: {
+        UIView.animateKeyframes(withDuration: 0.9, delay: 0.15, options: [], animations: {
             // 점차 커지는 scale animation 넣기
             UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.25) {
                 button.transform = CGAffineTransform(rotationAngle: (180.0 * .pi) / 180)
