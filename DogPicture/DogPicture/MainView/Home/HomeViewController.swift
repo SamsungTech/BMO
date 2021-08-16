@@ -18,6 +18,7 @@ class HomeViewController: UIViewController {
     
     let chuImage = [ "chu2", "chu3", "chu4", "chu5" ]
     var tableView = UITableView()
+    var imageView = UIImageView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +39,37 @@ class HomeViewController: UIViewController {
         collectionView.delegate = self
         view.addSubview(collectionView)
         collectionView.frame = view.bounds
+        createSegmentedControl()
+    }
+    
+    func createSegmentedControl() {
+        let items = ["1월달","2월달","3월달","4월달"]
+        let segmentedControl = UISegmentedControl(items: items)
+        segmentedControl.addTarget(self, action: #selector(suitDidChange(_:)), for: .valueChanged)
+        segmentedControl.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(segmentedControl)
+        
+        NSLayoutConstraint.activate([
+            segmentedControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+            segmentedControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
+            segmentedControl.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 75)
+        ])
+    }
+    
+    @objc func suitDidChange(_ segmentedControl: UISegmentedControl) {
+        switch segmentedControl.selectedSegmentIndex {
+        case 0:
+            imageView.image = UIImage(named: "chu2")
+        case 1:
+            imageView.image = UIImage(named: "chu3")
+        case 2:
+            imageView.image = UIImage(named: "chu4")
+        case 3:
+            imageView.image = UIImage(named: "chu5")
+        default:
+            imageView.backgroundColor = .systemBlue
+            
+        }
     }
     
     
