@@ -229,7 +229,7 @@ class TabViewController: UITabBarController {
         if (centerButtonExpanded == true) {
             view.isUserInteractionEnabled = true
             animateCenterTabViewShakeWhenCenterTabViewExpanded(view: self.centerView)
-            animateSpinAndShakeTabBarItemWhenTabViewExpanded(button: centerButton)
+            animationThatRotatingCenterButtonWhenCenterViewExpands(button: centerButton)
             animateSpinAndShakeTabBarItemWhenTabViewExpanded(button: homeButton)
             animateSpinAndShakeTabBarItemWhenTabViewExpanded(button: cameraButton)
             animateSpinAndShakeTabBarItemWhenTabViewExpanded(button: libraryButton)

@@ -23,6 +23,7 @@
 		0B7346222689A637007CE6CF /* MemoContent+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B73461F2689A637007CE6CF /* MemoContent+CoreDataProperties.swift */; };
 		0B734631268CA2C7007CE6CF /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B734630268CA2C7007CE6CF /* TabViewController.swift */; };
 		0BADC59B26C956E900291811 /* HomeViewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BADC59A26C956E900291811 /* HomeViewCollectionViewCell.swift */; };
+		0BADC59D26CCBD6E00291811 /* HomeCustomSegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BADC59C26CCBD6E00291811 /* HomeCustomSegmentControl.swift */; };
 		0BF238362660C2EE007E48AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF238352660C2EE007E48AC /* AppDelegate.swift */; };
 		0BF238382660C2EE007E48AC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF238372660C2EE007E48AC /* SceneDelegate.swift */; };
 		0BF238402660C2EE007E48AC /* DogPicture.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0BF2383E2660C2EE007E48AC /* DogPicture.xcdatamodeld */; };
@@ -59,6 +60,7 @@
 		0B7346202689A637007CE6CF /* MemoContent+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "MemoContent+CoreDataClass.swift"; path = "/Users/dongwoo/Desktop/Projects/BMO/DogPicture/DogPicture/MainView/Entities/MemoContent+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 		0B734630268CA2C7007CE6CF /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		0BADC59A26C956E900291811 /* HomeViewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewCollectionViewCell.swift; sourceTree = "<group>"; };
+		0BADC59C26CCBD6E00291811 /* HomeCustomSegmentControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCustomSegmentControl.swift; sourceTree = "<group>"; };
 		0BF238322660C2EE007E48AC /* DogPicture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DogPicture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BF238352660C2EE007E48AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0BF238372660C2EE007E48AC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 				0BF238562660D628007E48AC /* HomeInteracter.swift */,
 				0BF238622660EBF4007E48AC /* HomeTableViewCell.swift */,
 				0BADC59A26C956E900291811 /* HomeViewCollectionViewCell.swift */,
+				0BADC59C26CCBD6E00291811 /* HomeCustomSegmentControl.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -373,6 +376,7 @@
 				0B73461E26873D11007CE6CF /* CoreDataTest.xcdatamodeld in Sources */,
 				0BF238532660D5EE007E48AC /* HomeProtocol.swift in Sources */,
 				0BADC59B26C956E900291811 /* HomeViewCollectionViewCell.swift in Sources */,
+				0BADC59D26CCBD6E00291811 /* HomeCustomSegmentControl.swift in Sources */,
 				0B73461326861D87007CE6CF /* SettingProtocol.swift in Sources */,
 				0B73460F26861D62007CE6CF /* SettingViewController.swift in Sources */,
 				0B51B20226A8210E00216054 /* CameraPresenter.swift in Sources */,

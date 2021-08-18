@@ -11,84 +11,115 @@ import Then
 
 class HomeViewController: UIViewController {
     
-    private var collectionView: UICollectionView?
-    
+//    private var collectionView: UICollectionView?
+//
+//    private enum Constants {
+//        static let underlineViewColor: UIColor = .systemBlue
+//        static let underlineViewHeight: CGFloat = 2
+//    }
+//
     
     var presenter: HomePresenterProtocol?
     
     let chuImage = [ "chu2", "chu3", "chu4", "chu5" ]
-    var tableView = UITableView()
-    var imageView = UIImageView()
+//    let scrollView = UIScrollView()
+//    let bottomUnderLineView = UIView()
+    let segmentedControl = UISegmentedControl()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.title = "Tab_Home"
-        let layout = UICollectionViewFlowLayout() // 얜 뭘까
-        layout.scrollDirection = .vertical
-        layout.minimumLineSpacing = 1
-        layout.minimumInteritemSpacing = 1
-        layout.itemSize = CGSize(width: (view.frame.size.width/3)-4,
-                                 height: (view.frame.size.width/3)-4)
-        self.view.backgroundColor = .white
-        collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+//    var imageView = UIImageView()
+    
+    override func loadView() {
+        super.loadView()
+        print("ViewController - loadView() called")
+        let homeCustomSegmentControl = HomeCustomSegmentControl(frame: CGRect(x: 0, y: 0, width: 390, height: 50), buttonTitle: ["1월","2월","3월","4월"])
         
-        guard let collectionView = collectionView else { return }
-        collectionView.register(HomeViewCollectionViewCell.self,
-                                forCellWithReuseIdentifier: HomeViewCollectionViewCell.identifier)
-        collectionView.dataSource = self // dataSource에 대한 이해 필요
-        collectionView.delegate = self
-        view.addSubview(collectionView)
-        collectionView.frame = view.bounds
-        createSegmentedControl()
-    }
-    
-    func createSegmentedControl() {
-        let items = ["1월달","2월달","3월달","4월달"]
-        let segmentedControl = UISegmentedControl(items: items)
-        segmentedControl.addTarget(self, action: #selector(suitDidChange(_:)), for: .valueChanged)
-        segmentedControl.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(segmentedControl)
+        self.view.addSubview(homeCustomSegmentControl)
         
-        NSLayoutConstraint.activate([
-            segmentedControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
-            segmentedControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
-            segmentedControl.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 75)
-        ])
-    }
-    
-    @objc func suitDidChange(_ segmentedControl: UISegmentedControl) {
-        switch segmentedControl.selectedSegmentIndex {
-        case 0:
-            imageView.image = UIImage(named: "chu2")
-        case 1:
-            imageView.image = UIImage(named: "chu3")
-        case 2:
-            imageView.image = UIImage(named: "chu4")
-        case 3:
-            imageView.image = UIImage(named: "chu5")
-        default:
-            imageView.backgroundColor = .systemBlue
-            
+        homeCustomSegmentControl.do {
+            $0.backgroundColor = .systemRed
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.widthAnchor.constraint(equalToConstant: 400).isActive = true
+            $0.heightAnchor.constraint(equalToConstant: 52).isActive = true
+            $0.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
+            $0.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         }
     }
     
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.title = "Tab_Home"
+        view.backgroundColor = .white
+//        attributeScrollView()
+//        createSegmentedControlItems()
+//        configureScrollableSegmentedControl()
+    }
+    
+//
+//    func attributeScrollView() {
+//        scrollView.do {
+//            $0.contentSize = CGSize(width: .zero, height: 50)
+//        }
+//        bottomUnderLineView.do {
+//            $0.backgroundColor = .systemBlue
+//        }
+//    }
+    
+//    func createSegmentedControlItems() {
+//        segmentedControl.do {
+//            $0.backgroundColor = .clear
+//            $0.tintColor = .clear
+//
+//            $0.insertSegment(withTitle: "1월", at: 0, animated: true)
+//            $0.insertSegment(withTitle: "2월", at: 1, animated: true)
+//            $0.insertSegment(withTitle: "3월", at: 2, animated: true)
+//            $0.insertSegment(withTitle: "4월", at: 3, animated: true)
+//            $0.selectedSegmentIndex = 0 // Default 값
+//            $0.setTitleTextAttributes([
+//                NSAttributedString.Key.foregroundColor: UIColor.black,
+//                NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16, weight: .regular)
+//            ], for: .normal)
+//            $0.setTitleTextAttributes([
+//                NSAttributedString.Key.foregroundColor: UIColor.systemBlue,
+//                NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16, weight: .bold)
+//            ], for: .selected)
+//            $0.addTarget(self, action: #selector(segmentedControlItemDipTap(_:)), for: .valueChanged)
+//        }
+//    }
+//
+//    func configureScrollableSegmentedControl() {
+//
+//        [ segmentedControl, bottomUnderLineView ].forEach() { scrollView.addSubview($0) }
+//        [ scrollView ].forEach() { view.addSubview($0) }
+//
+//        segmentedControl.do {
+//            $0.translatesAutoresizingMaskIntoConstraints = false
+//            $0.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
+//            $0.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
+//            $0.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor).isActive = true
+//            $0.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 5).isActive = true
+//        }
+//        bottomUnderLineView.do {
+//            $0.translatesAutoresizingMaskIntoConstraints = false
+//            $0.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor).isActive = true
+//            $0.heightAnchor.constraint(equalToConstant: Constants.underlineViewHeight).isActive = true
+//            $0.widthAnchor.constraint(equalTo: segmentedControl.widthAnchor,
+//                                      multiplier: 1 / CGFloat(segmentedControl.numberOfSegments)).isActive = true
+//        }
+//        scrollView.do {
+//            $0.translatesAutoresizingMaskIntoConstraints = false
+//            $0.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+//            $0.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+//            $0.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+//            $0.heightAnchor.constraint(equalToConstant: 50).isActive = true
+//        }
+//    }
+//
+//    @objc private func segmentedControlItemDipTap(_ serder: UISegmentedControl) {
+//
+//    }
 }
 
-extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return chuImage.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeViewCollectionViewCell.identifier,
-                                                      for: indexPath) as! HomeViewCollectionViewCell// dequeueReusableCell 에 대한 이해 필요
-        cell.configure(label: "Custom \(indexPath.row)") // as! HomeViewCollectionViewCell 을 넣었더니 이 문이 됐다 왜일까?
-        return cell
-    }
-    
-    
-}
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
