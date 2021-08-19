@@ -17,6 +17,7 @@ class CameraViewController: UIViewController {
         attribute()
         layout()
         self.title = "Tab_Camera"
+        self.view.backgroundColor = .white
     }
     
     func attribute() {

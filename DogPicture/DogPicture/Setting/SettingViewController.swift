@@ -14,7 +14,7 @@ class SettingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Tab_Setting"
-        self.view.backgroundColor = .red
+        self.view.backgroundColor = .white
     }
     
     func attribute() {

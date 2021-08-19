@@ -28,7 +28,6 @@ class HomeViewCollectionViewCell: UICollectionViewCell {
             $0.backgroundColor = .yellow
             $0.contentMode = .scaleAspectFit
             $0.clipsToBounds = true
-            
         }
         myLabel.do {
             $0.text = "Custom"
