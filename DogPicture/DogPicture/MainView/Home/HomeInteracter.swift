@@ -8,5 +8,7 @@
 class HomeInteracter: HomeInteracterInputProtocol {
     
     weak var presenter: HomeInteracterOutputProtocol?
+    
+    
 }
 

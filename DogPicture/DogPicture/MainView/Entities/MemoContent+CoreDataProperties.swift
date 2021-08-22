@@ -20,7 +20,6 @@ extension MemoContent {
     @NSManaged public var title: String?
     @NSManaged public var content: String?
     @NSManaged public var createAt: Date?
-    
 }
 
 extension MemoContent : Identifiable {

@@ -17,7 +17,7 @@ class MemoViewInteracter: MemoViewInteracterInputProtocol {
     
     func getAllItems() {
         do {
-            let items = try context.fetch(MemoContent.fetchRequest())
+//            let items = try context.fetch(MemoContent.fetchRequest())
         }
         catch {
             // error
@@ -29,10 +29,10 @@ class MemoViewInteracter: MemoViewInteracterInputProtocol {
 
 extension MemoViewInteracter: MemoViewInteracterOutputProtocol {
     func createItem(title: String, content: String) {
-        let newItem = MemoContent(context: context)
-        newItem.content = content
-        newItem.title = title
-        newItem.createAt = Date()
+//        let newItem = MemoContent(context: context)
+//        newItem.content = content
+//        newItem.title = title
+//        newItem.createAt = Date()
         do {
             try context.save()
         }
@@ -43,15 +43,15 @@ extension MemoViewInteracter: MemoViewInteracterOutputProtocol {
     
     
     
-    func updateItem(item: MemoContent, newTitle: String) {
-        item.title = newTitle
-        do {
-            try context.save()
-        }
-        catch {
-            
-        }
-    }
+//    func updateItem(item: MemoContent, newTitle: String) {
+//        item.title = newTitle
+//        do {
+//            try context.save()
+//        }
+//        catch {
+//
+//        }
+//    }
     
     
 }
