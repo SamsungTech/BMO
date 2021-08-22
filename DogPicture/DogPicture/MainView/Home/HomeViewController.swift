@@ -69,9 +69,7 @@ class HomeViewController: UIViewController {
             segmentedControl.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             segmentedControl.heightAnchor.constraint(equalToConstant: 40)
         ])
-        
     }
-    
 }
 
 
