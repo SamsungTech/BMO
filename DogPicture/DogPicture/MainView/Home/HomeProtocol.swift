@@ -9,6 +9,10 @@ import UIKit
 
 protocol HomeViewProtocol: AnyObject {
     var presenter: HomePresenterProtocol? { get set }
+    
+    func showChu(chu: [UIImage?])
+    
+    func segmentDidChanged()
 }
 
 protocol HomeRouterProtocol: AnyObject {
@@ -22,6 +26,8 @@ protocol HomePresenterProtocol: AnyObject {
     var interacter: HomeInteracterInputProtocol? { get set }
     var router: HomeRouterProtocol? { get set }
     
+    func viewDidLoad()
+    func segmentDidTap()
     func showMemo(for name: String)
 }
 
@@ -29,9 +35,9 @@ protocol HomeInteracterInputProtocol: AnyObject {
     var presenter: HomeInteracterOutputProtocol? { get set }
     
     // PRESENTER -> INTERACTOR
-    
+    func getChuImage()
 }
 
 protocol HomeInteracterOutputProtocol: AnyObject {
-    
+    func retrivedChuImage(chu: [UIImage?])
 }

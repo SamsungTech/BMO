@@ -12,62 +12,37 @@ class HomeViewController: UIViewController {
     
     let items = ["1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월"]
     
-    
     var presenter: HomePresenterProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter?.viewDidLoad()
         view.backgroundColor = .white
         configureScrollableSegmentedControl()
     }
     
     func configureScrollableSegmentedControl() {
-//        let segmetedControl = UISegmentedControl(items: items)
-//
-//        let scrollView = UIScrollView()
-//        scrollView.contentSize = CGSize(width: .zero, height: 50)
-//
-//        scrollView.addSubview(segmetedControl)
-//        view.addSubview(scrollView)
-//
-//        scrollView.do {
-//            $0.translatesAutoresizingMaskIntoConstraints = false
-//            $0.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-//            $0.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-//            $0.heightAnchor.constraint(equalToConstant: 50).isActive = true
-//        }
-//        segmetedControl.do {
-//            $0.translatesAutoresizingMaskIntoConstraints = false
-//            $0.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
-//            $0.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
-//            $0.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor).isActive = true
-//            $0.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
-//            $0.heightAnchor.constraint(equalToConstant: 45).isActive = true
-//        }
-        
-        let segmentedControl = UISegmentedControl(items: items)
-        
-        segmentedControl.translatesAutoresizingMaskIntoConstraints = false
+        let segmetedControl = UISegmentedControl(items: items)
         
         let scrollView = UIScrollView()
-        scrollView.contentSize = CGSize(width: .zero, height: 50)
         
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        
-        scrollView.addSubview(segmentedControl)
+        scrollView.addSubview(segmetedControl)
         view.addSubview(scrollView)
         
-        NSLayoutConstraint.activate([
-            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            scrollView.heightAnchor.constraint(equalToConstant: 50),
-            
-            segmentedControl.topAnchor.constraint(equalTo: scrollView.topAnchor),
-            segmentedControl.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-            segmentedControl.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-            segmentedControl.heightAnchor.constraint(equalToConstant: 40)
-        ])
+        scrollView.do {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+            $0.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+            $0.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+            $0.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        }
+        segmetedControl.do {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
+            $0.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
+            $0.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor).isActive = true
+            $0.heightAnchor.constraint(equalToConstant: 45).isActive = true
+        }
     }
 }
 
@@ -102,5 +77,11 @@ class HomeViewController: UIViewController {
 //}
 
 extension HomeViewController: HomeViewProtocol {
+    func showChu(chu: [UIImage?]) {
+        print(chu)
+    }
     
+    func segmentDidChanged() {
+        print("뷰관련 동작인 애니메이션 등등..")
+    }
 }

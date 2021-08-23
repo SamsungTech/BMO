@@ -8,9 +8,9 @@
 import UIKit
 
 class TabViewController: UITabBarController {
+    // 처음 애니메이션 불러오는 분기 정하기
     let centerView = UIView()
     let centerButton = UIButton()
-    
     let homeButton = UIButton()
     let cameraButton = UIButton()
     let libraryButton = UIButton()

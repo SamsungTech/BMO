@@ -9,6 +9,9 @@ class HomeInteracter: HomeInteracterInputProtocol {
     
     weak var presenter: HomeInteracterOutputProtocol?
     
-    
+    func getChuImage() {
+        let chuList = Image.shared.getChuImageList()
+        presenter?.retrivedChuImage(chu: chuList)
+    }
 }
 
