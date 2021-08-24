@@ -8,7 +8,6 @@
 import UIKit
 
 class TabViewController: UITabBarController {
-    // 처음 애니메이션 불러오는 분기 정하기
     let centerView = UIView()
     let centerButton = UIButton()
     let homeButton = UIButton()
@@ -17,14 +16,13 @@ class TabViewController: UITabBarController {
     let settingButton = UIButton()
     let writeButton = UIButton()
     
-    var centerButtonExpanded: Bool = true
+    var isCenterButtonExpanded: Bool = false
+    var isAnimationRan: Bool = false
     let person = UIViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // 여기서 centerButton layout을 잡아주고
         self.tabBar.isHidden = true
-        self.onTabBarItemClick(self.homeButton)
         createCustomTabBarController()
     }
     
@@ -33,10 +31,6 @@ class TabViewController: UITabBarController {
         UINavigationBar.appearance().prefersLargeTitles = true
         createTabBarItemsAttribute()
         createTabItem()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        // centerButton으로부터 좌표 가져와서 라이브러리 찍어주는 곳
     }
     
     func createCustomTabBarController() {
@@ -207,8 +201,8 @@ class TabViewController: UITabBarController {
         cameraButton.isSelected = false
         settingButton.isSelected = false
         sender.isSelected = true
+        animateCenterButtonRotatedAndSmallerAnimation(view: centerView, button: centerButton)
         selectedIndex = sender.tag
-        animateCenterButtonRotatedAndExpandedAnimation(view: centerView, button: centerButton)
         homeButton.isHidden = true
         cameraButton.isHidden = true
         libraryButton.isHidden = true
@@ -219,14 +213,14 @@ class TabViewController: UITabBarController {
         settingButton.alpha = 0.0
         centerView.isUserInteractionEnabled = true
         view.isUserInteractionEnabled = true
-        centerButtonExpanded = true
+        isCenterButtonExpanded = false
     }
     
     @objc func centerButtonDipTap(sender: UIButton) {
         centerView.isUserInteractionEnabled = false
         view.isUserInteractionEnabled = false
         
-        if (centerButtonExpanded == true) {
+        if (isCenterButtonExpanded == false) {
             view.isUserInteractionEnabled = true
             animateCenterTabViewShakeWhenCenterTabViewExpanded(view: self.centerView)
             animationThatRotatingCenterButtonWhenCenterViewExpands(button: centerButton)
@@ -238,9 +232,9 @@ class TabViewController: UITabBarController {
             cameraButton.isHidden = false
             libraryButton.isHidden = false
             settingButton.isHidden = false
-            centerButtonExpanded = false
+            isCenterButtonExpanded = true
         } else {
-            animateCenterButtonRotatedAndExpandedAnimation(view: centerView, button: centerButton)
+            animateCenterButtonRotatedAndSmallerAnimation(view: centerView, button: centerButton)
             homeButton.isHidden = true
             cameraButton.isHidden = true
             libraryButton.isHidden = true
@@ -250,7 +244,7 @@ class TabViewController: UITabBarController {
             libraryButton.alpha = 0.0
             settingButton.alpha = 0.0
             view.isUserInteractionEnabled = true
-            centerButtonExpanded = true
+            isCenterButtonExpanded = false
         }
     }
 }
@@ -268,11 +262,9 @@ extension TabViewController {
             UIView.addKeyframe(withRelativeStartTime: 0.35, relativeDuration: 0.15) {
                 button.transform = CGAffineTransform(rotationAngle: -(360.0 * .pi) / 180)
             }
-            //새로운 각도
             UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.1) {
                 button.transform = CGAffineTransform(rotationAngle: -(405.0 * .pi) / 180)
             }
-            //흔들기 시작
             UIView.addKeyframe(withRelativeStartTime: 0.60, relativeDuration: 0.15) {
                 button.transform = CGAffineTransform(rotationAngle: -(395.0 * .pi) / 180)
             }
@@ -288,7 +280,7 @@ extension TabViewController {
         })
     }
     
-    func animateCenterButtonRotatedAndExpandedAnimation(view: UIView, button: UIButton) {
+    func animateCenterButtonRotatedAndSmallerAnimation(view: UIView, button: UIButton) {
         UIView.animate(withDuration: 0.5,
                        delay: 0,
                        usingSpringWithDamping: 1,
@@ -351,7 +343,6 @@ extension TabViewController {
     
     func animateSpinAndShakeTabBarItemWhenTabViewExpanded(button: UIButton) {
         UIView.animateKeyframes(withDuration: 0.9, delay: 0.15, options: [], animations: {
-            // 점차 커지는 scale animation 넣기
             UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.25) {
                 button.transform = CGAffineTransform(rotationAngle: (180.0 * .pi) / 180)
                 button.alpha = 0.7
@@ -364,12 +355,10 @@ extension TabViewController {
                 button.transform = CGAffineTransform(rotationAngle: -(360.0 * .pi) / 180)
                 button.alpha = 0.9
             }
-            //새로운 각도
             UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.1) {
                 button.transform = CGAffineTransform(rotationAngle: -(370.0 * .pi) / 180)
                 button.alpha = 1.0
             }
-            // shake scale rotate button 시작
             UIView.addKeyframe(withRelativeStartTime: 0.60, relativeDuration: 0.15) {
                 button.transform = CGAffineTransform(rotationAngle: -(350.0 * .pi) / 180)
             }
