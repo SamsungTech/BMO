@@ -9,44 +9,22 @@ import UIKit
 import Then
 
 class HomeViewController: UIViewController {
-    
-    let items = ["1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월"]
-        
     var presenter: HomePresenterProtocol?
-    
-    let stackView = UIStackView()
-    let scrollView = UIScrollView()
-    
+       
+    private let segmentedButtonTitles = ["1월", "2월", "3월", "4월", "5월", "6월", "7월"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter?.viewDidLoad()
         view.backgroundColor = .white
-        configureScrollableSegmentedControl()
-    }
-    
-    func configureScrollableSegmentedControl() {
-        let segmetedControl = UISegmentedControl(items: items)
-        
-        let scrollView = UIScrollView()
-        
-        scrollView.addSubview(segmetedControl)
-        view.addSubview(scrollView)
-        
-        scrollView.do {
-            $0.translatesAutoresizingMaskIntoConstraints = false
-            $0.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-            $0.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-            $0.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-            $0.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        }
-        segmetedControl.do {
-            $0.translatesAutoresizingMaskIntoConstraints = false
-            $0.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
-            $0.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
-            $0.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor).isActive = true
-            $0.heightAnchor.constraint(equalToConstant: 45).isActive = true
-        }
+        let codeSegmented = CustomSegmentedControl(frame: CGRect(x: 0,
+                                                                 y: 50,
+                                                                 width: 400,
+                                                                 height: 300),
+                                                   buttonTitle: segmentedButtonTitles)
+        codeSegmented.backgroundColor = .clear
+        view.addSubview(codeSegmented)
+        view.frame = CGRect(x: <#T##CGFloat#>, y: <#T##CGFloat#>, width: <#T##CGFloat#>, height: <#T##CGFloat#>)
     }
 }
 
