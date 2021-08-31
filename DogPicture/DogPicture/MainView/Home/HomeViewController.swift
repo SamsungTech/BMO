@@ -26,7 +26,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         presenter?.viewDidLoad()
         view.backgroundColor = .white
-        createSegmentedButton()
+//        createSegmentedButton()
         segmentedAttribute()
         segmentedConfigure()
     }
@@ -34,6 +34,7 @@ class HomeViewController: UIViewController {
     func createSegmentedButton() {
         segmentedButton = [UIButton]()
         segmentedButton.removeAll()
+        
         
         for buttonTitle in segmentedButtonTitles {
             let button = UIButton(type: .system)
@@ -71,9 +72,19 @@ class HomeViewController: UIViewController {
                               width: selectorWidth,
                               height: 2)
         }
-        for button in segmentedButtonTitles {
-            
+        for buttonTitles in segmentedButtonTitles {
+            let button = UIButton(type: .system)
+            button.do {
+                $0.setTitle(buttonTitles, for: .normal)
+                $0.addTarget(self,
+                             action: #selector(segmentLineAnimation(sender:)),
+                             for: .touchUpInside)
+                $0.setTitleColor(textColor, for: .normal)
+            }
+            segmentedStackView.addArrangedSubview(button)
+            segmentedButton.append(button)
         }
+        segmentedButton[0].setTitleColor(selectorTextColor, for: .normal)
     }
     
     func segmentedConfigure() {
