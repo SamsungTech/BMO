@@ -26,28 +26,8 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         presenter?.viewDidLoad()
         view.backgroundColor = .white
-//        createSegmentedButton()
         segmentedAttribute()
         segmentedConfigure()
-    }
-    
-    func createSegmentedButton() {
-        segmentedButton = [UIButton]()
-        segmentedButton.removeAll()
-        
-        
-        for buttonTitle in segmentedButtonTitles {
-            let button = UIButton(type: .system)
-            button.do {
-                $0.setTitle(buttonTitle, for: .normal)
-                $0.addTarget(self,
-                             action: #selector(segmentLineAnimation(sender:)),
-                             for: .touchUpInside)
-                $0.setTitleColor(textColor, for: .normal)
-            }
-            segmentedButton.append(button)
-        }
-        segmentedButton[0].setTitleColor(selectorTextColor, for: .normal)
     }
     
     func segmentedAttribute() {
@@ -61,6 +41,7 @@ class HomeViewController: UIViewController {
         }
         
         segmentedStackView.do {
+            $0.backgroundColor = .systemRed
             $0.axis = .horizontal
             $0.alignment = .fill
             $0.distribution = .fillEqually
@@ -95,6 +76,7 @@ class HomeViewController: UIViewController {
             $0.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
             $0.heightAnchor.constraint(equalToConstant: 70).isActive = true
         }
+        // 오토레이아웃이 꽉 잡고 있어서 안되나?
         segmentedStackView.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
             $0.topAnchor.constraint(equalTo: segmentedScrollView.topAnchor).isActive = true
@@ -157,7 +139,7 @@ extension HomeViewController: HomeViewProtocol {
         print("뷰관련 동작인 애니메이션 등등..")
     }
     
-    func segmentAnimation() {
+    func segmentAnimation() { // viper 재정리
         presenter?.segmentAnimation()
     }
 }
