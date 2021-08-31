@@ -4,6 +4,7 @@
 //
 //  Created by 김동우 on 2021/05/28.
 //
+import Foundation
 import UIKit
 
 class HomePresenter: HomePresenterProtocol {
@@ -20,13 +21,17 @@ class HomePresenter: HomePresenterProtocol {
         view?.segmentDidChanged()
     }
     
+    func segmentAnimation() {
+        view?.segmentAnimation()
+    }
+    
     func showMemo(for name: String) {
         router?.presentMemoScreen(from: view!, forname: name)
     }
 }
 
 extension HomePresenter: HomeInteracterOutputProtocol {
-    func retrivedChuImage(chu: [UIImage?]) {
+    func retrivedChuImage(chu: [UIImage?]) { // ??
         view?.showChu(chu: chu)
     }
     

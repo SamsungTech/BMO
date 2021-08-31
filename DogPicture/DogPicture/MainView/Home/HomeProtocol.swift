@@ -13,6 +13,8 @@ protocol HomeViewProtocol: AnyObject {
     func showChu(chu: [UIImage?])
     
     func segmentDidChanged()
+    
+    func segmentAnimation()
 }
 
 protocol HomeRouterProtocol: AnyObject {
@@ -29,6 +31,7 @@ protocol HomePresenterProtocol: AnyObject {
     func viewDidLoad()
     func segmentDidTap()
     func showMemo(for name: String)
+    func segmentAnimation()
 }
 
 protocol HomeInteracterInputProtocol: AnyObject {

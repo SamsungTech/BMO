@@ -7,17 +7,21 @@
 
 import UIKit
 
-protocol CustomSegmentedControlDelegate: AnyObject {
+protocol CustomSegmentedControlDelegate: AnyObject { // 이게 왜?
     func changeToIndex(index: Int)
 }
 
 class CustomSegmentedControl: UIView {
     weak var delegate: CustomSegmentedControlDelegate? // 여기서 왜 weak var 가 들어가는지??
     // 옵셔널 바인딩
-    private var buttonTitles:[String]!
+    private var buttonTitles: [String]!
     private var buttons: [UIButton] = []
+    private var segmentItemView: [UIView] = []
+    private var segmentItemTitles: [String]!
     private var selectorView: UIView!
+    private var button = UIButton()
     private var scrollView = UIScrollView()
+    private var stackView = UIStackView()
     
     var textColor:UIColor = .black
     var selectorViewColor: UIColor = .red
@@ -47,6 +51,7 @@ class CustomSegmentedControl: UIView {
     
     private func configStackView() {
         let stackView = UIStackView(arrangedSubviews: buttons)
+        stackView.addArrangedSubview(selectorView)
         addSubview(scrollView)
         scrollView.addSubview(stackView)
         
@@ -98,6 +103,7 @@ class CustomSegmentedControl: UIView {
             buttons.append(button)
         }
         buttons[0].setTitleColor(selectorTextColor, for: .normal)
+        
     }
     
     @objc func buttonAction(sender: UIButton) {
@@ -106,7 +112,7 @@ class CustomSegmentedControl: UIView {
             btn.setTitleColor(textColor, for: .normal)
             if btn == sender {
                 let selectorPosition = frame.width/CGFloat(buttonTitles.count) * CGFloat(buttonIndex)
-                delegate?.changeToIndex(index: buttonIndex)
+                delegate?.changeToIndex(index: buttonIndex)// 이게 왜?
                 UIView.animate(withDuration: 0.3) {
                     self.selectorView.frame.origin.x = selectorPosition
                 }
