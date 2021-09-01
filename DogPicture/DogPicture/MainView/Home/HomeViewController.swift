@@ -22,80 +22,19 @@ class HomeViewController: UIViewController {
     var mainRandomImageView = UIImageView()
     var mainScrollView = UIScrollView()
     
-    var homeCollectionView = UICollectionView()
     
     var textColor: UIColor = .black
     var selectroViewColor: UIColor = .red
     var selectorTextColor: UIColor = .red
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(false)
-        updateMainView()
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter?.viewDidLoad()
         view.backgroundColor = .white
-        updateRandomImageView()
         segmentedUpdateView()
     }
     
-    func updateMainView() {
-        attributeMainView()
-        configMainView()
-    }
-    
-    func attributeMainView() {
-        view.addSubview(mainScrollView)
-    }
-    
-    func configMainView() {
-        mainScrollView.do {
-            $0.backgroundColor = .systemGreen
-            $0.translatesAutoresizingMaskIntoConstraints = false
-            $0.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-            $0.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-            $0.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-            $0.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        }
-    }
-    
-    func updateRandomImageView() {
-        attributeMainRandomImageView()
-        configMainRandomImageView()
-    }
-    // 전체적인 움직임이 필요 -> 스크롤뷰 + 스택뷰 활용
-    func attributeMainRandomImageView() {
-        mainScrollView.addSubview(mainRandomImageContainerView)
-        mainRandomImageContainerView.addSubview(mainRandomImageView)
-        
-        mainRandomImageContainerView.do {
-            $0.backgroundColor = .systemPink
-        }
-        mainRandomImageView.do {
-            $0.backgroundColor = .systemBlue
-        }
-        
-    }
-    
-    func configMainRandomImageView() {
-        mainRandomImageContainerView.do {
-            $0.translatesAutoresizingMaskIntoConstraints = false
-            $0.topAnchor.constraint(equalTo: mainScrollView.topAnchor).isActive = true
-            $0.leadingAnchor.constraint(equalTo: mainScrollView.leadingAnchor).isActive = true
-            $0.trailingAnchor.constraint(equalTo: mainScrollView.leadingAnchor).isActive = true
-            $0.heightAnchor.constraint(equalToConstant: 300).isActive = true
-        }
-        
-        mainRandomImageView.do {
-            $0.translatesAutoresizingMaskIntoConstraints = false
-            $0.topAnchor.constraint(equalTo: mainRandomImageContainerView.topAnchor).isActive = true
-            $0.leadingAnchor.constraint(equalTo: mainRandomImageContainerView.leadingAnchor).isActive = true
-            $0.trailingAnchor.constraint(equalTo: mainRandomImageContainerView.trailingAnchor).isActive = true
-            $0.heightAnchor.constraint(equalToConstant: 300).isActive = true
-        }
-    }
     
     func segmentedUpdateView() {
         attributeSegmentedControl()
@@ -105,7 +44,7 @@ class HomeViewController: UIViewController {
     func attributeSegmentedControl() {
         let selectorWidth = CGFloat(segmentedButtonTitles.count*70) / CGFloat(self.segmentedButtonTitles.count)
         
-        [ segmentedScrollView, segmentedSelectorView ].forEach() { mainScrollView.addSubview($0) }
+        [ segmentedScrollView, segmentedSelectorView ].forEach() { view.addSubview($0) }
         segmentedScrollView.addSubview(segmentedStackView)
         
         segmentedScrollView.do {
@@ -113,7 +52,7 @@ class HomeViewController: UIViewController {
         }
         
         segmentedStackView.do {
-            $0.backgroundColor = .systemRed
+            $0.backgroundColor = .systemGreen
             $0.axis = .horizontal
             $0.alignment = .fill
             $0.distribution = .fillEqually
@@ -121,7 +60,7 @@ class HomeViewController: UIViewController {
         segmentedSelectorView.do {
             $0.backgroundColor = selectroViewColor
             $0.frame = CGRect(x: 0,
-                              y: 400,
+                              y: 200,
                               width: selectorWidth,
                               height: 2)
         }
@@ -143,9 +82,9 @@ class HomeViewController: UIViewController {
     func configSegmentedControl() {
         segmentedScrollView.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
-            $0.topAnchor.constraint(equalTo: mainRandomImageView.bottomAnchor).isActive = true
-            $0.leadingAnchor.constraint(equalTo: mainScrollView.leadingAnchor).isActive = true
-            $0.trailingAnchor.constraint(equalTo: mainScrollView.trailingAnchor).isActive = true
+            $0.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+            $0.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+            $0.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
             $0.heightAnchor.constraint(equalToConstant: 70).isActive = true
         }
         // 오토레이아웃이 꽉 잡고 있어서 안되나?
