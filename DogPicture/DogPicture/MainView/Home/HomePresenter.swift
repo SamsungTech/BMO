@@ -28,6 +28,10 @@ class HomePresenter: HomePresenterProtocol {
     func showMemo(for name: String) {
         router?.presentMemoScreen(from: view!, forname: name)
     }
+    
+    func calenderDidTap(tag: Int) {
+        view?.refershCalender(tag: tag)
+    }
 }
 
 extension HomePresenter: HomeInteracterOutputProtocol {

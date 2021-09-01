@@ -19,7 +19,6 @@
 		0B73461826861DB5007CE6CF /* SettingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B73461726861DB5007CE6CF /* SettingRouter.swift */; };
 		0B73461A2686F6F8007CE6CF /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7346192686F6F8007CE6CF /* Image.swift */; };
 		0B734631268CA2C7007CE6CF /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B734630268CA2C7007CE6CF /* TabViewController.swift */; };
-		0BADC59F26D53E8200291811 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BADC59E26D53E8200291811 /* CustomSegmentedControl.swift */; };
 		0BF238362660C2EE007E48AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF238352660C2EE007E48AC /* AppDelegate.swift */; };
 		0BF238382660C2EE007E48AC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF238372660C2EE007E48AC /* SceneDelegate.swift */; };
 		0BF238402660C2EE007E48AC /* DogPicture.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0BF2383E2660C2EE007E48AC /* DogPicture.xcdatamodeld */; };
@@ -51,7 +50,6 @@
 		0B73461726861DB5007CE6CF /* SettingRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRouter.swift; sourceTree = "<group>"; };
 		0B7346192686F6F8007CE6CF /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		0B734630268CA2C7007CE6CF /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
-		0BADC59E26D53E8200291811 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
 		0BF238322660C2EE007E48AC /* DogPicture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DogPicture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BF238352660C2EE007E48AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0BF238372660C2EE007E48AC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -195,7 +193,6 @@
 				0BF238522660D5EE007E48AC /* HomeProtocol.swift */,
 				0BF238542660D5FE007E48AC /* HomeViewRouter.swift */,
 				0BF238562660D628007E48AC /* HomeInteracter.swift */,
-				0BADC59E26D53E8200291811 /* CustomSegmentedControl.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -363,7 +360,6 @@
 				0BF238572660D628007E48AC /* HomeInteracter.swift in Sources */,
 				0B51B1FF26A8210E00216054 /* CameraRouter.swift in Sources */,
 				0BF238512660D5DD007E48AC /* HomePresenter.swift in Sources */,
-				0BADC59F26D53E8200291811 /* CustomSegmentedControl.swift in Sources */,
 				0B73461126861D76007CE6CF /* SettingInteracter.swift in Sources */,
 				0B73461826861DB5007CE6CF /* SettingRouter.swift in Sources */,
 				0BF238382660C2EE007E48AC /* SceneDelegate.swift in Sources */,

@@ -15,6 +15,8 @@ protocol HomeViewProtocol: AnyObject {
     func segmentDidChanged()
     
     func segmentAnimation()
+    
+    func refershCalender(tag: Int)
 }
 
 protocol HomeRouterProtocol: AnyObject {
@@ -32,6 +34,7 @@ protocol HomePresenterProtocol: AnyObject {
     func segmentDidTap()
     func showMemo(for name: String)
     func segmentAnimation()
+    func calenderDidTap(tag: Int)
 }
 
 protocol HomeInteracterInputProtocol: AnyObject {

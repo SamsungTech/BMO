@@ -8,25 +8,25 @@
 import UIKit
 import Then
 
+// 컬렉션 뷰 ㄴㄴ
+//
+
 class HomeViewController: UIViewController {
     var presenter: HomePresenterProtocol?
     
     var segmentedScrollView = UIScrollView()
+    var segmentedScrollContentView = UIView()
     var segmentedStackView = UIStackView()
     var segmentedButton: [UIButton] = []
     var segmentedSelectorView = UIView()
     let segmentedButtonTitles = ["1월", "2월", "3월", "4월", "5월",
                                  "6월", "7월", "8월", "9월", "10월", "11월", "12월"]
     
-    let mainRandomImageContainerView = UIView()
-    var mainRandomImageView = UIImageView()
-    var mainScrollView = UIScrollView()
-    
-    
     var textColor: UIColor = .black
     var selectroViewColor: UIColor = .red
     var selectorTextColor: UIColor = .red
     
+    var tagNumber = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,13 +42,13 @@ class HomeViewController: UIViewController {
     }
     
     func attributeSegmentedControl() {
-        let selectorWidth = CGFloat(segmentedButtonTitles.count*70) / CGFloat(self.segmentedButtonTitles.count)
-        
-        [ segmentedScrollView, segmentedSelectorView ].forEach() { view.addSubview($0) }
-        segmentedScrollView.addSubview(segmentedStackView)
+        view.addSubview(segmentedScrollView)
+        segmentedScrollView.addSubview(segmentedScrollContentView)
+        segmentedScrollContentView.addSubview(segmentedStackView)
         
         segmentedScrollView.do {
             $0.backgroundColor = .systemBlue
+            $0.contentSize = CGSize(width: 840, height: 70)
         }
         
         segmentedStackView.do {
@@ -57,16 +57,12 @@ class HomeViewController: UIViewController {
             $0.alignment = .fill
             $0.distribution = .fillEqually
         }
-        segmentedSelectorView.do {
-            $0.backgroundColor = selectroViewColor
-            $0.frame = CGRect(x: 0,
-                              y: 200,
-                              width: selectorWidth,
-                              height: 2)
-        }
+        
+        
         for buttonTitles in segmentedButtonTitles {
-            let button = UIButton(type: .system) // 시스템이란?
+            let button = UIButton(type: .system)
             button.do {
+                $0.tag = tagNumber
                 $0.setTitle(buttonTitles, for: .normal)
                 $0.addTarget(self,
                              action: #selector(segmentLineAnimation(sender:)),
@@ -75,8 +71,10 @@ class HomeViewController: UIViewController {
             }
             segmentedStackView.addArrangedSubview(button)
             segmentedButton.append(button)
+            tagNumber += 1
         }
         segmentedButton[0].setTitleColor(selectorTextColor, for: .normal)
+        
     }
     
     func configSegmentedControl() {
@@ -87,31 +85,28 @@ class HomeViewController: UIViewController {
             $0.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
             $0.heightAnchor.constraint(equalToConstant: 70).isActive = true
         }
-        // 오토레이아웃이 꽉 잡고 있어서 안되나?
+        
+        segmentedScrollContentView.do {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.topAnchor.constraint(equalTo: segmentedScrollView.safeAreaLayoutGuide.topAnchor).isActive = true
+            $0.leadingAnchor.constraint(equalTo: segmentedScrollView.leadingAnchor).isActive = true
+            $0.bottomAnchor.constraint(equalTo: segmentedScrollView.frameLayoutGuide.bottomAnchor).isActive = true
+            $0.widthAnchor.constraint(equalToConstant: segmentedScrollView.contentSize.width).isActive = true
+        }
+        
         segmentedStackView.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
-            $0.topAnchor.constraint(equalTo: segmentedScrollView.topAnchor).isActive = true
-            $0.leadingAnchor.constraint(equalTo: segmentedScrollView.leadingAnchor).isActive = true
+            $0.topAnchor.constraint(equalTo: segmentedScrollContentView.topAnchor).isActive = true
+            $0.leadingAnchor.constraint(equalTo: segmentedScrollContentView.leadingAnchor).isActive = true
             $0.widthAnchor.constraint(equalToConstant: CGFloat(segmentedButtonTitles.count*70)).isActive = true
             $0.heightAnchor.constraint(equalToConstant: 50).isActive = true
         }
     }
     
     @objc func segmentLineAnimation(sender: UIButton) {
-        for (buttonIndex, btn) in segmentedButton.enumerated() { // 여기서 버튼 인덱스와 버튼의 번호를 알 수 있는 건가?
-            btn.setTitleColor(textColor, for: .normal)
-            if btn == sender {
-                let selectorPosition = 70 * CGFloat(buttonIndex)
-                UIView.animate(withDuration: 0.3) {
-                    self.segmentedSelectorView.frame.origin.x = selectorPosition
-                }
-                btn.setTitleColor(selectorTextColor, for: .normal)
-            }
-        }
+        presenter?.calenderDidTap(tag: sender.tag)
     }
 }
-
-
 
 extension HomeViewController: HomeViewProtocol {
     func showChu(chu: [UIImage?]) {
@@ -124,5 +119,14 @@ extension HomeViewController: HomeViewProtocol {
     
     func segmentAnimation() { // viper 재정리
         presenter?.segmentAnimation()
+    }
+    
+    func refershCalender(tag: Int) {
+        for btn in segmentedButton {
+            btn.setTitleColor(textColor, for: .normal)
+            if tag == btn.tag {
+                btn.setTitleColor(selectorTextColor, for: .normal)
+            }
+        }
     }
 }
