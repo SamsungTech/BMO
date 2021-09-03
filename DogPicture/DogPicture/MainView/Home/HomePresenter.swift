@@ -17,14 +17,6 @@ class HomePresenter: HomePresenterProtocol {
         interacter?.getChuImage()
     }
     
-    func segmentDidTap() {
-        view?.segmentDidChanged()
-    }
-    
-    func segmentAnimation() {
-        view?.segmentAnimation()
-    }
-    
     func showMemo(for name: String) {
         router?.presentMemoScreen(from: view!, forname: name)
     }

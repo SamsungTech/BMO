@@ -14,4 +14,3 @@ class HomeInteracter: HomeInteracterInputProtocol {
         presenter?.retrivedChuImage(chu: chuList)
     }
 }
-

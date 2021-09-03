@@ -12,10 +12,6 @@ protocol HomeViewProtocol: AnyObject {
     
     func showChu(chu: [UIImage?])
     
-    func segmentDidChanged()
-    
-    func segmentAnimation()
-    
     func refershCalender(tag: Int)
 }
 
@@ -31,9 +27,7 @@ protocol HomePresenterProtocol: AnyObject {
     var router: HomeRouterProtocol? { get set }
     
     func viewDidLoad()
-    func segmentDidTap()
     func showMemo(for name: String)
-    func segmentAnimation()
     func calenderDidTap(tag: Int)
 }
 
