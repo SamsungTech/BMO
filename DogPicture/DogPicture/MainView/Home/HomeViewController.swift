@@ -51,15 +51,12 @@ class HomeViewController: UIViewController {
     
     func attribute() {
         view.addSubview(homeTableView)
-        [ segmentedScrollView, randomImageView, randomImageView ].forEach()
-        { mainHeaderView.addSubview($0) }
         segmentedScrollView.addSubview(segmentedScrollContentView)
         segmentedScrollContentView.addSubview(segmentedStackView)
         
         homeTableView.do {
             $0.dataSource = self
             $0.delegate = self
-            $0.tableHeaderView = mainHeaderView
             $0.frame = view.bounds
             $0.backgroundColor = .systemBlue
             $0.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
@@ -103,6 +100,7 @@ class HomeViewController: UIViewController {
     }
     
     func layout() {
+        // 뷰 생성타이밍이 동시에 생기게 끔 해줘야된다. 그래야 cell들이 안짤린다.
         homeTableView.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
             $0.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
@@ -114,24 +112,9 @@ class HomeViewController: UIViewController {
     }
     
     func headerViewLayout() {
-        mainHeaderView.do {
-            $0.translatesAutoresizingMaskIntoConstraints = false
-            $0.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
-            $0.heightAnchor.constraint(equalToConstant: 370).isActive = true
-        }
-        
-        randomImageView.do {
-            $0.translatesAutoresizingMaskIntoConstraints = false
-            $0.topAnchor.constraint(equalTo: mainHeaderView.topAnchor).isActive = true
-            $0.leadingAnchor.constraint(equalTo: mainHeaderView.leadingAnchor).isActive = true
-            $0.trailingAnchor.constraint(equalTo: mainHeaderView.trailingAnchor).isActive = true
-            $0.heightAnchor.constraint(equalToConstant: 300).isActive = true
-        }
-        
         segmentedScrollView.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
-            $0.bottomAnchor.constraint(equalTo: mainHeaderView.bottomAnchor).isActive = true
-            $0.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
+            $0.widthAnchor.constraint(equalToConstant: 390).isActive = true
             $0.heightAnchor.constraint(equalToConstant: 70).isActive = true
         }
         
@@ -159,11 +142,18 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return models.count
+        switch section {
+        case 0:
+            return 0
+        case 1:
+            return models.count
+        default:
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -173,21 +163,42 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 100
+        switch section {
+        case 0:
+            return 300
+        case 1:
+            return 70
+        default:
+            return 0
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        switch section {
+        case 0:
+            return randomImageView
+        case 1:
+            let headerView = UIView()
+            headerView.backgroundColor = .brown
+            headerView.addSubview(segmentedScrollView)
+            return headerView
+        default:
+            return nil
+        }
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        fixedHomeHeaderView()
-    }
-    
-    func fixedHomeHeaderView() {
-//        let headerCurrentFrame =
+        presenter?.homeScrollViewDidScroll()
     }
 }
 
 extension HomeViewController: HomeViewProtocol {
     func showChu(chu: [UIImage?]) {
         print(chu)
+    }
+    
+    func fixedHomeHeaderView() {
+        
     }
     
     func refershCalender(tag: Int) {
