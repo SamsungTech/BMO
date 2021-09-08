@@ -23,6 +23,7 @@ class HomeViewController: UIViewController {
                                  "11월", "12월"]
     
     var homeTableView = UITableView()
+    var dogImageHolder: [UIImage] = []
     let models = ["쁘띠1", "쁘띠2", "쁘띠3", "쁘띠4", "쁘띠5",
                   "쁘띠6", "쁘띠7", "쁘띠8", "쁘띠9", "쁘띠10",
                   "쁘띠11", "쁘띠12", "쁘띠13", "쁘띠14", "쁘띠15",
@@ -32,7 +33,6 @@ class HomeViewController: UIViewController {
     var textColor: UIColor = .black
     var selectroViewColor: UIColor = .red
     var selectorTextColor: UIColor = .red
-    
     
     var tagNumber = 0
     
@@ -61,7 +61,7 @@ class HomeViewController: UIViewController {
             $0.delegate = self
             $0.frame = view.bounds
             $0.backgroundColor = .systemBlue
-            $0.register(HomeTableViewCell.self, forCellReuseIdentifier: HomeTableViewCell.identifier)
+            $0.register(HomeTableViewCell.self, forCellReuseIdentifier: "HomeCell")
         }
         
         mainHeaderView.do {
@@ -105,7 +105,7 @@ class HomeViewController: UIViewController {
     func layout() {
         homeTableView.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
-            $0.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+            $0.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
             $0.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
             $0.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
             $0.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
@@ -144,9 +144,9 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: HomeTableViewCell.identifier,
-                                                 for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: HomeTableViewCell.identifier) as! HomeTableViewCell
         cell.textLabel?.text = models[indexPath.row]
+        cell.cellImageView.image = dogImageHolder[indexPath.row]
         return cell
     }
     
@@ -193,8 +193,12 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
 }
 
 extension HomeViewController: HomeViewProtocol {
-    func showChu(chu: [UIImage?]) {
-        print(chu)
+    
+    func showImages(images: [String]) {
+        for imageName in images {
+            guard let dogImages = UIImage(named: imageName) else { return }
+            dogImageHolder.append(dogImages)
+        }
     }
     
     func refershCalender(tag: Int) {

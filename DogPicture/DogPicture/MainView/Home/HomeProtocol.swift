@@ -10,8 +10,7 @@ import UIKit
 protocol HomeViewProtocol: AnyObject {
     var presenter: HomePresenterProtocol? { get set }
     
-    func showChu(chu: [UIImage?])
-    
+    func showImages(images: [String])
     func refershCalender(tag: Int)
 }
 
@@ -34,10 +33,9 @@ protocol HomePresenterProtocol: AnyObject {
 protocol HomeInteracterInputProtocol: AnyObject {
     var presenter: HomeInteracterOutputProtocol? { get set }
     
-    // PRESENTER -> INTERACTOR
-    func getChuImage()
+    func getDogImage()
 }
 
 protocol HomeInteracterOutputProtocol: AnyObject {
-    func retrivedChuImage(chu: [UIImage?])
+    func retrivedDogImage(images: [String])
 }

@@ -36,5 +36,16 @@ class HomeTableViewCell: UITableViewCell {
             $0.viewRadius(view: cardView, cornerRadius: 30, maskToBounds: true)
             $0.viewShadow(view: cardView)
         }
+        layout()
+        
+    }
+    func layout() {
+        cellImageView.do {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+            $0.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+            $0.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+            $0.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        }
     }
 }

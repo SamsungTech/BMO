@@ -14,7 +14,7 @@ class HomePresenter: HomePresenterProtocol {
     var router: HomeRouterProtocol?
     
     func viewDidLoad() {
-        interacter?.getChuImage()
+        interacter?.getDogImage()
     }
     
     func showMemo(for name: String) {
@@ -27,8 +27,8 @@ class HomePresenter: HomePresenterProtocol {
 }
 
 extension HomePresenter: HomeInteracterOutputProtocol {
-    func retrivedChuImage(chu: [UIImage?]) { // ??
-        view?.showChu(chu: chu)
+    func retrivedDogImage(images: [String]) {
+        view?.showImages(images: images)
     }
     
     func didRetrieveImage(_ images: [String]) {
