@@ -13,8 +13,6 @@ protocol HomeViewProtocol: AnyObject {
     func showChu(chu: [UIImage?])
     
     func refershCalender(tag: Int)
-    
-    func fixedHomeHeaderView()
 }
 
 protocol HomeRouterProtocol: AnyObject {
@@ -31,7 +29,6 @@ protocol HomePresenterProtocol: AnyObject {
     func viewDidLoad()
     func showMemo(for name: String)
     func calenderDidTap(tag: Int)
-    func homeScrollViewDidScroll()
 }
 
 protocol HomeInteracterInputProtocol: AnyObject {

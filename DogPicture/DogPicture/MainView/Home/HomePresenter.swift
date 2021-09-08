@@ -21,10 +21,6 @@ class HomePresenter: HomePresenterProtocol {
         router?.presentMemoScreen(from: view!, forname: name)
     }
     
-    func homeScrollViewDidScroll() {
-        view?.fixedHomeHeaderView()
-    }
-    
     func calenderDidTap(tag: Int) {
         view?.refershCalender(tag: tag)
     }

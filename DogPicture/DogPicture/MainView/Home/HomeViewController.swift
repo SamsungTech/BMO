@@ -11,6 +11,7 @@ import Then
 class HomeViewController: UIViewController {
     var presenter: HomePresenterProtocol?
     
+    var headerView = UIView()
     var mainHeaderView = UIView()
     var randomImageView = UIImageView()
     var segmentedScrollView = UIScrollView()
@@ -28,7 +29,6 @@ class HomeViewController: UIViewController {
                   "쁘띠16", "쁘띠17", "쁘띠18", "쁘띠19", "쁘띠20",
                   "쁘띠21", "쁘띠22", "쁘띠23", "쁘띠24", "쁘띠25",
                   "쁘띠26", "쁘띠27", "쁘띠28", "쁘띠29", "쁘띠30"]
-    
     var textColor: UIColor = .black
     var selectroViewColor: UIColor = .red
     var selectorTextColor: UIColor = .red
@@ -51,15 +51,17 @@ class HomeViewController: UIViewController {
     
     func attribute() {
         view.addSubview(homeTableView)
+        headerView.addSubview(segmentedScrollView)
         segmentedScrollView.addSubview(segmentedScrollContentView)
         segmentedScrollContentView.addSubview(segmentedStackView)
         
         homeTableView.do {
+            $0.separatorStyle = .none
             $0.dataSource = self
             $0.delegate = self
             $0.frame = view.bounds
             $0.backgroundColor = .systemBlue
-            $0.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+            $0.register(HomeTableViewCell.self, forCellReuseIdentifier: HomeTableViewCell.identifier)
         }
         
         mainHeaderView.do {
@@ -67,12 +69,13 @@ class HomeViewController: UIViewController {
         }
         
         randomImageView.do {
-            $0.image = UIImage(named: "chu4")
+            $0.image = UIImage(named: "p4")
         }
         
         segmentedScrollView.do {
             $0.backgroundColor = .systemPink
             $0.contentSize = CGSize(width: 840, height: 70)
+            $0.showsHorizontalScrollIndicator = false
         }
         
         segmentedStackView.do {
@@ -100,7 +103,6 @@ class HomeViewController: UIViewController {
     }
     
     func layout() {
-        // 뷰 생성타이밍이 동시에 생기게 끔 해줘야된다. 그래야 cell들이 안짤린다.
         homeTableView.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
             $0.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
@@ -141,6 +143,17 @@ class HomeViewController: UIViewController {
 }
 
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: HomeTableViewCell.identifier,
+                                                 for: indexPath)
+        cell.textLabel?.text = models[indexPath.row]
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 390
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
@@ -154,12 +167,6 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         default:
             return 0
         }
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = models[indexPath.row]
-        return cell
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -178,27 +185,16 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         case 0:
             return randomImageView
         case 1:
-            let headerView = UIView()
-            headerView.backgroundColor = .brown
-            headerView.addSubview(segmentedScrollView)
             return headerView
         default:
             return nil
         }
-    }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        presenter?.homeScrollViewDidScroll()
     }
 }
 
 extension HomeViewController: HomeViewProtocol {
     func showChu(chu: [UIImage?]) {
         print(chu)
-    }
-    
-    func fixedHomeHeaderView() {
-        
     }
     
     func refershCalender(tag: Int) {
