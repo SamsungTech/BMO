@@ -14,6 +14,8 @@ class HomePresenter: HomePresenterProtocol {
     
     func viewDidLoad() {
         interacter?.getDogImage()
+        interacter?.getDate()
+        interacter?.getImageContent()
     }
     
     func showMemo(for name: String) {

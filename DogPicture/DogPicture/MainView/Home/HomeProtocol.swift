@@ -36,6 +36,8 @@ protocol HomeInteracterInputProtocol: AnyObject {
     var presenter: HomeInteracterOutputProtocol? { get set }
     
     func getDogImage()
+    func getDate()
+    func getImageContent()
 }
 
 protocol HomeInteracterOutputProtocol: AnyObject {

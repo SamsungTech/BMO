@@ -34,6 +34,10 @@ class HomeViewController: UIViewController {
     
     var tagNumber = 0
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter?.viewDidLoad()
@@ -145,7 +149,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: HomeTableViewCell.identifier) as! HomeTableViewCell
         cell.cellImageView.image = dogImageHolder[indexPath.row]
         cell.imageDate.text = imageDateString[indexPath.row]
-//        cell.imageContent.text = imageContentString[indexPath.row]
+        cell.imageContent.text = imageContentString[indexPath.row]
         return cell
     }
     

@@ -39,12 +39,14 @@ class HomeTableViewCell: UITableViewCell {
             $0.viewShadow(view: cardView)
         }
         imageDate.do {
-            $0.tintColor = .darkGray
+            $0.tintColor = .lightGray
             $0.font = UIFont.boldSystemFont(ofSize: 15)
+            $0.text = "2021년 9월 10일"
         }
         imageContent.do {
             $0.tintColor = .black
             $0.font = UIFont.boldSystemFont(ofSize: 20)
+            $0.text = "얼빡샷~"
         }
         layout()
     }
