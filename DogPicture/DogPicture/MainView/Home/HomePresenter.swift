@@ -30,10 +30,11 @@ extension HomePresenter: HomeInteracterOutputProtocol {
         view?.showImages(images: images)
     }
     
-    func didRetrieveImage(_ images: [String]) {
-        print(images)
+    func retrivedImageDate(date: [String]) {
+        view?.showImagesDate(date: date)
     }
     
-    func onError() {
+    func retrivedImageContent(content: [String]) {
+        view?.showImagesContent(content: content)
     }
 }

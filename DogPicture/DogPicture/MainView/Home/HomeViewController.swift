@@ -24,6 +24,9 @@ class HomeViewController: UIViewController {
     var homeTableView = UITableView()
     var dogImageHolder: [UIImage] = []
     var dogImageString: [String] = []
+    var imageDateString: [String] = []
+    var imageContentString: [String] = []
+    
     
     var textColor: UIColor = .black
     var selectroViewColor: UIColor = .red
@@ -100,7 +103,7 @@ class HomeViewController: UIViewController {
     func layout() {
         homeTableView.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
-            $0.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+            $0.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
             $0.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
             $0.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
             $0.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
@@ -141,11 +144,13 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: HomeTableViewCell.identifier) as! HomeTableViewCell
         cell.cellImageView.image = dogImageHolder[indexPath.row]
+        cell.imageDate.text = imageDateString[indexPath.row]
+//        cell.imageContent.text = imageContentString[indexPath.row]
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 390
+        return 460
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -198,6 +203,18 @@ extension HomeViewController: HomeViewProtocol {
             guard let dogImages = UIImage(named: name) else { return }
             dogImageString.append(name)
             dogImageHolder.append(dogImages)
+        }
+    }
+    
+    func showImagesDate(date: [String]) {
+        for name in date {
+            imageDateString.append(name)
+        }
+    }
+    
+    func showImagesContent(content: [String]) {
+        for name in content {
+            imageContentString.append(name)
         }
     }
     

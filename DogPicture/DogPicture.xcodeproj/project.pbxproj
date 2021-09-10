@@ -20,7 +20,7 @@
 		0B73461A2686F6F8007CE6CF /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7346192686F6F8007CE6CF /* Image.swift */; };
 		0B734631268CA2C7007CE6CF /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B734630268CA2C7007CE6CF /* TabViewController.swift */; };
 		0BD2208A26E776B10064A8F6 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD2208926E776B10064A8F6 /* HomeTableViewCell.swift */; };
-		0BD2208C26E99F960064A8F6 /* Memo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD2208B26E99F960064A8F6 /* Memo.swift */; };
+		0BD2208C26E99F960064A8F6 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD2208B26E99F960064A8F6 /* Models.swift */; };
 		0BF238362660C2EE007E48AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF238352660C2EE007E48AC /* AppDelegate.swift */; };
 		0BF238382660C2EE007E48AC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF238372660C2EE007E48AC /* SceneDelegate.swift */; };
 		0BF238402660C2EE007E48AC /* DogPicture.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0BF2383E2660C2EE007E48AC /* DogPicture.xcdatamodeld */; };
@@ -53,7 +53,7 @@
 		0B7346192686F6F8007CE6CF /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		0B734630268CA2C7007CE6CF /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		0BD2208926E776B10064A8F6 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
-		0BD2208B26E99F960064A8F6 /* Memo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memo.swift; sourceTree = "<group>"; };
+		0BD2208B26E99F960064A8F6 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		0BF238322660C2EE007E48AC /* DogPicture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DogPicture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BF238352660C2EE007E48AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0BF238372660C2EE007E48AC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -122,8 +122,8 @@
 		0B73461B2686F700007CE6CF /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				0BD2208B26E99F960064A8F6 /* Models.swift */,
 				0B7346192686F6F8007CE6CF /* Image.swift */,
-				0BD2208B26E99F960064A8F6 /* Memo.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -351,7 +351,7 @@
 				0B51B20026A8210E00216054 /* CameraInteracter.swift in Sources */,
 				0BF2384F2660D5BE007E48AC /* HomeViewController.swift in Sources */,
 				0BF238592660D64D007E48AC /* MemoViewController.swift in Sources */,
-				0BD2208C26E99F960064A8F6 /* Memo.swift in Sources */,
+				0BD2208C26E99F960064A8F6 /* Models.swift in Sources */,
 				0BF2385D2660D693007E48AC /* MemoViewRouter.swift in Sources */,
 				0B73461526861D98007CE6CF /* SettingPresenter.swift in Sources */,
 				0B51B20126A8210E00216054 /* CameraProtocol.swift in Sources */,

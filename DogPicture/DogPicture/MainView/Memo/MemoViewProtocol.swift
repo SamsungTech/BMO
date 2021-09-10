@@ -31,7 +31,7 @@ protocol MemoViewPresenterProtocol: AnyObject {
 
 protocol MemoViewInteracterInputProtocol: AnyObject {
     var presenter: MemoViewInteracterOutputProtocol? { get set }
-    func getAllItems()
+    
 }
 
 protocol MemoViewInteracterOutputProtocol: AnyObject {

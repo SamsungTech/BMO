@@ -11,6 +11,8 @@ protocol HomeViewProtocol: AnyObject {
     var presenter: HomePresenterProtocol? { get set }
     
     func showImages(images: [String])
+    func showImagesDate(date: [String])
+    func showImagesContent(content: [String])
     func refershCalender(tag: Int)
 }
 
@@ -38,4 +40,6 @@ protocol HomeInteracterInputProtocol: AnyObject {
 
 protocol HomeInteracterOutputProtocol: AnyObject {
     func retrivedDogImage(images: [String])
+    func retrivedImageDate(date: [String])
+    func retrivedImageContent(content: [String])
 }

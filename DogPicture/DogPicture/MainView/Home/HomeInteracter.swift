@@ -6,12 +6,16 @@
 //
 
 class HomeInteracter: HomeInteracterInputProtocol {
-    
-    
     weak var presenter: HomeInteracterOutputProtocol?
+    let dogImages = Models.shared.getDogImageList()
     
     func getDogImage() {
-        let dogImages = Image.shared.getDogImageList()
         presenter?.retrivedDogImage(images: dogImages)
+    }
+    func getDate() {
+        presenter?.retrivedImageDate(date: dogImages)
+    }
+    func getImageContent() {
+        presenter?.retrivedImageContent(content: dogImages)
     }
 }
