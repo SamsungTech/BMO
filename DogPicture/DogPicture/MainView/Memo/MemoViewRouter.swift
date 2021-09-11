@@ -8,6 +8,7 @@
 import UIKit
 
 class MemoViewRouter: MemoViewRouterProtocol {
+    
     static func createMemoViewRouter(from name: String) -> UIViewController {
         if let view: MemoViewProtocol = MemoViewController() as? MemoViewProtocol {
             let presenter: MemoViewPresenterProtocol & MemoViewInteracterOutputProtocol = MemoViewPresenter()
@@ -21,12 +22,10 @@ class MemoViewRouter: MemoViewRouterProtocol {
             presenter.interacter = interacter
             interacter.presenter = presenter
             
-            
             if let MemoView = view as? UIViewController {
                 return MemoView
             }
         }
         return UIViewController()
     }
-    
 }

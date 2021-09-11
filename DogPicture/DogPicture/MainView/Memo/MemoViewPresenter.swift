@@ -6,6 +6,7 @@
 //
 
 class MemoViewPresenter: MemoViewPresenterProtocol {
+    
     weak var view: MemoViewProtocol?
     var interacter: MemoViewInteracterInputProtocol?
     var router: MemoViewRouterProtocol?

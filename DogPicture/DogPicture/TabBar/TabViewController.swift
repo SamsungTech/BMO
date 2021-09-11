@@ -372,14 +372,6 @@ extension TabViewController {
             }
         })
     }
-    
-    func animationWhenRollingTabBarItemFromLeftside(button: UIButton) {
-        
-    }
-    
-    func animationWhenRollingTabBarItemFromLightside(button: UIButton) {
-        
-    }
 }
 
 
