@@ -11,19 +11,18 @@ class MemoViewController: UIViewController {
     var presenter: MemoViewPresenterProtocol?
     
     var dogImage = UIImageView()
+    var mainView = UIView()
     var memoStackView = UIStackView()
-    let backButton = UIButton()
+    var memoTextView = UITextField()
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        attribute()
-//        updateView()
-    }
+    let saveButton = UIButton()
+    let backButton = UIButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter?.viewDidLoad()
         view.backgroundColor = .white
+        attribute()
         layout()
     }
     
@@ -31,20 +30,26 @@ class MemoViewController: UIViewController {
         return true
     }
     
-    func updateView() {
-        attribute()
-        layout()
-    }
+//    func updateView() {
+//        attribute()
+//        layout()
+//    }
     
     func attribute() {
-        view.addSubview(memoStackView)
+        [ memoStackView ].forEach() { view.addSubview($0) }
         [ dogImage, backButton ] .forEach() { memoStackView.addSubview($0) }
         
         memoStackView.do {
-            $0.backgroundColor = .systemBlue
+            $0.backgroundColor = .systemGreen
+            $0.axis = .vertical
+            $0.alignment = .fill
+            $0.distribution = .fillEqually
         }
         dogImage.do {
             $0.backgroundColor = .systemPink
+        }
+        saveButton.do {
+            $0.backgroundColor = .systemRed
         }
         backButton.do {
             $0.tintColor = .systemGray6
@@ -55,32 +60,32 @@ class MemoViewController: UIViewController {
     
     func layout() {
         memoStackView.do {
-            $0.translatesAutoresizingMaskIntoConstraints = true
+            $0.translatesAutoresizingMaskIntoConstraints = false
             $0.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
             $0.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-//            $0.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-//            $0.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+            $0.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+            $0.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         }
-//
-//        dogImage.do {
-//            $0.translatesAutoresizingMaskIntoConstraints = false
-//            $0.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-//            $0.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-//            $0.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-//            $0.bottomAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-//        }
-//
-//        backButton.do {
-//            $0.translatesAutoresizingMaskIntoConstraints = false
-//            $0.topAnchor.constraint(equalTo: view.topAnchor, constant: 20).isActive = true
-//            $0.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
-//            $0.widthAnchor.constraint(equalToConstant: 50).isActive = true
-//            $0.heightAnchor.constraint(equalToConstant: 50).isActive = true
-//        }
+
+        dogImage.do {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+            $0.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+            $0.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+            $0.bottomAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        }
+
+        backButton.do {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.topAnchor.constraint(equalTo: view.topAnchor, constant: 20).isActive = true
+            $0.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
+            $0.widthAnchor.constraint(equalToConstant: 50).isActive = true
+            $0.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        }
     }
     
     @objc func backButtonDidTap(sender: UIButton) {
-        
+        presenter?.memoViewDismiss()
     }
 }
 
@@ -89,4 +94,7 @@ extension MemoViewController: MemoViewProtocol {
         dogImage.image = UIImage(named: name)
     }
     
+    func backButtonDidTap() {
+        self.dismiss(animated: true, completion: nil) // 라우터로 돌아가 ^^
+    }
 }

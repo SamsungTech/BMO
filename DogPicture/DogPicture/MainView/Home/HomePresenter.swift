@@ -17,11 +17,9 @@ class HomePresenter: HomePresenterProtocol {
         interacter?.getDate()
         interacter?.getImageContent()
     }
-    
     func showMemo(for name: String) {
         router?.presentMemoScreen(from: view!, forname: name)
     }
-    
     func calenderDidTap(tag: Int) {
         view?.refershCalender(tag: tag)
     }
@@ -31,11 +29,9 @@ extension HomePresenter: HomeInteracterOutputProtocol {
     func retrivedDogImage(images: [String]) {
         view?.showImages(images: images)
     }
-    
     func retrivedImageDate(date: [String]) {
         view?.showImagesDate(date: date)
     }
-    
     func retrivedImageContent(content: [String]) {
         view?.showImagesContent(content: content)
     }

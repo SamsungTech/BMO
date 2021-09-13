@@ -4,6 +4,7 @@
 //
 //  Created by 김동우 on 2021/05/28.
 //
+import Foundation
 
 class MemoViewPresenter: MemoViewPresenterProtocol {
     
@@ -14,6 +15,9 @@ class MemoViewPresenter: MemoViewPresenterProtocol {
     
     func viewDidLoad() {
         view?.showMemoView(forImage: name ?? "")
+    }
+    func memoViewDismiss() {
+        router?.dismissHomeViewController(from: view! as! HomeViewProtocol)
     }
 }
 

@@ -23,62 +23,18 @@ class TabViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tabBar.isHidden = true
-        createCustomTabBarController()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         createTabBarItemsAttribute()
-        createTabItem()
-    }
-    
-    func createCustomTabBarController() {
-        self.createCustomTabBarItem(btn: self.homeButton, title: "첫번째 버튼", tag: 0)
-        self.createCustomTabBarItem(btn: self.cameraButton, title: "두번째 버튼", tag: 1)
-        self.createCustomTabBarItem(btn: self.settingButton, title: "세번째 버튼", tag: 2)
-    }
-    
-    func createCustomTabBarItem(btn: UIButton, title: String, tag: Int) {
-        btn.tag = tag
-        btn.setTitleColor(.white, for: .normal)
-        btn.setTitleColor(.yellow, for: .selected)
-        btn.addTarget(self, action: #selector(onTabBarItemClick(_:)), for: .touchUpInside)
-    }
-    
-    func createTabItem() {
-        guard let tabHomeImage = UIImage(systemName: "house"),
-              let tabHomeSelectedImage = UIImage(systemName: "house.fill"),
-              let tabCameraImage = UIImage(systemName: "camera"),
-              let tabCameraSelectedImage = UIImage(systemName: "camera.fill"),
-              let tabPersonImage = UIImage(systemName: "person"),
-              let tabPersonSelectedImage = UIImage(systemName: "person.fill"),
-              let tabSettingImage = UIImage(systemName: "gearshape"),
-              let tabSettingSelectedIamge = UIImage(systemName: "gearshape.fill") else { return }
-        
-        let tabHome = generateNavigationControllerAndTabBarController(vc: HomeViewRouter.createHomeModule(),
-                                        title: "Tab_Home",
-                                        image: tabHomeImage,
-                                        selectedImage: tabHomeSelectedImage)
-        let tabCamera = generateNavigationControllerAndTabBarController(vc: CameraRouter.createCameraModule(),
-                                          title: "Tab_Camera",
-                                          image: tabCameraImage,
-                                          selectedImage: tabCameraSelectedImage)
-        let tabPerson = generateNavigationControllerAndTabBarController(vc: person,
-                                          title: "PersonView",
-                                          image: tabPersonImage,
-                                          selectedImage: tabPersonSelectedImage)
-        let tabSetting = generateNavigationControllerAndTabBarController(vc: SettingViewController(),
-                                          title: "SettingView",
-                                          image: tabSettingImage,
-                                          selectedImage: tabSettingSelectedIamge)
-        
-        self.setViewControllers([tabHome, tabCamera, tabPerson, tabSetting], animated: false)
     }
     
     func createTabBarItemsAttribute() {
-        
         [ centerView, centerButton, homeButton, cameraButton, libraryButton, settingButton ]
             .forEach() { view.addSubview($0) }
+        
+        self.setViewControllers([HomeViewRouter.createHomeModule(),
+                                 CameraRouter.createCameraModule(),
+                                 person,
+                                 SettingViewController()],
+                                animated: false)
         
         centerView.do {
             $0.backgroundColor = .darkGray
@@ -107,6 +63,7 @@ class TabViewController: UITabBarController {
                                               right: UIScreen.main.bounds.maxX*(60/390))
         }
         homeButton.do {
+            $0.tag = 0
             $0.setImage(UIImage(systemName: "house"), for: .normal)
             $0.setImage(UIImage(systemName: "house.fill"), for: .selected)
             $0.tintColor = .white
@@ -114,6 +71,7 @@ class TabViewController: UITabBarController {
             $0.viewShadow(view: $0)
             $0.alpha = 0.0
             $0.isHidden = true
+            $0.addTarget(self, action: #selector(onTabBarItemClick(_:)), for: .touchUpInside)
             $0.frame = CGRect(x: UIScreen.main.bounds.maxX*(30/390),
                               y: UIScreen.main.bounds.maxY*(9.1/10),
                               width: UIScreen.main.bounds.maxX*(55/390),
@@ -125,6 +83,7 @@ class TabViewController: UITabBarController {
                                               right: UIScreen.main.bounds.maxX*(45/390))
         }
         cameraButton.do {
+            $0.tag = 1
             $0.setImage(UIImage(systemName: "camera"), for: .normal)
             $0.setImage(UIImage(systemName: "camera.fill"), for: .selected)
             $0.tintColor = .white
@@ -132,6 +91,7 @@ class TabViewController: UITabBarController {
             $0.viewShadow(view: $0)
             $0.alpha = 0.0
             $0.isHidden = true
+            $0.addTarget(self, action: #selector(onTabBarItemClick(_:)), for: .touchUpInside)
             $0.frame = CGRect(x: UIScreen.main.bounds.maxX*(93.75/390),
                               y: UIScreen.main.bounds.maxY*(9.1/10),
                               width: UIScreen.main.bounds.maxX*(55/390),
@@ -143,6 +103,7 @@ class TabViewController: UITabBarController {
                                               right: UIScreen.main.bounds.maxX*(45/390))
         }
         libraryButton.do {
+            $0.tag = 2
             $0.setImage(UIImage(systemName: "rectangle.3.offgrid"), for: .normal)
             $0.setImage(UIImage(systemName: "rectangle.3.offgrid.fill"), for: .selected)
             $0.tintColor = .white
@@ -150,6 +111,7 @@ class TabViewController: UITabBarController {
             $0.viewShadow(view: $0)
             $0.alpha = 0.0
             $0.isHidden = true
+            $0.addTarget(self, action: #selector(onTabBarItemClick(_:)), for: .touchUpInside)
             $0.frame = CGRect(x: UIScreen.main.bounds.maxX*(236.25/390),
                               y: UIScreen.main.bounds.maxY*(9.1/10),
                               width: UIScreen.main.bounds.maxX*(55/390),
@@ -161,6 +123,7 @@ class TabViewController: UITabBarController {
                                               right: UIScreen.main.bounds.maxX*(45/390))
         }
         settingButton.do {
+            $0.tag = 3
             $0.setImage(UIImage(systemName: "gearshape"), for: .normal)
             $0.setImage(UIImage(systemName: "gearshape.fill"), for: .selected)
             $0.tintColor = .white
@@ -168,6 +131,7 @@ class TabViewController: UITabBarController {
             $0.viewShadow(view: $0)
             $0.alpha = 0.0
             $0.isHidden = true
+            $0.addTarget(self, action: #selector(onTabBarItemClick(_:)), for: .touchUpInside)
             $0.frame = CGRect(x: UIScreen.main.bounds.maxX*(305/390),
                               y: UIScreen.main.bounds.maxY*(9.1/10),
                               width: UIScreen.main.bounds.maxX*(55/390),
@@ -180,20 +144,7 @@ class TabViewController: UITabBarController {
         }
     }
     
-    fileprivate func generateNavigationControllerAndTabBarController(vc: UIViewController,
-                                                                     title: String,
-                                                                     image: UIImage,
-                                                                     selectedImage: UIImage) -> UINavigationController {
-        let item = UITabBarItem(title: title, image: image, selectedImage: selectedImage)
-        let navigationController = UINavigationController(rootViewController: vc)
-        navigationController.title = title
-        navigationController.tabBarItem.image = image
-        navigationController.tabBarItem.selectedImage = selectedImage
-        navigationController.tabBarItem.image?.withTintColor(.white)
-        vc.navigationItem.title = title
-        vc.tabBarItem = item
-        return navigationController
-    }
+    
     
     @objc func onTabBarItemClick(_ sender: UIButton) {
         homeButton.isSelected = false
