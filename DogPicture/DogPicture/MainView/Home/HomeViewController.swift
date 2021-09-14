@@ -34,10 +34,6 @@ class HomeViewController: UIViewController {
     
     var tagNumber = 0
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter?.viewDidLoad()

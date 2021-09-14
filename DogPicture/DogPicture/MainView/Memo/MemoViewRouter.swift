@@ -28,7 +28,7 @@ class MemoViewRouter: MemoViewRouterProtocol {
         }
         return UIViewController()
     }
-    func dismissHomeViewController(from view: HomeViewProtocol) {
+    func dismissMemoViewController(from view: MemoViewProtocol) {
         if let memoView = view as? UIViewController {
             memoView.dismiss(animated: true, completion: nil)
         }

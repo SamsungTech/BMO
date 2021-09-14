@@ -173,7 +173,7 @@ class TabViewController: UITabBarController {
         if (isCenterButtonExpanded == false) {
             view.isUserInteractionEnabled = true
             animateCenterTabViewShakeWhenCenterTabViewExpanded(view: self.centerView)
-            animationThatRotatingCenterButtonWhenCenterViewExpands(button: centerButton)
+            animateRotatingCenterButtonWhenCenterViewExpands(button: centerButton)
             animateSpinAndShakeTabBarItemWhenTabViewExpanded(button: homeButton)
             animateSpinAndShakeTabBarItemWhenTabViewExpanded(button: cameraButton)
             animateSpinAndShakeTabBarItemWhenTabViewExpanded(button: libraryButton)
@@ -201,7 +201,7 @@ class TabViewController: UITabBarController {
 
 extension TabViewController {
     
-    func animationThatRotatingCenterButtonWhenCenterViewExpands(button: UIButton) {
+    func animateRotatingCenterButtonWhenCenterViewExpands(button: UIButton) {
         UIView.animateKeyframes(withDuration: 0.9, delay: 0.1, options: [], animations: {
             UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.25) {
                 button.transform = CGAffineTransform(rotationAngle: (180.0 * .pi) / 180)
@@ -241,20 +241,28 @@ extension TabViewController {
                                             y: UIScreen.main.bounds.maxY*(9/10),
                                             width: UIScreen.main.bounds.maxX*(70/390),
                                             height: UIScreen.main.bounds.maxY*(70/844))
-                        UIView.animateKeyframes(withDuration: 1, delay: 0.1, options: [], animations: {
-                            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.6) {
+                        UIView.animateKeyframes(withDuration: 1,
+                                                delay: 0.1,
+                                                options: [],
+                                                animations: {
+                            UIView.addKeyframe(withRelativeStartTime: 0,
+                                               relativeDuration: 0.6) {
                                 button.transform = CGAffineTransform.identity
                             }
-                            UIView.addKeyframe(withRelativeStartTime: 0.60, relativeDuration: 0.1) {
+                            UIView.addKeyframe(withRelativeStartTime: 0.60,
+                                               relativeDuration: 0.1) {
                                 button.transform = CGAffineTransform(rotationAngle: (5.0 * .pi) / 180)
                             }
-                            UIView.addKeyframe(withRelativeStartTime: 0.7, relativeDuration: 0.1) {
+                            UIView.addKeyframe(withRelativeStartTime: 0.7,
+                                               relativeDuration: 0.1) {
                                 button.transform = CGAffineTransform(rotationAngle: -(5.0 * .pi) / 180)
                             }
-                            UIView.addKeyframe(withRelativeStartTime: 0.8, relativeDuration: 0.1) {
+                            UIView.addKeyframe(withRelativeStartTime: 0.8,
+                                               relativeDuration: 0.1) {
                                 button.transform = CGAffineTransform(rotationAngle: (3.0 * .pi) / 180)
                             }
-                            UIView.addKeyframe(withRelativeStartTime: 0.9, relativeDuration: 0.1) {
+                            UIView.addKeyframe(withRelativeStartTime: 0.9,
+                                               relativeDuration: 0.1) {
                                 button.transform = CGAffineTransform.identity
                             }
                         })

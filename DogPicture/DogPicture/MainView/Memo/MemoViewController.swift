@@ -22,18 +22,17 @@ class MemoViewController: UIViewController {
         super.viewDidLoad()
         presenter?.viewDidLoad()
         view.backgroundColor = .white
-        attribute()
-        layout()
+        updateView()
     }
     
     override var prefersStatusBarHidden: Bool {
         return true
     }
     
-//    func updateView() {
-//        attribute()
-//        layout()
-//    }
+    func updateView() {
+        attribute()
+        layout()
+    }
     
     func attribute() {
         [ memoStackView ].forEach() { view.addSubview($0) }
@@ -92,9 +91,5 @@ class MemoViewController: UIViewController {
 extension MemoViewController: MemoViewProtocol {
     func showMemoView(forImage name: String) {
         dogImage.image = UIImage(named: name)
-    }
-    
-    func backButtonDidTap() {
-        self.dismiss(animated: true, completion: nil) // 라우터로 돌아가 ^^
     }
 }

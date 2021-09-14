@@ -18,7 +18,8 @@ class HomePresenter: HomePresenterProtocol {
         interacter?.getImageContent()
     }
     func showMemo(for name: String) {
-        router?.presentMemoScreen(from: view!, forname: name)
+        guard let view = view else { return }
+        router?.presentMemoScreen(from: view, forname: name)
     }
     func calenderDidTap(tag: Int) {
         view?.refershCalender(tag: tag)

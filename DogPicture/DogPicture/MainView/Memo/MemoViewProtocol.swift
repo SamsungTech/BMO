@@ -15,7 +15,8 @@ protocol MemoViewProtocol: AnyObject {
 
 protocol MemoViewRouterProtocol: AnyObject {
     static func createMemoViewRouter(from post: String) -> UIViewController
-    func dismissHomeViewController(from view: HomeViewProtocol)
+    
+    func dismissMemoViewController(from view: MemoViewProtocol)
 }
 
 protocol MemoViewPresenterProtocol: AnyObject {

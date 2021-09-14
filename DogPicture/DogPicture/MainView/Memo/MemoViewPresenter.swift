@@ -17,7 +17,8 @@ class MemoViewPresenter: MemoViewPresenterProtocol {
         view?.showMemoView(forImage: name ?? "")
     }
     func memoViewDismiss() {
-        router?.dismissHomeViewController(from: view! as! HomeViewProtocol)
+        guard let view = view else { return }
+        router?.dismissMemoViewController(from: view)
     }
 }
 
