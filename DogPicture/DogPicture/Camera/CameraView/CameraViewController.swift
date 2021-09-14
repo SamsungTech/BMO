@@ -20,6 +20,7 @@ class CameraViewController: UIViewController {
     
     var cameraPreviewLayer: AVCaptureVideoPreviewLayer?
     
+    var photoImage: UIImage?
     
     let captureButton = UIButton()
     let cameraPreview = UIImageView()
@@ -28,10 +29,8 @@ class CameraViewController: UIViewController {
         super.viewDidLoad()
         updateView()
         self.view.backgroundColor = .white
-        
+        view.bringSubviewToFront(captureButton)
         updateCameraView()
-        
-        
     }
     
     override var prefersStatusBarHidden: Bool {
@@ -55,8 +54,6 @@ class CameraViewController: UIViewController {
                                                                       mediaType: AVMediaType.video,
                                                                       position: AVCaptureDevice.Position.unspecified)
         let devices = deviceDiscoverySession.devices
-        print(devices)
-        
         for device in devices {
             if device.position == AVCaptureDevice.Position.back {
                 backCamera = device
@@ -69,11 +66,16 @@ class CameraViewController: UIViewController {
     
     func setupInputOutput() {
         do {
-            guard let currentCamera = currentCamera else { return }
-            let captureDeviceInput = try AVCaptureDeviceInput(device: currentCamera)
-            captureSession.addInput(captureDeviceInput)
+            if let currentCamera = currentCamera {
+                let captureDeviceInput = try AVCaptureDeviceInput(device: currentCamera)
+                captureSession.addInput(captureDeviceInput)
+            }
+            photoOutput = AVCapturePhotoOutput()
             photoOutput?.setPreparedPhotoSettingsArray([AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])],
                                                       completionHandler: nil)
+            if let photoOutput = photoOutput {
+                captureSession.addOutput(photoOutput)
+            }
         } catch {
             print(error)
         }
@@ -84,8 +86,10 @@ class CameraViewController: UIViewController {
         cameraPreviewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
         cameraPreviewLayer?.connection?.videoOrientation = AVCaptureVideoOrientation.portrait
         cameraPreviewLayer?.frame = CGRect(x: 0, y: 0, width: self.view.frame.maxX, height: self.view.frame.maxY)
-        guard let cameraPreviewLayer = cameraPreviewLayer else { return }
-        self.view.layer.insertSublayer(cameraPreviewLayer, at: 0)
+        
+        if let cameraPreviewLayer = cameraPreviewLayer {
+            self.view.layer.insertSublayer(cameraPreviewLayer, at: 0)
+        }
         
     }
     
@@ -102,7 +106,6 @@ class CameraViewController: UIViewController {
         [ captureButton ].forEach() { view.addSubview($0) }
         
         captureButton.do {
-            view.bringSubviewToFront(captureButton)
             $0.layer.cornerRadius = 50
             $0.layer.borderWidth = 10
             $0.layer.borderColor = UIColor.white.cgColor
@@ -121,7 +124,20 @@ class CameraViewController: UIViewController {
     }
     
     @objc func captureButtonDidTap(sender: UIButton) {
+        let settings = AVCapturePhotoSettings()
+        photoOutput?.capturePhoto(with: settings, delegate: self)
         presenter?.showPreview()
+    }
+}
+
+extension CameraViewController: AVCapturePhotoCaptureDelegate {
+    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+        if let imageData = photo.fileDataRepresentation() {
+            print(imageData)
+            photoImage = UIImage(data: imageData)
+            performSegue(withIdentifier: <#T##String#>, sender: <#T##Any?#>)
+            // 여기서 PreviewViewController 에 있는 captureImageView까지 데이터를 이동시켜야 된다.
+        }
     }
 }
 
