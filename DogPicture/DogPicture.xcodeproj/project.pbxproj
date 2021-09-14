@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B2DFE3226F0CB6F002D533B /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2DFE3126F0CB6F002D533B /* PreviewViewController.swift */; };
+		0B2DFE3426F0CB8B002D533B /* PreviewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2DFE3326F0CB8B002D533B /* PreviewPresenter.swift */; };
+		0B2DFE3626F0CB9C002D533B /* PreviewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2DFE3526F0CB9C002D533B /* PreviewProtocol.swift */; };
+		0B2DFE3826F0CBAB002D533B /* PreviewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2DFE3726F0CBAB002D533B /* PreviewRouter.swift */; };
+		0B2DFE3A26F0CBBD002D533B /* PreviewInteracter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2DFE3926F0CBBD002D533B /* PreviewInteracter.swift */; };
 		0B51B1FE26A8210E00216054 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B51B1F926A8210E00216054 /* CameraViewController.swift */; };
 		0B51B1FF26A8210E00216054 /* CameraRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B51B1FA26A8210E00216054 /* CameraRouter.swift */; };
 		0B51B20026A8210E00216054 /* CameraInteracter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B51B1FB26A8210E00216054 /* CameraInteracter.swift */; };
@@ -40,6 +45,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B2DFE3126F0CB6F002D533B /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
+		0B2DFE3326F0CB8B002D533B /* PreviewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewPresenter.swift; sourceTree = "<group>"; };
+		0B2DFE3526F0CB9C002D533B /* PreviewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewProtocol.swift; sourceTree = "<group>"; };
+		0B2DFE3726F0CBAB002D533B /* PreviewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewRouter.swift; sourceTree = "<group>"; };
+		0B2DFE3926F0CBBD002D533B /* PreviewInteracter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewInteracter.swift; sourceTree = "<group>"; };
 		0B51B1F926A8210E00216054 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		0B51B1FA26A8210E00216054 /* CameraRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraRouter.swift; sourceTree = "<group>"; };
 		0B51B1FB26A8210E00216054 /* CameraInteracter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraInteracter.swift; sourceTree = "<group>"; };
@@ -88,10 +98,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B2DFE3026F0CB34002D533B /* PreviewView */ = {
+			isa = PBXGroup;
+			children = (
+				0B2DFE3126F0CB6F002D533B /* PreviewViewController.swift */,
+				0B2DFE3326F0CB8B002D533B /* PreviewPresenter.swift */,
+				0B2DFE3526F0CB9C002D533B /* PreviewProtocol.swift */,
+				0B2DFE3726F0CBAB002D533B /* PreviewRouter.swift */,
+				0B2DFE3926F0CBBD002D533B /* PreviewInteracter.swift */,
+			);
+			path = PreviewView;
+			sourceTree = "<group>";
+		};
 		0B73460126834780007CE6CF /* Camera */ = {
 			isa = PBXGroup;
 			children = (
 				0B73462E268B36F9007CE6CF /* CameraView */,
+				0B2DFE3026F0CB34002D533B /* PreviewView */,
 				0B734623268B19C3007CE6CF /* Library */,
 			);
 			path = Camera;
@@ -140,9 +163,9 @@
 			children = (
 				0B51B1F926A8210E00216054 /* CameraViewController.swift */,
 				0B51B1FD26A8210E00216054 /* CameraPresenter.swift */,
-				0B51B1FB26A8210E00216054 /* CameraInteracter.swift */,
-				0B51B1FA26A8210E00216054 /* CameraRouter.swift */,
 				0B51B1FC26A8210E00216054 /* CameraProtocol.swift */,
+				0B51B1FA26A8210E00216054 /* CameraRouter.swift */,
+				0B51B1FB26A8210E00216054 /* CameraInteracter.swift */,
 			);
 			path = CameraView;
 			sourceTree = "<group>";
@@ -354,16 +377,21 @@
 				0BD2208C26E99F960064A8F6 /* Models.swift in Sources */,
 				0BF2385D2660D693007E48AC /* MemoViewRouter.swift in Sources */,
 				0B73461526861D98007CE6CF /* SettingPresenter.swift in Sources */,
+				0B2DFE3226F0CB6F002D533B /* PreviewViewController.swift in Sources */,
 				0B51B20126A8210E00216054 /* CameraProtocol.swift in Sources */,
 				0B734631268CA2C7007CE6CF /* TabViewController.swift in Sources */,
 				0BF2385F2660D6A6007E48AC /* MemoViewProtocol.swift in Sources */,
 				0BF238612660D6CE007E48AC /* MemoViewInteracter.swift in Sources */,
+				0B2DFE3626F0CB9C002D533B /* PreviewProtocol.swift in Sources */,
 				0B51B1FE26A8210E00216054 /* CameraViewController.swift in Sources */,
 				0BF238402660C2EE007E48AC /* DogPicture.xcdatamodeld in Sources */,
+				0B2DFE3826F0CBAB002D533B /* PreviewRouter.swift in Sources */,
 				0BF238362660C2EE007E48AC /* AppDelegate.swift in Sources */,
 				0BF238532660D5EE007E48AC /* HomeProtocol.swift in Sources */,
 				0B73461326861D87007CE6CF /* SettingProtocol.swift in Sources */,
 				0B73460F26861D62007CE6CF /* SettingViewController.swift in Sources */,
+				0B2DFE3426F0CB8B002D533B /* PreviewPresenter.swift in Sources */,
+				0B2DFE3A26F0CBBD002D533B /* PreviewInteracter.swift in Sources */,
 				0B51B20226A8210E00216054 /* CameraPresenter.swift in Sources */,
 				0BF238572660D628007E48AC /* HomeInteracter.swift in Sources */,
 				0B51B1FF26A8210E00216054 /* CameraRouter.swift in Sources */,

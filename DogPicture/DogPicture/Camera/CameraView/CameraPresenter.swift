@@ -8,17 +8,18 @@
 import UIKit
 
 class CameraPresenter: CameraPresenterProtocol {
-    func showCamera() {
-        print("x")
-    }
-    
     weak var view: CameraViewProtocol?
     var interacter: CameraInteracterInputProtocol?
     var router: CameraRouterProtocol?
 
+    func showCamera() {
+        print("x")
+    }
     
-    
-    
+    func showPreview() {
+        guard let view = view else { return }
+        router?.presentPreview(from: view)
+    }
 }
 
 extension CameraPresenter: CameraInteracterOutputProtocol {

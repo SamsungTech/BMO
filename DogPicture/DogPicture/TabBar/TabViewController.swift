@@ -91,7 +91,7 @@ class TabViewController: UITabBarController {
             $0.viewShadow(view: $0)
             $0.alpha = 0.0
             $0.isHidden = true
-            $0.addTarget(self, action: #selector(onTabBarItemClick(_:)), for: .touchUpInside)
+            $0.addTarget(self, action: #selector(cameraViewDidTap(sender:)), for: .touchUpInside)
             $0.frame = CGRect(x: UIScreen.main.bounds.maxX*(93.75/390),
                               y: UIScreen.main.bounds.maxY*(9.1/10),
                               width: UIScreen.main.bounds.maxX*(55/390),
@@ -144,7 +144,27 @@ class TabViewController: UITabBarController {
         }
     }
     
-    
+    @objc func cameraViewDidTap(sender: UIButton) {
+        centerView.isHidden = true
+        centerButton.isHidden = true
+        homeButton.isSelected = false
+        cameraButton.isSelected = false
+        settingButton.isSelected = false
+        sender.isSelected = true
+        animateCenterButtonRotatedAndSmallerAnimation(view: centerView, button: centerButton)
+        selectedIndex = sender.tag
+        homeButton.isHidden = true
+        cameraButton.isHidden = true
+        libraryButton.isHidden = true
+        settingButton.isHidden = true
+        homeButton.alpha = 0.0
+        cameraButton.alpha = 0.0
+        libraryButton.alpha = 0.0
+        settingButton.alpha = 0.0
+        centerView.isUserInteractionEnabled = true
+        view.isUserInteractionEnabled = true
+        isCenterButtonExpanded = false
+    }
     
     @objc func onTabBarItemClick(_ sender: UIButton) {
         homeButton.isSelected = false
@@ -332,6 +352,7 @@ extension TabViewController {
         })
     }
 }
+
 
 
 extension UIView {

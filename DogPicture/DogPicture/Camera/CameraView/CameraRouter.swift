@@ -27,5 +27,12 @@ class CameraRouter: CameraRouterProtocol {
         return UIViewController()
     }
     
+    func presentPreview(from view: CameraViewProtocol) {
+        let previewViewController = PreviewRouter.createPreviewModule()
+        
+        if let preview = view as? UIViewController {
+            preview.present(previewViewController, animated: true, completion: nil)
+        }
+    }
     
 }
