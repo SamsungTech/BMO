@@ -144,3 +144,4 @@ extension CameraViewController: AVCapturePhotoCaptureDelegate {
 extension CameraViewController: CameraViewProtocol {
     
 }
+ 
