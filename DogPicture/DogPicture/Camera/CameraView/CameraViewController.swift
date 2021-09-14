@@ -78,6 +78,3 @@ extension CameraViewController: UIImagePickerControllerDelegate, UINavigationCon
         
     }
 }
-
-
-
