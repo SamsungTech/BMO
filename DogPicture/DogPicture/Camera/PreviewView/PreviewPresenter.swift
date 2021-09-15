@@ -8,10 +8,17 @@
 import Foundation
 
 class PreviewPresenter: PreviewPresenterProtocol {
-    var view: PreviewViewProtocol?
+    weak var view: PreviewViewProtocol?
     var interacter: PreviewInteracterInputProtocol?
     var router: PreviewRouterProtocol?
+    var data: Data?
     
+    func viewDidLoad() {
+        if let data = data {
+            view?.showPreviewImage(forImage: data)
+            print("프레젠터까지 도착했습다",data)
+        }
+    }
     
 }
 

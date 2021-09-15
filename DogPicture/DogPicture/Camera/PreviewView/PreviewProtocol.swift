@@ -9,18 +9,21 @@ import UIKit
 
 protocol PreviewViewProtocol: AnyObject {
     var presenter: PreviewPresenterProtocol? { get set }
+    
+    func showPreviewImage(forImage data: Data)
 }
 
 protocol PreviewRouterProtocol: AnyObject {
-    static func createPreviewModule() -> UIViewController 
+    static func createPreviewModule(forImage data: Data) -> UIViewController
 }
 
 protocol PreviewPresenterProtocol: AnyObject {
     var view: PreviewViewProtocol? { get set }
     var interacter: PreviewInteracterInputProtocol? { get set }
     var router: PreviewRouterProtocol? { get set }
+    var data: Data? { get set }
     
-    
+    func viewDidLoad()
 }
 
 protocol PreviewInteracterInputProtocol: AnyObject {

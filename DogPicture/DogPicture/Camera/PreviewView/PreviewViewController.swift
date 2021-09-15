@@ -8,15 +8,20 @@
 import UIKit
 
 class PreviewViewController: UIViewController {
-    weak var presenter: PreviewPresenterProtocol?
+    var presenter: PreviewPresenterProtocol?
     
     var captureTopBar = UIView()
     var cancelButton = UIButton()
     var saveButton = UIButton()
     var captureImageView = UIImageView()
     
+    var captureImage = UIImage()
+    
+    var captureImageData: Data?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter?.viewDidLoad()
         updateView()
     }
     
@@ -71,8 +76,9 @@ class PreviewViewController: UIViewController {
             $0.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         }
     }
-    
 }
 extension PreviewViewController: PreviewViewProtocol {
-    
+    func showPreviewImage(forImage data: Data) {
+        captureImageView.image = UIImage(data: data)
+    }
 }

@@ -22,6 +22,12 @@ class CameraViewController: UIViewController {
     
     var photoImage: UIImage?
     
+    var data = Data()
+    
+    var photoView = UIImageView()
+    
+    
+    
     let captureButton = UIButton()
     let cameraPreview = UIImageView()
     
@@ -30,6 +36,7 @@ class CameraViewController: UIViewController {
         updateView()
         self.view.backgroundColor = .white
         view.bringSubviewToFront(captureButton)
+        view.bringSubviewToFront(photoView)
         updateCameraView()
     }
     
@@ -90,7 +97,6 @@ class CameraViewController: UIViewController {
         if let cameraPreviewLayer = cameraPreviewLayer {
             self.view.layer.insertSublayer(cameraPreviewLayer, at: 0)
         }
-        
     }
     
     func startRunningCaptureSession() {
@@ -103,13 +109,16 @@ class CameraViewController: UIViewController {
     }
     
     func attribute() {
-        [ captureButton ].forEach() { view.addSubview($0) }
+        [ captureButton, photoView ].forEach() { view.addSubview($0) }
         
         captureButton.do {
             $0.layer.cornerRadius = 50
             $0.layer.borderWidth = 10
             $0.layer.borderColor = UIColor.white.cgColor
             $0.addTarget(self, action: #selector(captureButtonDidTap(sender:)), for: .touchUpInside)
+        }
+        photoView.do {
+            $0.frame = CGRect(x: 0, y: 30, width: 100, height: 100)
         }
     }
     
@@ -126,7 +135,6 @@ class CameraViewController: UIViewController {
     @objc func captureButtonDidTap(sender: UIButton) {
         let settings = AVCapturePhotoSettings()
         photoOutput?.capturePhoto(with: settings, delegate: self)
-        presenter?.showPreview()
     }
 }
 
@@ -134,9 +142,11 @@ extension CameraViewController: AVCapturePhotoCaptureDelegate {
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
         if let imageData = photo.fileDataRepresentation() {
             print(imageData)
+            data = imageData
             photoImage = UIImage(data: imageData)
-            performSegue(withIdentifier: <#T##String#>, sender: <#T##Any?#>)
+            photoView.image = photoImage
             // 여기서 PreviewViewController 에 있는 captureImageView까지 데이터를 이동시켜야 된다.
+            presenter?.showPreview(imageData: data)
         }
     }
 }
@@ -144,4 +154,3 @@ extension CameraViewController: AVCapturePhotoCaptureDelegate {
 extension CameraViewController: CameraViewProtocol {
     
 }
- 

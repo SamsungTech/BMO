@@ -8,6 +8,7 @@
 import UIKit
 
 class CameraPresenter: CameraPresenterProtocol {
+    
     weak var view: CameraViewProtocol?
     var interacter: CameraInteracterInputProtocol?
     var router: CameraRouterProtocol?
@@ -16,9 +17,9 @@ class CameraPresenter: CameraPresenterProtocol {
         print("x")
     }
     
-    func showPreview() {
+    func showPreview(imageData: Data) {
         guard let view = view else { return }
-        router?.presentPreview(from: view)
+        router?.presentPreview(from: view, data: imageData)
     }
 }
 
