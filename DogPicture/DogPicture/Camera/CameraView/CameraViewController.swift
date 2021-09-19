@@ -15,18 +15,10 @@ class CameraViewController: UIViewController {
     var backCamera: AVCaptureDevice?
     var frontCamera: AVCaptureDevice?
     var currentCamera: AVCaptureDevice?
-    
     var photoOutput: AVCapturePhotoOutput?
-    
     var cameraPreviewLayer: AVCaptureVideoPreviewLayer?
-    
     var photoImage: UIImage?
-    
     var data = Data()
-    
-    var photoView = UIImageView()
-    
-    
     
     let captureButton = UIButton()
     let cameraPreview = UIImageView()
@@ -36,7 +28,6 @@ class CameraViewController: UIViewController {
         updateView()
         self.view.backgroundColor = .white
         view.bringSubviewToFront(captureButton)
-        view.bringSubviewToFront(photoView)
         updateCameraView()
     }
     
@@ -109,16 +100,13 @@ class CameraViewController: UIViewController {
     }
     
     func attribute() {
-        [ captureButton, photoView ].forEach() { view.addSubview($0) }
+        [ captureButton ].forEach() { view.addSubview($0) }
         
         captureButton.do {
             $0.layer.cornerRadius = 50
             $0.layer.borderWidth = 10
             $0.layer.borderColor = UIColor.white.cgColor
             $0.addTarget(self, action: #selector(captureButtonDidTap(sender:)), for: .touchUpInside)
-        }
-        photoView.do {
-            $0.frame = CGRect(x: 0, y: 30, width: 100, height: 100)
         }
     }
     
@@ -141,11 +129,7 @@ class CameraViewController: UIViewController {
 extension CameraViewController: AVCapturePhotoCaptureDelegate {
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
         if let imageData = photo.fileDataRepresentation() {
-            print(imageData)
             data = imageData
-            photoImage = UIImage(data: imageData)
-            photoView.image = photoImage
-            // 여기서 PreviewViewController 에 있는 captureImageView까지 데이터를 이동시켜야 된다.
             presenter?.showPreview(imageData: data)
         }
     }

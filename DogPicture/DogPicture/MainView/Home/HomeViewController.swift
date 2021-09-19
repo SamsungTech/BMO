@@ -34,6 +34,10 @@ class HomeViewController: UIViewController {
     
     var tagNumber = 0
     
+    override var prefersStatusBarHidden: Bool {
+        return false
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter?.viewDidLoad()

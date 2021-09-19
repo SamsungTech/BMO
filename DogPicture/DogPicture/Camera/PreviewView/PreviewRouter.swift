@@ -20,7 +20,6 @@ class PreviewRouter: PreviewRouterProtocol {
             presenter.data = data
             presenter.interacter = interacter
             interacter.presenter = presenter
-            print("Router까지 왔습다~",data)
             
             if let previewView = view as? UIViewController {
                 return previewView
@@ -28,5 +27,12 @@ class PreviewRouter: PreviewRouterProtocol {
             
         }
         return UIViewController()
+    }
+    
+    func presentHomeScreen(from view: PreviewViewProtocol) {
+        let homeView = HomeViewRouter.createHomeModule()
+        if let view = view as? UIViewController {
+            view.present(homeView, animated: false, completion: nil)
+        }
     }
 }

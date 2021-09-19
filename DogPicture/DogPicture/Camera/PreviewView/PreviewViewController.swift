@@ -54,6 +54,7 @@ class PreviewViewController: UIViewController {
                               y: 10,
                               width: 50,
                               height: 50)
+            $0.addTarget(self, action: #selector(saveButtonDidTap(sender:)), for: .touchUpInside)
         }
         captureImageView.do {
             $0.backgroundColor = .black
@@ -75,6 +76,12 @@ class PreviewViewController: UIViewController {
             $0.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
             $0.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         }
+    }
+    
+    @objc func saveButtonDidTap(sender: UIButton) {
+        presenter?.handOverImageData()
+        
+        print("saveButtonDidTap")
     }
 }
 extension PreviewViewController: PreviewViewProtocol {

@@ -16,7 +16,11 @@ class PreviewPresenter: PreviewPresenterProtocol {
     func viewDidLoad() {
         if let data = data {
             view?.showPreviewImage(forImage: data)
-            print("프레젠터까지 도착했습다",data)
+        }
+    }
+    func handOverImageData() {
+        if let data = data {
+            interacter?.saveImageData(data: data)
         }
     }
     

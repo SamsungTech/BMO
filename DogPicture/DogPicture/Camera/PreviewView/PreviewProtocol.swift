@@ -15,6 +15,8 @@ protocol PreviewViewProtocol: AnyObject {
 
 protocol PreviewRouterProtocol: AnyObject {
     static func createPreviewModule(forImage data: Data) -> UIViewController
+    
+    func presentHomeScreen(from view: PreviewViewProtocol)
 }
 
 protocol PreviewPresenterProtocol: AnyObject {
@@ -24,11 +26,13 @@ protocol PreviewPresenterProtocol: AnyObject {
     var data: Data? { get set }
     
     func viewDidLoad()
+    func handOverImageData()
 }
 
 protocol PreviewInteracterInputProtocol: AnyObject {
     var presenter: PreviewInteracterOutputProtocol? { get set }
     
+    func saveImageData(data: Data)
 }
 
 protocol PreviewInteracterOutputProtocol: AnyObject {
