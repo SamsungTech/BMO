@@ -22,10 +22,7 @@ class HomeViewController: UIViewController {
                                  "6월", "7월", "8월", "9월", "10월",
                                  "11월", "12월"]
     var homeTableView = UITableView()
-    var dogImageHolder: [UIImage] = []
-    var dogImageString: [String] = []
-    var imageDateString: [String] = []
-    var imageContentString: [String] = []
+    var modelList: [Model] = []
     
     
     var textColor: UIColor = .black
@@ -147,9 +144,9 @@ class HomeViewController: UIViewController {
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: HomeTableViewCell.identifier) as! HomeTableViewCell
-        cell.cellImageView.image = dogImageHolder[indexPath.row]
-        cell.imageDate.text = imageDateString[indexPath.row]
-        cell.imageContent.text = imageContentString[indexPath.row]
+        let arr = DatabaseHelper.instance.getAllImages()
+        print(arr[indexPath.row])
+        cell.cellImageView.image = UIImage(data: arr[1].photo!)
         return cell
     }
     
@@ -158,8 +155,10 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath)
-        presenter?.showMemo(for: dogImageString[indexPath.row])
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let model = Model(context: context)
+        presenter?.showMemo(for: model.photo(indexPath.row))
+        
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -171,7 +170,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         case 0:
             return 0
         case 1:
-            return dogImageHolder.count
+            return modelList.count
         default:
             return 0
         }
@@ -201,25 +200,9 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
 }
 
 extension HomeViewController: HomeViewProtocol {
-    
-    func showImages(images: [String]) {
-        for name in images {
-            guard let dogImages = UIImage(named: name) else { return }
-            dogImageString.append(name)
-            dogImageHolder.append(dogImages)
-        }
-    }
-    
-    func showImagesDate(date: [String]) {
-        for name in date {
-            imageDateString.append(name)
-        }
-    }
-    
-    func showImagesContent(content: [String]) {
-        for name in content {
-            imageContentString.append(name)
-        }
+    func showModels(with data: [Model]) {
+        modelList = data
+        homeTableView.reloadData()
     }
     
     func refershCalender(tag: Int) {

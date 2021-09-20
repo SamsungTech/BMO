@@ -13,9 +13,7 @@ class HomePresenter: HomePresenterProtocol {
     var router: HomeRouterProtocol?
     
     func viewDidLoad() {
-        interacter?.getDogImage()
-        interacter?.getDate()
-        interacter?.getImageContent()
+        
     }
     func showMemo(for name: String) {
         guard let view = view else { return }
@@ -27,13 +25,7 @@ class HomePresenter: HomePresenterProtocol {
 }
 
 extension HomePresenter: HomeInteracterOutputProtocol {
-    func retrivedDogImage(images: [String]) {
-        view?.showImages(images: images)
-    }
-    func retrivedImageDate(date: [String]) {
-        view?.showImagesDate(date: date)
-    }
-    func retrivedImageContent(content: [String]) {
-        view?.showImagesContent(content: content)
+    func didRetrieveModel(_ data: [Model]) {
+        <#code#>
     }
 }

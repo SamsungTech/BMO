@@ -19,6 +19,7 @@ class DatabaseHelper {
         model.photo = photoData
         do {
             try context.save()
+            print("세이브 완료")
         } catch let error {
             print(error.localizedDescription)
         }

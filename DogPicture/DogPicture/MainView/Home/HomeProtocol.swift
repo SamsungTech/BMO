@@ -10,9 +10,7 @@ import UIKit
 protocol HomeViewProtocol: AnyObject {
     var presenter: HomePresenterProtocol? { get set }
     
-    func showImages(images: [String])
-    func showImagesDate(date: [String])
-    func showImagesContent(content: [String])
+    func showModels(with data: [Model])
     func refershCalender(tag: Int)
 }
 
@@ -35,13 +33,9 @@ protocol HomePresenterProtocol: AnyObject {
 protocol HomeInteracterInputProtocol: AnyObject {
     var presenter: HomeInteracterOutputProtocol? { get set }
     
-    func getDogImage()
-    func getDate()
-    func getImageContent()
+    func retrieveModel()
 }
 
 protocol HomeInteracterOutputProtocol: AnyObject {
-    func retrivedDogImage(images: [String])
-    func retrivedImageDate(date: [String])
-    func retrivedImageContent(content: [String])
+    func didRetrieveModel(_ data: [Model])
 }

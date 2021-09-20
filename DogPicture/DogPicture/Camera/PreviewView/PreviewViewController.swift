@@ -80,8 +80,9 @@ class PreviewViewController: UIViewController {
     
     @objc func saveButtonDidTap(sender: UIButton) {
         presenter?.handOverImageData()
-        
         print("saveButtonDidTap")
+//        dismiss(animated: true, completion: nil)
+        present(HomeViewRouter.createHomeModule(), animated: true, completion: nil)
     }
 }
 extension PreviewViewController: PreviewViewProtocol {
