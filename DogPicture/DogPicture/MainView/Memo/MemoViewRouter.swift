@@ -9,7 +9,7 @@ import UIKit
 
 class MemoViewRouter: MemoViewRouterProtocol {
     
-    static func createMemoViewRouter(from name: String) -> UIViewController {
+    static func createMemoViewRouter(from model: Model) -> UIViewController {
         if let view: MemoViewProtocol = MemoViewController() as? MemoViewProtocol {
             let presenter: MemoViewPresenterProtocol & MemoViewInteracterOutputProtocol = MemoViewPresenter()
             let router: MemoViewRouterProtocol = MemoViewRouter()
@@ -17,7 +17,7 @@ class MemoViewRouter: MemoViewRouterProtocol {
             
             view.presenter = presenter
             presenter.view = view
-            presenter.name = name
+            presenter.model = model
             presenter.router = router
             presenter.interacter = interacter
             interacter.presenter = presenter

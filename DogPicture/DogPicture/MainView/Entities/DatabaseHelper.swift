@@ -14,17 +14,6 @@ class DatabaseHelper {
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-    func saveImageInCoredata(at photoData: Data) {
-        let model = NSEntityDescription.insertNewObject(forEntityName: "Model", into: context) as! Model
-        model.photo = photoData
-        do {
-            try context.save()
-            print("세이브 완료")
-        } catch let error {
-            print(error.localizedDescription)
-        }
-    }
-    
     func getAllImages() -> [Model]{
         var arrModel = [Model]()
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Model")
@@ -35,4 +24,22 @@ class DatabaseHelper {
         }
         return arrModel
     }
+    
+    func saveImageInCoredata(photo: Data, date: Date, memo: String) {
+        let model = NSEntityDescription.insertNewObject(forEntityName: "Model", into: context) as! Model
+        model.photo = photo
+        model.date = date
+        model.memo = memo
+        do {
+            try context.save()
+            print("세이브 완료")
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
+    
+    func updataData() {
+        
+    }
+    
 }

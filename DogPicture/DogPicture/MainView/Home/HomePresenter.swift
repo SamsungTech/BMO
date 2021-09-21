@@ -15,9 +15,9 @@ class HomePresenter: HomePresenterProtocol {
     func viewDidLoad() {
         
     }
-    func showMemo(for name: String) {
+    func showMemo(for model: Model) {
         guard let view = view else { return }
-        router?.presentMemoScreen(from: view, forname: name)
+        router?.presentMemoScreen(from: view, forname: model)
     }
     func calenderDidTap(tag: Int) {
         view?.refershCalender(tag: tag)
@@ -25,7 +25,7 @@ class HomePresenter: HomePresenterProtocol {
 }
 
 extension HomePresenter: HomeInteracterOutputProtocol {
-    func didRetrieveModel(_ data: [Model]) {
-        <#code#>
+    func didRetrieveModel(_ model: [Model]) {
+        view?.showModels(with: model)
     }
 }

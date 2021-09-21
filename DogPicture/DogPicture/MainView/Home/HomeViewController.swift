@@ -146,7 +146,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: HomeTableViewCell.identifier) as! HomeTableViewCell
         let arr = DatabaseHelper.instance.getAllImages()
         print(arr[indexPath.row])
-        cell.cellImageView.image = UIImage(data: arr[1].photo!)
+        cell.cellImageView.image = UIImage(data: arr[indexPath.row].photo!)
         return cell
     }
     
@@ -155,10 +155,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        let model = Model(context: context)
-        presenter?.showMemo(for: model.photo(indexPath.row))
-        
+        presenter?.showMemo(for: modelList[indexPath.row])
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

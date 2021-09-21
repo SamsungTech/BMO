@@ -14,9 +14,9 @@ class PreviewInteracter: PreviewInteracterInputProtocol {
     func prepareImageForSaving(image: Data) {
         
     }
-    func saveImageData(data: Data) {
-        print(data,"데이터 interacter에 들어왔습니다.")
-        DatabaseHelper.instance.saveImageInCoredata(at: data)
+    func saveImageData(photo: Data, date: Date, memo: String) {
+        print(photo,"데이터 interacter에 들어왔습니다.")
+        DatabaseHelper.instance.saveImageInCoredata(photo: photo, date: date, memo: memo)
     }
 }
 

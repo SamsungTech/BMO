@@ -89,7 +89,9 @@ class MemoViewController: UIViewController {
 }
 
 extension MemoViewController: MemoViewProtocol {
-    func showMemoView(forImage name: String) {
-        dogImage.image = UIImage(named: name)
+    func showMemoView(for model: Model) {
+        if let photo = model.photo {
+            dogImage.image = UIImage(data: photo)
+        }
     }
 }

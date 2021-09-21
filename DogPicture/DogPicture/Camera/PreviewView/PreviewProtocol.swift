@@ -32,7 +32,7 @@ protocol PreviewPresenterProtocol: AnyObject {
 protocol PreviewInteracterInputProtocol: AnyObject {
     var presenter: PreviewInteracterOutputProtocol? { get set }
     
-    func saveImageData(data: Data)
+    func saveImageData(photo: Data, date: Date, memo: String)
 }
 
 protocol PreviewInteracterOutputProtocol: AnyObject {

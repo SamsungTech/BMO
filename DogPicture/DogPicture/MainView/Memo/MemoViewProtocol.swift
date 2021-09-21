@@ -10,11 +10,11 @@ import UIKit
 protocol MemoViewProtocol: AnyObject {
     var presenter: MemoViewPresenterProtocol? { get set }
     
-    func showMemoView(forImage name: String)
+    func showMemoView(for model: Model)
 }
 
 protocol MemoViewRouterProtocol: AnyObject {
-    static func createMemoViewRouter(from post: String) -> UIViewController
+    static func createMemoViewRouter(from model: Model) -> UIViewController
     
     func dismissMemoViewController(from view: MemoViewProtocol)
 }
@@ -23,7 +23,7 @@ protocol MemoViewPresenterProtocol: AnyObject {
     var view: MemoViewProtocol? { get set }
     var interacter: MemoViewInteracterInputProtocol? { get set }
     var router: MemoViewRouterProtocol? { get set }
-    var name: String? { get set }
+    var model: Model? { get set }
     
     func viewDidLoad()
     func memoViewDismiss()

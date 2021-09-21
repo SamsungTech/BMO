@@ -11,10 +11,12 @@ class MemoViewPresenter: MemoViewPresenterProtocol {
     weak var view: MemoViewProtocol?
     var interacter: MemoViewInteracterInputProtocol?
     var router: MemoViewRouterProtocol?
-    var name: String?
+    var model: Model?
     
     func viewDidLoad() {
-        view?.showMemoView(forImage: name ?? "")
+        if let model = model {
+            view?.showMemoView(forImage: model)
+        }
     }
     func memoViewDismiss() {
         guard let view = view else { return }
