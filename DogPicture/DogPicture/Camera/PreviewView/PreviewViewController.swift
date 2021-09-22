@@ -16,7 +16,6 @@ class PreviewViewController: UIViewController {
     var captureImageView = UIImageView()
     
     var captureImage = UIImage()
-    
     var captureImageData: Data?
     
     override func viewDidLoad() {
