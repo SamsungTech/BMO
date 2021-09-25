@@ -7,14 +7,18 @@
 
 import UIKit
 import CoreData
-
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        let tabVC = TabViewController()
+        tabVC.view.backgroundColor = UIColor.white
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = tabVC
+        window?.makeKeyAndVisible()
         return true
     }
 
@@ -33,7 +37,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     // MARK: - Core Data stack
-
+    
+    
     lazy var persistentContainer: NSPersistentContainer = {
         /*
          The persistent container for the application. This implementation
