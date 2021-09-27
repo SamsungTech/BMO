@@ -12,16 +12,16 @@ class PreviewPresenter: PreviewPresenterProtocol {
     var interacter: PreviewInteracterInputProtocol?
     var router: PreviewRouterProtocol?
     var data: Data?
+    var date: Date?
+    var memo: String?
     
     func viewDidLoad() {
         if let data = data {
             view?.showPreviewImage(forImage: data)
         }
     }
-    func handOverImageData() {
-        if let data = data {
-            interacter?.saveImageData(data: data)
-        }
+    func handOverImageData(photo: Data, memo: String) {
+        interacter?.saveImageData(photo: photo, memo: memo)
     }
     
 }

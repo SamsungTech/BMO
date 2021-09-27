@@ -15,7 +15,7 @@ class MemoViewPresenter: MemoViewPresenterProtocol {
     
     func viewDidLoad() {
         if let model = model {
-            view?.showMemoView(forImage: model)
+            view?.showMemoView(for: model)
         }
     }
     func memoViewDismiss() {

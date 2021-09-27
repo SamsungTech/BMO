@@ -16,6 +16,7 @@ class MemoViewController: UIViewController {
     var memoTextView = UITextField()
     
     let saveButton = UIButton()
+    let deleteButton = UIButton()
     let backButton = UIButton()
     
     override func viewDidLoad() {
@@ -85,6 +86,9 @@ class MemoViewController: UIViewController {
     
     @objc func backButtonDidTap(sender: UIButton) {
         presenter?.memoViewDismiss()
+    }
+    @objc func deleteButtonDidTap(sender: UIButton) {
+        
     }
 }
 

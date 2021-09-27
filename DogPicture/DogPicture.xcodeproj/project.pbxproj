@@ -113,7 +113,6 @@
 			children = (
 				0B73462E268B36F9007CE6CF /* CameraView */,
 				0B2DFE3026F0CB34002D533B /* PreviewView */,
-				0B734623268B19C3007CE6CF /* Library */,
 			);
 			path = Camera;
 			sourceTree = "<group>";
@@ -199,6 +198,7 @@
 				0B73462F268CA28C007CE6CF /* TabBar */,
 				0B734603268347D6007CE6CF /* MainView */,
 				0B73460126834780007CE6CF /* Camera */,
+				0B734623268B19C3007CE6CF /* Library */,
 				0B7346022683479C007CE6CF /* Setting */,
 				0BF238352660C2EE007E48AC /* AppDelegate.swift */,
 				0BF238372660C2EE007E48AC /* SceneDelegate.swift */,

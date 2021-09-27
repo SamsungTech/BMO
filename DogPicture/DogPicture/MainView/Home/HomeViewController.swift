@@ -144,9 +144,8 @@ class HomeViewController: UIViewController {
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: HomeTableViewCell.identifier) as! HomeTableViewCell
-        let arr = DatabaseHelper.instance.getAllImages()
-        print(arr[indexPath.row])
-        cell.cellImageView.image = UIImage(data: arr[indexPath.row].photo!)
+//        print(arr[indexPath.row])
+//        cell.cellImageView.image = UIImage(data: arr[indexPath.row].photo!)
         return cell
     }
     

@@ -26,13 +26,13 @@ protocol PreviewPresenterProtocol: AnyObject {
     var data: Data? { get set }
     
     func viewDidLoad()
-    func handOverImageData()
+    func handOverImageData(photo: Data, memo: String)
 }
 
 protocol PreviewInteracterInputProtocol: AnyObject {
     var presenter: PreviewInteracterOutputProtocol? { get set }
     
-    func saveImageData(photo: Data, date: Date, memo: String)
+    func saveImageData(photo: Data, memo: String)
 }
 
 protocol PreviewInteracterOutputProtocol: AnyObject {

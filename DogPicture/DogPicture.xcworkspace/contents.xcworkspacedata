@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:DogPicture/Model+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:DogPicture/Model+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
       location = "group:DogPicture.xcodeproj">
    </FileRef>
    <FileRef

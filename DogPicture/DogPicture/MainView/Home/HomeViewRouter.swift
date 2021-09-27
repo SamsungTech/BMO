@@ -8,7 +8,6 @@
 import UIKit
 
 class HomeViewRouter: HomeRouterProtocol {
-    
     class func createHomeModule() -> UIViewController {
         if let view: HomeViewProtocol = HomeViewController() as? HomeViewProtocol {
             let presenter: HomePresenterProtocol & HomeInteracterOutputProtocol = HomePresenter()
@@ -28,9 +27,8 @@ class HomeViewRouter: HomeRouterProtocol {
         return UIViewController()
     }
     
-    func presentMemoScreen(from view: HomeViewProtocol, forname name: String) {
+    func presentMemoScreen(from view: HomeViewProtocol, forname name: Model) {
         let MemoViewController = MemoViewRouter.createMemoViewRouter(from: name)
-        
         if let memoView = view as? UIViewController {
             MemoViewController.modalPresentationStyle = .fullScreen
             memoView.present(MemoViewController, animated: true)

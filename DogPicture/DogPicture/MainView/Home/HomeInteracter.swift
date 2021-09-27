@@ -6,6 +6,10 @@
 //
 
 class HomeInteracter: HomeInteracterInputProtocol {
+    func retrieveModel() {
+        print("")
+    }
+    
     weak var presenter: HomeInteracterOutputProtocol?
     
 }

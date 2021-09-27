@@ -16,7 +16,7 @@ class PreviewViewController: UIViewController {
     var captureImageView = UIImageView()
     
     var captureImage = UIImage()
-    var captureImageData: Data?
+    var captureImageData = Data()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,7 +78,7 @@ class PreviewViewController: UIViewController {
     }
     
     @objc func saveButtonDidTap(sender: UIButton) {
-        presenter?.handOverImageData()
+        presenter?.handOverImageData(photo: captureImageData, memo: "")
         print("saveButtonDidTap")
 //        dismiss(animated: true, completion: nil)
         present(HomeViewRouter.createHomeModule(), animated: true, completion: nil)
@@ -87,5 +87,6 @@ class PreviewViewController: UIViewController {
 extension PreviewViewController: PreviewViewProtocol {
     func showPreviewImage(forImage data: Data) {
         captureImageView.image = UIImage(data: data)
+        captureImageData = data
     }
 }
