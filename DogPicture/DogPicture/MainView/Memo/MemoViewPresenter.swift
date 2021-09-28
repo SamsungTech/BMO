@@ -7,8 +7,8 @@
 import Foundation
 
 class MemoViewPresenter: MemoViewPresenterProtocol {
-    
     weak var view: MemoViewProtocol?
+    
     var interacter: MemoViewInteracterInputProtocol?
     var router: MemoViewRouterProtocol?
     var model: Model?
@@ -21,6 +21,12 @@ class MemoViewPresenter: MemoViewPresenterProtocol {
     func memoViewDismiss() {
         guard let view = view else { return }
         router?.dismissMemoViewController(from: view)
+    }
+    func passDataToUpdate(item: Model, memo: String) {
+        interacter?.dataBaseHelperUpdate(item: item, memo: memo)
+    }
+    func passDataToDelete(item: Model) {
+        interacter?.dataBaseHelperDelete(item: item)
     }
 }
 

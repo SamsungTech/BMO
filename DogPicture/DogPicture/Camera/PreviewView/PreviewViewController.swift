@@ -14,6 +14,8 @@ class PreviewViewController: UIViewController {
     var cancelButton = UIButton()
     var saveButton = UIButton()
     var captureImageView = UIImageView()
+    var previewTextField = UITextField()
+    var tabView = TabViewController()
     
     var captureImage = UIImage()
     var captureImageData = Data()
@@ -22,6 +24,11 @@ class PreviewViewController: UIViewController {
         super.viewDidLoad()
         presenter?.viewDidLoad()
         updateView()
+        view.backgroundColor = .white
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.previewTextField.becomeFirstResponder()
     }
     
     func updateView() {
@@ -30,7 +37,7 @@ class PreviewViewController: UIViewController {
     }
     
     func attribute() {
-        [ captureTopBar, captureImageView ].forEach() { view.addSubview($0) }
+        [ captureTopBar, captureImageView, previewTextField ].forEach() { view.addSubview($0) }
         [ cancelButton, saveButton ].forEach() { captureTopBar.addSubview($0) }
         
         captureTopBar.do {
@@ -58,6 +65,10 @@ class PreviewViewController: UIViewController {
         captureImageView.do {
             $0.backgroundColor = .black
         }
+        previewTextField.do {
+            $0.backgroundColor = .white
+            $0.textColor = .black
+        }
     }
     
     func layout() {
@@ -73,20 +84,35 @@ class PreviewViewController: UIViewController {
             $0.topAnchor.constraint(equalTo: captureTopBar.bottomAnchor).isActive = true
             $0.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
             $0.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-            $0.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+            $0.heightAnchor.constraint(equalToConstant: 500).isActive = true
+        }
+        previewTextField.do {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.topAnchor.constraint(equalTo: captureImageView.bottomAnchor, constant: 10).isActive = true
+            $0.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
+            $0.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
+            $0.heightAnchor.constraint(equalToConstant: 70).isActive = true
         }
     }
     
     @objc func saveButtonDidTap(sender: UIButton) {
-        presenter?.handOverImageData(photo: captureImageData, memo: "")
+        presenter?.handOverImageData(photo: captureImageData, memo: previewTextField.text ?? "")
         print("saveButtonDidTap")
 //        dismiss(animated: true, completion: nil)
-        present(HomeViewRouter.createHomeModule(), animated: true, completion: nil)
+        // 다시 짜기
+        tabView.modalPresentationStyle = .fullScreen
+        present(tabView, animated: true, completion: nil)
     }
 }
 extension PreviewViewController: PreviewViewProtocol {
     func showPreviewImage(forImage data: Data) {
         captureImageView.image = UIImage(data: data)
         captureImageData = data
+    }
+}
+
+extension PreviewViewController: UITextFieldDelegate {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.previewTextField.resignFirstResponder()
     }
 }

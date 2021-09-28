@@ -27,13 +27,16 @@ protocol MemoViewPresenterProtocol: AnyObject {
     
     func viewDidLoad()
     func memoViewDismiss()
+    func passDataToUpdate(item: Model, memo: String)
+    func passDataToDelete(item: Model)
 }
 
 protocol MemoViewInteracterInputProtocol: AnyObject {
     var presenter: MemoViewInteracterOutputProtocol? { get set }
     
+    func dataBaseHelperUpdate(item: Model, memo: String)
+    func dataBaseHelperDelete(item: Model)
 }
 
 protocol MemoViewInteracterOutputProtocol: AnyObject {
-    
 }

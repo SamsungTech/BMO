@@ -38,6 +38,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter?.viewDidLoad()
+        homeTableView.reloadData()
         view.backgroundColor = .white
         navigationController?.isNavigationBarHidden = true
         updateView()
@@ -144,8 +145,12 @@ class HomeViewController: UIViewController {
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: HomeTableViewCell.identifier) as! HomeTableViewCell
-//        print(arr[indexPath.row])
-//        cell.cellImageView.image = UIImage(data: arr[indexPath.row].photo!)
+        if let data = modelList[indexPath.row].photo,
+           let memo = modelList[indexPath.row].memo {
+            cell.cellImageView.image = UIImage(data: data)
+            print(memo)
+            cell.imageContent.text = memo
+        }
         return cell
     }
     

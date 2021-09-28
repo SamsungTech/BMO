@@ -11,8 +11,15 @@ import CoreData
 class MemoViewInteracter: MemoViewInteracterInputProtocol {
     weak var presenter: MemoViewInteracterOutputProtocol?
     
+    func dataBaseHelperUpdate(item: Model, memo: String) {
+        DatabaseHelper.instance.updateItem(item: item, memo: memo)
+    }
+    func dataBaseHelperDelete(item: Model) {
+        DatabaseHelper.instance.deleteItem(item: item)
+    }
 }
 
 extension MemoViewInteracter: MemoViewInteracterOutputProtocol {
+    
     
 }

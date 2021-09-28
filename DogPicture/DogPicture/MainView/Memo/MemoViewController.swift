@@ -14,10 +14,14 @@ class MemoViewController: UIViewController {
     var mainView = UIView()
     var memoStackView = UIStackView()
     var memoTextView = UITextField()
+    var modelHolder = Model()
+    var textHolder: String = ""
     
     let saveButton = UIButton()
     let deleteButton = UIButton()
     let backButton = UIButton()
+    let editButton = UIButton()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +41,7 @@ class MemoViewController: UIViewController {
     
     func attribute() {
         [ memoStackView ].forEach() { view.addSubview($0) }
-        [ dogImage, backButton ] .forEach() { memoStackView.addSubview($0) }
+        [ dogImage, backButton, deleteButton, memoTextView, editButton ] .forEach() { memoStackView.addSubview($0) }
         
         memoStackView.do {
             $0.backgroundColor = .systemGreen
@@ -55,6 +59,22 @@ class MemoViewController: UIViewController {
             $0.tintColor = .systemGray6
             $0.setImage(UIImage(systemName: "xmark.circle.fill"), for: .normal)
             $0.addTarget(self, action: #selector(backButtonDidTap(sender:)), for: .touchUpInside)
+            $0.viewRadius(view: backButton, cornerRadius: 10, maskToBounds: true)
+        }
+        deleteButton.do {
+            $0.tintColor = .systemRed
+            $0.backgroundColor = .systemRed
+            $0.setTitle("삭제하기", for: .normal)
+            $0.addTarget(self, action: #selector(deleteButtonDidTap(sender:)), for: .touchUpInside)
+        }
+        memoTextView.do {
+            $0.backgroundColor = .white
+            $0.textColor = .black
+        }
+        editButton.do {
+            $0.backgroundColor = .systemBlue
+            $0.setTitle("수정하기", for: .normal)
+            $0.addTarget(self, action: #selector(editButtonDidTap(sender:)), for: .touchUpInside)
         }
     }
     
@@ -82,18 +102,47 @@ class MemoViewController: UIViewController {
             $0.widthAnchor.constraint(equalToConstant: 50).isActive = true
             $0.heightAnchor.constraint(equalToConstant: 50).isActive = true
         }
+        memoTextView.do {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.topAnchor.constraint(equalTo: dogImage.bottomAnchor).isActive = true
+            $0.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
+            $0.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
+            $0.heightAnchor.constraint(equalToConstant: 70).isActive = true
+        }
+        editButton.do {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.topAnchor.constraint(equalTo: memoTextView.bottomAnchor, constant: 10).isActive = true
+            $0.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
+            $0.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
+            $0.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        }
+        deleteButton.do {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.topAnchor.constraint(equalTo: editButton.bottomAnchor, constant: 10).isActive = true
+            $0.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
+            $0.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
+            $0.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        }
     }
     
     @objc func backButtonDidTap(sender: UIButton) {
         presenter?.memoViewDismiss()
     }
+    @objc func editButtonDidTap(sender: UIButton) {
+        memoTextView.text = textHolder
+        print(textHolder)
+        presenter?.passDataToUpdate(item: modelHolder, memo: textHolder)
+    }
     @objc func deleteButtonDidTap(sender: UIButton) {
-        
+        print("삭제버튼 클릭!")
+        presenter?.passDataToDelete(item: modelHolder)
+        presenter?.memoViewDismiss()
     }
 }
 
 extension MemoViewController: MemoViewProtocol {
     func showMemoView(for model: Model) {
+        modelHolder = model
         if let photo = model.photo {
             dogImage.image = UIImage(data: photo)
         }

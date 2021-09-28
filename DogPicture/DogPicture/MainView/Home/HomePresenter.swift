@@ -13,7 +13,7 @@ class HomePresenter: HomePresenterProtocol {
     var router: HomeRouterProtocol?
     
     func viewDidLoad() {
-        
+        interacter?.retrieveModel()
     }
     func showMemo(for model: Model) {
         guard let view = view else { return }
