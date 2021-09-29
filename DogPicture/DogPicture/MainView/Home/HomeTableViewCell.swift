@@ -25,6 +25,9 @@ class HomeTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+//    UIScreen.main.bounds.maxX*(55/390)
+//    UIScreen.main.bounds.maxY*(55/844)
+    
     func attribute() {
         [ cardView ].forEach() { contentView.addSubview($0) }
         [ cellImageView, imageContent, imageDate ].forEach() { cardView.addSubview($0) }
@@ -33,8 +36,8 @@ class HomeTableViewCell: UITableViewCell {
             $0.backgroundColor = .white
             $0.frame = CGRect(x: 20,
                               y: 20,
-                              width: 350,
-                              height: 420)
+                              width: UIScreen.main.bounds.maxX*(350/390),
+                              height: UIScreen.main.bounds.maxY*(420/844))
             $0.viewRadius(view: cardView, cornerRadius: 30, maskToBounds: true)
             $0.viewShadow(view: cardView)
         }
@@ -57,7 +60,7 @@ class HomeTableViewCell: UITableViewCell {
             $0.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
             $0.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
             $0.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
-            $0.heightAnchor.constraint(equalToConstant: 350).isActive = true
+            $0.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.maxY*(350/844)).isActive = true
         }
         imageDate.do {
             $0.translatesAutoresizingMaskIntoConstraints = false

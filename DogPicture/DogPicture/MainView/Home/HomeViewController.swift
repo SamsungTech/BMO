@@ -23,12 +23,10 @@ class HomeViewController: UIViewController {
                                  "11월", "12월"]
     var homeTableView = UITableView()
     var modelList: [Model] = []
-    
-    
     var textColor: UIColor = .black
     var selectroViewColor: UIColor = .red
     var selectorTextColor: UIColor = .red
-    
+    let reloadButton = UIButton()
     var tagNumber = 0
     
     override var prefersStatusBarHidden: Bool {
@@ -42,6 +40,7 @@ class HomeViewController: UIViewController {
         view.backgroundColor = .white
         navigationController?.isNavigationBarHidden = true
         updateView()
+        view.bringSubviewToFront(reloadButton)
     }
     
     func updateView() {
@@ -51,6 +50,7 @@ class HomeViewController: UIViewController {
     
     func attribute() {
         view.addSubview(homeTableView)
+        randomImageView.addSubview(reloadButton)
         headerView.addSubview(segmentedScrollView)
         segmentedScrollView.addSubview(segmentedScrollContentView)
         segmentedScrollContentView.addSubview(segmentedStackView)
@@ -71,10 +71,10 @@ class HomeViewController: UIViewController {
         randomImageView.do {
             $0.image = UIImage(named: "p4")
         }
-        
         segmentedScrollView.do {
             $0.backgroundColor = .systemPink
-            $0.contentSize = CGSize(width: 840, height: 70)
+            $0.contentSize = CGSize(width: UIScreen.main.bounds.maxX*(840/390),
+                                    height: UIScreen.main.bounds.maxY*(70/844))
             $0.showsHorizontalScrollIndicator = false
         }
         
@@ -100,6 +100,19 @@ class HomeViewController: UIViewController {
             tagNumber += 1
         }
         segmentedButton[0].setTitleColor(selectorTextColor, for: .normal)
+        
+        reloadButton.do {
+            $0.tintColor = .darkGray
+            $0.setImage(UIImage(systemName: "r.circle.fill"), for: .normal)
+            $0.imageView?.contentMode = .scaleAspectFit
+            $0.addTarget(self, action: #selector(reloadButtonDidTap(sender:)),
+                         for: .touchUpInside)
+            $0.frame = CGRect(x: 30, y: 30, width: 60, height: 60)
+            $0.imageEdgeInsets = UIEdgeInsets(top: UIScreen.main.bounds.maxX*(60/390),
+                                              left: UIScreen.main.bounds.maxX*(60/390),
+                                              bottom: UIScreen.main.bounds.maxX*(60/390),
+                                              right: UIScreen.main.bounds.maxX*(60/390))
+        }
     }
     
     func layout() {
@@ -116,8 +129,8 @@ class HomeViewController: UIViewController {
     func headerViewLayout() {
         segmentedScrollView.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
-            $0.widthAnchor.constraint(equalToConstant: 390).isActive = true
-            $0.heightAnchor.constraint(equalToConstant: 70).isActive = true
+            $0.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.maxX).isActive = true
+            $0.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.maxY*(70/844)).isActive = true
         }
         
         segmentedScrollContentView.do {
@@ -132,11 +145,16 @@ class HomeViewController: UIViewController {
             $0.translatesAutoresizingMaskIntoConstraints = false
             $0.topAnchor.constraint(equalTo: segmentedScrollContentView.topAnchor).isActive = true
             $0.leadingAnchor.constraint(equalTo: segmentedScrollContentView.leadingAnchor).isActive = true
-            $0.widthAnchor.constraint(equalToConstant: CGFloat(segmentedButtonTitles.count*70)).isActive = true
-            $0.heightAnchor.constraint(equalToConstant: 50).isActive = true
+            $0.widthAnchor.constraint(equalToConstant: CGFloat(segmentedButtonTitles.count)*CGFloat(UIScreen.main.bounds.maxX*(70/390))).isActive = true
+            $0.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.maxY*(50/844)).isActive = true
         }
     }
     
+    @objc func reloadButtonDidTap(sender: AnyObject) {
+        print("리로드 데이터")
+        homeTableView.reloadData()
+        
+    }
     @objc func segmentLineAnimation(sender: UIButton) {
         presenter?.calenderDidTap(tag: sender.tag)
     }
@@ -155,7 +173,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 460
+        return CGFloat(UIScreen.main.bounds.maxY*(460/844))
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -180,9 +198,9 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         switch section {
         case 0:
-            return 300
+            return CGFloat(UIScreen.main.bounds.maxY*(300/844))
         case 1:
-            return 70
+            return CGFloat(UIScreen.main.bounds.maxY*(70/844))
         default:
             return 0
         }

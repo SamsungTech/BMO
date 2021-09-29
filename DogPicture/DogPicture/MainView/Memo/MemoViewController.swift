@@ -143,8 +143,10 @@ class MemoViewController: UIViewController {
 extension MemoViewController: MemoViewProtocol {
     func showMemoView(for model: Model) {
         modelHolder = model
-        if let photo = model.photo {
+        if let photo = model.photo,
+           let memo = model.memo {
             dogImage.image = UIImage(data: photo)
+            memoTextView.text = memo
         }
     }
 }
