@@ -43,6 +43,10 @@ class HomeViewController: UIViewController {
         view.bringSubviewToFront(reloadButton)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        homeTableView.reloadData()
+    }
+    
     func updateView() {
         attribute()
         layout()
@@ -108,10 +112,7 @@ class HomeViewController: UIViewController {
             $0.addTarget(self, action: #selector(reloadButtonDidTap(sender:)),
                          for: .touchUpInside)
             $0.frame = CGRect(x: 30, y: 30, width: 60, height: 60)
-            $0.imageEdgeInsets = UIEdgeInsets(top: UIScreen.main.bounds.maxX*(60/390),
-                                              left: UIScreen.main.bounds.maxX*(60/390),
-                                              bottom: UIScreen.main.bounds.maxX*(60/390),
-                                              right: UIScreen.main.bounds.maxX*(60/390))
+            $0.imageSizeFit(view: reloadButton, buttonSize: 60)
         }
     }
     
@@ -153,7 +154,6 @@ class HomeViewController: UIViewController {
     @objc func reloadButtonDidTap(sender: AnyObject) {
         print("리로드 데이터")
         homeTableView.reloadData()
-        
     }
     @objc func segmentLineAnimation(sender: UIButton) {
         presenter?.calenderDidTap(tag: sender.tag)

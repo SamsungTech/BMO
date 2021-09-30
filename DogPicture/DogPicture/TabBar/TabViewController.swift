@@ -57,10 +57,7 @@ class TabViewController: UITabBarController {
                               width: UIScreen.main.bounds.maxX*(70/390),
                               height: UIScreen.main.bounds.maxY*(70/844))
             $0.imageView?.contentMode = .scaleAspectFit
-            $0.imageEdgeInsets = UIEdgeInsets(top: UIScreen.main.bounds.maxX*(60/390),
-                                              left: UIScreen.main.bounds.maxX*(60/390),
-                                              bottom: UIScreen.main.bounds.maxX*(60/390),
-                                              right: UIScreen.main.bounds.maxX*(60/390))
+            $0.imageSizeFit(view: centerButton, buttonSize: 60)
         }
         homeButton.do {
             $0.tag = 0
@@ -77,10 +74,7 @@ class TabViewController: UITabBarController {
                               width: UIScreen.main.bounds.maxX*(55/390),
                               height: UIScreen.main.bounds.maxY*(55/844))
             $0.imageView?.contentMode = .scaleAspectFit
-            $0.imageEdgeInsets = UIEdgeInsets(top: UIScreen.main.bounds.maxX*(45/390),
-                                              left: UIScreen.main.bounds.maxX*(45/390),
-                                              bottom: UIScreen.main.bounds.maxX*(45/390),
-                                              right: UIScreen.main.bounds.maxX*(45/390))
+            $0.imageSizeFit(view: homeButton, buttonSize: 45)
         }
         cameraButton.do {
             $0.tag = 1
@@ -97,10 +91,7 @@ class TabViewController: UITabBarController {
                               width: UIScreen.main.bounds.maxX*(55/390),
                               height: UIScreen.main.bounds.maxY*(55/844))
             $0.imageView?.contentMode = .scaleAspectFit
-            $0.imageEdgeInsets = UIEdgeInsets(top: UIScreen.main.bounds.maxX*(45/390),
-                                              left: UIScreen.main.bounds.maxX*(45/390),
-                                              bottom: UIScreen.main.bounds.maxX*(45/390),
-                                              right: UIScreen.main.bounds.maxX*(45/390))
+            $0.imageSizeFit(view: cameraButton, buttonSize: 45)
         }
         libraryButton.do {
             $0.tag = 2
@@ -117,10 +108,7 @@ class TabViewController: UITabBarController {
                               width: UIScreen.main.bounds.maxX*(55/390),
                               height: UIScreen.main.bounds.maxY*(55/844))
             $0.imageView?.contentMode = .scaleAspectFit
-            $0.imageEdgeInsets = UIEdgeInsets(top: UIScreen.main.bounds.maxX*(45/390),
-                                              left: UIScreen.main.bounds.maxX*(45/390),
-                                              bottom: UIScreen.main.bounds.maxX*(45/390),
-                                              right: UIScreen.main.bounds.maxX*(45/390))
+            $0.imageSizeFit(view: libraryButton, buttonSize: 45)
         }
         settingButton.do {
             $0.tag = 3
@@ -137,10 +125,7 @@ class TabViewController: UITabBarController {
                               width: UIScreen.main.bounds.maxX*(55/390),
                               height: UIScreen.main.bounds.maxY*(55/844))
             $0.imageView?.contentMode = .scaleAspectFit
-            $0.imageEdgeInsets = UIEdgeInsets(top: UIScreen.main.bounds.maxX*(45/390),
-                                              left: UIScreen.main.bounds.maxX*(45/390),
-                                              bottom: UIScreen.main.bounds.maxX*(45/390),
-                                              right: UIScreen.main.bounds.maxX*(45/390))
+            $0.imageSizeFit(view: settingButton, buttonSize: 45)
         }
     }
     
@@ -365,5 +350,11 @@ extension UIView {
         view.layer.shadowOffset = CGSize(width: 1, height: 1)
         view.layer.shadowRadius = 3
         view.layer.shadowOpacity = 0.5
+    }
+    func imageSizeFit(view: UIButton, buttonSize: CGFloat) {
+        view.imageEdgeInsets = UIEdgeInsets(top: UIScreen.main.bounds.maxX*(buttonSize/390),
+                                            left: UIScreen.main.bounds.maxX*(buttonSize/390),
+                                            bottom: UIScreen.main.bounds.maxX*(buttonSize/390),
+                                            right: UIScreen.main.bounds.maxX*(buttonSize/390))
     }
 }

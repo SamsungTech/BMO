@@ -25,9 +25,6 @@ class HomeTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-//    UIScreen.main.bounds.maxX*(55/390)
-//    UIScreen.main.bounds.maxY*(55/844)
-    
     func attribute() {
         [ cardView ].forEach() { contentView.addSubview($0) }
         [ cellImageView, imageContent, imageDate ].forEach() { cardView.addSubview($0) }

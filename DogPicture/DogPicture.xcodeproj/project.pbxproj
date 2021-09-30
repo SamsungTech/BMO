@@ -108,6 +108,25 @@
 			path = PreviewView;
 			sourceTree = "<group>";
 		};
+		0B657DDA2705A7AC009323E9 /* SettingView */ = {
+			isa = PBXGroup;
+			children = (
+				0B73460E26861D62007CE6CF /* SettingViewController.swift */,
+				0B73461026861D76007CE6CF /* SettingInteracter.swift */,
+				0B73461226861D87007CE6CF /* SettingProtocol.swift */,
+				0B73461426861D98007CE6CF /* SettingPresenter.swift */,
+				0B73461726861DB5007CE6CF /* SettingRouter.swift */,
+			);
+			path = SettingView;
+			sourceTree = "<group>";
+		};
+		0B657DDB2705A7BF009323E9 /* ProfileEditView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ProfileEditView;
+			sourceTree = "<group>";
+		};
 		0B73460126834780007CE6CF /* Camera */ = {
 			isa = PBXGroup;
 			children = (
@@ -120,11 +139,8 @@
 		0B7346022683479C007CE6CF /* Setting */ = {
 			isa = PBXGroup;
 			children = (
-				0B73460E26861D62007CE6CF /* SettingViewController.swift */,
-				0B73461026861D76007CE6CF /* SettingInteracter.swift */,
-				0B73461226861D87007CE6CF /* SettingProtocol.swift */,
-				0B73461426861D98007CE6CF /* SettingPresenter.swift */,
-				0B73461726861DB5007CE6CF /* SettingRouter.swift */,
+				0B657DDA2705A7AC009323E9 /* SettingView */,
+				0B657DDB2705A7BF009323E9 /* ProfileEditView */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
