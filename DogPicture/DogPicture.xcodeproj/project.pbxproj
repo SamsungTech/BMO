@@ -148,7 +148,6 @@
 		0B734603268347D6007CE6CF /* MainView */ = {
 			isa = PBXGroup;
 			children = (
-				0B73461B2686F700007CE6CF /* Entities */,
 				0BF2384C2660D501007E48AC /* Home */,
 				0BF2384D2660D527007E48AC /* Memo */,
 			);
@@ -211,6 +210,7 @@
 		0BF238342660C2EE007E48AC /* DogPicture */ = {
 			isa = PBXGroup;
 			children = (
+				0B73461B2686F700007CE6CF /* Entities */,
 				0B73462F268CA28C007CE6CF /* TabBar */,
 				0B734603268347D6007CE6CF /* MainView */,
 				0B73460126834780007CE6CF /* Camera */,

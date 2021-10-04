@@ -155,7 +155,6 @@ class SettingViewController: UIViewController {
             $0.textColor = .darkGray
             $0.font = UIFont.systemFont(ofSize: 12)
         }
-//        pushNotificationButton, dogTypeEditButton, eventButton, termsOfUseButton, reviewButton, versionInfoButton
         settingHeaderLabel.do {
             $0.text = "쁘띠오빠의 설정"
             $0.textColor = .black
@@ -292,7 +291,6 @@ class SettingViewController: UIViewController {
             $0.topAnchor.constraint(equalTo: dogWeight.bottomAnchor, constant: 10).isActive = true
             $0.centerXAnchor.constraint(equalTo: dogWeightImage.centerXAnchor).isActive = true
         }
-        //pushNotificationButton, dogTypeEditButton, eventButton, termsOfUseButton, reviewButton, versionInfoButton
         settingHeaderLabel.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
             $0.topAnchor.constraint(equalTo: profileView.bottomAnchor, constant: 15).isActive = true

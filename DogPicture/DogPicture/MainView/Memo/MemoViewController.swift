@@ -14,7 +14,7 @@ class MemoViewController: UIViewController {
     var mainView = UIView()
     var memoStackView = UIStackView()
     var memoTextView = UITextField()
-    var modelHolder = Model()
+    var modelHolder: Model?
     var textHolder: String = ""
     
     let saveButton = UIButton()
@@ -129,13 +129,18 @@ class MemoViewController: UIViewController {
         presenter?.memoViewDismiss()
     }
     @objc func editButtonDidTap(sender: UIButton) {
+        
         memoTextView.text = textHolder
         print(textHolder)
-        presenter?.passDataToUpdate(item: modelHolder, memo: textHolder)
+        if let model = modelHolder {
+            presenter?.passDataToUpdate(item: model, memo: textHolder)
+        }
     }
     @objc func deleteButtonDidTap(sender: UIButton) {
         print("삭제버튼 클릭!")
-        presenter?.passDataToDelete(item: modelHolder)
+        if let model = modelHolder {
+            presenter?.passDataToDelete(item: model)
+        }
         presenter?.memoViewDismiss()
     }
 }
