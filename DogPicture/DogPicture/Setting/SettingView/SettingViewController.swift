@@ -58,11 +58,9 @@ class SettingViewController: UIViewController {
     func attribute() {
         view.addSubview(verticalStackView)
         [ backgroundView, settingTitle ].forEach() { verticalStackView.addSubview($0) }
-        [ profileView, settingHeaderLabel, pushNotificationButton, dogTypeEditButton,
-          eventButton, termsOfUseButton, reviewButton, versionInfoButton ].forEach() { backgroundView.addSubview($0) }
+        [ profileView, settingHeaderLabel ].forEach() { backgroundView.addSubview($0) }
         [ profileImage, dogName, dogType, profileEditButton, dogAgeImage, dogAge,
           dogAgeDays, dogGenderImage, dogGender, neutering, dogWeightImage, dogWeight, weight ].forEach() { profileView.addSubview($0) }
-        
         
         verticalStackView.do {
             $0.backgroundColor = .systemPink
@@ -160,6 +158,11 @@ class SettingViewController: UIViewController {
             $0.textColor = .black
             $0.font = UIFont.boldSystemFont(ofSize: 15)
         }
+        settingButtonsAttribute()
+    }
+    func settingButtonsAttribute() {
+        [ pushNotificationButton, dogTypeEditButton, eventButton,
+          termsOfUseButton, reviewButton, versionInfoButton ].forEach() { backgroundView.addSubview($0) }
         pushNotificationButton.do {
             $0.setImage(UIImage(systemName: "bell.fill"), for: .normal)
             $0.tintColor = .systemPink
@@ -298,10 +301,13 @@ class SettingViewController: UIViewController {
             $0.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15).isActive = true
             $0.heightAnchor.constraint(equalToConstant: 30).isActive = true
         }
+        settingbuttonsLayout()
+    }
+    func settingbuttonsLayout() {
         pushNotificationButton.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
             $0.topAnchor.constraint(equalTo: settingHeaderLabel.bottomAnchor, constant: 15).isActive = true
-            $0.leadingAnchor.constraint(equalTo: view.trailingAnchor, constant: 15).isActive = true
+            $0.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15).isActive = true
             $0.widthAnchor.constraint(equalToConstant: 107.5).isActive = true
             $0.heightAnchor.constraint(equalToConstant: 80).isActive = true
         }
@@ -322,7 +328,7 @@ class SettingViewController: UIViewController {
         termsOfUseButton.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
             $0.topAnchor.constraint(equalTo: pushNotificationButton.bottomAnchor, constant: 15).isActive = true
-            $0.leadingAnchor.constraint(equalTo: view.trailingAnchor, constant: 15).isActive = true
+            $0.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15).isActive = true
             $0.widthAnchor.constraint(equalToConstant: 107.5).isActive = true
             $0.heightAnchor.constraint(equalToConstant: 80).isActive = true
         }

@@ -7,7 +7,6 @@
 import Foundation
 
 class HomePresenter: HomePresenterProtocol {
-    
     weak var view: HomeViewProtocol?
     var interacter: HomeInteracterInputProtocol?
     var router: HomeRouterProtocol?
@@ -15,9 +14,9 @@ class HomePresenter: HomePresenterProtocol {
     func viewDidLoad() {
         interacter?.retrieveModel()
     }
-    func showMemo(for model: Model) {
+    func showMemo(for model: Model, index: IndexPath) {
         guard let view = view else { return }
-        router?.presentMemoScreen(from: view, forname: model)
+        router?.presentMemoScreen(from: view, forname: model, index: index)
     }
     func calenderDidTap(tag: Int) {
         view?.refershCalender(tag: tag)

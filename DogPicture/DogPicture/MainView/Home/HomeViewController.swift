@@ -177,9 +177,8 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        presenter?.showMemo(for: modelList[indexPath.row])
-        print("coredata modelList 내용",modelList[indexPath.row])
-        
+        presenter?.showMemo(for: modelList[indexPath.row], index: indexPath)
+        print(indexPath)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

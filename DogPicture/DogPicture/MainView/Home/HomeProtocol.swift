@@ -17,7 +17,7 @@ protocol HomeViewProtocol: AnyObject {
 protocol HomeRouterProtocol: AnyObject {
     static func createHomeModule() -> UIViewController
     
-    func presentMemoScreen(from view: HomeViewProtocol, forname name: Model)
+    func presentMemoScreen(from view: HomeViewProtocol, forname name: Model, index: IndexPath)
 }
 
 protocol HomePresenterProtocol: AnyObject {
@@ -26,7 +26,7 @@ protocol HomePresenterProtocol: AnyObject {
     var router: HomeRouterProtocol? { get set }
     
     func viewDidLoad()
-    func showMemo(for name: Model)
+    func showMemo(for name: Model, index: IndexPath)
     func calenderDidTap(tag: Int)
 }
 

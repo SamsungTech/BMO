@@ -30,6 +30,10 @@ class MemoViewController: UIViewController {
         updateView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        presenter?.viewDidLoad()
+    }
+    
     override var prefersStatusBarHidden: Bool {
         return true
     }
@@ -129,12 +133,11 @@ class MemoViewController: UIViewController {
         presenter?.memoViewDismiss()
     }
     @objc func editButtonDidTap(sender: UIButton) {
-        
-        memoTextView.text = textHolder
-        print(textHolder)
+        textHolder = memoTextView.text ?? ""
         if let model = modelHolder {
             presenter?.passDataToUpdate(item: model, memo: textHolder)
         }
+        viewWillAppear(true)
     }
     @objc func deleteButtonDidTap(sender: UIButton) {
         print("삭제버튼 클릭!")
@@ -148,6 +151,7 @@ class MemoViewController: UIViewController {
 extension MemoViewController: MemoViewProtocol {
     func showMemoView(for model: Model) {
         modelHolder = model
+        print("홀더에 담긴 model 내용 =",modelHolder)
         if let photo = model.photo,
            let memo = model.memo {
             dogImage.image = UIImage(data: photo)

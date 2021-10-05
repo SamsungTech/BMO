@@ -27,7 +27,7 @@ class HomeViewRouter: HomeRouterProtocol {
         return UIViewController()
     }
     
-    func presentMemoScreen(from view: HomeViewProtocol, forname name: Model) {
+    func presentMemoScreen(from view: HomeViewProtocol, forname name: Model, index: IndexPath) {
         let MemoViewController = MemoViewRouter.createMemoViewRouter(from: name)
         if let memoView = view as? UIViewController {
             MemoViewController.modalPresentationStyle = .fullScreen

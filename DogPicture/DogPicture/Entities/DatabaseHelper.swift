@@ -11,9 +11,10 @@ import CoreData
 
 class DatabaseHelper {
     static let instance = DatabaseHelper()
-
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     func getAllItems() -> [Model] {
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         var models = [Model]()
         do {
             models = try context.fetch(Model.fetchRequest())
@@ -25,7 +26,6 @@ class DatabaseHelper {
     }
 
     func createItem(photo: Data, memo: String) {
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let newItem = Model(context: context)
         newItem.photo = photo
         newItem.memo = memo
@@ -40,7 +40,6 @@ class DatabaseHelper {
     }
 
     func deleteItem(item: Model) {
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         context.delete(item)
         do {
             try context.save()
@@ -50,73 +49,17 @@ class DatabaseHelper {
         }
     }
 
-    func updateItem(item: Model, memo: String) {
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    func updateItem(item: Model, memo: String)  {
+        var dataHolder: [Model] = []
         item.memo = memo
-        do {
-            try context.save()
-            print("update 성공")
-        } catch {
-            print("update 실패 ㅠㅠ")
+        if context.hasChanges {
+            do {
+                try context.save()
+                dataHolder = getAllItems()
+                print("update 성공")
+            } catch {
+                print("update 실패 ㅠㅠ")
+            }
         }
     }
-    
-//    let persistentContainer: NSPersistentContainer
-//
-//    init() {
-//        persistentContainer = NSPersistentContainer(name: "DogPicture")
-//        persistentContainer.loadPersistentStores { (NSEntityDescription, Error) in
-//            if let Error = Error {
-//                fatalError("Cora Data Store failed \(Error.localizedDescription)")
-//            }
-//        }
-//    }
-//
-//    func getAllItems() -> [Model] {
-//        let fetchRequest: NSFetchRequest<Model> = Model.fetchRequest()
-//
-//        do {
-//            return try persistentContainer.viewContext.fetch(fetchRequest)
-//            print("getAllItems 성공!")
-//        } catch {
-//            return []
-//            print("getAllItems 실패 ㅜㅜ")
-//        }
-//    }
-//
-//    func createItem(photo: Data, memo: String) {
-//        let model = Model(context: persistentContainer.viewContext)
-//        model.photo = photo
-//        model.memo = memo
-//        model.date = Date()
-//
-//        do {
-//            try persistentContainer.viewContext.save()
-//            print("coredata save 성공!")
-//        } catch {
-//            print("Failed Save Data\(error)")
-//        }
-//    }
-//
-//    func deleteItem(item: Model) {
-//        persistentContainer.viewContext.delete(item)
-//
-//        do {
-//            try persistentContainer.viewContext.save()
-//            print("cora data delete 성공!")
-//        } catch {
-//            persistentContainer.viewContext.rollback()
-//            print("Failed to save context \(error)")
-//        }
-//    }
-//
-//    func updateItem(item: Model, memo: String) {
-//        do {
-//            try persistentContainer.viewContext.save()
-//            print("cora data update 성공!")
-//        } catch {
-//            persistentContainer.viewContext.rollback()
-//            print("Failed to update context \(error)")
-//        }
-//    }
 }
