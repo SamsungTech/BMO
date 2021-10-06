@@ -25,9 +25,16 @@ class DogInfoDatabaseHelper {
         return dogInfo
     }
 
-    func createItem(photo: Data, memo: String) {
+    func createItem(dogName: String, dogBirthday: Date, dogGender: Bool,
+                    dogWeight: Double, dogType: Int16, neutering: Bool, userName: String) {
         let newItem = DogInfo(context: context)
-
+        newItem.dogName = dogName
+        newItem.dogBirthday = dogBirthday
+        newItem.dogGender = dogGender
+        newItem.dogWeight = dogWeight
+        newItem.dogType = dogType
+        newItem.neutering = neutering
+        newItem.userName = userName
         do {
             try context.save()
             print("createItem 성공")
@@ -36,8 +43,15 @@ class DogInfoDatabaseHelper {
         }
     }
     
-    func updateItem(item: Model, memo: String)  {
-        item.memo = memo
+    func updateItem(item: DogInfo, dogName: String, dogBirthday: Date, dogGender: Bool,
+                    dogWeight: Double, dogType: Int16, neutering: Bool, userName: String)  {
+        item.dogName = dogName
+        item.dogBirthday = dogBirthday
+        item.dogGender = dogGender
+        item.dogWeight = dogWeight
+        item.dogType = dogType
+        item.neutering = neutering
+        item.userName = userName
         if context.hasChanges {
             do {
                 try context.save()
@@ -47,5 +61,4 @@ class DogInfoDatabaseHelper {
             }
         }
     }
-    
 }
