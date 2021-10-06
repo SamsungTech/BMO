@@ -18,6 +18,7 @@
 		0B51B20026A8210E00216054 /* CameraInteracter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B51B1FB26A8210E00216054 /* CameraInteracter.swift */; };
 		0B51B20126A8210E00216054 /* CameraProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B51B1FC26A8210E00216054 /* CameraProtocol.swift */; };
 		0B51B20226A8210E00216054 /* CameraPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B51B1FD26A8210E00216054 /* CameraPresenter.swift */; };
+		0B657DDD270D9D9E009323E9 /* DogInfoDatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B657DDC270D9D9E009323E9 /* DogInfoDatabaseHelper.swift */; };
 		0B73460F26861D62007CE6CF /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B73460E26861D62007CE6CF /* SettingViewController.swift */; };
 		0B73461126861D76007CE6CF /* SettingInteracter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B73461026861D76007CE6CF /* SettingInteracter.swift */; };
 		0B73461326861D87007CE6CF /* SettingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B73461226861D87007CE6CF /* SettingProtocol.swift */; };
@@ -55,6 +56,7 @@
 		0B51B1FB26A8210E00216054 /* CameraInteracter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraInteracter.swift; sourceTree = "<group>"; };
 		0B51B1FC26A8210E00216054 /* CameraProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraProtocol.swift; sourceTree = "<group>"; };
 		0B51B1FD26A8210E00216054 /* CameraPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraPresenter.swift; sourceTree = "<group>"; };
+		0B657DDC270D9D9E009323E9 /* DogInfoDatabaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogInfoDatabaseHelper.swift; sourceTree = "<group>"; };
 		0B73460E26861D62007CE6CF /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		0B73461026861D76007CE6CF /* SettingInteracter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingInteracter.swift; sourceTree = "<group>"; };
 		0B73461226861D87007CE6CF /* SettingProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingProtocol.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				0B2DFE3B26F70538002D533B /* DatabaseHelper.swift */,
+				0B657DDC270D9D9E009323E9 /* DogInfoDatabaseHelper.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -398,6 +401,7 @@
 				0B51B1FE26A8210E00216054 /* CameraViewController.swift in Sources */,
 				0BF238402660C2EE007E48AC /* DogPicture.xcdatamodeld in Sources */,
 				0B2DFE3826F0CBAB002D533B /* PreviewRouter.swift in Sources */,
+				0B657DDD270D9D9E009323E9 /* DogInfoDatabaseHelper.swift in Sources */,
 				0BF238362660C2EE007E48AC /* AppDelegate.swift in Sources */,
 				0BF238532660D5EE007E48AC /* HomeProtocol.swift in Sources */,
 				0B73461326861D87007CE6CF /* SettingProtocol.swift in Sources */,

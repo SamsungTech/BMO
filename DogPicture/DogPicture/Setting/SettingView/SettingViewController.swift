@@ -48,6 +48,7 @@ class SettingViewController: UIViewController {
     
     override func viewWillLayoutSubviews() {
         profileEditButton.imageSizeFit(view: profileEditButton, buttonSize: 50)
+        pushNotificationButton.imageSizeFit(view: pushNotificationButton, buttonSize: 50)
     }
     
     func updateView() {
@@ -58,7 +59,8 @@ class SettingViewController: UIViewController {
     func attribute() {
         view.addSubview(verticalStackView)
         [ backgroundView, settingTitle ].forEach() { verticalStackView.addSubview($0) }
-        [ profileView, settingHeaderLabel ].forEach() { backgroundView.addSubview($0) }
+        [ profileView, settingHeaderLabel, pushNotificationButton, dogTypeEditButton, eventButton,
+          termsOfUseButton, reviewButton, versionInfoButton ].forEach() { backgroundView.addSubview($0) }
         [ profileImage, dogName, dogType, profileEditButton, dogAgeImage, dogAge,
           dogAgeDays, dogGenderImage, dogGender, neutering, dogWeightImage, dogWeight, weight ].forEach() { profileView.addSubview($0) }
         
@@ -158,32 +160,44 @@ class SettingViewController: UIViewController {
             $0.textColor = .black
             $0.font = UIFont.boldSystemFont(ofSize: 15)
         }
-        settingButtonsAttribute()
-    }
-    func settingButtonsAttribute() {
-        [ pushNotificationButton, dogTypeEditButton, eventButton,
-          termsOfUseButton, reviewButton, versionInfoButton ].forEach() { backgroundView.addSubview($0) }
         pushNotificationButton.do {
+            $0.backgroundColor = .white
             $0.setImage(UIImage(systemName: "bell.fill"), for: .normal)
+            $0.setTitle("푸시알림", for: .normal)
+//            $0.titleLabel =
+//            $0.setTitleColor(UIColor.darkGray, for: .normal)
             $0.tintColor = .systemPink
+            $0.viewRadius(view: pushNotificationButton, cornerRadius: 10, maskToBounds: false)
         }
         dogTypeEditButton.do {
             $0.backgroundColor = .white
-            $0.tintColor = .white
-            $0.setTitle("타입설정", for: .normal)
+            $0.tintColor = .systemPink
+            $0.setImage(UIImage(systemName: "square.grid.3x3.middle.filled"), for: .normal)
+            $0.viewRadius(view: dogTypeEditButton, cornerRadius: 10, maskToBounds: false)
         }
         eventButton.do {
             $0.backgroundColor = .white
-            
+            $0.tintColor = .systemPink
+            $0.setImage(UIImage(systemName: "star.bubble.fill"), for: .normal)
+            $0.viewRadius(view: eventButton, cornerRadius: 10, maskToBounds: false)
         }
         termsOfUseButton.do {
             $0.backgroundColor = .white
+            $0.tintColor = .systemPink
+            $0.setImage(UIImage(systemName: "brain.head.profile"), for: .normal)
+            $0.viewRadius(view: termsOfUseButton, cornerRadius: 10, maskToBounds: false)
         }
         reviewButton.do {
             $0.backgroundColor = .white
+            $0.tintColor = .systemPink
+            $0.setImage(UIImage(systemName: "captions.bubble.fill"), for: .normal)
+            $0.viewRadius(view: reviewButton, cornerRadius: 10, maskToBounds: false)
         }
         versionInfoButton.do {
             $0.backgroundColor = .white
+            $0.tintColor = .systemPink
+            $0.setImage(UIImage(systemName: "v.square"), for: .normal)
+            $0.viewRadius(view: versionInfoButton, cornerRadius: 10, maskToBounds: false)
         }
     }
     func layout() {
@@ -301,50 +315,47 @@ class SettingViewController: UIViewController {
             $0.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15).isActive = true
             $0.heightAnchor.constraint(equalToConstant: 30).isActive = true
         }
-        settingbuttonsLayout()
-    }
-    func settingbuttonsLayout() {
         pushNotificationButton.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
             $0.topAnchor.constraint(equalTo: settingHeaderLabel.bottomAnchor, constant: 15).isActive = true
             $0.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15).isActive = true
-            $0.widthAnchor.constraint(equalToConstant: 107.5).isActive = true
-            $0.heightAnchor.constraint(equalToConstant: 80).isActive = true
+            $0.widthAnchor.constraint(equalToConstant: 105).isActive = true
+            $0.heightAnchor.constraint(equalToConstant: 140).isActive = true
         }
         dogTypeEditButton.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
             $0.topAnchor.constraint(equalTo: settingHeaderLabel.bottomAnchor, constant: 15).isActive = true
             $0.leadingAnchor.constraint(equalTo: pushNotificationButton.trailingAnchor, constant: 15).isActive = true
-            $0.widthAnchor.constraint(equalToConstant: 107.5).isActive = true
-            $0.heightAnchor.constraint(equalToConstant: 80).isActive = true
+            $0.widthAnchor.constraint(equalToConstant: 105).isActive = true
+            $0.heightAnchor.constraint(equalToConstant: 140).isActive = true
         }
         eventButton.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
             $0.topAnchor.constraint(equalTo: settingHeaderLabel.bottomAnchor, constant: 15).isActive = true
             $0.leadingAnchor.constraint(equalTo: dogTypeEditButton.trailingAnchor, constant: 15).isActive = true
-            $0.widthAnchor.constraint(equalToConstant: 107.5).isActive = true
-            $0.heightAnchor.constraint(equalToConstant: 80).isActive = true
+            $0.widthAnchor.constraint(equalToConstant: 105).isActive = true
+            $0.heightAnchor.constraint(equalToConstant: 140).isActive = true
         }
         termsOfUseButton.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
             $0.topAnchor.constraint(equalTo: pushNotificationButton.bottomAnchor, constant: 15).isActive = true
             $0.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15).isActive = true
-            $0.widthAnchor.constraint(equalToConstant: 107.5).isActive = true
-            $0.heightAnchor.constraint(equalToConstant: 80).isActive = true
+            $0.widthAnchor.constraint(equalToConstant: 105).isActive = true
+            $0.heightAnchor.constraint(equalToConstant: 140).isActive = true
         }
         reviewButton.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
             $0.topAnchor.constraint(equalTo: pushNotificationButton.bottomAnchor, constant: 15).isActive = true
             $0.leadingAnchor.constraint(equalTo: termsOfUseButton.trailingAnchor, constant: 15).isActive = true
-            $0.widthAnchor.constraint(equalToConstant: 107.5).isActive = true
-            $0.heightAnchor.constraint(equalToConstant: 80).isActive = true
+            $0.widthAnchor.constraint(equalToConstant: 105).isActive = true
+            $0.heightAnchor.constraint(equalToConstant: 140).isActive = true
         }
         versionInfoButton.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
             $0.topAnchor.constraint(equalTo: pushNotificationButton.bottomAnchor, constant: 15).isActive = true
             $0.leadingAnchor.constraint(equalTo: reviewButton.trailingAnchor, constant: 15).isActive = true
-            $0.widthAnchor.constraint(equalToConstant: 107.5).isActive = true
-            $0.heightAnchor.constraint(equalToConstant: 80).isActive = true
+            $0.widthAnchor.constraint(equalToConstant: 105).isActive = true
+            $0.heightAnchor.constraint(equalToConstant: 140).isActive = true
         }
     }
 }

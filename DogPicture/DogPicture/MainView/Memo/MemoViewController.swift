@@ -132,6 +132,7 @@ class MemoViewController: UIViewController {
     @objc func backButtonDidTap(sender: UIButton) {
         presenter?.memoViewDismiss()
     }
+    
     @objc func editButtonDidTap(sender: UIButton) {
         textHolder = memoTextView.text ?? ""
         if let model = modelHolder {
@@ -139,8 +140,8 @@ class MemoViewController: UIViewController {
         }
         viewWillAppear(true)
     }
+    
     @objc func deleteButtonDidTap(sender: UIButton) {
-        print("삭제버튼 클릭!")
         if let model = modelHolder {
             presenter?.passDataToDelete(item: model)
         }
@@ -151,7 +152,6 @@ class MemoViewController: UIViewController {
 extension MemoViewController: MemoViewProtocol {
     func showMemoView(for model: Model) {
         modelHolder = model
-        print("홀더에 담긴 model 내용 =",modelHolder)
         if let photo = model.photo,
            let memo = model.memo {
             dogImage.image = UIImage(data: photo)

@@ -1,35 +1,32 @@
 //
-//  DatabaseHelper.swift
+//  DogInfoDatabaseHelper.swift
 //  DogPicture
 //
-//  Created by 김동우 on 2021/09/19.
+//  Created by 김동우 on 2021/10/06.
 //
 
 import Foundation
 import UIKit
 import CoreData
 
-class DatabaseHelper {
-    static let instance = DatabaseHelper()
+class DogInfoDatabaseHelper {
+    static let instance = DogInfoDatabaseHelper()
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-    func getAllItems() -> [Model] {
-        var models = [Model]()
+    func getAllItems() -> [DogInfo] {
+        var dogInfo = [DogInfo]()
         do {
-            models = try context.fetch(Model.fetchRequest())
+            dogInfo = try context.fetch(DogInfo.fetchRequest())
             print("가져오기 성공!")
         } catch {
             print("models 가져오기 실패")
         }
-        return models
+        return dogInfo
     }
 
     func createItem(photo: Data, memo: String) {
-        let newItem = Model(context: context)
-        newItem.photo = photo
-        newItem.memo = memo
-        newItem.date = Date()
+        let newItem = DogInfo(context: context)
 
         do {
             try context.save()
@@ -38,17 +35,7 @@ class DatabaseHelper {
             print("createItem 실패 ㅠㅠ")
         }
     }
-
-    func deleteItem(item: Model) {
-        context.delete(item)
-        do {
-            try context.save()
-            print("deleteItem 성공")
-        } catch {
-            print("delete 실패")
-        }
-    }
-
+    
     func updateItem(item: Model, memo: String)  {
         item.memo = memo
         if context.hasChanges {
@@ -60,4 +47,5 @@ class DatabaseHelper {
             }
         }
     }
+    
 }
