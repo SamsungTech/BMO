@@ -33,7 +33,7 @@ class TabViewController: UITabBarController {
         self.setViewControllers([HomeViewRouter.createHomeModule(),
                                  CameraRouter.createCameraModule(),
                                  person,
-                                 SettingViewController()],
+                                 SettingRouter.createSettingModule()],
                                 animated: false)
         
         centerView.do {

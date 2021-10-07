@@ -9,7 +9,12 @@ import Foundation
 import UIKit
 import CoreData
 
-class DogInfoDatabaseHelper {
+class DogInfoDatabaseHelper: SettingDataManagerInputProtocol {
+    var requestHandler: SettingDataManagerOutputProtocol?
+    
+    func updateData() {
+    }
+    
     static let instance = DogInfoDatabaseHelper()
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -24,7 +29,7 @@ class DogInfoDatabaseHelper {
         }
         return dogInfo
     }
-
+    
     func createItem(dogName: String, dogBirthday: Date, dogGender: Bool,
                     dogWeight: Double, dogType: Int16, neutering: Bool, userName: String) {
         let newItem = DogInfo(context: context)

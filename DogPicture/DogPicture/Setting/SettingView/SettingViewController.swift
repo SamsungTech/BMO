@@ -8,9 +8,10 @@
 import UIKit
 
 class SettingViewController: UIViewController {
+    var presenter: SettingPresenterProtocol?
     
     let house = UIButton()
-    let verticalStackView = UIStackView()
+    let mainView = UIView()
     let backgroundView = UIView()
     
     var settingTitle = UILabel()
@@ -57,18 +58,15 @@ class SettingViewController: UIViewController {
     }
     
     func attribute() {
-        view.addSubview(verticalStackView)
-        [ backgroundView, settingTitle ].forEach() { verticalStackView.addSubview($0) }
+        view.addSubview(mainView)
+        [ backgroundView, settingTitle ].forEach() { mainView.addSubview($0) }
         [ profileView, settingHeaderLabel, pushNotificationButton, dogTypeEditButton, eventButton,
           termsOfUseButton, reviewButton, versionInfoButton ].forEach() { backgroundView.addSubview($0) }
         [ profileImage, dogName, dogType, profileEditButton, dogAgeImage, dogAge,
           dogAgeDays, dogGenderImage, dogGender, neutering, dogWeightImage, dogWeight, weight ].forEach() { profileView.addSubview($0) }
         
-        verticalStackView.do {
+        mainView.do {
             $0.backgroundColor = .systemPink
-            $0.axis = .vertical
-            $0.alignment = .fill
-            $0.distribution = .fillEqually
         }
         settingTitle.do {
             $0.backgroundColor = .clear
@@ -168,6 +166,7 @@ class SettingViewController: UIViewController {
 //            $0.setTitleColor(UIColor.darkGray, for: .normal)
             $0.tintColor = .systemPink
             $0.viewRadius(view: pushNotificationButton, cornerRadius: 10, maskToBounds: false)
+            $0.addTarget(self, action: #selector(pushNotificationButtonDidTap(sender:)), for: .touchUpInside)
         }
         dogTypeEditButton.do {
             $0.backgroundColor = .white
@@ -201,7 +200,7 @@ class SettingViewController: UIViewController {
         }
     }
     func layout() {
-        verticalStackView.do {
+        mainView.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
             $0.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
             $0.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
@@ -358,4 +357,12 @@ class SettingViewController: UIViewController {
             $0.heightAnchor.constraint(equalToConstant: 140).isActive = true
         }
     }
+    
+    @objc func pushNotificationButtonDidTap(sender: UIButton) {
+        presenter?.showLocalPushView()
+    }
+}
+
+extension SettingViewController: SettingViewProtocol {
+    
 }

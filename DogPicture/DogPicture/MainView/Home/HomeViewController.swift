@@ -152,7 +152,6 @@ class HomeViewController: UIViewController {
     }
     
     @objc func reloadButtonDidTap(sender: AnyObject) {
-        print("리로드 데이터")
         homeTableView.reloadData()
     }
     @objc func segmentLineAnimation(sender: UIButton) {
@@ -166,7 +165,6 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         if let data = modelList[indexPath.row].photo,
            let memo = modelList[indexPath.row].memo {
             cell.cellImageView.image = UIImage(data: data)
-            print(memo)
             cell.imageContent.text = memo
         }
         return cell
@@ -178,7 +176,6 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         presenter?.showMemo(for: modelList[indexPath.row], index: indexPath)
-        print(indexPath)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
