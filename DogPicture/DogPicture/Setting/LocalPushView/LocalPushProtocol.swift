@@ -14,6 +14,8 @@ protocol LocalPushViewProtocol: AnyObject {
 
 protocol LocalPushRouterProtocol: AnyObject {
     static func createLocalPushModule() -> UIViewController
+    
+    func dismissLocalPushView(from view: LocalPushViewProtocol)
 }
 
 protocol LocalPushPresenterProtocol: AnyObject {
@@ -22,6 +24,7 @@ protocol LocalPushPresenterProtocol: AnyObject {
     var router: LocalPushRouterProtocol? { get set }
     
     func viewDidLoad()
+    func cancelButtonClicked()
 }
 
 protocol LocalPushInteracterInputProtocol: AnyObject {

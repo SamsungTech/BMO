@@ -27,4 +27,10 @@ class LocalPushRouter: LocalPushRouterProtocol {
         }
         return UIViewController()
     }
+    func dismissLocalPushView(from view: LocalPushViewProtocol) {
+        if let pushView = view as? UIViewController {
+            pushView.dismiss(animated: true, completion: nil)
+        }
+        
+    }
 }

@@ -16,6 +16,11 @@ class LocalPushPresenter: LocalPushPresenterProtocol {
         
     }
     
+    func cancelButtonClicked() {
+        if let view = view {
+            router?.dismissLocalPushView(from: view)
+        }
+    }
     
 }
 
