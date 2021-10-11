@@ -35,6 +35,7 @@
 		0B9F63F4270E910000CF3F0C /* ProfileProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9F63F3270E910000CF3F0C /* ProfileProtocol.swift */; };
 		0B9F63F6270E910D00CF3F0C /* ProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9F63F5270E910D00CF3F0C /* ProfileRouter.swift */; };
 		0B9F63F8270E911700CF3F0C /* ProfileInteracter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9F63F7270E911700CF3F0C /* ProfileInteracter.swift */; };
+		0B9F641E2714614100CF3F0C /* NotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9F641D2714614100CF3F0C /* NotificationHelper.swift */; };
 		0BD2208A26E776B10064A8F6 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD2208926E776B10064A8F6 /* HomeTableViewCell.swift */; };
 		0BF238362660C2EE007E48AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF238352660C2EE007E48AC /* AppDelegate.swift */; };
 		0BF238382660C2EE007E48AC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF238372660C2EE007E48AC /* SceneDelegate.swift */; };
@@ -83,6 +84,7 @@
 		0B9F63F3270E910000CF3F0C /* ProfileProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileProtocol.swift; sourceTree = "<group>"; };
 		0B9F63F5270E910D00CF3F0C /* ProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRouter.swift; sourceTree = "<group>"; };
 		0B9F63F7270E911700CF3F0C /* ProfileInteracter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInteracter.swift; sourceTree = "<group>"; };
+		0B9F641D2714614100CF3F0C /* NotificationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationHelper.swift; sourceTree = "<group>"; };
 		0BD2208926E776B10064A8F6 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		0BF238322660C2EE007E48AC /* DogPicture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DogPicture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BF238352660C2EE007E48AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -230,6 +232,14 @@
 			path = LocalPushView;
 			sourceTree = "<group>";
 		};
+		0B9F641C2714610700CF3F0C /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				0B9F641D2714614100CF3F0C /* NotificationHelper.swift */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
 		0BF238292660C2EE007E48AC = {
 			isa = PBXGroup;
 			children = (
@@ -251,6 +261,7 @@
 		0BF238342660C2EE007E48AC /* DogPicture */ = {
 			isa = PBXGroup;
 			children = (
+				0B9F641C2714610700CF3F0C /* Notification */,
 				0B73461B2686F700007CE6CF /* Entities */,
 				0B73462F268CA28C007CE6CF /* TabBar */,
 				0B734603268347D6007CE6CF /* MainView */,
@@ -423,6 +434,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0BF2385B2660D667007E48AC /* MemoViewPresenter.swift in Sources */,
+				0B9F641E2714614100CF3F0C /* NotificationHelper.swift in Sources */,
 				0B9F63EA270DDBF400CF3F0C /* LocalPushPresenter.swift in Sources */,
 				0BF238552660D5FE007E48AC /* HomeViewRouter.swift in Sources */,
 				0BD2208A26E776B10064A8F6 /* HomeTableViewCell.swift in Sources */,

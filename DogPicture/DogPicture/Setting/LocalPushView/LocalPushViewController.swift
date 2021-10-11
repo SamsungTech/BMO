@@ -7,14 +7,16 @@
 
 import Foundation
 import UIKit
+import UserNotifications
 
 class LocalPushViewController: UIViewController {
     var presenter: LocalPushPresenterProtocol?
-    
     var timePicker = UIDatePicker()
     let saveButton = UIButton()
     let cancelButton = UIButton()
     let titleLabel = UILabel()
+    var dateLabel = UILabel()
+    let dateFormatter = DateFormatter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +31,7 @@ class LocalPushViewController: UIViewController {
     }
     
     func attribute() {
-        [ cancelButton, titleLabel, saveButton, timePicker ].forEach() { view.addSubview($0) }
+        [ cancelButton, titleLabel, saveButton, timePicker, dateLabel ].forEach() { view.addSubview($0) }
         
         cancelButton.do {
             $0.setTitle("취소", for: .normal)
@@ -47,15 +49,24 @@ class LocalPushViewController: UIViewController {
             $0.addTarget(self, action: #selector(saveButtonDidTap(sender:)), for: .touchUpInside)
         }
         timePicker.do {
-            $0.backgroundColor = UIColor.white
-            $0.datePickerMode = .time
-            $0.addTarget(self, action: #selector(handleDatePicker(sender:)), for: .valueChanged)
             if #available(iOS 13.4, *) {
-                $0.preferredDatePickerStyle = .automatic
+                $0.preferredDatePickerStyle = .wheels
             } else {
                 // Fallback on earlier versions
             }
+            $0.backgroundColor = UIColor.white
+            $0.datePickerMode = .time
+            $0.setValue(UIColor.black, forKeyPath: "textColor")
             $0.sizeToFit()
+            $0.locale = Locale(identifier: "ko_KR")
+            $0.addTarget(self, action: #selector(handleDatePicker(sender:)), for: .valueChanged)
+        }
+        dateLabel.do {
+            $0.textColor = .black
+            $0.textAlignment = .center
+        }
+        dateFormatter.do{
+            $0.dateFormat = "HH:mm"
         }
     }
     
@@ -84,13 +95,24 @@ class LocalPushViewController: UIViewController {
         timePicker.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
             $0.topAnchor.constraint(equalTo: cancelButton.bottomAnchor, constant: 30).isActive = true
-            $0.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30).isActive = true
-            $0.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30).isActive = true
-            $0.heightAnchor.constraint(equalToConstant: 200).isActive = true
+            $0.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+            $0.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+            $0.heightAnchor.constraint(equalToConstant: 300).isActive = true
         }
+        dateLabel.do {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.topAnchor.constraint(equalTo: timePicker.bottomAnchor, constant: 10).isActive = true
+            $0.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+            $0.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+            $0.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        }
+        
     }
     @objc func handleDatePicker(sender: UIDatePicker) {
-        print(sender.date)
+        let time = dateFormatter.string(from: sender.date)
+        dateLabel.text = "선택 시간 : " + time
+        let convertTime = dateFormatter.date(from: time)
+        print(convertTime ?? "")
     }
     @objc func saveButtonDidTap(sender: UIButton) {
         
