@@ -16,7 +16,10 @@ class LocalPushViewController: UIViewController {
     let cancelButton = UIButton()
     let titleLabel = UILabel()
     var dateLabel = UILabel()
-    let dateFormatter = DateFormatter()
+    let dateFormatter1 = DateFormatter()
+    let dateFormatter2 = DateFormatter()
+    var hourHolder: Int = 0
+    var minuteHolder: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,8 +68,11 @@ class LocalPushViewController: UIViewController {
             $0.textColor = .black
             $0.textAlignment = .center
         }
-        dateFormatter.do{
-            $0.dateFormat = "HH:mm"
+        dateFormatter1.do{
+            $0.dateFormat = "HH"
+        }
+        dateFormatter2.do {
+            $0.dateFormat = "mm"
         }
     }
     
@@ -109,13 +115,17 @@ class LocalPushViewController: UIViewController {
         
     }
     @objc func handleDatePicker(sender: UIDatePicker) {
-        let time = dateFormatter.string(from: sender.date)
-        dateLabel.text = "선택 시간 : " + time
-        let convertTime = dateFormatter.date(from: time)
-        print(convertTime ?? "")
+        let hour = dateFormatter1.string(from: sender.date)
+        let minute = dateFormatter2.string(from: sender.date)
+        dateLabel.text = "선택 시간 : " + hour + ":" + minute
+        if let hour = Int(hour),
+           let minute = Int(minute) {
+            hourHolder = hour
+            minuteHolder = minute
+        }
     }
     @objc func saveButtonDidTap(sender: UIButton) {
-        
+        presenter?.saveButtonClicked(hour: hourHolder, minute: minuteHolder)
     }
     @objc func cancelButtonDidTap(sender: UIButton) {
         presenter?.cancelButtonClicked()

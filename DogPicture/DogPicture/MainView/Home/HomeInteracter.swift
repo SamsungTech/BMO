@@ -6,11 +6,14 @@
 //
 
 class HomeInteracter: HomeInteracterInputProtocol {
+    weak var presenter: HomeInteracterOutputProtocol?
     var dataHolder: [Model] = []
     
     func retrieveModel() {
         dataHolder = DatabaseHelper.instance.getAllItems()
         presenter?.didRetrieveModel(dataHolder)
     }
-    weak var presenter: HomeInteracterOutputProtocol?
+    func notificationRegister() {
+        NotificationHelper.instance.registerLocalNotification()
+    }
 }

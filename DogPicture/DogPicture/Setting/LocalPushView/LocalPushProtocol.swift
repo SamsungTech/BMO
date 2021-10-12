@@ -25,11 +25,14 @@ protocol LocalPushPresenterProtocol: AnyObject {
     
     func viewDidLoad()
     func cancelButtonClicked()
+    func saveButtonClicked(hour: Int, minute: Int)
 }
 
 protocol LocalPushInteracterInputProtocol: AnyObject {
     var presenter: LocalPushInteracterOutputProtocol? { get set }
     var dataManager: LocalPushDataManagerInputProtocol? { get set }
+    
+    func setNotificationTime(hour: Int, minute: Int)
 }
 
 protocol LocalPushInteracterOutputProtocol: AnyObject {
@@ -37,9 +40,5 @@ protocol LocalPushInteracterOutputProtocol: AnyObject {
 }
 
 protocol LocalPushDataManagerInputProtocol: AnyObject {
-    
-}
-
-protocol LocalPushDataMangerOutputProtocol: AnyObject {
     
 }

@@ -11,7 +11,9 @@ class LocalPushInteracter: LocalPushInteracterInputProtocol {
     var presenter: LocalPushInteracterOutputProtocol?
     var dataManager: LocalPushDataManagerInputProtocol?
     
-    
+    func setNotificationTime(hour: Int, minute: Int) {
+        NotificationHelper.instance.notification(hour: hour, minute: minute)
+    }
 }
 
 extension LocalPushInteracter: LocalPushInteracterOutputProtocol {

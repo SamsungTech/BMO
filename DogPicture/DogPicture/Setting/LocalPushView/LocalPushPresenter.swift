@@ -15,13 +15,14 @@ class LocalPushPresenter: LocalPushPresenterProtocol {
     func viewDidLoad() {
         
     }
-    
     func cancelButtonClicked() {
         if let view = view {
             router?.dismissLocalPushView(from: view)
         }
     }
-    
+    func saveButtonClicked(hour: Int, minute: Int) {
+        interacter?.setNotificationTime(hour: hour, minute: minute)
+    }
 }
 
 extension LocalPushPresenter: LocalPushInteracterOutputProtocol {

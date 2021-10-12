@@ -184,13 +184,13 @@
 			path = MainView;
 			sourceTree = "<group>";
 		};
-		0B73461B2686F700007CE6CF /* Entities */ = {
+		0B73461B2686F700007CE6CF /* DataBase */ = {
 			isa = PBXGroup;
 			children = (
 				0B2DFE3B26F70538002D533B /* DatabaseHelper.swift */,
 				0B657DDC270D9D9E009323E9 /* DogInfoDatabaseHelper.swift */,
 			);
-			path = Entities;
+			path = DataBase;
 			sourceTree = "<group>";
 		};
 		0B734623268B19C3007CE6CF /* Library */ = {
@@ -240,6 +240,13 @@
 			path = Notification;
 			sourceTree = "<group>";
 		};
+		0BBC363C27153188006B10D4 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		0BF238292660C2EE007E48AC = {
 			isa = PBXGroup;
 			children = (
@@ -261,8 +268,9 @@
 		0BF238342660C2EE007E48AC /* DogPicture */ = {
 			isa = PBXGroup;
 			children = (
+				0BBC363C27153188006B10D4 /* New Group */,
 				0B9F641C2714610700CF3F0C /* Notification */,
-				0B73461B2686F700007CE6CF /* Entities */,
+				0B73461B2686F700007CE6CF /* DataBase */,
 				0B73462F268CA28C007CE6CF /* TabBar */,
 				0B734603268347D6007CE6CF /* MainView */,
 				0B73460126834780007CE6CF /* Camera */,

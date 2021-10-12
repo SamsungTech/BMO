@@ -34,6 +34,7 @@ protocol HomeInteracterInputProtocol: AnyObject {
     var presenter: HomeInteracterOutputProtocol? { get set }
     
     func retrieveModel()
+    func notificationRegister()
 }
 
 protocol HomeInteracterOutputProtocol: AnyObject {
