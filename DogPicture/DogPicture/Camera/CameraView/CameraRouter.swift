@@ -31,6 +31,7 @@ class CameraRouter: CameraRouterProtocol {
         let previewViewController = PreviewRouter.createPreviewModule(forImage: data)
         print(data)
         if let preview = view as? UIViewController {
+            preview.modalPresentationStyle = .fullScreen
             preview.present(previewViewController, animated: true, completion: nil)
         }
     }

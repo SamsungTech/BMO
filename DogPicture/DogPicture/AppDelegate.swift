@@ -7,21 +7,25 @@
 
 import UIKit
 import CoreData
+
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
     var window: UIWindow?
-
+    
+    let notificationCenter = UNUserNotificationCenter.current()
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        let tabVC = TabViewController()
-        tabVC.view.backgroundColor = UIColor.white
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = tabVC
-        window?.makeKeyAndVisible()
+        notificationCenter.delegate = self
+        NotificationHelper.instance.registerLocalNotification()
+        
         return true
     }
-
+    
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        UIApplication.shared.applicationIconBadgeNumber = 0;
+    }
+    
     // MARK: UISceneSession Lifecycle
     
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
@@ -81,6 +85,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-
 }
 
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                willPresent notification: UNNotification,
+                                withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert, .sound])
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                didReceive response: UNNotificationResponse,
+                                withCompletionHandler completionHandler: @escaping () -> Void) {
+        guard let rootViewController = (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.window?.rootViewController else { return }
+        
+        if response.notification.request.identifier == "Local Notification" {
+            if let cameraView = TabViewController() as? UITabBarController,
+               let viewController = rootViewController as? UIViewController {
+                cameraView.selectedIndex = 1
+                
+                cameraView.modalPresentationStyle = .fullScreen
+                viewController.present(cameraView, animated: true)
+            }
+        }
+        completionHandler()
+    }
+    
+}

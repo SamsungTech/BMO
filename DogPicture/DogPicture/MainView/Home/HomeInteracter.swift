@@ -13,7 +13,4 @@ class HomeInteracter: HomeInteracterInputProtocol {
         dataHolder = DatabaseHelper.instance.getAllItems()
         presenter?.didRetrieveModel(dataHolder)
     }
-    func notificationRegister() {
-        NotificationHelper.instance.registerLocalNotification()
-    }
 }

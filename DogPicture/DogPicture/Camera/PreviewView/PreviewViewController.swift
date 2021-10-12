@@ -27,9 +27,6 @@ class PreviewViewController: UIViewController {
         view.backgroundColor = .white
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        self.previewTextField.becomeFirstResponder()
-    }
     
     func updateView() {
         attribute()
@@ -111,8 +108,3 @@ extension PreviewViewController: PreviewViewProtocol {
     }
 }
 
-extension PreviewViewController: UITextFieldDelegate {
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.previewTextField.resignFirstResponder()
-    }
-}

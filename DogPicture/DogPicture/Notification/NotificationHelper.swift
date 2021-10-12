@@ -14,7 +14,7 @@ class NotificationHelper {
     func registerLocalNotification() {
         let center = UNUserNotificationCenter.current()
         
-        center.requestAuthorization(options: [.alert, .badge, .sound]) { granted,
+        center.requestAuthorization(options: [.alert, .sound]) { granted,
             error in
             if granted {
                 print("yay!")
@@ -39,10 +39,17 @@ class NotificationHelper {
         dateFire.hour = hour
         dateFire.minute = minute
         
-        let trigger = UNCalendarNotificationTrigger(dateMatching: dateFire, repeats: true)
-        let request = UNNotificationRequest(identifier: "ID", content: notificationContent, trigger: trigger)
-        center.add(request)
+        let identifier = "Local Notification"
+//        let trigger = UNCalendarNotificationTrigger(dateMatching: dateFire, repeats: true)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        let request = UNNotificationRequest(identifier: identifier, content: notificationContent, trigger: trigger)
+        center.add(request) { (error) in
+            if let err = error {
+                print(err.localizedDescription)
+            }
+        }
         print("알람등록 성공")
     }
     
 }
+

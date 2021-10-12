@@ -126,6 +126,7 @@ class LocalPushViewController: UIViewController {
     }
     @objc func saveButtonDidTap(sender: UIButton) {
         presenter?.saveButtonClicked(hour: hourHolder, minute: minuteHolder)
+        presenter?.cancelButtonClicked()
     }
     @objc func cancelButtonDidTap(sender: UIButton) {
         presenter?.cancelButtonClicked()

@@ -131,6 +131,7 @@ extension CameraViewController: AVCapturePhotoCaptureDelegate {
         if let imageData = photo.fileDataRepresentation() {
             data = imageData
             presenter?.showPreview(imageData: data)
+            dismiss(animated: true, completion: nil)
         }
     }
 }

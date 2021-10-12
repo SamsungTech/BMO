@@ -13,7 +13,6 @@ class HomePresenter: HomePresenterProtocol {
     
     func viewDidLoad() {
         interacter?.retrieveModel()
-        interacter?.notificationRegister()
     }
     func showMemo(for model: Model, index: IndexPath) {
         guard let view = view else { return }
