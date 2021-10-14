@@ -11,8 +11,7 @@ class MemoViewController: UIViewController {
     var presenter: MemoViewPresenterProtocol?
     
     var dogImage = UIImageView()
-    var mainView = UIView()
-    var memoStackView = UIStackView()
+    var memoView = UIView()
     var memoTextView = UITextField()
     var modelHolder: Model?
     var textHolder: String = ""
@@ -44,14 +43,11 @@ class MemoViewController: UIViewController {
     }
     
     func attribute() {
-        [ memoStackView ].forEach() { view.addSubview($0) }
+        [ memoView ].forEach() { view.addSubview($0) }
         [ dogImage, backButton, deleteButton, memoTextView, editButton ] .forEach() { memoStackView.addSubview($0) }
         
-        memoStackView.do {
+        memoView.do {
             $0.backgroundColor = .systemGreen
-            $0.axis = .vertical
-            $0.alignment = .fill
-            $0.distribution = .fillEqually
         }
         dogImage.do {
             $0.backgroundColor = .systemPink
@@ -83,7 +79,7 @@ class MemoViewController: UIViewController {
     }
     
     func layout() {
-        memoStackView.do {
+        memoView.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
             $0.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
             $0.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true

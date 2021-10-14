@@ -29,6 +29,9 @@ class HomeViewController: UIViewController {
     let reloadButton = UIButton()
     var tagNumber = 0
     
+    var CardTransition = CardTransitionManager()
+
+    
     override var prefersStatusBarHidden: Bool {
         return false
     }
@@ -37,7 +40,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         presenter?.viewDidLoad()
         homeTableView.reloadData()
-        view.backgroundColor = .white
+        view.backgroundColor = .lightGray
         navigationController?.isNavigationBarHidden = true
         updateView()
         view.bringSubviewToFront(reloadButton)
@@ -64,8 +67,10 @@ class HomeViewController: UIViewController {
             $0.dataSource = self
             $0.delegate = self
             $0.frame = view.bounds
-            $0.backgroundColor = .systemBlue
+            $0.backgroundColor = .lightGray
             $0.register(HomeTableViewCell.self, forCellReuseIdentifier: "HomeCell")
+            $0.delaysContentTouches = false
+            $0.backgroundColor = .lightGray
         }
         
         mainHeaderView.do {
@@ -75,6 +80,7 @@ class HomeViewController: UIViewController {
         randomImageView.do {
             $0.image = UIImage(named: "p4")
         }
+        
         segmentedScrollView.do {
             $0.backgroundColor = .systemPink
             $0.contentSize = CGSize(width: UIScreen.main.bounds.maxX*(840/390),
@@ -167,6 +173,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
             cell.cellImageView.image = UIImage(data: data)
             cell.imageContent.text = memo
         }
+        cell.selectionStyle = .none
         return cell
     }
     
@@ -175,6 +182,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        CardTransition.indexPath = indexPath
         presenter?.showMemo(for: modelList[indexPath.row], index: indexPath)
     }
     

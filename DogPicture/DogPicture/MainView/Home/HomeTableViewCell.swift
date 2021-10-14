@@ -17,16 +17,22 @@ class HomeTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        contentView.backgroundColor = .orange
         attribute()
+        layout()
+        self.backgroundColor = .clear
+        self.contentView.backgroundColor = .clear
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func resetTransform() {
+        transform = .identity
+    }
+    
     func attribute() {
-        [ cardView ].forEach() { contentView.addSubview($0) }
+        [ cardView ].forEach() { self.addSubview($0) }
         [ cellImageView, imageContent, imageDate ].forEach() { cardView.addSubview($0) }
         
         cardView.do {
@@ -36,7 +42,6 @@ class HomeTableViewCell: UITableViewCell {
                               width: UIScreen.main.bounds.maxX*(350/390),
                               height: UIScreen.main.bounds.maxY*(420/844))
             $0.viewRadius(view: cardView, cornerRadius: 30, maskToBounds: true)
-            $0.viewShadow(view: cardView)
         }
         imageDate.do {
             $0.tintColor = .lightGray
@@ -48,7 +53,6 @@ class HomeTableViewCell: UITableViewCell {
             $0.font = UIFont.boldSystemFont(ofSize: 20)
             $0.textColor = .black
         }
-        layout()
     }
     
     func layout() {
@@ -68,6 +72,45 @@ class HomeTableViewCell: UITableViewCell {
             $0.translatesAutoresizingMaskIntoConstraints = false
             $0.topAnchor.constraint(equalTo: imageDate.bottomAnchor, constant: 10).isActive = true
             $0.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: 10).isActive = true
+        }
+    }
+}
+
+extension HomeTableViewCell {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        bounceAnimate(isTouched: true)
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesEnded(touches, with: event)
+        bounceAnimate(isTouched: false)
+    }
+    
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesCancelled(touches, with: event)
+        bounceAnimate(isTouched: false)
+    }
+    
+    private func bounceAnimate(isTouched: Bool) {
+        if isTouched {
+            HomeTableViewCell.animate(withDuration: 0.5,
+                                      delay: 0,
+                                      usingSpringWithDamping: 1,
+                                      initialSpringVelocity: 1,
+                                      options: [.allowUserInteraction],
+                                      animations: {
+                self.cardView.transform = .init(scaleX: 0.96, y: 0.96)
+                self.layoutIfNeeded()
+            }, completion: nil)
+        } else {
+            HomeTableViewCell.animate(withDuration: 0.5,
+                                      delay: 0,
+                                      usingSpringWithDamping: 1,
+                                      initialSpringVelocity: 0,
+                                      options: .allowUserInteraction,
+                                      animations: { self.cardView.transform = .identity },
+                                      completion: nil)
         }
     }
 }

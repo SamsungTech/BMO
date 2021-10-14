@@ -8,6 +8,8 @@
 import UIKit
 
 class HomeViewRouter: HomeRouterProtocol {
+    var CardTransition = CardTransitionManager()
+    
     class func createHomeModule() -> UIViewController {
         if let view: HomeViewProtocol = HomeViewController() as? HomeViewProtocol {
             let presenter: HomePresenterProtocol & HomeInteracterOutputProtocol = HomePresenter()
@@ -31,6 +33,8 @@ class HomeViewRouter: HomeRouterProtocol {
         let MemoViewController = MemoViewRouter.createMemoViewRouter(from: name)
         if let memoView = view as? UIViewController {
             MemoViewController.modalPresentationStyle = .fullScreen
+            CardTransition.superViewController = MemoViewController
+            MemoViewController.transitioningDelegate = CardTransition
             memoView.present(MemoViewController, animated: true)
         }
     }
