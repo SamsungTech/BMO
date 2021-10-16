@@ -24,7 +24,7 @@ class TabViewController: UITabBarController {
         super.viewDidLoad()
         self.tabBar.isHidden = true
         createTabBarItemsAttribute()
-        self.selectedIndex = 0
+        self.selectedIndex = 3
         if selectedIndex == 1 {
             hiddenTabViewButton()
         }

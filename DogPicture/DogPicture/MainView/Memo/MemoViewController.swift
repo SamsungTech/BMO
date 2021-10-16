@@ -21,7 +21,7 @@ class MemoViewController: UIViewController {
     let backButton = UIButton()
     let editButton = UIButton()
     
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter?.viewDidLoad()
@@ -44,7 +44,7 @@ class MemoViewController: UIViewController {
     
     func attribute() {
         [ memoView ].forEach() { view.addSubview($0) }
-        [ dogImage, backButton, deleteButton, memoTextView, editButton ] .forEach() { memoStackView.addSubview($0) }
+        [ dogImage, backButton, deleteButton, memoTextView, editButton ] .forEach() { memoView.addSubview($0) }
         
         memoView.do {
             $0.backgroundColor = .systemGreen

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVFAudio
 
 class SettingViewController: UIViewController {
     var presenter: SettingPresenterProtocol?
@@ -35,12 +36,26 @@ class SettingViewController: UIViewController {
     var dogWeightImage = UIImageView()
     
     var settingHeaderLabel = UILabel()
+    
     let pushNotificationButton = UIButton()
-    let dogTypeEditButton = UIButton()
+    let dogTypeButton = UIButton()
     let termsOfUseButton = UIButton()
     let reviewButton = UIButton()
     let eventButton = UIButton()
     var versionInfoButton = UIButton()
+    
+    let notificationButtonImage = UIImageView()
+    let notificationButtonTitle = UILabel()
+    let dogTypeButtonImage = UIImageView()
+    let dogTypeButtonTitle = UILabel()
+    let termsOfUseButtonImage = UIImageView()
+    let termsOfUseButtonTitle = UILabel()
+    let reviewButtonImage = UIImageView()
+    let reviewButtonTitle = UILabel()
+    let eventButtonImage = UIImageView()
+    let eventButtonTitle = UILabel()
+    let versionInfoButtonImage = UIImageView()
+    var versionInfoButtonTitle = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,8 +63,13 @@ class SettingViewController: UIViewController {
     }
     
     override func viewWillLayoutSubviews() {
-        profileEditButton.imageSizeFit(view: profileEditButton, buttonSize: 50)
+        
         pushNotificationButton.imageSizeFit(view: pushNotificationButton, buttonSize: 50)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        profileEditButton.imageSizeFit(view: profileEditButton, buttonSize: 50)
     }
     
     func updateView() {
@@ -57,11 +77,31 @@ class SettingViewController: UIViewController {
         layout()
     }
     
+//    let notificationButtonImage = UIImageView()
+//    let notificationButtonTitle = UILabel()
+//    let dogTypeButtonImage = UIImageView()
+//    let dogTypeButtonTitle = UILabel()
+//    let termsOfUseButtonImage = UIImageView()
+//    let termsOfUseButtonTitle = UILabel()
+//    let reviewButtonImage = UIImageView()
+//    let reviewButtonTitle = UILabel()
+//    let eventButtonImage = UIImageView()
+//    let eventButtonTitle = UILabel()
+//    let versionInfoButtonImage = UIImageView()
+//    var versionInfoButtonTitle = UILabel()
+    
     func attribute() {
         view.addSubview(mainView)
         [ backgroundView, settingTitle ].forEach() { mainView.addSubview($0) }
-        [ profileView, settingHeaderLabel, pushNotificationButton, dogTypeEditButton, eventButton,
+        [ profileView, settingHeaderLabel,
+          pushNotificationButton, dogTypeButton, eventButton,
           termsOfUseButton, reviewButton, versionInfoButton ].forEach() { backgroundView.addSubview($0) }
+        [ notificationButtonImage, notificationButtonTitle ].forEach() { pushNotificationButton.addSubview($0) }
+        [ dogTypeButtonImage, dogTypeButtonTitle ].forEach() { dogTypeButton.addSubview($0) }
+        [ termsOfUseButtonImage, termsOfUseButtonTitle ].forEach() { termsOfUseButton.addSubview($0) }
+        [ reviewButtonImage, reviewButtonTitle ].forEach() { reviewButton.addSubview($0) }
+        [ eventButtonImage, eventButtonTitle ].forEach() { eventButton.addSubview($0) }
+        [ versionInfoButtonImage, versionInfoButtonTitle ].forEach() { versionInfoButton.addSubview($0) }
         [ profileImage, dogName, dogType, profileEditButton, dogAgeImage, dogAge,
           dogAgeDays, dogGenderImage, dogGender, neutering, dogWeightImage, dogWeight, weight ].forEach() { profileView.addSubview($0) }
         
@@ -158,45 +198,99 @@ class SettingViewController: UIViewController {
             $0.textColor = .black
             $0.font = UIFont.boldSystemFont(ofSize: 15)
         }
+        
+        // MARK: 여기서부터 Setting 6 Buttons
+        // UIButton 의 레이아웃만 잡고 안에 들어갈 UILabel, UIImageView 를 UIButton에 addSubView로 넣는다.
+        // addSubVIew에 들어간 컴포넌트를 클릭해도 UIButton 처럼 addtarget 메소드가 실행이 될지 여부 확인
         pushNotificationButton.do {
             $0.backgroundColor = .white
-            $0.setImage(UIImage(systemName: "bell.fill"), for: .normal)
-            $0.setTitle("푸시알림", for: .normal)
-//            $0.titleLabel =
-//            $0.setTitleColor(UIColor.darkGray, for: .normal)
             $0.tintColor = .systemPink
             $0.viewRadius(view: pushNotificationButton, cornerRadius: 10, maskToBounds: false)
             $0.addTarget(self, action: #selector(pushNotificationButtonDidTap(sender:)), for: .touchUpInside)
         }
-        dogTypeEditButton.do {
+        notificationButtonImage.do {
+            $0.image = UIImage(systemName: "bell.fill")
+            $0.tintColor = .systemPink
+        }
+        notificationButtonTitle.do {
+            $0.text = "푸시 알림"
+            $0.textColor = .black
+            $0.textAlignment = .center
+        }
+        
+        dogTypeButton.do {
             $0.backgroundColor = .white
             $0.tintColor = .systemPink
-            $0.setImage(UIImage(systemName: "square.grid.3x3.middle.filled"), for: .normal)
-            $0.viewRadius(view: dogTypeEditButton, cornerRadius: 10, maskToBounds: false)
+            $0.viewRadius(view: dogTypeButton, cornerRadius: 10, maskToBounds: false)
         }
+        dogTypeButtonImage.do {
+            $0.image = UIImage(systemName: "square.grid.3x3.middle.filled")
+            $0.tintColor = .systemPink
+        }
+        dogTypeButtonTitle.do {
+            $0.text = "어떤 종?"
+            $0.textColor = .black
+            $0.textAlignment = .center
+        }
+        
         eventButton.do {
             $0.backgroundColor = .white
             $0.tintColor = .systemPink
-            $0.setImage(UIImage(systemName: "star.bubble.fill"), for: .normal)
             $0.viewRadius(view: eventButton, cornerRadius: 10, maskToBounds: false)
         }
+        eventButtonImage.do {
+            $0.image = UIImage(systemName: "star.bubble.fill")
+            $0.tintColor = .systemPink
+        }
+        eventButtonTitle.do {
+            $0.text = "이벤트"
+            $0.textColor = .black
+            $0.textAlignment = .center
+        }
+        
         termsOfUseButton.do {
             $0.backgroundColor = .white
             $0.tintColor = .systemPink
-            $0.setImage(UIImage(systemName: "brain.head.profile"), for: .normal)
             $0.viewRadius(view: termsOfUseButton, cornerRadius: 10, maskToBounds: false)
         }
+        termsOfUseButtonImage.do {
+            $0.image = UIImage(systemName: "brain.head.profile")
+            $0.tintColor = .systemPink
+        }
+        termsOfUseButtonTitle.do {
+            $0.text = "이용약관"
+            $0.textColor = .black
+            $0.textAlignment = .center
+        }
+        
         reviewButton.do {
             $0.backgroundColor = .white
             $0.tintColor = .systemPink
-            $0.setImage(UIImage(systemName: "captions.bubble.fill"), for: .normal)
             $0.viewRadius(view: reviewButton, cornerRadius: 10, maskToBounds: false)
         }
+        reviewButtonImage.do {
+            $0.image = UIImage(systemName: "captions.bubble.fill")
+            $0.tintColor = .systemPink
+        }
+        reviewButtonTitle.do {
+            $0.text = "리뷰"
+            $0.textColor = .black
+            $0.textAlignment = .center
+        }
+        
         versionInfoButton.do {
             $0.backgroundColor = .white
             $0.tintColor = .systemPink
-            $0.setImage(UIImage(systemName: "v.square"), for: .normal)
             $0.viewRadius(view: versionInfoButton, cornerRadius: 10, maskToBounds: false)
+        }
+        versionInfoButtonImage.do {
+            $0.image = UIImage(systemName: "v.square")
+            $0.tintColor = .systemPink
+        }
+        versionInfoButtonTitle.do {
+            $0.text = "버전확인"
+            $0.textColor = .black
+            $0.textAlignment = .center
         }
     }
     func layout() {
@@ -314,6 +408,7 @@ class SettingViewController: UIViewController {
             $0.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15).isActive = true
             $0.heightAnchor.constraint(equalToConstant: 30).isActive = true
         }
+        
         pushNotificationButton.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
             $0.topAnchor.constraint(equalTo: settingHeaderLabel.bottomAnchor, constant: 15).isActive = true
@@ -321,20 +416,65 @@ class SettingViewController: UIViewController {
             $0.widthAnchor.constraint(equalToConstant: 105).isActive = true
             $0.heightAnchor.constraint(equalToConstant: 140).isActive = true
         }
-        dogTypeEditButton.do {
+        notificationButtonImage.do {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.topAnchor.constraint(equalTo: pushNotificationButton.topAnchor, constant: 10).isActive = true
+            $0.leadingAnchor.constraint(equalTo: pushNotificationButton.leadingAnchor, constant: 5).isActive = true
+            $0.widthAnchor.constraint(equalToConstant: 85).isActive = true
+            $0.heightAnchor.constraint(equalToConstant: 85).isActive = true
+        }
+        notificationButtonTitle.do {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.topAnchor.constraint(equalTo: notificationButtonImage.bottomAnchor).isActive = true
+            $0.leadingAnchor.constraint(equalTo: pushNotificationButton.leadingAnchor).isActive = true
+            $0.widthAnchor.constraint(equalToConstant: 105).isActive = true
+            $0.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        }
+        
+        dogTypeButton.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
             $0.topAnchor.constraint(equalTo: settingHeaderLabel.bottomAnchor, constant: 15).isActive = true
             $0.leadingAnchor.constraint(equalTo: pushNotificationButton.trailingAnchor, constant: 15).isActive = true
             $0.widthAnchor.constraint(equalToConstant: 105).isActive = true
             $0.heightAnchor.constraint(equalToConstant: 140).isActive = true
         }
+        dogTypeButtonImage.do {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.topAnchor.constraint(equalTo: dogTypeButton.topAnchor,constant: 10).isActive = true
+            $0.leadingAnchor.constraint(equalTo: dogTypeButton.leadingAnchor, constant: 10).isActive = true
+            $0.widthAnchor.constraint(equalToConstant: 85).isActive = true
+            $0.heightAnchor.constraint(equalToConstant: 85).isActive = true
+        }
+        dogTypeButtonTitle.do {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.topAnchor.constraint(equalTo: dogTypeButtonImage.bottomAnchor).isActive = true
+            $0.leadingAnchor.constraint(equalTo: dogTypeButton.leadingAnchor).isActive = true
+            $0.widthAnchor.constraint(equalToConstant: 105).isActive = true
+            $0.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        }
+        
         eventButton.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
             $0.topAnchor.constraint(equalTo: settingHeaderLabel.bottomAnchor, constant: 15).isActive = true
-            $0.leadingAnchor.constraint(equalTo: dogTypeEditButton.trailingAnchor, constant: 15).isActive = true
+            $0.leadingAnchor.constraint(equalTo: dogTypeButton.trailingAnchor, constant: 15).isActive = true
             $0.widthAnchor.constraint(equalToConstant: 105).isActive = true
             $0.heightAnchor.constraint(equalToConstant: 140).isActive = true
         }
+        eventButtonImage.do {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.topAnchor.constraint(equalTo: eventButton.topAnchor, constant: 10).isActive = true
+            $0.leadingAnchor.constraint(equalTo: eventButton.leadingAnchor, constant: 10).isActive = true
+            $0.widthAnchor.constraint(equalToConstant: 85).isActive = true
+            $0.heightAnchor.constraint(equalToConstant: 85).isActive = true
+        }
+        eventButtonTitle.do {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.topAnchor.constraint(equalTo: eventButtonImage.bottomAnchor).isActive = true
+            $0.leadingAnchor.constraint(equalTo: eventButton.leadingAnchor).isActive = true
+            $0.widthAnchor.constraint(equalToConstant: 105).isActive = true
+            $0.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        }
+        
         termsOfUseButton.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
             $0.topAnchor.constraint(equalTo: pushNotificationButton.bottomAnchor, constant: 15).isActive = true
@@ -342,6 +482,21 @@ class SettingViewController: UIViewController {
             $0.widthAnchor.constraint(equalToConstant: 105).isActive = true
             $0.heightAnchor.constraint(equalToConstant: 140).isActive = true
         }
+        termsOfUseButtonImage.do {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.topAnchor.constraint(equalTo: termsOfUseButton.topAnchor, constant: 10).isActive = true
+            $0.leadingAnchor.constraint(equalTo: termsOfUseButton.leadingAnchor, constant: 10).isActive = true
+            $0.widthAnchor.constraint(equalToConstant: 85).isActive = true
+            $0.heightAnchor.constraint(equalToConstant: 85).isActive = true
+        }
+        termsOfUseButtonTitle.do {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.topAnchor.constraint(equalTo: termsOfUseButtonImage.bottomAnchor).isActive = true
+            $0.leadingAnchor.constraint(equalTo: termsOfUseButton.leadingAnchor).isActive = true
+            $0.widthAnchor.constraint(equalToConstant: 105).isActive = true
+            $0.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        }
+        
         reviewButton.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
             $0.topAnchor.constraint(equalTo: pushNotificationButton.bottomAnchor, constant: 15).isActive = true
@@ -349,6 +504,21 @@ class SettingViewController: UIViewController {
             $0.widthAnchor.constraint(equalToConstant: 105).isActive = true
             $0.heightAnchor.constraint(equalToConstant: 140).isActive = true
         }
+        reviewButtonImage.do {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.topAnchor.constraint(equalTo: reviewButton.topAnchor, constant: 10).isActive = true
+            $0.leadingAnchor.constraint(equalTo: reviewButton.leadingAnchor, constant: 10).isActive = true
+            $0.widthAnchor.constraint(equalToConstant: 85).isActive = true
+            $0.heightAnchor.constraint(equalToConstant: 85).isActive = true
+        }
+        reviewButtonTitle.do {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.topAnchor.constraint(equalTo: reviewButtonImage.bottomAnchor).isActive = true
+            $0.leadingAnchor.constraint(equalTo: reviewButton.leadingAnchor).isActive = true
+            $0.widthAnchor.constraint(equalToConstant: 105).isActive = true
+            $0.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        }
+        
         versionInfoButton.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
             $0.topAnchor.constraint(equalTo: pushNotificationButton.bottomAnchor, constant: 15).isActive = true
@@ -356,6 +526,21 @@ class SettingViewController: UIViewController {
             $0.widthAnchor.constraint(equalToConstant: 105).isActive = true
             $0.heightAnchor.constraint(equalToConstant: 140).isActive = true
         }
+        versionInfoButtonImage.do {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.topAnchor.constraint(equalTo: versionInfoButton.topAnchor, constant: 10).isActive = true
+            $0.leadingAnchor.constraint(equalTo: versionInfoButton.leadingAnchor, constant: 10).isActive = true
+            $0.widthAnchor.constraint(equalToConstant: 85).isActive = true
+            $0.heightAnchor.constraint(equalToConstant: 85).isActive = true
+        }
+        versionInfoButtonTitle.do {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.topAnchor.constraint(equalTo: versionInfoButtonImage.bottomAnchor).isActive = true
+            $0.leadingAnchor.constraint(equalTo: versionInfoButton.leadingAnchor).isActive = true
+            $0.widthAnchor.constraint(equalToConstant: 105).isActive = true
+            $0.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        }
+        
     }
     
     @objc func pushNotificationButtonDidTap(sender: UIButton) {

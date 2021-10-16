@@ -65,11 +65,11 @@ class ContentPresentingAnimator: NSObject, UIViewControllerAnimatedTransitioning
         containerView.addSubview(toView)
         containerView.addSubview(contentView)
         
-        NSLayoutConstraint.activate(makeConstraint(containerView: containerView, contentView: contentView, Originframe: startFrame))
+//        NSLayoutConstraint.activate(makeConstraint(containerView: containerView, contentView: contentView, Originframe: startFrame))
         
     }
     
-    func makeConstraint(containerView: UIView, contentView : , Originframe: CGRect) -> [NSLayoutConstraint] {
-        memoViewCenterXAnchor = contentView.center
-    }
+//    func makeConstraint(containerView: UIView, contentView : , Originframe: CGRect) -> [NSLayoutConstraint] {
+//        memoViewCenterXAnchor = contentView.center
+//    }
 }
