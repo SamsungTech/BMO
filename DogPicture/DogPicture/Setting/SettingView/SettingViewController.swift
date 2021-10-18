@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import AVFAudio
 
 class SettingViewController: UIViewController {
     var presenter: SettingPresenterProtocol?
@@ -76,19 +75,6 @@ class SettingViewController: UIViewController {
         attribute()
         layout()
     }
-    
-//    let notificationButtonImage = UIImageView()
-//    let notificationButtonTitle = UILabel()
-//    let dogTypeButtonImage = UIImageView()
-//    let dogTypeButtonTitle = UILabel()
-//    let termsOfUseButtonImage = UIImageView()
-//    let termsOfUseButtonTitle = UILabel()
-//    let reviewButtonImage = UIImageView()
-//    let reviewButtonTitle = UILabel()
-//    let eventButtonImage = UIImageView()
-//    let eventButtonTitle = UILabel()
-//    let versionInfoButtonImage = UIImageView()
-//    var versionInfoButtonTitle = UILabel()
     
     func attribute() {
         view.addSubview(mainView)
@@ -419,7 +405,7 @@ class SettingViewController: UIViewController {
         notificationButtonImage.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
             $0.topAnchor.constraint(equalTo: pushNotificationButton.topAnchor, constant: 10).isActive = true
-            $0.leadingAnchor.constraint(equalTo: pushNotificationButton.leadingAnchor, constant: 5).isActive = true
+            $0.leadingAnchor.constraint(equalTo: pushNotificationButton.leadingAnchor, constant: 10).isActive = true
             $0.widthAnchor.constraint(equalToConstant: 85).isActive = true
             $0.heightAnchor.constraint(equalToConstant: 85).isActive = true
         }

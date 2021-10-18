@@ -10,7 +10,6 @@ import Then
 
 class HomeViewController: UIViewController {
     var presenter: HomePresenterProtocol?
-    
     var headerView = UIView()
     var mainHeaderView = UIView()
     var randomImageView = UIImageView()
@@ -28,9 +27,8 @@ class HomeViewController: UIViewController {
     var selectorTextColor: UIColor = .red
     let reloadButton = UIButton()
     var tagNumber = 0
-    
-    var CardTransition = CardTransitionManager()
-
+    let transition = AnimationTransition()
+    let memoView = MemoViewController()
     
     override var prefersStatusBarHidden: Bool {
         return false
@@ -130,16 +128,11 @@ class HomeViewController: UIViewController {
             $0.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
             $0.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         }
-        headerViewLayout()
-    }
-    
-    func headerViewLayout() {
         segmentedScrollView.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
             $0.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.maxX).isActive = true
             $0.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.maxY*(70/844)).isActive = true
         }
-        
         segmentedScrollContentView.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
             $0.topAnchor.constraint(equalTo: segmentedScrollView.safeAreaLayoutGuide.topAnchor).isActive = true
@@ -147,7 +140,6 @@ class HomeViewController: UIViewController {
             $0.bottomAnchor.constraint(equalTo: segmentedScrollView.frameLayoutGuide.bottomAnchor).isActive = true
             $0.widthAnchor.constraint(equalToConstant: segmentedScrollView.contentSize.width).isActive = true
         }
-        
         segmentedStackView.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
             $0.topAnchor.constraint(equalTo: segmentedScrollContentView.topAnchor).isActive = true
@@ -182,7 +174,14 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        CardTransition.indexPath = indexPath
+        guard let cell = homeTableView.cellForRow(at: indexPath) else { return }
+        let cellOriginPoint = cell.superview?.convert(cell.center, to: nil)
+        guard let cellOriginFrame = cell.superview?.convert(cell.frame, to: nil) else { return }
+        transition.setPoint(point: cellOriginPoint)
+        transition.setFrame(frame: cellOriginFrame)
+        memoView.transitioningDelegate = self
+        memoView.modalPresentationStyle = .custom
+//        self.present(memoView, animated: true)
         presenter?.showMemo(for: modelList[indexPath.row], index: indexPath)
     }
     
@@ -238,5 +237,28 @@ extension HomeViewController: HomeViewProtocol {
                 print(btn.tag)
             }
         }
+    }
+}
+
+extension HomeViewController: UIViewControllerTransitioningDelegate {
+    // present될때 실행애니메이션
+    func animationController(forPresented presented: UIViewController,
+                             presenting: UIViewController,
+                             source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return transition
+    }
+    
+    // dismiss될때 실행애니메이션
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return DisMissAnimation()
+    }
+    
+    // Presenting usually doesn't have any interactivity
+    func interactionControllerForPresentation(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        return nil
+    }
+    
+    func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        return nil
     }
 }

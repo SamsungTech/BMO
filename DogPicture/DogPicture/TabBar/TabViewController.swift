@@ -24,15 +24,7 @@ class TabViewController: UITabBarController {
         super.viewDidLoad()
         self.tabBar.isHidden = true
         createTabBarItemsAttribute()
-        self.selectedIndex = 3
-        if selectedIndex == 1 {
-            hiddenTabViewButton()
-        }
-    }
-    
-    func hiddenTabViewButton() {
-        centerButton.isHidden = true
-        centerView.isHidden = true
+        self.selectedIndex = 0
     }
     
     func createTabBarItemsAttribute() {
