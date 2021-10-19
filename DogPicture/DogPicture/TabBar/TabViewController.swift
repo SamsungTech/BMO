@@ -38,7 +38,7 @@ class TabViewController: UITabBarController {
                                 animated: false)
         
         centerView.do {
-            $0.backgroundColor = .darkGray
+            $0.backgroundColor = .systemPink
             $0.tintColor = .white
             $0.viewRadius(view: $0, cornerRadius: (UIScreen.main.bounds.maxX*(70/390))/2, maskToBounds: false)
             $0.viewShadow(view: $0)

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeViewRouter: HomeRouterProtocol {
+class HomeViewRouter: NSObject, HomeRouterProtocol {
     class func createHomeModule() -> UIViewController {
         if let view: HomeViewProtocol = HomeViewController() as? HomeViewProtocol {
             let presenter: HomePresenterProtocol & HomeInteracterOutputProtocol = HomePresenter()
@@ -29,14 +29,10 @@ class HomeViewRouter: HomeRouterProtocol {
     
     func presentMemoScreen(from view: HomeViewProtocol, forname name: Model, index: IndexPath) {
         let MemoViewController = MemoViewRouter.createMemoViewRouter(from: name)
-        let transition = AnimationTransition()
-        
-        transition.setPoint(point: <#T##CGPoint?#>)
-        transition.setFrame(frame: <#T##CGRect#>)
         
         if let memoView = view as? UIViewController {
             MemoViewController.modalPresentationStyle = .custom
-            memoView.transitioningDelegate = self
+//            MemoViewController.transitioningDelegate = self
             memoView.present(MemoViewController, animated: true)
         }
     }

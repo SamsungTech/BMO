@@ -23,7 +23,7 @@ class AnimationTransition: UIPercentDrivenInteractiveTransition, UIViewControlle
     
     // 애니메이션 동작 시간
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 1
+        return 0.5
     }
     // 애니메이션 효과 정의
     // animation될 뷰 지정
@@ -46,10 +46,10 @@ class AnimationTransition: UIPercentDrivenInteractiveTransition, UIViewControlle
         toView.layer.masksToBounds = true
         toView.layer.cornerRadius = 20
         toView.alpha = 0
-        UIView.animate(withDuration: 0.5,
+        UIView.animate(withDuration: 0.2,
                        delay: 0,
-                       usingSpringWithDamping: 0.6,
-                       initialSpringVelocity: 0.5,
+                       usingSpringWithDamping: 0.3,
+                       initialSpringVelocity: 0.2,
                        options: .curveEaseOut,
                        animations: {
             toView.transform = .identity
@@ -63,7 +63,7 @@ class AnimationTransition: UIPercentDrivenInteractiveTransition, UIViewControlle
                 $0.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
             }
             
-            UIView.animate(withDuration: 1) {
+            UIView.animate(withDuration: 0.5) {
                 containerView.layoutIfNeeded()
             }
         }

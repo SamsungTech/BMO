@@ -127,6 +127,9 @@ class MemoViewController: UIViewController {
     
     @objc func backButtonDidTap(sender: UIButton) {
         presenter?.memoViewDismiss()
+        self.transitioningDelegate = self
+        
+        self.dismiss(animated: true, completion: nil)
     }
     
     @objc func editButtonDidTap(sender: UIButton) {
@@ -141,7 +144,10 @@ class MemoViewController: UIViewController {
         if let model = modelHolder {
             presenter?.passDataToDelete(item: model)
         }
-        presenter?.memoViewDismiss()
+        self.transitioningDelegate = self
+        
+        self.dismiss(animated: true, completion: nil)
+//        presenter?.memoViewDismiss()
     }
 }
 
@@ -153,5 +159,12 @@ extension MemoViewController: MemoViewProtocol {
             dogImage.image = UIImage(data: photo)
             memoTextView.text = memo
         }
+    }
+}
+
+extension MemoViewController: UIViewControllerTransitioningDelegate {
+    // dismiss될때 실행애니메이션
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return DisMissAnimation()
     }
 }
