@@ -10,9 +10,10 @@ import Then
 
 class HomeViewController: UIViewController {
     var presenter: HomePresenterProtocol?
-    
     let navigationBar = UIView()
     let changeIdButton = UIButton()
+    
+    
     let segmentedButton = UISegmentedControl()
     let noticeButton = UIButton()
     
@@ -37,6 +38,7 @@ class HomeViewController: UIViewController {
             $0.dateFormat = "yyyy-MM-dd"
             $0.locale = Locale(identifier: "ko_KR")
         }
+        segmentedButton.selectedSegmentIndex = 0
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -54,12 +56,14 @@ class HomeViewController: UIViewController {
         [ navigationBar, homeTableView ].forEach() { view.addSubview($0) }
         [ changeIdButton, segmentedButton, noticeButton ].forEach() { navigationBar.addSubview($0) }
         
+        
         navigationBar.do {
             $0.backgroundColor = .white
         }
         changeIdButton.do {
             $0.setImage(UIImage(systemName: "person.fill"), for: .normal)
             $0.tintColor = .darkGray
+            $0.addTarget(self, action: #selector(changeIdButtonDidTap(sender:)), for: .touchUpInside)
         }
         segmentedButton.do {
             $0.insertSegment(withTitle: "타임라인", at: 0, animated: true)
@@ -70,6 +74,7 @@ class HomeViewController: UIViewController {
         noticeButton.do {
             $0.setImage(UIImage(systemName: "bell.fill"), for: .normal)
             $0.tintColor = .darkGray
+            $0.addTarget(self, action: #selector(noticeButtonDidTap(sender:)), for: .touchUpInside)
         }
         homeTableView.do {
             $0.separatorStyle = .none
@@ -78,6 +83,7 @@ class HomeViewController: UIViewController {
             $0.frame = view.bounds
             $0.backgroundColor = .white
             $0.register(HomeTableViewCell.self, forCellReuseIdentifier: "HomeCell")
+            $0.register(HomeProfileViewCell.self, forCellReuseIdentifier: "ProfileViewCell")
             $0.delaysContentTouches = false
         }
     }
@@ -120,35 +126,47 @@ class HomeViewController: UIViewController {
         }
     }
     
+    @objc func changeIdButtonDidTap(sender: UIButton) {
+        
+    }
     @objc func segmentedButtonDidTap(sender: UISegmentedControl) {
-//        switch sender.selectedSegmentIndex {
-//        case 0:
-//            nil
-//        case 1:
-//            nil
-//        default:
-//            nil
-//        }
+        
+    }
+    @objc func noticeButtonDidTap(sender: UIButton) {
+        
     }
 }
 
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: HomeTableViewCell.identifier) as! HomeTableViewCell
-        if let data = modelList[indexPath.row].photo,
-           let memo = modelList[indexPath.row].memo,
-           let date = modelList[indexPath.row].date {
-            let formatDate = dateFormatter.string(from: date)
-            cell.cellImageView.image = UIImage(data: data)
-            cell.imageContent.text = memo
-            cell.imageDate.text = formatDate
+        if indexPath.section == 0 {
+            let profileCell = tableView.dequeueReusableCell(withIdentifier: HomeProfileViewCell.identifier) as! HomeProfileViewCell
+            profileCell.profileImage.image = UIImage(named: "p4")
+            profileCell.dogName.text = "쁘띠"
+            profileCell.dogDaysAndType.text = "출생 1001일 | 말티쥬"
+            
+            return profileCell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: HomeTableViewCell.identifier) as! HomeTableViewCell
+            if let data = modelList[indexPath.row].photo,
+               let memo = modelList[indexPath.row].memo,
+               let date = modelList[indexPath.row].date {
+                let formatDate = dateFormatter.string(from: date)
+                cell.cellImageView.image = UIImage(data: data)
+                cell.imageContent.text = memo
+                cell.imageDate.text = formatDate
+            }
+            cell.selectionStyle = .none
+            return cell
         }
-        cell.selectionStyle = .none
-        return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return CGFloat(UIScreen.main.bounds.maxY*(460/844))
+        if indexPath.section == 0 {
+            return CGFloat(UIScreen.main.bounds.maxY*(100/844))
+        } else {
+            return CGFloat(UIScreen.main.bounds.maxY*(460/844))
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -168,33 +186,10 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 0:
-            return 1 // 쁘띠 프로필 넣기
-        case 1:
+        if section == 0 {
+            return 1
+        } else {
             return modelList.count
-        default:
-            return 0
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        switch section {
-        case 0:
-            return CGFloat(UIScreen.main.bounds.maxY*(70/844))
-        default:
-            return 0
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        switch section {
-        case 0:
-            return nil
-        case 1:
-            return nil
-        default:
-            return nil
         }
     }
 }
@@ -210,14 +205,12 @@ extension HomeViewController: HomeViewProtocol {
 }
 
 extension HomeViewController: UIViewControllerTransitioningDelegate {
-    // present될때 실행애니메이션
     func animationController(forPresented presented: UIViewController,
                              presenting: UIViewController,
                              source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return transition
     }
     
-    // Presenting usually doesn't have any interactivity
     func interactionControllerForPresentation(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
         return nil
     }

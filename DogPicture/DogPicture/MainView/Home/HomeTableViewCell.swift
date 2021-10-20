@@ -36,16 +36,12 @@ class HomeTableViewCell: UITableViewCell {
         
         cardView.do {
             $0.backgroundColor = .white
-            $0.frame = CGRect(x: 20,
-                              y: 20,
-                              width: UIScreen.main.bounds.maxX*(350/390),
-                              height: UIScreen.main.bounds.maxY*(420/844))
-            $0.viewRadius(view: cardView, cornerRadius: 30, maskToBounds: false)
+            $0.viewRadius(view: cardView, cornerRadius: 20, maskToBounds: false)
             
             $0.layer.shadowOpacity = 0.5
             $0.layer.shadowColor = UIColor.black.cgColor
             $0.layer.shadowOffset = CGSize(width: 0, height: 0)
-            $0.layer.shadowRadius = 10
+            $0.layer.shadowRadius = 5
             $0.layer.masksToBounds = false
         }
         months.do {
@@ -76,6 +72,13 @@ class HomeTableViewCell: UITableViewCell {
     }
     
     func layout() {
+        cardView.do {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.topAnchor.constraint(equalTo: self.topAnchor, constant: 20).isActive = true
+            $0.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20).isActive = true
+            $0.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20).isActive = true
+            $0.heightAnchor.constraint(equalToConstant: 400).isActive = true
+        }
         dogFootImage.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
             $0.topAnchor.constraint(equalTo: cardView.topAnchor, constant: 20).isActive = true
