@@ -15,6 +15,7 @@ class HomeProfileViewCell: UITableViewCell {
     var dogName = UILabel()
     var dogDaysAndType = UILabel()
     let gradient = CAGradientLayer()
+    let editButton = UIButton()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -38,15 +39,15 @@ class HomeProfileViewCell: UITableViewCell {
     
     func attribute() {
         self.addSubview(profileView)
-        [ profileImage, dogName, dogDaysAndType ].forEach() { profileView.addSubview($0) }
+        [ profileImage, dogName, editButton, dogDaysAndType ].forEach() { profileView.addSubview($0) }
         
         profileView.do {
             $0.backgroundColor = .systemPink
             $0.viewRadius(view: profileView, cornerRadius: 20, maskToBounds: true)
             $0.layer.shadowOpacity = 0.5
-            $0.layer.shadowColor = UIColor.black.cgColor
+            $0.layer.shadowColor = UIColor.gray.cgColor
             $0.layer.shadowOffset = CGSize(width: 0, height: 0)
-            $0.layer.shadowRadius = 5
+            $0.layer.shadowRadius = 3
             $0.layer.masksToBounds = false
         }
         profileImage.do {
@@ -57,7 +58,11 @@ class HomeProfileViewCell: UITableViewCell {
         dogName.do {
             $0.textAlignment = .left
             $0.textColor = .white
-            $0.font = UIFont.boldSystemFont(ofSize: 19)
+            $0.font = UIFont.boldSystemFont(ofSize: 20)
+        }
+        editButton.do {
+            $0.setImage(UIImage(systemName: "greaterthan.circle"), for: .normal)
+            $0.tintColor = .white
         }
         dogDaysAndType.do {
             $0.textAlignment = .left
@@ -72,7 +77,7 @@ class HomeProfileViewCell: UITableViewCell {
             $0.topAnchor.constraint(equalTo: self.topAnchor, constant: 20).isActive = true
             $0.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20).isActive = true
             $0.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20).isActive = true
-            $0.heightAnchor.constraint(equalToConstant: 80).isActive = true
+            $0.heightAnchor.constraint(equalToConstant: 90).isActive = true
         }
         profileImage.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
@@ -83,10 +88,17 @@ class HomeProfileViewCell: UITableViewCell {
         }
         dogName.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
-            $0.topAnchor.constraint(equalTo: profileView.topAnchor, constant: 10).isActive = true
+            $0.topAnchor.constraint(equalTo: profileView.topAnchor, constant: 15).isActive = true
             $0.leadingAnchor.constraint(equalTo: profileImage.trailingAnchor, constant: 15).isActive = true
-            $0.widthAnchor.constraint(equalToConstant: 100).isActive = true
+            $0.widthAnchor.constraint(equalToConstant: 45).isActive = true
             $0.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        }
+        editButton.do {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.centerYAnchor.constraint(equalTo: dogName.centerYAnchor).isActive = true
+            $0.leadingAnchor.constraint(equalTo: dogName.trailingAnchor).isActive = true
+            $0.widthAnchor.constraint(equalToConstant: 18).isActive = true
+            $0.heightAnchor.constraint(equalToConstant: 18).isActive = true
         }
         dogDaysAndType.do {
             $0.translatesAutoresizingMaskIntoConstraints = false

@@ -12,11 +12,8 @@ class HomeViewController: UIViewController {
     var presenter: HomePresenterProtocol?
     let navigationBar = UIView()
     let changeIdButton = UIButton()
-    
-    
     let segmentedButton = UISegmentedControl()
     let noticeButton = UIButton()
-    
     var homeTableView = UITableView()
     var modelList: [Model] = []
     let dateFormatter = DateFormatter()
@@ -31,6 +28,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         presenter?.viewDidLoad()
         homeTableView.reloadData()
+        overrideUserInterfaceStyle = .light
         view.backgroundColor = .lightGray
         navigationController?.isNavigationBarHidden = true
         updateView()
@@ -56,7 +54,6 @@ class HomeViewController: UIViewController {
         [ navigationBar, homeTableView ].forEach() { view.addSubview($0) }
         [ changeIdButton, segmentedButton, noticeButton ].forEach() { navigationBar.addSubview($0) }
         
-        
         navigationBar.do {
             $0.backgroundColor = .white
         }
@@ -66,6 +63,7 @@ class HomeViewController: UIViewController {
             $0.addTarget(self, action: #selector(changeIdButtonDidTap(sender:)), for: .touchUpInside)
         }
         segmentedButton.do {
+            $0.setTitleTextAttributes([NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 16)], for: .normal)
             $0.insertSegment(withTitle: "타임라인", at: 0, animated: true)
             $0.insertSegment(withTitle: "캘린더", at: 1, animated: true)
             $0.backgroundColor = .lightGray
@@ -84,6 +82,7 @@ class HomeViewController: UIViewController {
             $0.backgroundColor = .white
             $0.register(HomeTableViewCell.self, forCellReuseIdentifier: "HomeCell")
             $0.register(HomeProfileViewCell.self, forCellReuseIdentifier: "ProfileViewCell")
+            $0.register(HomeFooterCell.self, forCellReuseIdentifier: "HomeFooterCell")
             $0.delaysContentTouches = false
         }
     }
@@ -144,9 +143,10 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
             profileCell.profileImage.image = UIImage(named: "p4")
             profileCell.dogName.text = "쁘띠"
             profileCell.dogDaysAndType.text = "출생 1001일 | 말티쥬"
+            profileCell.selectionStyle = .none
             
             return profileCell
-        } else {
+        } else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: HomeTableViewCell.identifier) as! HomeTableViewCell
             if let data = modelList[indexPath.row].photo,
                let memo = modelList[indexPath.row].memo,
@@ -158,14 +158,19 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
             }
             cell.selectionStyle = .none
             return cell
+        } else {
+            let footerCell = tableView.dequeueReusableCell(withIdentifier: HomeFooterCell.identifier) as! HomeFooterCell
+            return footerCell
         }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            return CGFloat(UIScreen.main.bounds.maxY*(100/844))
-        } else {
+            return CGFloat(UIScreen.main.bounds.maxY*(120/844))
+        } else if indexPath.section == 1 {
             return CGFloat(UIScreen.main.bounds.maxY*(460/844))
+        } else {
+            return CGFloat(UIScreen.main.bounds.maxY*(200/844))
         }
     }
     
@@ -182,14 +187,16 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return 1
-        } else {
+        } else if section == 1 {
             return modelList.count
+        } else {
+            return 1
         }
     }
 }

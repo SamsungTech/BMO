@@ -38,6 +38,7 @@
 		0B9F641E2714614100CF3F0C /* NotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9F641D2714614100CF3F0C /* NotificationHelper.swift */; };
 		0BB27ECB271D942900721A5F /* DisMissAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB27ECA271D942900721A5F /* DisMissAnimation.swift */; };
 		0BB27ECD2720316D00721A5F /* HomeProfileViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB27ECC2720316D00721A5F /* HomeProfileViewCell.swift */; };
+		0BB27ECF2721005E00721A5F /* HomeFooterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB27ECE2721005E00721A5F /* HomeFooterCell.swift */; };
 		0BD2208A26E776B10064A8F6 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD2208926E776B10064A8F6 /* HomeTableViewCell.swift */; };
 		0BEAF9E62717F9FF008AAA3D /* AnimationTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEAF9E52717F9FF008AAA3D /* AnimationTransition.swift */; };
 		0BF238362660C2EE007E48AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF238352660C2EE007E48AC /* AppDelegate.swift */; };
@@ -90,6 +91,7 @@
 		0B9F641D2714614100CF3F0C /* NotificationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationHelper.swift; sourceTree = "<group>"; };
 		0BB27ECA271D942900721A5F /* DisMissAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisMissAnimation.swift; sourceTree = "<group>"; };
 		0BB27ECC2720316D00721A5F /* HomeProfileViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProfileViewCell.swift; sourceTree = "<group>"; };
+		0BB27ECE2721005E00721A5F /* HomeFooterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFooterCell.swift; sourceTree = "<group>"; };
 		0BD2208926E776B10064A8F6 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		0BEAF9E52717F9FF008AAA3D /* AnimationTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationTransition.swift; sourceTree = "<group>"; };
 		0BF238322660C2EE007E48AC /* DogPicture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DogPicture.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -300,6 +302,7 @@
 				0BF2384E2660D5BE007E48AC /* HomeViewController.swift */,
 				0BB27ECC2720316D00721A5F /* HomeProfileViewCell.swift */,
 				0BD2208926E776B10064A8F6 /* HomeTableViewCell.swift */,
+				0BB27ECE2721005E00721A5F /* HomeFooterCell.swift */,
 				0BF238502660D5DD007E48AC /* HomePresenter.swift */,
 				0BF238522660D5EE007E48AC /* HomeProtocol.swift */,
 				0BF238542660D5FE007E48AC /* HomeViewRouter.swift */,
@@ -482,6 +485,7 @@
 				0BF238532660D5EE007E48AC /* HomeProtocol.swift in Sources */,
 				0B73461326861D87007CE6CF /* SettingProtocol.swift in Sources */,
 				0B9F63F6270E910D00CF3F0C /* ProfileRouter.swift in Sources */,
+				0BB27ECF2721005E00721A5F /* HomeFooterCell.swift in Sources */,
 				0B73460F26861D62007CE6CF /* SettingViewController.swift in Sources */,
 				0B2DFE3426F0CB8B002D533B /* PreviewPresenter.swift in Sources */,
 				0B2DFE3A26F0CBBD002D533B /* PreviewInteracter.swift in Sources */,

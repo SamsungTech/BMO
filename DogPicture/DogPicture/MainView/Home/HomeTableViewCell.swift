@@ -39,9 +39,9 @@ class HomeTableViewCell: UITableViewCell {
             $0.viewRadius(view: cardView, cornerRadius: 20, maskToBounds: false)
             
             $0.layer.shadowOpacity = 0.5
-            $0.layer.shadowColor = UIColor.black.cgColor
+            $0.layer.shadowColor = UIColor.gray.cgColor
             $0.layer.shadowOffset = CGSize(width: 0, height: 0)
-            $0.layer.shadowRadius = 5
+            $0.layer.shadowRadius = 3
             $0.layer.masksToBounds = false
         }
         months.do {
