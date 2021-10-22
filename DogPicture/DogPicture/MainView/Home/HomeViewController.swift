@@ -19,6 +19,7 @@ class HomeViewController: UIViewController {
     let dateFormatter = DateFormatter()
     let transition = AnimationTransition()
     let memoView = MemoViewController()
+    let sideTransition = SlideInTransition()
     
     override var prefersStatusBarHidden: Bool {
         return false
@@ -78,7 +79,6 @@ class HomeViewController: UIViewController {
             $0.separatorStyle = .none
             $0.dataSource = self
             $0.delegate = self
-            $0.frame = view.bounds
             $0.backgroundColor = .white
             $0.register(HomeTableViewCell.self, forCellReuseIdentifier: "HomeCell")
             $0.register(HomeProfileViewCell.self, forCellReuseIdentifier: "ProfileViewCell")
@@ -126,7 +126,11 @@ class HomeViewController: UIViewController {
     }
     
     @objc func changeIdButtonDidTap(sender: UIButton) {
-        
+        // present side menu
+        let sideMenuView = SideMenuViewController()
+        sideMenuView.modalPresentationStyle = .overCurrentContext
+        sideMenuView.transitioningDelegate = self
+        present(sideMenuView, animated: true)
     }
     @objc func segmentedButtonDidTap(sender: UISegmentedControl) {
         
@@ -208,6 +212,7 @@ extension HomeViewController: HomeViewProtocol {
     }
     
     func refershCalender(tag: Int) {
+        
     }
 }
 
@@ -215,7 +220,12 @@ extension HomeViewController: UIViewControllerTransitioningDelegate {
     func animationController(forPresented presented: UIViewController,
                              presenting: UIViewController,
                              source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return transition
+        sideTransition.isPresenting = true
+        return sideTransition
+    }
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        sideTransition.isPresenting = false
+        return sideTransition
     }
     
     func interactionControllerForPresentation(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
