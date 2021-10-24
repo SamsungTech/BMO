@@ -9,16 +9,14 @@ import UIKit
 
 class MemoViewController: UIViewController {
     var presenter: MemoViewPresenterProtocol?
-    
-    var dogImageHolder: UIImage?
     var dogImage = UIImageView()
+    var dogImageShadowView = UIView()
     var memoEditView = UIView()
     let textEditImage = UIImageView()
     let textEditTitle = UILabel()
     var memoTextField = UITextField()
     var modelHolder: Model?
     var textHolder: String = ""
-    
     let saveButton = UIButton()
     let deleteButton = UIButton()
     let backButton = UIButton()
@@ -40,20 +38,20 @@ class MemoViewController: UIViewController {
     }
     
     func attribute() {
-        [ dogImage, backButton, memoEditView ].forEach() { view.addSubview($0) }
+        dogImageShadowView.addSubview(dogImage)
+        [ dogImageShadowView, backButton, memoEditView ].forEach() { view.addSubview($0) }
         [ textEditImage, textEditTitle, memoTextField, deleteButton, editButton ].forEach() { memoEditView.addSubview($0) }
         
-        dogImage.do {
-//            if let dogImageHolder = dogImageHolder {
-//                $0.image = dogImageHolder
-//            }
-            $0.backgroundColor = .systemPink
-            $0.layer.masksToBounds = false
-            $0.layer.cornerRadius = 20
+        dogImageShadowView.do {
             $0.layer.shadowOpacity = 0.5
-            $0.layer.shadowColor = UIColor.black.cgColor
+            $0.layer.shadowColor = UIColor.gray.cgColor
             $0.layer.shadowOffset = CGSize(width: 0, height: 0)
-            $0.layer.shadowRadius = 10
+            $0.layer.shadowRadius = 5
+        }
+        dogImage.do {
+            $0.backgroundColor = .systemPink
+            $0.layer.cornerRadius = 20
+            $0.layer.masksToBounds = true
         }
         backButton.do {
             $0.tintColor = .systemGray6
@@ -66,9 +64,9 @@ class MemoViewController: UIViewController {
             $0.layer.masksToBounds = false
             $0.layer.cornerRadius = 20
             $0.layer.shadowOpacity = 0.5
-            $0.layer.shadowColor = UIColor.black.cgColor
+            $0.layer.shadowColor = UIColor.gray.cgColor
             $0.layer.shadowOffset = CGSize(width: 0, height: 0)
-            $0.layer.shadowRadius = 10
+            $0.layer.shadowRadius = 5
         }
         textEditImage.do {
             $0.image = UIImage(systemName: "heart.text.square")
@@ -104,6 +102,13 @@ class MemoViewController: UIViewController {
     }
     
     func layout() {
+        dogImageShadowView.do {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10).isActive = true
+            $0.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
+            $0.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
+            $0.bottomAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        }
         dogImage.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
             $0.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10).isActive = true
@@ -182,7 +187,6 @@ class MemoViewController: UIViewController {
             presenter?.passDataToDelete(item: model)
         }
 //        self.transitioningDelegate = self
-        
 //        self.dismiss(animated: true, completion: nil)
         presenter?.memoViewDismiss()
     }
@@ -193,7 +197,7 @@ extension MemoViewController: MemoViewProtocol {
         modelHolder = model
         if let photo = model.photo,
            let memo = model.memo {
-            dogImageHolder = UIImage(data: photo)
+            dogImage.image = UIImage(data: photo)
             memoTextField.text = memo
         }
     }
