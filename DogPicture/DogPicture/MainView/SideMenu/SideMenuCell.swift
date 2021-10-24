@@ -35,20 +35,23 @@ class SideMenuCell: UITableViewCell {
         [ sideImage, sideDogName, sideDogDays ].forEach() { sideCellView.addSubview($0) }
         
         sideCellView.do {
-            $0.backgroundColor = .white
+            $0.backgroundColor = .systemPink
             $0.viewRadius(view: sideCellView, cornerRadius: 10, maskToBounds: true)
         }
         sideImage.do {
+            $0.image = UIImage(named: "p4")
             $0.viewRadius(view: sideImage, cornerRadius: 30, maskToBounds: true)
             $0.layer.borderColor = UIColor.systemBlue.cgColor
             $0.layer.borderWidth = 3
         }
         sideDogName.do {
+            $0.text = "쁘띠"
             $0.textAlignment = .left
-            $0.textColor = .black
+            $0.textColor = .white
             $0.font = UIFont.boldSystemFont(ofSize: 20)
         }
         sideDogDays.do {
+            $0.text = "생후 2040일"
             $0.textAlignment = .left
             $0.textColor = .lightGray
             $0.font = UIFont.boldSystemFont(ofSize: 15)
@@ -58,10 +61,10 @@ class SideMenuCell: UITableViewCell {
     func layout() {
         sideCellView.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
-            $0.topAnchor.constraint(equalTo: self.topAnchor, constant: 10).isActive = true
+            $0.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
             $0.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 5).isActive = true
-            $0.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 5).isActive = true
-            $0.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 10).isActive = true
+            $0.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -5).isActive = true
+            $0.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         }
         sideImage.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
@@ -79,7 +82,7 @@ class SideMenuCell: UITableViewCell {
         }
         sideDogDays.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
-            $0.topAnchor.constraint(equalTo: sideDogName.bottomAnchor, constant: 10).isActive = true
+            $0.topAnchor.constraint(equalTo: sideDogName.bottomAnchor).isActive = true
             $0.leadingAnchor.constraint(equalTo: sideImage.trailingAnchor, constant: 10).isActive = true
             $0.widthAnchor.constraint(equalToConstant: 100).isActive = true
             $0.heightAnchor.constraint(equalToConstant: 30).isActive = true

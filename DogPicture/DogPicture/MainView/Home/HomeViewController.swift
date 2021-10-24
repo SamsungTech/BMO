@@ -184,10 +184,10 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         guard let cellOriginFrame = cell.superview?.convert(cell.frame, to: nil) else { return }
         transition.setPoint(point: cellOriginPoint)
         transition.setFrame(frame: cellOriginFrame)
-        memoView.transitioningDelegate = self
-        memoView.modalPresentationStyle = .custom
-        self.present(memoView, animated: true)
-//        presenter?.showMemo(for: modelList[indexPath.row], index: indexPath)
+//        memoView.transitioningDelegate = self
+//        memoView.modalPresentationStyle = .custom
+//        self.present(memoView, animated: true)
+        presenter?.showMemo(for: modelList[indexPath.row], index: indexPath)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -220,6 +220,7 @@ extension HomeViewController: UIViewControllerTransitioningDelegate {
     func animationController(forPresented presented: UIViewController,
                              presenting: UIViewController,
                              source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        
         sideTransition.isPresenting = true
         return sideTransition
     }

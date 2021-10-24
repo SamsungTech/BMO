@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 class AnimationTransition: UIPercentDrivenInteractiveTransition, UIViewControllerAnimatedTransitioning {
+    
     var originPoint: CGPoint?
     var originFrame = CGRect()
     

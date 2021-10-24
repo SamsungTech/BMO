@@ -21,11 +21,18 @@ class SlideInTransition: NSObject, UIViewControllerAnimatedTransitioning{
         
         let containerView = transitionContext.containerView
         
+        let blurView = UIVisualEffectView(effect: nil)
+        
         let finalWidth = toViewController.view.bounds.width * 0.8
         let finalHeight = toViewController.view.bounds.height
         
         if isPresenting {
             containerView.addSubview(toViewController.view)
+            containerView.addSubview(blurView)
+            containerView.bringSubviewToFront(toViewController.view)
+            
+            blurView.frame = containerView.frame
+            blurView.alpha = 0.0
             
             toViewController.view.frame = CGRect(x: -finalWidth,
                                                  y: 0,
@@ -41,10 +48,21 @@ class SlideInTransition: NSObject, UIViewControllerAnimatedTransitioning{
             fromViewController.view.transform = .identity
         }
         
+        let blurform = {
+            blurView.effect = UIBlurEffect(style: .dark)
+            blurView.alpha = 0.7
+        }
+        
+        let blurIdentity = {
+            blurView.alpha = 0.0
+            blurView.removeFromSuperview()
+        }
+        
         let duration = transitionDuration(using: transitionContext)
         let isCancelled = transitionContext.transitionWasCancelled
         UIView.animate(withDuration: duration,
                        animations: {
+            self.isPresenting ? blurform() : blurIdentity()
             self.isPresenting ? transform() : identity()
         }) { (_) in
             transitionContext.completeTransition(!isCancelled)

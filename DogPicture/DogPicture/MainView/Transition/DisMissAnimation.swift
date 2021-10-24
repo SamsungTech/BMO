@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 class DisMissAnimation: UIPercentDrivenInteractiveTransition, UIViewControllerAnimatedTransitioning {
+    
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 0.5
     }
