@@ -33,11 +33,6 @@ class HomeViewController: UIViewController {
         view.backgroundColor = .lightGray
         navigationController?.isNavigationBarHidden = true
         updateView()
-        dateFormatter.do {
-            $0.dateFormat = "yyyy-MM-dd"
-            $0.locale = Locale(identifier: "ko_KR")
-        }
-        segmentedButton.selectedSegmentIndex = 0
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -69,6 +64,7 @@ class HomeViewController: UIViewController {
             $0.insertSegment(withTitle: "캘린더", at: 1, animated: true)
             $0.backgroundColor = .lightGray
             $0.addTarget(self, action: #selector(segmentedButtonDidTap(sender:)), for: .valueChanged)
+            $0.selectedSegmentIndex = 0
         }
         noticeButton.do {
             $0.setImage(UIImage(systemName: "bell.fill"), for: .normal)
@@ -82,8 +78,13 @@ class HomeViewController: UIViewController {
             $0.backgroundColor = .white
             $0.register(HomeTableViewCell.self, forCellReuseIdentifier: "HomeCell")
             $0.register(HomeProfileViewCell.self, forCellReuseIdentifier: "ProfileViewCell")
+            $0.register(HomeEventCell.self, forCellReuseIdentifier: "HomeEventCell")
             $0.register(HomeFooterCell.self, forCellReuseIdentifier: "HomeFooterCell")
             $0.delaysContentTouches = false
+        }
+        dateFormatter.do {
+            $0.dateFormat = "yyyy-MM-dd"
+            $0.locale = Locale(identifier: "ko_KR")
         }
     }
     
@@ -151,6 +152,10 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
             
             return profileCell
         } else if indexPath.section == 1 {
+            let eventCell = tableView.dequeueReusableCell(withIdentifier: HomeEventCell.identifier) as! HomeEventCell
+            
+            return eventCell
+        } else if indexPath.section == 2 {
             let cell = tableView.dequeueReusableCell(withIdentifier: HomeTableViewCell.identifier) as! HomeTableViewCell
             if let data = modelList[indexPath.row].photo,
                let memo = modelList[indexPath.row].memo,
@@ -170,8 +175,10 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            return CGFloat(UIScreen.main.bounds.maxY*(120/844))
+            return CGFloat(UIScreen.main.bounds.maxY*(130/844))
         } else if indexPath.section == 1 {
+            return CGFloat(UIScreen.main.bounds.maxY*(160/844))
+        } else if indexPath.section == 2 {
             return CGFloat(UIScreen.main.bounds.maxY*(460/844))
         } else {
             return CGFloat(UIScreen.main.bounds.maxY*(200/844))
@@ -191,13 +198,15 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 4
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return 1
         } else if section == 1 {
+            return 1
+        } else if section == 2 {
             return modelList.count
         } else {
             return 1

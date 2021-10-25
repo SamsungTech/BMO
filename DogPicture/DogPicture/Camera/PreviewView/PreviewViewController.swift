@@ -16,7 +16,6 @@ class PreviewViewController: UIViewController {
     var captureImageView = UIImageView()
     var previewTextField = UITextField()
     var tabView = TabViewController()
-    
     var captureImage = UIImage()
     var captureImageData = Data()
     
@@ -26,7 +25,6 @@ class PreviewViewController: UIViewController {
         updateView()
         view.backgroundColor = .white
     }
-    
     
     func updateView() {
         attribute()

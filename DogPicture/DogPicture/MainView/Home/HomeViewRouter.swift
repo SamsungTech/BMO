@@ -31,7 +31,7 @@ class HomeViewRouter: NSObject, HomeRouterProtocol {
         let MemoViewController = MemoViewRouter.createMemoViewRouter(from: name)
         
         if let memoView = view as? UIViewController {
-            MemoViewController.modalPresentationStyle = .custom
+            MemoViewController.modalPresentationStyle = .formSheet
 //            MemoViewController.transitioningDelegate = self
             memoView.present(MemoViewController, animated: true)
         }

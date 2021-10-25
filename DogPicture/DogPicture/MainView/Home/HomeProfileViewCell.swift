@@ -20,6 +20,12 @@ class HomeProfileViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         updateView()
+        self.do {
+            $0.gradient.frame = profileView.frame
+            $0.gradient.colors = [UIColor.systemRed.cgColor, UIColor.systemPink.cgColor,
+                                  UIColor.systemYellow.cgColor]
+            $0.profileView.layer.addSublayer(self.gradient)
+        }
     }
     
     required init?(coder: NSCoder) {

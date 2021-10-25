@@ -46,6 +46,7 @@
 		0BB27EE2272268E300721A5F /* SideMenuPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB27EE1272268E300721A5F /* SideMenuPresenter.swift */; };
 		0BB27EE4272268F300721A5F /* SideMenuRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB27EE3272268F300721A5F /* SideMenuRouter.swift */; };
 		0BB27EE62722690800721A5F /* SideMenuInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB27EE52722690800721A5F /* SideMenuInteractor.swift */; };
+		0BB27EE92726EA1B00721A5F /* HomeEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB27EE82726EA1B00721A5F /* HomeEventCell.swift */; };
 		0BD2208A26E776B10064A8F6 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD2208926E776B10064A8F6 /* HomeTableViewCell.swift */; };
 		0BEAF9E62717F9FF008AAA3D /* AnimationTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEAF9E52717F9FF008AAA3D /* AnimationTransition.swift */; };
 		0BF238362660C2EE007E48AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF238352660C2EE007E48AC /* AppDelegate.swift */; };
@@ -106,6 +107,7 @@
 		0BB27EE1272268E300721A5F /* SideMenuPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuPresenter.swift; sourceTree = "<group>"; };
 		0BB27EE3272268F300721A5F /* SideMenuRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuRouter.swift; sourceTree = "<group>"; };
 		0BB27EE52722690800721A5F /* SideMenuInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuInteractor.swift; sourceTree = "<group>"; };
+		0BB27EE82726EA1B00721A5F /* HomeEventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeEventCell.swift; sourceTree = "<group>"; };
 		0BD2208926E776B10064A8F6 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		0BEAF9E52717F9FF008AAA3D /* AnimationTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationTransition.swift; sourceTree = "<group>"; };
 		0BF238322660C2EE007E48AC /* DogPicture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DogPicture.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -183,6 +185,7 @@
 			children = (
 				0B73462E268B36F9007CE6CF /* CameraView */,
 				0B2DFE3026F0CB34002D533B /* PreviewView */,
+				0BB27EE727264BCA00721A5F /* CaptureTextEdit */,
 			);
 			path = Camera;
 			sourceTree = "<group>";
@@ -286,6 +289,13 @@
 			path = transition;
 			sourceTree = "<group>";
 		};
+		0BB27EE727264BCA00721A5F /* CaptureTextEdit */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CaptureTextEdit;
+			sourceTree = "<group>";
+		};
 		0BEAF9E42717F9B4008AAA3D /* Transition */ = {
 			isa = PBXGroup;
 			children = (
@@ -338,6 +348,7 @@
 			children = (
 				0BF2384E2660D5BE007E48AC /* HomeViewController.swift */,
 				0BB27ECC2720316D00721A5F /* HomeProfileViewCell.swift */,
+				0BB27EE82726EA1B00721A5F /* HomeEventCell.swift */,
 				0BD2208926E776B10064A8F6 /* HomeTableViewCell.swift */,
 				0BB27ECE2721005E00721A5F /* HomeFooterCell.swift */,
 				0BF238502660D5DD007E48AC /* HomePresenter.swift */,
@@ -513,6 +524,7 @@
 				0B2DFE3226F0CB6F002D533B /* PreviewViewController.swift in Sources */,
 				0B51B20126A8210E00216054 /* CameraProtocol.swift in Sources */,
 				0B734631268CA2C7007CE6CF /* TabViewController.swift in Sources */,
+				0BB27EE92726EA1B00721A5F /* HomeEventCell.swift in Sources */,
 				0BF2385F2660D6A6007E48AC /* MemoViewProtocol.swift in Sources */,
 				0BF238612660D6CE007E48AC /* MemoViewInteracter.swift in Sources */,
 				0B2DFE3626F0CB9C002D533B /* PreviewProtocol.swift in Sources */,

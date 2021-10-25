@@ -9,6 +9,7 @@ import UIKit
 
 class MemoViewController: UIViewController {
     var presenter: MemoViewPresenterProtocol?
+    var dogImageDateLabel = UILabel()
     var dogImage = UIImageView()
     var dogImageShadowView = UIView()
     var memoEditView = UIView()
@@ -21,13 +22,13 @@ class MemoViewController: UIViewController {
     let deleteButton = UIButton()
     let backButton = UIButton()
     let editButton = UIButton()
-    
+    let dateFormmater = DateFormatter()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateView()
         presenter?.viewDidLoad()
         view.backgroundColor = .white
-        updateView()
     }
     
     override var prefersStatusBarHidden: Bool { return true }
@@ -39,9 +40,18 @@ class MemoViewController: UIViewController {
     
     func attribute() {
         dogImageShadowView.addSubview(dogImage)
-        [ dogImageShadowView, backButton, memoEditView ].forEach() { view.addSubview($0) }
+        [ dogImageDateLabel, dogImageShadowView, backButton, memoEditView ].forEach() { view.addSubview($0) }
         [ textEditImage, textEditTitle, memoTextField, deleteButton, editButton ].forEach() { memoEditView.addSubview($0) }
         
+        dogImageDateLabel.do {
+            $0.textColor = .black
+            $0.font = UIFont.boldSystemFont(ofSize: 23)
+            $0.textAlignment = .center
+        }
+        dateFormmater.do {
+            $0.dateFormat = "yyyy년 MM월 dd일"
+            $0.locale = Locale(identifier: "ko_KR")
+        }
         dogImageShadowView.do {
             $0.layer.shadowOpacity = 0.5
             $0.layer.shadowColor = UIColor.gray.cgColor
@@ -55,7 +65,7 @@ class MemoViewController: UIViewController {
         }
         backButton.do {
             $0.tintColor = .systemGray6
-            $0.setImage(UIImage(systemName: "xmark.circle.fill"), for: .normal)
+            $0.setImage(UIImage(systemName: "xmark"), for: .normal)
             $0.addTarget(self, action: #selector(backButtonDidTap(sender:)), for: .touchUpInside)
         }
         memoEditView.do {
@@ -102,26 +112,34 @@ class MemoViewController: UIViewController {
     }
     
     func layout() {
+        dogImageDateLabel.do {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.topAnchor.constraint(equalTo: view.topAnchor, constant: 10).isActive = true
+            $0.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+            $0.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+            $0.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        }
         dogImageShadowView.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
-            $0.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10).isActive = true
+            $0.topAnchor.constraint(equalTo: dogImageDateLabel.bottomAnchor, constant: 10).isActive = true
             $0.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
             $0.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
             $0.bottomAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         }
         dogImage.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
-            $0.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10).isActive = true
+            $0.topAnchor.constraint(equalTo: dogImageDateLabel.bottomAnchor, constant: 10).isActive = true
             $0.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
-            $0.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
-            $0.bottomAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+//            $0.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
+            $0.widthAnchor.constraint(equalToConstant: 355).isActive = true
+            $0.heightAnchor.constraint(equalToConstant: 355).isActive = true
         }
         backButton.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
-            $0.topAnchor.constraint(equalTo: view.topAnchor, constant: 20).isActive = true
-            $0.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
-            $0.widthAnchor.constraint(equalToConstant: 50).isActive = true
-            $0.heightAnchor.constraint(equalToConstant: 50).isActive = true
+            $0.centerYAnchor.constraint(equalTo: dogImageDateLabel.centerYAnchor).isActive = true
+            $0.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+            $0.widthAnchor.constraint(equalToConstant: 60).isActive = true
+            $0.heightAnchor.constraint(equalToConstant: 60).isActive = true
         }
         memoEditView.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
@@ -196,9 +214,12 @@ extension MemoViewController: MemoViewProtocol {
     func showMemoView(for model: Model) {
         modelHolder = model
         if let photo = model.photo,
-           let memo = model.memo {
+           let memo = model.memo,
+           let date = model.date {
             dogImage.image = UIImage(data: photo)
             memoTextField.text = memo
+            let dateFommat = dateFormmater.string(from: date)
+            dogImageDateLabel.text = dateFommat
         }
     }
 }

@@ -31,9 +31,7 @@ class CameraViewController: UIViewController {
         updateCameraView()
     }
     
-    override var prefersStatusBarHidden: Bool {
-        return true
-    }
+    override var prefersStatusBarHidden: Bool { return true }
     
     func updateCameraView() {
         setupCaptureSession()
@@ -131,7 +129,6 @@ extension CameraViewController: AVCapturePhotoCaptureDelegate {
         if let imageData = photo.fileDataRepresentation() {
             data = imageData
             presenter?.showPreview(imageData: data)
-            dismiss(animated: true, completion: nil)
         }
     }
 }
