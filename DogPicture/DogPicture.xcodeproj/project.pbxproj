@@ -48,6 +48,10 @@
 		0BB27EE62722690800721A5F /* SideMenuInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB27EE52722690800721A5F /* SideMenuInteractor.swift */; };
 		0BB27EE92726EA1B00721A5F /* HomeEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB27EE82726EA1B00721A5F /* HomeEventCell.swift */; };
 		0BD2208A26E776B10064A8F6 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD2208926E776B10064A8F6 /* HomeTableViewCell.swift */; };
+		0BE0C42A27301BB500BE558C /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE0C42927301BB500BE558C /* TutorialViewController.swift */; };
+		0BE0C42C27301FB200BE558C /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE0C42B27301FB200BE558C /* FirstViewController.swift */; };
+		0BE0C42E2730219400BE558C /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE0C42D2730219400BE558C /* SecondViewController.swift */; };
+		0BE0C4302730270500BE558C /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE0C42F2730270500BE558C /* ThirdViewController.swift */; };
 		0BEAF9E62717F9FF008AAA3D /* AnimationTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEAF9E52717F9FF008AAA3D /* AnimationTransition.swift */; };
 		0BF238362660C2EE007E48AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF238352660C2EE007E48AC /* AppDelegate.swift */; };
 		0BF238382660C2EE007E48AC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF238372660C2EE007E48AC /* SceneDelegate.swift */; };
@@ -109,6 +113,10 @@
 		0BB27EE52722690800721A5F /* SideMenuInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuInteractor.swift; sourceTree = "<group>"; };
 		0BB27EE82726EA1B00721A5F /* HomeEventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeEventCell.swift; sourceTree = "<group>"; };
 		0BD2208926E776B10064A8F6 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
+		0BE0C42927301BB500BE558C /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
+		0BE0C42B27301FB200BE558C /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		0BE0C42D2730219400BE558C /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		0BE0C42F2730270500BE558C /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
 		0BEAF9E52717F9FF008AAA3D /* AnimationTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationTransition.swift; sourceTree = "<group>"; };
 		0BF238322660C2EE007E48AC /* DogPicture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DogPicture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BF238352660C2EE007E48AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -296,6 +304,17 @@
 			path = CaptureTextEdit;
 			sourceTree = "<group>";
 		};
+		0BE0C42827301B7E00BE558C /* TutorialView */ = {
+			isa = PBXGroup;
+			children = (
+				0BE0C42927301BB500BE558C /* TutorialViewController.swift */,
+				0BE0C42B27301FB200BE558C /* FirstViewController.swift */,
+				0BE0C42D2730219400BE558C /* SecondViewController.swift */,
+				0BE0C42F2730270500BE558C /* ThirdViewController.swift */,
+			);
+			path = TutorialView;
+			sourceTree = "<group>";
+		};
 		0BEAF9E42717F9B4008AAA3D /* Transition */ = {
 			isa = PBXGroup;
 			children = (
@@ -329,6 +348,7 @@
 				0B9F641C2714610700CF3F0C /* Notification */,
 				0B73461B2686F700007CE6CF /* DataBase */,
 				0B73462F268CA28C007CE6CF /* TabBar */,
+				0BE0C42827301B7E00BE558C /* TutorialView */,
 				0B734603268347D6007CE6CF /* MainView */,
 				0B73460126834780007CE6CF /* Camera */,
 				0B734623268B19C3007CE6CF /* Library */,
@@ -503,6 +523,7 @@
 			files = (
 				0BF2385B2660D667007E48AC /* MemoViewPresenter.swift in Sources */,
 				0B9F641E2714614100CF3F0C /* NotificationHelper.swift in Sources */,
+				0BE0C42E2730219400BE558C /* SecondViewController.swift in Sources */,
 				0BB27ECB271D942900721A5F /* DisMissAnimation.swift in Sources */,
 				0B9F63EA270DDBF400CF3F0C /* LocalPushPresenter.swift in Sources */,
 				0BB27EE2272268E300721A5F /* SideMenuPresenter.swift in Sources */,
@@ -521,6 +542,7 @@
 				0B9F63F8270E911700CF3F0C /* ProfileInteracter.swift in Sources */,
 				0B9F63EE270DDC1800CF3F0C /* LocalPushRouter.swift in Sources */,
 				0BB27ED227217EB100721A5F /* SideMenuViewController.swift in Sources */,
+				0BE0C4302730270500BE558C /* ThirdViewController.swift in Sources */,
 				0B2DFE3226F0CB6F002D533B /* PreviewViewController.swift in Sources */,
 				0B51B20126A8210E00216054 /* CameraProtocol.swift in Sources */,
 				0B734631268CA2C7007CE6CF /* TabViewController.swift in Sources */,
@@ -531,6 +553,7 @@
 				0B51B1FE26A8210E00216054 /* CameraViewController.swift in Sources */,
 				0BF238402660C2EE007E48AC /* DogPicture.xcdatamodeld in Sources */,
 				0B9F63F4270E910000CF3F0C /* ProfileProtocol.swift in Sources */,
+				0BE0C42C27301FB200BE558C /* FirstViewController.swift in Sources */,
 				0B2DFE3826F0CBAB002D533B /* PreviewRouter.swift in Sources */,
 				0B9F63F0270E909700CF3F0C /* ProfileViewController.swift in Sources */,
 				0B657DDD270D9D9E009323E9 /* DogInfoDatabaseHelper.swift in Sources */,
@@ -551,6 +574,7 @@
 				0B51B1FF26A8210E00216054 /* CameraRouter.swift in Sources */,
 				0BF238512660D5DD007E48AC /* HomePresenter.swift in Sources */,
 				0B9F63EC270DDC0400CF3F0C /* LocalPushProtocol.swift in Sources */,
+				0BE0C42A27301BB500BE558C /* TutorialViewController.swift in Sources */,
 				0B9F63E6270DDB4F00CF3F0C /* LocalPushViewController.swift in Sources */,
 				0B73461126861D76007CE6CF /* SettingInteracter.swift in Sources */,
 				0B73461826861DB5007CE6CF /* SettingRouter.swift in Sources */,

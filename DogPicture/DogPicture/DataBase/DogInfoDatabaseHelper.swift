@@ -12,9 +12,6 @@ import CoreData
 class DogInfoDatabaseHelper: SettingDataManagerInputProtocol {
     var requestHandler: SettingDataManagerOutputProtocol?
     
-    func updateData() {
-    }
-    
     static let instance = DogInfoDatabaseHelper()
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
