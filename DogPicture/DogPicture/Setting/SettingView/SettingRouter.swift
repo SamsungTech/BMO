@@ -9,22 +9,21 @@ import UIKit
 
 class SettingRouter: SettingRouterProtocol {
     static func createSettingModule() -> UIViewController {
-        if let view: SettingViewProtocol = SettingViewController() as? SettingViewProtocol {
-            let presenter: SettingPresenterProtocol & SettingInteracterOutputProtocol = SettingPresenter()
-            let interacter: SettingInteracterInputProtocol & SettingDataManagerOutputProtocol = SettingInteracter()
-            let dataManager: SettingDataManagerInputProtocol = DogInfoDatabaseHelper()
-            let router: SettingRouterProtocol = SettingRouter()
-            
-            view.presenter = presenter
-            presenter.view = view
-            presenter.router = router
-            presenter.interacter = interacter
-            interacter.presenter = presenter
-            interacter.dataManager = dataManager
-            
-            if let settingView = view as? UIViewController {
-                return settingView
-            }
+        let view: SettingViewProtocol = SettingViewController() 
+        let presenter: SettingPresenterProtocol & SettingInteracterOutputProtocol = SettingPresenter()
+        let interacter: SettingInteracterInputProtocol & SettingDataManagerOutputProtocol = SettingInteracter()
+        let dataManager: SettingDataManagerInputProtocol = DogInfoDatabaseHelper()
+        let router: SettingRouterProtocol = SettingRouter()
+        
+        view.presenter = presenter
+        presenter.view = view
+        presenter.router = router
+        presenter.interacter = interacter
+        interacter.presenter = presenter
+        interacter.dataManager = dataManager
+        
+        if let settingView = view as? UIViewController {
+            return settingView
         }
         return UIViewController()
     }

@@ -5,15 +5,6 @@
 //  Created by 김동우 on 2021/11/01.
 //
 
-//@NSManaged public var dogBirthday: Date? 필수
-//@NSManaged public var dogGender: Bool
-//@NSManaged public var dogName: String? 필수
-//@NSManaged public var dogType: Int16 필수
-//@NSManaged public var dogWeight: Double
-//@NSManaged public var neutering: Bool
-//@NSManaged public var userName: String? 필수
-//@NSManaged public var dogImage: Data?
-
 import UIKit
 
 class FirstViewController: UIViewController {
@@ -80,5 +71,4 @@ class FirstViewController: UIViewController {
     @objc func nextButtonDidTap(sender: UIButton) {
         
     }
-    
 }

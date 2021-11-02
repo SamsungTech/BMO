@@ -10,21 +10,21 @@ import UIKit
 
 class LocalPushRouter: LocalPushRouterProtocol {
     static func createLocalPushModule() -> UIViewController {
-        if let view: LocalPushViewProtocol = LocalPushViewController() as? LocalPushViewProtocol {
-            let presenter: LocalPushPresenterProtocol & LocalPushInteracterOutputProtocol = LocalPushPresenter()
-            let interacter: LocalPushInteracterInputProtocol = LocalPushInteracter()
-            let router: LocalPushRouterProtocol = LocalPushRouter()
-            
-            view.presenter = presenter
-            presenter.view = view
-            presenter.router = router
-            presenter.interacter = interacter
-            interacter.presenter = presenter
-            
-            if let pushView = view as? UIViewController {
-                return pushView
-            }
+        let view: LocalPushViewProtocol = LocalPushViewController()
+        let presenter: LocalPushPresenterProtocol & LocalPushInteracterOutputProtocol = LocalPushPresenter()
+        let interacter: LocalPushInteracterInputProtocol = LocalPushInteracter()
+        let router: LocalPushRouterProtocol = LocalPushRouter()
+        
+        view.presenter = presenter
+        presenter.view = view
+        presenter.router = router
+        presenter.interacter = interacter
+        interacter.presenter = presenter
+        
+        if let pushView = view as? UIViewController {
+            return pushView
         }
+        
         return UIViewController()
     }
     func dismissLocalPushView(from view: LocalPushViewProtocol) {

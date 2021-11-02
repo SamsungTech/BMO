@@ -52,6 +52,11 @@
 		0BE0C42C27301FB200BE558C /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE0C42B27301FB200BE558C /* FirstViewController.swift */; };
 		0BE0C42E2730219400BE558C /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE0C42D2730219400BE558C /* SecondViewController.swift */; };
 		0BE0C4302730270500BE558C /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE0C42F2730270500BE558C /* ThirdViewController.swift */; };
+		0BE0C43327303A4300BE558C /* InitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE0C43227303A4300BE558C /* InitViewController.swift */; };
+		0BE0C43527303A5500BE558C /* InitProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE0C43427303A5500BE558C /* InitProtocol.swift */; };
+		0BE0C43727303A6B00BE558C /* InitPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE0C43627303A6B00BE558C /* InitPresenter.swift */; };
+		0BE0C43927303A7800BE558C /* InitInteracter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE0C43827303A7800BE558C /* InitInteracter.swift */; };
+		0BE0C43B27303A8200BE558C /* InitRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE0C43A27303A8200BE558C /* InitRouter.swift */; };
 		0BEAF9E62717F9FF008AAA3D /* AnimationTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEAF9E52717F9FF008AAA3D /* AnimationTransition.swift */; };
 		0BF238362660C2EE007E48AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF238352660C2EE007E48AC /* AppDelegate.swift */; };
 		0BF238382660C2EE007E48AC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF238372660C2EE007E48AC /* SceneDelegate.swift */; };
@@ -117,6 +122,11 @@
 		0BE0C42B27301FB200BE558C /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		0BE0C42D2730219400BE558C /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		0BE0C42F2730270500BE558C /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
+		0BE0C43227303A4300BE558C /* InitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitViewController.swift; sourceTree = "<group>"; };
+		0BE0C43427303A5500BE558C /* InitProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitProtocol.swift; sourceTree = "<group>"; };
+		0BE0C43627303A6B00BE558C /* InitPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitPresenter.swift; sourceTree = "<group>"; };
+		0BE0C43827303A7800BE558C /* InitInteracter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitInteracter.swift; sourceTree = "<group>"; };
+		0BE0C43A27303A8200BE558C /* InitRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitRouter.swift; sourceTree = "<group>"; };
 		0BEAF9E52717F9FF008AAA3D /* AnimationTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationTransition.swift; sourceTree = "<group>"; };
 		0BF238322660C2EE007E48AC /* DogPicture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DogPicture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BF238352660C2EE007E48AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -315,6 +325,18 @@
 			path = TutorialView;
 			sourceTree = "<group>";
 		};
+		0BE0C431273039A500BE558C /* InitialSettingView */ = {
+			isa = PBXGroup;
+			children = (
+				0BE0C43227303A4300BE558C /* InitViewController.swift */,
+				0BE0C43627303A6B00BE558C /* InitPresenter.swift */,
+				0BE0C43427303A5500BE558C /* InitProtocol.swift */,
+				0BE0C43A27303A8200BE558C /* InitRouter.swift */,
+				0BE0C43827303A7800BE558C /* InitInteracter.swift */,
+			);
+			path = InitialSettingView;
+			sourceTree = "<group>";
+		};
 		0BEAF9E42717F9B4008AAA3D /* Transition */ = {
 			isa = PBXGroup;
 			children = (
@@ -347,8 +369,9 @@
 			children = (
 				0B9F641C2714610700CF3F0C /* Notification */,
 				0B73461B2686F700007CE6CF /* DataBase */,
-				0B73462F268CA28C007CE6CF /* TabBar */,
+				0BE0C431273039A500BE558C /* InitialSettingView */,
 				0BE0C42827301B7E00BE558C /* TutorialView */,
+				0B73462F268CA28C007CE6CF /* TabBar */,
 				0B734603268347D6007CE6CF /* MainView */,
 				0B73460126834780007CE6CF /* Camera */,
 				0B734623268B19C3007CE6CF /* Library */,
@@ -521,8 +544,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0BE0C43B27303A8200BE558C /* InitRouter.swift in Sources */,
 				0BF2385B2660D667007E48AC /* MemoViewPresenter.swift in Sources */,
 				0B9F641E2714614100CF3F0C /* NotificationHelper.swift in Sources */,
+				0BE0C43327303A4300BE558C /* InitViewController.swift in Sources */,
 				0BE0C42E2730219400BE558C /* SecondViewController.swift in Sources */,
 				0BB27ECB271D942900721A5F /* DisMissAnimation.swift in Sources */,
 				0B9F63EA270DDBF400CF3F0C /* LocalPushPresenter.swift in Sources */,
@@ -541,6 +566,7 @@
 				0B73461526861D98007CE6CF /* SettingPresenter.swift in Sources */,
 				0B9F63F8270E911700CF3F0C /* ProfileInteracter.swift in Sources */,
 				0B9F63EE270DDC1800CF3F0C /* LocalPushRouter.swift in Sources */,
+				0BE0C43927303A7800BE558C /* InitInteracter.swift in Sources */,
 				0BB27ED227217EB100721A5F /* SideMenuViewController.swift in Sources */,
 				0BE0C4302730270500BE558C /* ThirdViewController.swift in Sources */,
 				0B2DFE3226F0CB6F002D533B /* PreviewViewController.swift in Sources */,
@@ -560,6 +586,7 @@
 				0BF238362660C2EE007E48AC /* AppDelegate.swift in Sources */,
 				0BB27EDE27225E6F00721A5F /* SideMenuCell.swift in Sources */,
 				0BF238532660D5EE007E48AC /* HomeProtocol.swift in Sources */,
+				0BE0C43727303A6B00BE558C /* InitPresenter.swift in Sources */,
 				0B73461326861D87007CE6CF /* SettingProtocol.swift in Sources */,
 				0B9F63F6270E910D00CF3F0C /* ProfileRouter.swift in Sources */,
 				0BB27EE4272268F300721A5F /* SideMenuRouter.swift in Sources */,
@@ -572,6 +599,7 @@
 				0B2DFE3C26F70538002D533B /* DatabaseHelper.swift in Sources */,
 				0BF238572660D628007E48AC /* HomeInteracter.swift in Sources */,
 				0B51B1FF26A8210E00216054 /* CameraRouter.swift in Sources */,
+				0BE0C43527303A5500BE558C /* InitProtocol.swift in Sources */,
 				0BF238512660D5DD007E48AC /* HomePresenter.swift in Sources */,
 				0B9F63EC270DDC0400CF3F0C /* LocalPushProtocol.swift in Sources */,
 				0BE0C42A27301BB500BE558C /* TutorialViewController.swift in Sources */,
