@@ -12,11 +12,23 @@ class InitPresenter: InitPresenterProtocol {
     var interacter: InitInteracterInputProtocol?
     var router: InitRouterProtocol?
     
-    func saveButtonDidTap(image: Data, name: String, type: String, birth: Date, relation: String) {
-        print("아직")
+    func saveButtonDidTap(image: Data,
+                          name: String,
+                          type: String,
+                          birth: Date,
+                          relation: String) {
+        interacter?.coredataSave(image: image,
+                                 name: name,
+                                 type: type,
+                                 birth: birth,
+                                 relation: relation)
     }
 }
 
 extension InitPresenter: InitInteracterOutputProtocol {
+    func trivedDogInfoData(info: DogInfo) {
+        print("dsd")
+    }
+    
     
 }

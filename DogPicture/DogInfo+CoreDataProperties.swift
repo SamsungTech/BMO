@@ -1,8 +1,8 @@
 //
 //  DogInfo+CoreDataProperties.swift
-//  
+//  DogPicture
 //
-//  Created by 김동우 on 2021/11/01.
+//  Created by 김동우 on 2021/11/03.
 //
 //
 
@@ -18,13 +18,15 @@ extension DogInfo {
 
     @NSManaged public var dogBirthday: Date?
     @NSManaged public var dogGender: Bool
+    @NSManaged public var dogImage: Data?
     @NSManaged public var dogName: String?
-    @NSManaged public var dogType: Int16
+    @NSManaged public var dogType: String?
     @NSManaged public var dogWeight: Double
     @NSManaged public var neutering: Bool
     @NSManaged public var userName: String?
-    @NSManaged public var dogImage: Data?
-    @NSManaged public var model: NSSet?
+    @NSManaged public var dogRelation: String?
+    @NSManaged public var model: Set<Model>?
+
 }
 
 // MARK: Generated accessors for model
@@ -41,5 +43,9 @@ extension DogInfo {
 
     @objc(removeModel:)
     @NSManaged public func removeFromModel(_ values: NSSet)
+
+}
+
+extension DogInfo : Identifiable {
 
 }

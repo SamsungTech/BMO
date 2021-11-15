@@ -12,7 +12,7 @@
 		0B2DFE3626F0CB9C002D533B /* PreviewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2DFE3526F0CB9C002D533B /* PreviewProtocol.swift */; };
 		0B2DFE3826F0CBAB002D533B /* PreviewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2DFE3726F0CBAB002D533B /* PreviewRouter.swift */; };
 		0B2DFE3A26F0CBBD002D533B /* PreviewInteracter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2DFE3926F0CBBD002D533B /* PreviewInteracter.swift */; };
-		0B2DFE3C26F70538002D533B /* DatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2DFE3B26F70538002D533B /* DatabaseHelper.swift */; };
+		0B2DFE3C26F70538002D533B /* ModelDatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2DFE3B26F70538002D533B /* ModelDatabaseHelper.swift */; };
 		0B51B1FE26A8210E00216054 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B51B1F926A8210E00216054 /* CameraViewController.swift */; };
 		0B51B1FF26A8210E00216054 /* CameraRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B51B1FA26A8210E00216054 /* CameraRouter.swift */; };
 		0B51B20026A8210E00216054 /* CameraInteracter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B51B1FB26A8210E00216054 /* CameraInteracter.swift */; };
@@ -57,6 +57,11 @@
 		0BE0C43727303A6B00BE558C /* InitPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE0C43627303A6B00BE558C /* InitPresenter.swift */; };
 		0BE0C43927303A7800BE558C /* InitInteracter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE0C43827303A7800BE558C /* InitInteracter.swift */; };
 		0BE0C43B27303A8200BE558C /* InitRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE0C43A27303A8200BE558C /* InitRouter.swift */; };
+		0BE0C46527329C1C00BE558C /* DogInfo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE0C46127329C1C00BE558C /* DogInfo+CoreDataClass.swift */; };
+		0BE0C46627329C1C00BE558C /* DogInfo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE0C46227329C1C00BE558C /* DogInfo+CoreDataProperties.swift */; };
+		0BE0C46727329C1C00BE558C /* Model+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE0C46327329C1C00BE558C /* Model+CoreDataClass.swift */; };
+		0BE0C46827329C1C00BE558C /* Model+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE0C46427329C1C00BE558C /* Model+CoreDataProperties.swift */; };
+		0BE0C46D27425EA200BE558C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE0C46C27425EA100BE558C /* Extensions.swift */; };
 		0BEAF9E62717F9FF008AAA3D /* AnimationTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEAF9E52717F9FF008AAA3D /* AnimationTransition.swift */; };
 		0BF238362660C2EE007E48AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF238352660C2EE007E48AC /* AppDelegate.swift */; };
 		0BF238382660C2EE007E48AC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF238372660C2EE007E48AC /* SceneDelegate.swift */; };
@@ -82,7 +87,7 @@
 		0B2DFE3526F0CB9C002D533B /* PreviewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewProtocol.swift; sourceTree = "<group>"; };
 		0B2DFE3726F0CBAB002D533B /* PreviewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewRouter.swift; sourceTree = "<group>"; };
 		0B2DFE3926F0CBBD002D533B /* PreviewInteracter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewInteracter.swift; sourceTree = "<group>"; };
-		0B2DFE3B26F70538002D533B /* DatabaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseHelper.swift; sourceTree = "<group>"; };
+		0B2DFE3B26F70538002D533B /* ModelDatabaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelDatabaseHelper.swift; sourceTree = "<group>"; };
 		0B51B1F926A8210E00216054 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		0B51B1FA26A8210E00216054 /* CameraRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraRouter.swift; sourceTree = "<group>"; };
 		0B51B1FB26A8210E00216054 /* CameraInteracter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraInteracter.swift; sourceTree = "<group>"; };
@@ -127,6 +132,11 @@
 		0BE0C43627303A6B00BE558C /* InitPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitPresenter.swift; sourceTree = "<group>"; };
 		0BE0C43827303A7800BE558C /* InitInteracter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitInteracter.swift; sourceTree = "<group>"; };
 		0BE0C43A27303A8200BE558C /* InitRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitRouter.swift; sourceTree = "<group>"; };
+		0BE0C46127329C1C00BE558C /* DogInfo+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DogInfo+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		0BE0C46227329C1C00BE558C /* DogInfo+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DogInfo+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		0BE0C46327329C1C00BE558C /* Model+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Model+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		0BE0C46427329C1C00BE558C /* Model+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Model+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		0BE0C46C27425EA100BE558C /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		0BEAF9E52717F9FF008AAA3D /* AnimationTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationTransition.swift; sourceTree = "<group>"; };
 		0BF238322660C2EE007E48AC /* DogPicture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DogPicture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BF238352660C2EE007E48AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -232,7 +242,7 @@
 		0B73461B2686F700007CE6CF /* DataBase */ = {
 			isa = PBXGroup;
 			children = (
-				0B2DFE3B26F70538002D533B /* DatabaseHelper.swift */,
+				0B2DFE3B26F70538002D533B /* ModelDatabaseHelper.swift */,
 				0B657DDC270D9D9E009323E9 /* DogInfoDatabaseHelper.swift */,
 			);
 			path = DataBase;
@@ -337,6 +347,25 @@
 			path = InitialSettingView;
 			sourceTree = "<group>";
 		};
+		0BE0C44027329A2500BE558C /* CoreDataInfo */ = {
+			isa = PBXGroup;
+			children = (
+				0BE0C46327329C1C00BE558C /* Model+CoreDataClass.swift */,
+				0BE0C46427329C1C00BE558C /* Model+CoreDataProperties.swift */,
+				0BE0C46127329C1C00BE558C /* DogInfo+CoreDataClass.swift */,
+				0BE0C46227329C1C00BE558C /* DogInfo+CoreDataProperties.swift */,
+			);
+			path = CoreDataInfo;
+			sourceTree = "<group>";
+		};
+		0BE0C46B27425E1800BE558C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0BE0C46C27425EA100BE558C /* Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		0BEAF9E42717F9B4008AAA3D /* Transition */ = {
 			isa = PBXGroup;
 			children = (
@@ -367,6 +396,7 @@
 		0BF238342660C2EE007E48AC /* DogPicture */ = {
 			isa = PBXGroup;
 			children = (
+				0BE0C44027329A2500BE558C /* CoreDataInfo */,
 				0B9F641C2714610700CF3F0C /* Notification */,
 				0B73461B2686F700007CE6CF /* DataBase */,
 				0BE0C431273039A500BE558C /* InitialSettingView */,
@@ -376,6 +406,7 @@
 				0B73460126834780007CE6CF /* Camera */,
 				0B734623268B19C3007CE6CF /* Library */,
 				0B7346022683479C007CE6CF /* Setting */,
+				0BE0C46B27425E1800BE558C /* Extensions */,
 				0BF238352660C2EE007E48AC /* AppDelegate.swift */,
 				0BF238372660C2EE007E48AC /* SceneDelegate.swift */,
 				0BF238412660C2F1007E48AC /* Assets.xcassets */,
@@ -553,6 +584,7 @@
 				0B9F63EA270DDBF400CF3F0C /* LocalPushPresenter.swift in Sources */,
 				0BB27EE2272268E300721A5F /* SideMenuPresenter.swift in Sources */,
 				0BF238552660D5FE007E48AC /* HomeViewRouter.swift in Sources */,
+				0BE0C46827329C1C00BE558C /* Model+CoreDataProperties.swift in Sources */,
 				0BB27ECD2720316D00721A5F /* HomeProfileViewCell.swift in Sources */,
 				0BD2208A26E776B10064A8F6 /* HomeTableViewCell.swift in Sources */,
 				0B51B20026A8210E00216054 /* CameraInteracter.swift in Sources */,
@@ -571,6 +603,7 @@
 				0BE0C4302730270500BE558C /* ThirdViewController.swift in Sources */,
 				0B2DFE3226F0CB6F002D533B /* PreviewViewController.swift in Sources */,
 				0B51B20126A8210E00216054 /* CameraProtocol.swift in Sources */,
+				0BE0C46527329C1C00BE558C /* DogInfo+CoreDataClass.swift in Sources */,
 				0B734631268CA2C7007CE6CF /* TabViewController.swift in Sources */,
 				0BB27EE92726EA1B00721A5F /* HomeEventCell.swift in Sources */,
 				0BF2385F2660D6A6007E48AC /* MemoViewProtocol.swift in Sources */,
@@ -587,6 +620,8 @@
 				0BB27EDE27225E6F00721A5F /* SideMenuCell.swift in Sources */,
 				0BF238532660D5EE007E48AC /* HomeProtocol.swift in Sources */,
 				0BE0C43727303A6B00BE558C /* InitPresenter.swift in Sources */,
+				0BE0C46727329C1C00BE558C /* Model+CoreDataClass.swift in Sources */,
+				0BE0C46D27425EA200BE558C /* Extensions.swift in Sources */,
 				0B73461326861D87007CE6CF /* SettingProtocol.swift in Sources */,
 				0B9F63F6270E910D00CF3F0C /* ProfileRouter.swift in Sources */,
 				0BB27EE4272268F300721A5F /* SideMenuRouter.swift in Sources */,
@@ -596,11 +631,12 @@
 				0B2DFE3426F0CB8B002D533B /* PreviewPresenter.swift in Sources */,
 				0B2DFE3A26F0CBBD002D533B /* PreviewInteracter.swift in Sources */,
 				0B51B20226A8210E00216054 /* CameraPresenter.swift in Sources */,
-				0B2DFE3C26F70538002D533B /* DatabaseHelper.swift in Sources */,
+				0B2DFE3C26F70538002D533B /* ModelDatabaseHelper.swift in Sources */,
 				0BF238572660D628007E48AC /* HomeInteracter.swift in Sources */,
 				0B51B1FF26A8210E00216054 /* CameraRouter.swift in Sources */,
 				0BE0C43527303A5500BE558C /* InitProtocol.swift in Sources */,
 				0BF238512660D5DD007E48AC /* HomePresenter.swift in Sources */,
+				0BE0C46627329C1C00BE558C /* DogInfo+CoreDataProperties.swift in Sources */,
 				0B9F63EC270DDC0400CF3F0C /* LocalPushProtocol.swift in Sources */,
 				0BE0C42A27301BB500BE558C /* TutorialViewController.swift in Sources */,
 				0B9F63E6270DDB4F00CF3F0C /* LocalPushViewController.swift in Sources */,

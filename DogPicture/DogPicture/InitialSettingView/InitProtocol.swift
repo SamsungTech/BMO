@@ -16,6 +16,7 @@ protocol InitViewControllerProtocol: AnyObject {
 protocol InitRouterProtocol: AnyObject {
     static func createInitModule() -> UIViewController
     
+    
 }
 
 protocol InitPresenterProtocol: AnyObject {
@@ -33,7 +34,7 @@ protocol InitInteracterInputProtocol: AnyObject {
 }
 
 protocol InitInteracterOutputProtocol: AnyObject {
-    
+    func trivedDogInfoData(info: DogInfo)
 }
 
 

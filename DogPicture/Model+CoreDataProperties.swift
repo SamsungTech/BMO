@@ -1,8 +1,8 @@
 //
 //  Model+CoreDataProperties.swift
-//  
+//  DogPicture
 //
-//  Created by 김동우 on 2021/11/01.
+//  Created by 김동우 on 2021/11/03.
 //
 //
 
@@ -20,5 +20,9 @@ extension Model {
     @NSManaged public var memo: String?
     @NSManaged public var photo: Data?
     @NSManaged public var dogInfo: DogInfo?
+    
+}
+
+extension Model : Identifiable {
 
 }

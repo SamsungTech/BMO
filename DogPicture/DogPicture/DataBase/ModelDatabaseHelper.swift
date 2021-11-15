@@ -8,29 +8,41 @@
 import Foundation
 import UIKit
 import CoreData
-
-class DatabaseHelper {
-    static let instance = DatabaseHelper()
+// doginfo 안에 있는 model
+// create, save
+class ModelDatabaseHelper {
+    static let instance = ModelDatabaseHelper()
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-    func getAllItems() -> [Model] {
-        var models = [Model]()
+    func getAllItems() -> [DogInfo] {
+        var info = [DogInfo]()
         do {
-            models = try context.fetch(Model.fetchRequest())
-            print("가져오기 성공!")
+            info = try context.fetch(DogInfo.fetchRequest())
+            print("DogInfo 안에 Model 데이터 가져오기 성공!")
         } catch {
-            print("models 가져오기 실패")
+            print("DogInfo 안에 Model 데이터 가져오기 실패")
         }
-        return models
+        return info
     }
-
-    func createItem(photo: Data, memo: String) {
+    
+    func getModelItems() -> [Model] {
+        let info = getAllItems()
+        var model = [Model]()
+        guard let infoModel = info[0].model else { return model }
+        model = Array(infoModel)
+        return model
+    }
+    
+    func createModelItem(photo: Data, memo: String) {
         let newItem = Model(context: context)
+        let info = getAllItems()
+        
         newItem.photo = photo
         newItem.memo = memo
         newItem.date = Date()
-
+        
+        info[0].addToModel(newItem)
         do {
             try context.save()
             print("createItem 성공")

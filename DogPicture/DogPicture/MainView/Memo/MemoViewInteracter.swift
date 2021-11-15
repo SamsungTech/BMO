@@ -12,10 +12,10 @@ class MemoViewInteracter: MemoViewInteracterInputProtocol {
     weak var presenter: MemoViewInteracterOutputProtocol?
     
     func dataBaseHelperUpdate(item: Model, memo: String) {
-        DatabaseHelper.instance.updateItem(item: item, memo: memo)
+        ModelDatabaseHelper.instance.updateItem(item: item, memo: memo)
     }
     func dataBaseHelperDelete(item: Model) {
-        DatabaseHelper.instance.deleteItem(item: item)
+        ModelDatabaseHelper.instance.deleteItem(item: item)
     }
 }
 

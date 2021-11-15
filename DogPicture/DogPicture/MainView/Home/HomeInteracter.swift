@@ -10,7 +10,7 @@ class HomeInteracter: HomeInteracterInputProtocol {
     var dataHolder: [Model] = []
     
     func retrieveModel() {
-        dataHolder = DatabaseHelper.instance.getAllItems()
+        dataHolder = ModelDatabaseHelper.instance.getModelItems()
         presenter?.didRetrieveModel(dataHolder)
     }
 }

@@ -37,10 +37,14 @@ class InitViewController: UIViewController {
     
     let saveButton = UIButton()
     
+    var infoHolder: [DogInfo]?
+    var modelHolder: [Model]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         updateView()
         view.backgroundColor = .white
+        ModelDatabaseHelper.instance.getModelItems()
     }
     
     func updateView() {
@@ -253,8 +257,7 @@ class InitViewController: UIViewController {
         dogRelationTextField.text = dogRelationHolder
         dogRelationTextField.resignFirstResponder()
     }
-    // profileImageHolder, dogNameHolder, dogTypeHolder, dogBirthDayHolder, dogRelationHolder
-    // image, name, type, birth, relation
+    
     @objc func saveButtonDidTap(sedner: UIButton) {
         print("saveButtonDidTap")
         guard let profileImage = profileImageHolder,
@@ -319,8 +322,10 @@ extension InitViewController: UIImagePickerControllerDelegate, UINavigationContr
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerEditedImage")] as? UIImage {
-            profileImageHolder = image as? Data
+            
             profileImageView.image = image
+            guard let profileImage = image.pngData() else { return }
+            profileImageHolder = profileImage
         }
         picker.dismiss(animated: true, completion: nil)
     }
@@ -332,12 +337,4 @@ extension InitViewController: UIImagePickerControllerDelegate, UINavigationContr
 
 extension InitViewController: InitViewControllerProtocol {
     
-}
-
-extension UITextField {
-    func addLeftPadding() {
-        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: self.frame.height))
-        self.leftView = paddingView
-        self.leftViewMode = ViewMode.always
-    }
 }

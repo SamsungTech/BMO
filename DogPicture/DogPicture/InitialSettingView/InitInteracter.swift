@@ -10,7 +10,15 @@ import Foundation
 class InitInteracter: InitInteracterInputProtocol {
     weak var presenter: InitInteracterOutputProtocol?
     
-    func coredataSave(image: Data, name: String, type: String, birth: Date, relation: String) {
-        print("헬예")
+    func coredataSave(image: Data,
+                      name: String,
+                      type: String,
+                      birth: Date,
+                      relation: String) {
+        let dogInfoData = DogInfoDatabaseHelper.instance.createItem(image: image,
+                                                                    name: name,
+                                                                    type: type,
+                                                                    birth: birth,
+                                                                    relation: relation)
     }
 }
