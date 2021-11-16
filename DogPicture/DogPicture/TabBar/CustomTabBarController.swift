@@ -125,30 +125,8 @@ class CustomTabBarController: UITabBarController {
     }
     @objc func centerButtonDidTap(sender: UIButton) {
         let createView = CreateViewController()
-        createView.modalPresentationStyle = .overCurrentContext
-        createView.transitioningDelegate = self
-        present(createView, animated: true)
+        createView.modalPresentationStyle = .overFullScreen
+        present(createView, animated: false)
     }
 }
 
-extension CustomTabBarController: UIViewControllerTransitioningDelegate {
-    func animationController(forPresented presented: UIViewController,
-                             presenting: UIViewController,
-                             source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        
-        CreateTransition.isPresenting = true
-        return CreateTransition
-    }
-    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        CreateTransition.isPresenting = false
-        return CreateTransition
-    }
-    
-    func interactionControllerForPresentation(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-        return nil
-    }
-    
-    func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-        return nil
-    }
-}
