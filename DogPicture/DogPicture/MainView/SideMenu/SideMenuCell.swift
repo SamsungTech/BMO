@@ -36,11 +36,11 @@ class SideMenuCell: UITableViewCell {
         
         sideCellView.do {
             $0.backgroundColor = .systemPink
-            $0.viewRadius(view: sideCellView, cornerRadius: 10, maskToBounds: true)
+            $0.viewRadius(cornerRadius: 10, maskToBounds: true)
         }
         sideImage.do {
             $0.image = UIImage(named: "p4")
-            $0.viewRadius(view: sideImage, cornerRadius: 30, maskToBounds: true)
+            $0.viewRadius(cornerRadius: 30, maskToBounds: true)
             $0.layer.borderColor = UIColor.systemBlue.cgColor
             $0.layer.borderWidth = 3
         }

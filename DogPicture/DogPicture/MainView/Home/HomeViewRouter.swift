@@ -8,6 +8,8 @@
 import UIKit
 
 class HomeViewRouter: NSObject, HomeRouterProtocol {
+    let sideTransition = SlideInTransition()
+    
     class func createHomeModule() -> UIViewController {
         let view: HomeViewProtocol = HomeViewController()
         let presenter: HomePresenterProtocol & HomeInteracterOutputProtocol = HomePresenter()
@@ -35,6 +37,35 @@ class HomeViewRouter: NSObject, HomeRouterProtocol {
             memoView.present(MemoViewController, animated: true)
         }
     }
+    func presentSideMenu(from view: HomeViewProtocol) {
+        let sideMenuView = SideMenuViewController()
+        
+        if let sideView = view as? UIViewController {
+            sideMenuView.modalPresentationStyle = .overCurrentContext
+            sideMenuView.transitioningDelegate = self
+            sideView.present(sideMenuView, animated: true)
+        }
+    }
 }
 
-
+extension HomeViewRouter: UIViewControllerTransitioningDelegate {
+    func animationController(forPresented presented: UIViewController,
+                             presenting: UIViewController,
+                             source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        
+        sideTransition.isPresenting = true
+        return sideTransition
+    }
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        sideTransition.isPresenting = false
+        return sideTransition
+    }
+    
+    func interactionControllerForPresentation(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        return nil
+    }
+    
+    func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        return nil
+    }
+}

@@ -11,7 +11,7 @@ import Then
 class HomeViewController: UIViewController {
     var presenter: HomePresenterProtocol?
     let navigationBar = UIView()
-    let changeIdButton = UIButton()
+    let sideMenuButton = UIButton()
     let segmentedButton = UISegmentedControl()
     let noticeButton = UIButton()
     var homeTableView = UITableView()
@@ -19,7 +19,6 @@ class HomeViewController: UIViewController {
     let dateFormatter = DateFormatter()
     let transition = AnimationTransition()
     let memoView = MemoViewController()
-    let sideTransition = SlideInTransition()
     
     override var prefersStatusBarHidden: Bool {
         return false
@@ -38,7 +37,7 @@ class HomeViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         homeTableView.reloadData()
         view.imageSizeFit(view: noticeButton, buttonSize: 30)
-        view.imageSizeFit(view: changeIdButton, buttonSize: 30)
+        view.imageSizeFit(view: sideMenuButton, buttonSize: 30)
     }
     
     func updateView() {
@@ -48,15 +47,15 @@ class HomeViewController: UIViewController {
     
     func attribute() {
         [ navigationBar, homeTableView ].forEach() { view.addSubview($0) }
-        [ changeIdButton, segmentedButton, noticeButton ].forEach() { navigationBar.addSubview($0) }
+        [ sideMenuButton, segmentedButton, noticeButton ].forEach() { navigationBar.addSubview($0) }
         
         navigationBar.do {
             $0.backgroundColor = .white
         }
-        changeIdButton.do {
+        sideMenuButton.do {
             $0.setImage(UIImage(systemName: "person.fill"), for: .normal)
             $0.tintColor = .darkGray
-            $0.addTarget(self, action: #selector(changeIdButtonDidTap(sender:)), for: .touchUpInside)
+            $0.addTarget(self, action: #selector(sideMenuButtonDidTap(sender:)), for: .touchUpInside)
         }
         segmentedButton.do {
             $0.setTitleTextAttributes([NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 16)], for: .normal)
@@ -96,7 +95,7 @@ class HomeViewController: UIViewController {
             $0.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
             $0.heightAnchor.constraint(equalToConstant: 90).isActive = true
         }
-        changeIdButton.do {
+        sideMenuButton.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
             $0.topAnchor.constraint(equalTo: navigationBar.topAnchor, constant: 50).isActive = true
             $0.leadingAnchor.constraint(equalTo: navigationBar.leadingAnchor, constant: 20).isActive = true
@@ -106,7 +105,7 @@ class HomeViewController: UIViewController {
         segmentedButton.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
             $0.centerXAnchor.constraint(equalTo: navigationBar.centerXAnchor).isActive = true
-            $0.centerYAnchor.constraint(equalTo: changeIdButton.centerYAnchor).isActive = true
+            $0.centerYAnchor.constraint(equalTo: sideMenuButton.centerYAnchor).isActive = true
             $0.widthAnchor.constraint(equalToConstant: 150).isActive = true
             $0.heightAnchor.constraint(equalToConstant: 35).isActive = true
         }
@@ -126,12 +125,9 @@ class HomeViewController: UIViewController {
         }
     }
     
-    @objc func changeIdButtonDidTap(sender: UIButton) {
+    @objc func sideMenuButtonDidTap(sender: UIButton) {
         // present side menu
-        let sideMenuView = SideMenuViewController()
-        sideMenuView.modalPresentationStyle = .overCurrentContext
-        sideMenuView.transitioningDelegate = self
-        present(sideMenuView, animated: true)
+        presenter?.sideMenuButtonClicked()
     }
     @objc func segmentedButtonDidTap(sender: UISegmentedControl) {
         
@@ -222,27 +218,5 @@ extension HomeViewController: HomeViewProtocol {
     
     func refershCalender(tag: Int) {
         
-    }
-}
-
-extension HomeViewController: UIViewControllerTransitioningDelegate {
-    func animationController(forPresented presented: UIViewController,
-                             presenting: UIViewController,
-                             source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        
-        sideTransition.isPresenting = true
-        return sideTransition
-    }
-    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        sideTransition.isPresenting = false
-        return sideTransition
-    }
-    
-    func interactionControllerForPresentation(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-        return nil
-    }
-    
-    func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-        return nil
     }
 }

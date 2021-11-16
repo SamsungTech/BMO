@@ -101,7 +101,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         guard let rootViewController = (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.window?.rootViewController else { return }
         
         if response.notification.request.identifier == "Local Notification" {
-            if let cameraView = TabViewController() as? UITabBarController,
+            if let cameraView = CustomTabBarController() as? UITabBarController,
                let viewController = rootViewController as? UIViewController {
                 cameraView.selectedIndex = 1
                 

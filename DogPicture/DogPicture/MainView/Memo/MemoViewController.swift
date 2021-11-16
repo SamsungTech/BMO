@@ -70,7 +70,7 @@ class MemoViewController: UIViewController {
         }
         memoEditView.do {
             $0.backgroundColor = .white
-            $0.viewRadius(view: memoEditView, cornerRadius: 20, maskToBounds: true)
+            $0.viewRadius(cornerRadius: 20, maskToBounds: true)
             $0.layer.masksToBounds = false
             $0.layer.cornerRadius = 20
             $0.layer.shadowOpacity = 0.5
@@ -91,7 +91,7 @@ class MemoViewController: UIViewController {
         memoTextField.do {
             $0.backgroundColor = .lightGray
             $0.textColor = .black
-            $0.viewRadius(view: memoTextField, cornerRadius: 15, maskToBounds: true)
+            $0.viewRadius(cornerRadius: 15, maskToBounds: true)
         }
         saveButton.do {
             $0.backgroundColor = .systemRed
@@ -101,13 +101,13 @@ class MemoViewController: UIViewController {
             $0.backgroundColor = .systemRed
             $0.setTitle("삭제하기", for: .normal)
             $0.addTarget(self, action: #selector(deleteButtonDidTap(sender:)), for: .touchUpInside)
-            $0.viewRadius(view: deleteButton, cornerRadius: 20, maskToBounds: true)
+            $0.viewRadius(cornerRadius: 20, maskToBounds: true)
         }
         editButton.do {
             $0.backgroundColor = .systemBlue
             $0.setTitle("수정하기", for: .normal)
             $0.addTarget(self, action: #selector(editButtonDidTap(sender:)), for: .touchUpInside)
-            $0.viewRadius(view: editButton, cornerRadius: 20, maskToBounds: true)
+            $0.viewRadius(cornerRadius: 20, maskToBounds: true)
         }
     }
     

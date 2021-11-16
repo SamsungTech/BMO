@@ -15,7 +15,7 @@ class PreviewViewController: UIViewController {
     var saveButton = UIButton()
     var captureImageView = UIImageView()
     var previewTextField = UITextField()
-    var tabView = TabViewController()
+    var tabView = CustomTabBarController()
     var captureImage = UIImage()
     var captureImageData = Data()
     

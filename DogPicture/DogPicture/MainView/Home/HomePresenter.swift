@@ -21,6 +21,10 @@ class HomePresenter: HomePresenterProtocol {
     func calenderDidTap(tag: Int) {
         view?.refershCalender(tag: tag)
     }
+    func sideMenuButtonClicked() {
+        guard let view = view else { return }
+        router?.presentSideMenu(from: view)
+    }
 }
 
 extension HomePresenter: HomeInteracterOutputProtocol {

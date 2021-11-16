@@ -18,6 +18,7 @@ protocol HomeRouterProtocol: AnyObject {
     static func createHomeModule() -> UIViewController
     
     func presentMemoScreen(from view: HomeViewProtocol, forname name: Model, index: IndexPath)
+    func presentSideMenu(from view: HomeViewProtocol)
 }
 
 protocol HomePresenterProtocol: AnyObject {
@@ -27,6 +28,7 @@ protocol HomePresenterProtocol: AnyObject {
     
     func viewDidLoad()
     func showMemo(for name: Model, index: IndexPath)
+    func sideMenuButtonClicked()
     func calenderDidTap(tag: Int)
 }
 

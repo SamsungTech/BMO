@@ -65,7 +65,6 @@ extension TutorialViewController: UIPageViewControllerDelegate, UIPageViewContro
         } else if viewController as? SecondViewController != nil {
             return FirstViewController()
         }
-        
         return FirstViewController()
     }
     

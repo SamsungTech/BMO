@@ -43,7 +43,7 @@ class HomeProfileViewCell: UITableViewCell {
         
         profileView.do {
             $0.backgroundColor = .systemPink
-            $0.viewRadius(view: profileView, cornerRadius: 20, maskToBounds: true)
+            $0.viewRadius(cornerRadius: 20, maskToBounds: true)
             $0.layer.shadowOpacity = 0.5
             $0.layer.shadowColor = UIColor.gray.cgColor
             $0.layer.shadowOffset = CGSize(width: 0, height: 0)
@@ -51,7 +51,7 @@ class HomeProfileViewCell: UITableViewCell {
             $0.layer.masksToBounds = false
         }
         profileImage.do {
-            $0.viewRadius(view: profileImage, cornerRadius: 30, maskToBounds: true)
+            $0.viewRadius(cornerRadius: 30, maskToBounds: true)
             $0.layer.borderColor = UIColor.white.cgColor
             $0.layer.borderWidth = 3
         }

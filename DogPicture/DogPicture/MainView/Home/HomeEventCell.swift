@@ -47,7 +47,7 @@ class HomeEventCell: UITableViewCell {
         }
         eventView.do {
             $0.backgroundColor = .white
-            $0.viewRadius(view: eventView, cornerRadius: 20, maskToBounds: true)
+            $0.viewRadius(cornerRadius: 20, maskToBounds: true)
         }
         eventColorView.do {
             $0.backgroundColor = .systemYellow

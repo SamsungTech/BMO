@@ -106,11 +106,11 @@ class SettingViewController: UIViewController {
         }
         profileView.do {
             $0.backgroundColor = .white
-            $0.viewRadius(view: profileView, cornerRadius: 10, maskToBounds: false)
+            $0.viewRadius(cornerRadius: 10, maskToBounds: false)
         }
         profileImage.do {
             $0.image = UIImage(named: "p4")
-            $0.viewRadius(view: profileImage, cornerRadius: 35, maskToBounds: false)
+            $0.viewRadius(cornerRadius: 35, maskToBounds: false)
             $0.contentMode = .scaleAspectFill
             $0.clipsToBounds = true
         }
@@ -133,7 +133,7 @@ class SettingViewController: UIViewController {
             $0.tintColor = .systemPink
             $0.contentMode = .scaleAspectFill
             $0.clipsToBounds = true
-            $0.viewRadius(view: dogAgeImage, cornerRadius: 35, maskToBounds: false)
+            $0.viewRadius(cornerRadius: 35, maskToBounds: false)
         }
         dogAge.do {
             $0.text = "만 6살"
@@ -150,7 +150,7 @@ class SettingViewController: UIViewController {
             $0.tintColor = .systemPink
             $0.contentMode = .scaleAspectFill
             $0.clipsToBounds = true
-            $0.viewRadius(view: dogGenderImage, cornerRadius: 35, maskToBounds: false)
+            $0.viewRadius(cornerRadius: 35, maskToBounds: false)
         }
         dogGender.do {
             $0.text = "공주님"
@@ -167,7 +167,7 @@ class SettingViewController: UIViewController {
             $0.tintColor = .systemPink
             $0.contentMode = .scaleAspectFill
             $0.clipsToBounds = true
-            $0.viewRadius(view: dogWeightImage, cornerRadius: 35, maskToBounds: false)
+            $0.viewRadius(cornerRadius: 35, maskToBounds: false)
         }
         dogWeight.do {
             $0.text = "몸무게"
@@ -191,7 +191,7 @@ class SettingViewController: UIViewController {
         pushNotificationButton.do {
             $0.backgroundColor = .white
             $0.tintColor = .systemPink
-            $0.viewRadius(view: pushNotificationButton, cornerRadius: 10, maskToBounds: false)
+            $0.viewRadius(cornerRadius: 10, maskToBounds: false)
             $0.addTarget(self, action: #selector(pushNotificationButtonDidTap(sender:)), for: .touchUpInside)
         }
         notificationButtonImage.do {
@@ -207,7 +207,7 @@ class SettingViewController: UIViewController {
         dogTypeButton.do {
             $0.backgroundColor = .white
             $0.tintColor = .systemPink
-            $0.viewRadius(view: dogTypeButton, cornerRadius: 10, maskToBounds: false)
+            $0.viewRadius(cornerRadius: 10, maskToBounds: false)
         }
         dogTypeButtonImage.do {
             $0.image = UIImage(systemName: "square.grid.3x3.middle.filled")
@@ -222,7 +222,7 @@ class SettingViewController: UIViewController {
         eventButton.do {
             $0.backgroundColor = .white
             $0.tintColor = .systemPink
-            $0.viewRadius(view: eventButton, cornerRadius: 10, maskToBounds: false)
+            $0.viewRadius(cornerRadius: 10, maskToBounds: false)
         }
         eventButtonImage.do {
             $0.image = UIImage(systemName: "star.bubble.fill")
@@ -237,7 +237,7 @@ class SettingViewController: UIViewController {
         termsOfUseButton.do {
             $0.backgroundColor = .white
             $0.tintColor = .systemPink
-            $0.viewRadius(view: termsOfUseButton, cornerRadius: 10, maskToBounds: false)
+            $0.viewRadius(cornerRadius: 10, maskToBounds: false)
         }
         termsOfUseButtonImage.do {
             $0.image = UIImage(systemName: "brain.head.profile")
@@ -252,7 +252,7 @@ class SettingViewController: UIViewController {
         reviewButton.do {
             $0.backgroundColor = .white
             $0.tintColor = .systemPink
-            $0.viewRadius(view: reviewButton, cornerRadius: 10, maskToBounds: false)
+            $0.viewRadius(cornerRadius: 10, maskToBounds: false)
         }
         reviewButtonImage.do {
             $0.image = UIImage(systemName: "captions.bubble.fill")
@@ -267,7 +267,7 @@ class SettingViewController: UIViewController {
         versionInfoButton.do {
             $0.backgroundColor = .white
             $0.tintColor = .systemPink
-            $0.viewRadius(view: versionInfoButton, cornerRadius: 10, maskToBounds: false)
+            $0.viewRadius(cornerRadius: 10, maskToBounds: false)
         }
         versionInfoButtonImage.do {
             $0.image = UIImage(systemName: "v.square")

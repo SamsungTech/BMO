@@ -59,7 +59,7 @@ class InitViewController: UIViewController {
         
         profileImageButton.do {
             $0.addTarget(self, action: #selector(profileImageButtonDidTap(sender:)), for: .touchUpInside)
-            $0.viewRadius(view: profileImageButton, cornerRadius: 50, maskToBounds: true)
+            $0.viewRadius(cornerRadius: 50, maskToBounds: true)
             $0.backgroundColor = .lightGray
         }
         profileImageView.do {
@@ -74,7 +74,7 @@ class InitViewController: UIViewController {
             $0.attributedPlaceholder = placeholderTextColor
             $0.textColor = .white
             $0.tintColor = .clear
-            $0.viewRadius(view: dogNameTextField, cornerRadius: 25, maskToBounds: true)
+            $0.viewRadius(cornerRadius: 25, maskToBounds: true)
             $0.addLeftPadding()
             $0.delegate = self
         }
@@ -87,7 +87,7 @@ class InitViewController: UIViewController {
             $0.attributedPlaceholder = placeholderTextColor
             $0.textColor = .white
             $0.tintColor = .clear
-            $0.viewRadius(view: dogTypeTextField, cornerRadius: 25, maskToBounds: true)
+            $0.viewRadius(cornerRadius: 25, maskToBounds: true)
             $0.inputAccessoryView = createDogTypeToolbar()
         }
         dogTypePickerView.do {
@@ -102,7 +102,7 @@ class InitViewController: UIViewController {
             $0.textAlignment = .center
             $0.attributedPlaceholder = placeholderTextColor
             $0.tintColor = .clear
-            $0.viewRadius(view: dogBirthDayTextField, cornerRadius: 25, maskToBounds: true)
+            $0.viewRadius(cornerRadius: 25, maskToBounds: true)
             $0.inputAccessoryView = createDogBirthDayDoneToolBar()
         }
         dogBirthDayPicker.do {
@@ -123,7 +123,7 @@ class InitViewController: UIViewController {
             $0.attributedPlaceholder = placeholderTextColor
             $0.textColor = .white
             $0.tintColor = .clear
-            $0.viewRadius(view: dogRelationTextField, cornerRadius: 25, maskToBounds: true)
+            $0.viewRadius(cornerRadius: 25, maskToBounds: true)
             $0.inputAccessoryView = createDogRelationDoneToolBar()
         }
         dogRelationPicker.do {
@@ -136,7 +136,7 @@ class InitViewController: UIViewController {
             $0.backgroundColor = .systemPink
             $0.setAttributedTitle(placeholderTextColor, for: .normal)
             $0.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
-            $0.viewRadius(view: saveButton, cornerRadius: 25, maskToBounds: true)
+            $0.viewRadius(cornerRadius: 25, maskToBounds: true)
             $0.addTarget(self, action: #selector(saveButtonDidTap(sedner:)), for: .touchUpInside)
         }
     }

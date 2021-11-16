@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         
         /// 3. Create your view hierachy programmatically
-        let viewController = InitRouter.createInitModule()
+        let viewController = CustomTabBarController()
         
         /// 4. Set the root view controller of the window with your view controller
         window.rootViewController = viewController

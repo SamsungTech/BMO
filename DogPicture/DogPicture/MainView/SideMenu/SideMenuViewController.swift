@@ -8,12 +8,6 @@
 import Foundation
 import UIKit
 
-enum MenuType: Int {
-    case home
-    case camera
-    case profile
-}
-
 class SideMenuViewController: UIViewController {
     let sideMenuTitle = UILabel()
     let sideMenuChangeButton = UIButton()
@@ -27,6 +21,16 @@ class SideMenuViewController: UIViewController {
         super.viewDidLoad()
         updateView()
         view.backgroundColor = .white
+        
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let touch = touches.first
+        if touch?.view != view {
+            self.transitioningDelegate = self
+            self.modalPresentationStyle = .custom
+            dismiss(animated: true, completion: nil)
+        }
     }
     
     func updateView() {
@@ -120,6 +124,7 @@ class SideMenuViewController: UIViewController {
         }
     }
 }
+
 
 extension SideMenuViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

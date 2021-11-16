@@ -1,14 +1,14 @@
 //
-//  SlideInTransition.swift
+//  CreateViewTransition.swift
 //  DogPicture
 //
-//  Created by 김동우 on 2021/10/22.
+//  Created by 김동우 on 2021/11/16.
 //
 
 import Foundation
 import UIKit
 
-class SlideInTransition: NSObject, UIViewControllerAnimatedTransitioning{
+class CreateViewTransition: NSObject, UIViewControllerAnimatedTransitioning{
     var isPresenting = false
     
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
@@ -23,8 +23,8 @@ class SlideInTransition: NSObject, UIViewControllerAnimatedTransitioning{
         
         let blurView = UIVisualEffectView(effect: nil)
         
-        let finalWidth = toViewController.view.bounds.width * 0.8
-        let finalHeight = toViewController.view.bounds.height
+        let finalWidth = toViewController.view.bounds.width
+        let finalHeight = toViewController.view.bounds.height * 0.3
         
         if isPresenting {
             containerView.addSubview(toViewController.view)
@@ -34,14 +34,14 @@ class SlideInTransition: NSObject, UIViewControllerAnimatedTransitioning{
             blurView.frame = containerView.frame
             blurView.alpha = 0.0
             
-            toViewController.view.frame = CGRect(x: -finalWidth,
-                                                 y: 0,
+            toViewController.view.frame = CGRect(x: 0,
+                                                 y: finalHeight,
                                                  width: finalWidth,
                                                  height: finalHeight)
         }
         
         let transform = {
-            toViewController.view.transform = CGAffineTransform(translationX: finalWidth, y: 0)
+            toViewController.view.transform = CGAffineTransform(translationX: 0, y: finalHeight)
         }
         
         let identity = {
