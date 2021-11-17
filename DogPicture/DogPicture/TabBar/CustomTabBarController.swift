@@ -127,6 +127,12 @@ class CustomTabBarController: UITabBarController {
         let createView = CreateViewController()
         createView.modalPresentationStyle = .overFullScreen
         present(createView, animated: false)
+        
+    }
+    func presentCameraView() {
+        let cameraView = CameraRouter.createCameraModule()
+        cameraView.modalPresentationStyle = .overFullScreen
+        present(cameraView, animated: false, completion: nil)
     }
 }
 

@@ -255,24 +255,7 @@ class CreateViewController: UIViewController {
             }
         }
     }
-    private func presentButtonDidTap() {
-        TopConstraint?.constant = UIScreen.main.bounds.maxY
-        
-        UIView.animate(withDuration: 0.25,
-                       delay: 0,
-                       options: .curveEaseIn,
-                       animations: {
-            self.dimmedView.alpha = 0.0
-            self.view.layoutIfNeeded()
-        }) { _ in
-            if self.presentingViewController != nil {
-                self.dismiss(animated: false, completion: {
-                    let cameraView = CameraRouter.createCameraModule()
-                    self.present(cameraView, animated: true, completion: nil)
-                })
-            }
-        }
-    }
+    
     @objc private func dimmedViewDidTap(_ tapRecognizer: UITapGestureRecognizer) {
         hideBottomSheet()
     }
@@ -281,7 +264,12 @@ class CreateViewController: UIViewController {
         hideBottomSheet()
     }
     @objc func cameraButtonDidTap(sender: UIButton) {
-        presentButtonDidTap()
+        guard let presentingView = self.presentingViewController else { return }
+        self.dismiss(animated: false) {
+            let cameraView = CameraRouter.createCameraModule()
+            cameraView.modalPresentationStyle = .fullScreen
+            presentingView.present(cameraView, animated: true, completion: nil)
+        }
     }
     @objc func diaryButtonDidTap(sender: UIButton) {
         print("다이어리버튼 클릭")

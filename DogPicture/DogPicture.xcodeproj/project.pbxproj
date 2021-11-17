@@ -63,7 +63,6 @@
 		0BE0C46827329C1C00BE558C /* Model+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE0C46427329C1C00BE558C /* Model+CoreDataProperties.swift */; };
 		0BE0C46D27425EA200BE558C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE0C46C27425EA100BE558C /* Extensions.swift */; };
 		0BE0C4712743EA1C00BE558C /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE0C4702743EA1C00BE558C /* CreateViewController.swift */; };
-		0BE0C4732743EB6800BE558C /* CreateViewTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE0C4722743EB6800BE558C /* CreateViewTransition.swift */; };
 		0BEAF9E62717F9FF008AAA3D /* AnimationTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEAF9E52717F9FF008AAA3D /* AnimationTransition.swift */; };
 		0BF238362660C2EE007E48AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF238352660C2EE007E48AC /* AppDelegate.swift */; };
 		0BF238382660C2EE007E48AC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF238372660C2EE007E48AC /* SceneDelegate.swift */; };
@@ -140,7 +139,6 @@
 		0BE0C46427329C1C00BE558C /* Model+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Model+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		0BE0C46C27425EA100BE558C /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		0BE0C4702743EA1C00BE558C /* CreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateViewController.swift; sourceTree = "<group>"; };
-		0BE0C4722743EB6800BE558C /* CreateViewTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateViewTransition.swift; sourceTree = "<group>"; };
 		0BEAF9E52717F9FF008AAA3D /* AnimationTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationTransition.swift; sourceTree = "<group>"; };
 		0BF238322660C2EE007E48AC /* DogPicture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DogPicture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BF238352660C2EE007E48AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -276,7 +274,6 @@
 			children = (
 				0B734630268CA2C7007CE6CF /* CustomTabBarController.swift */,
 				0BE0C4702743EA1C00BE558C /* CreateViewController.swift */,
-				0BE0C4742743EBA100BE558C /* Transition */,
 			);
 			path = TabBar;
 			sourceTree = "<group>";
@@ -370,14 +367,6 @@
 				0BE0C46C27425EA100BE558C /* Extensions.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		0BE0C4742743EBA100BE558C /* Transition */ = {
-			isa = PBXGroup;
-			children = (
-				0BE0C4722743EB6800BE558C /* CreateViewTransition.swift */,
-			);
-			path = Transition;
 			sourceTree = "<group>";
 		};
 		0BEAF9E42717F9B4008AAA3D /* Transition */ = {
@@ -598,7 +587,6 @@
 				0B9F63EA270DDBF400CF3F0C /* LocalPushPresenter.swift in Sources */,
 				0BB27EE2272268E300721A5F /* SideMenuPresenter.swift in Sources */,
 				0BF238552660D5FE007E48AC /* HomeViewRouter.swift in Sources */,
-				0BE0C4732743EB6800BE558C /* CreateViewTransition.swift in Sources */,
 				0BE0C46827329C1C00BE558C /* Model+CoreDataProperties.swift in Sources */,
 				0BB27ECD2720316D00721A5F /* HomeProfileViewCell.swift in Sources */,
 				0BD2208A26E776B10064A8F6 /* HomeTableViewCell.swift in Sources */,
