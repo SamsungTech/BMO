@@ -6,9 +6,14 @@
 //
 
 import UIKit
+import AVFoundation
 
-class CustomTabBarController: UITabBarController {
-    let CreateTransition = CreateViewTransition()
+protocol CustomTabBarControllerProtocol: UITabBarController {
+    func attribute()
+    func layout()
+}
+
+class CustomTabBarController: UITabBarController, CustomTabBarControllerProtocol {
     let centerView = UIView()
     let centerButton = UIButton()
     let homeButton = UIButton()
@@ -124,15 +129,12 @@ class CustomTabBarController: UITabBarController {
         }
     }
     @objc func centerButtonDidTap(sender: UIButton) {
-        let createView = CreateViewController()
+        let generator = UIImpactFeedbackGenerator(style: .heavy)
+        generator.impactOccurred()
+        let createView = CreateRouter.createCreateViewModule()
         createView.modalPresentationStyle = .overFullScreen
         present(createView, animated: false)
         
-    }
-    func presentCameraView() {
-        let cameraView = CameraRouter.createCameraModule()
-        cameraView.modalPresentationStyle = .overFullScreen
-        present(cameraView, animated: false, completion: nil)
     }
 }
 

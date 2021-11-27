@@ -48,6 +48,10 @@
 		0BB27EE62722690800721A5F /* SideMenuInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB27EE52722690800721A5F /* SideMenuInteractor.swift */; };
 		0BB27EE92726EA1B00721A5F /* HomeEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB27EE82726EA1B00721A5F /* HomeEventCell.swift */; };
 		0BD2208A26E776B10064A8F6 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD2208926E776B10064A8F6 /* HomeTableViewCell.swift */; };
+		0BD7856D27522B2D00E3DB1C /* CreatePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7856C27522B2D00E3DB1C /* CreatePresenter.swift */; };
+		0BD7856F27522B4900E3DB1C /* CreateInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7856E27522B4900E3DB1C /* CreateInteractor.swift */; };
+		0BD7857127522B5200E3DB1C /* CreateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7857027522B5200E3DB1C /* CreateProtocol.swift */; };
+		0BD7857327522B5C00E3DB1C /* CreateRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7857227522B5C00E3DB1C /* CreateRouter.swift */; };
 		0BE0C42A27301BB500BE558C /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE0C42927301BB500BE558C /* TutorialViewController.swift */; };
 		0BE0C42C27301FB200BE558C /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE0C42B27301FB200BE558C /* FirstViewController.swift */; };
 		0BE0C42E2730219400BE558C /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE0C42D2730219400BE558C /* SecondViewController.swift */; };
@@ -63,6 +67,18 @@
 		0BE0C46827329C1C00BE558C /* Model+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE0C46427329C1C00BE558C /* Model+CoreDataProperties.swift */; };
 		0BE0C46D27425EA200BE558C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE0C46C27425EA100BE558C /* Extensions.swift */; };
 		0BE0C4712743EA1C00BE558C /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE0C4702743EA1C00BE558C /* CreateViewController.swift */; };
+		0BE0C477274BAA3F00BE558C /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE0C476274BAA3F00BE558C /* CollectionViewController.swift */; };
+		0BE0C479274BAA9600BE558C /* CollectionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE0C478274BAA9600BE558C /* CollectionPresenter.swift */; };
+		0BE0C47B274BAAA200BE558C /* CollectionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE0C47A274BAAA200BE558C /* CollectionProtocol.swift */; };
+		0BE0C47D274BAABF00BE558C /* CollectionInteracter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE0C47C274BAABF00BE558C /* CollectionInteracter.swift */; };
+		0BE0C47F274BAAD600BE558C /* CollectionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE0C47E274BAAD600BE558C /* CollectionRouter.swift */; };
+		0BE0C482274BB17C00BE558C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE0C481274BB17C00BE558C /* MainViewController.swift */; };
+		0BE0C484274BB24100BE558C /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE0C483274BB24100BE558C /* MainPresenter.swift */; };
+		0BE0C486274BB24900BE558C /* MainInteracter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE0C485274BB24900BE558C /* MainInteracter.swift */; };
+		0BE0C488274BB25300BE558C /* MainProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE0C487274BB25300BE558C /* MainProtocol.swift */; };
+		0BE0C48A274BB25D00BE558C /* MainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE0C489274BB25D00BE558C /* MainRouter.swift */; };
+		0BE0C48C274BCD2E00BE558C /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE0C48B274BCD2E00BE558C /* CollectionViewCell.swift */; };
+		0BE0C490274D29ED00BE558C /* PinchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE0C48F274D29ED00BE558C /* PinchViewController.swift */; };
 		0BEAF9E62717F9FF008AAA3D /* AnimationTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEAF9E52717F9FF008AAA3D /* AnimationTransition.swift */; };
 		0BF238362660C2EE007E48AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF238352660C2EE007E48AC /* AppDelegate.swift */; };
 		0BF238382660C2EE007E48AC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF238372660C2EE007E48AC /* SceneDelegate.swift */; };
@@ -124,6 +140,10 @@
 		0BB27EE52722690800721A5F /* SideMenuInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuInteractor.swift; sourceTree = "<group>"; };
 		0BB27EE82726EA1B00721A5F /* HomeEventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeEventCell.swift; sourceTree = "<group>"; };
 		0BD2208926E776B10064A8F6 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
+		0BD7856C27522B2D00E3DB1C /* CreatePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePresenter.swift; sourceTree = "<group>"; };
+		0BD7856E27522B4900E3DB1C /* CreateInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateInteractor.swift; sourceTree = "<group>"; };
+		0BD7857027522B5200E3DB1C /* CreateProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProtocol.swift; sourceTree = "<group>"; };
+		0BD7857227522B5C00E3DB1C /* CreateRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRouter.swift; sourceTree = "<group>"; };
 		0BE0C42927301BB500BE558C /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		0BE0C42B27301FB200BE558C /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		0BE0C42D2730219400BE558C /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
@@ -139,6 +159,18 @@
 		0BE0C46427329C1C00BE558C /* Model+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Model+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		0BE0C46C27425EA100BE558C /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		0BE0C4702743EA1C00BE558C /* CreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateViewController.swift; sourceTree = "<group>"; };
+		0BE0C476274BAA3F00BE558C /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
+		0BE0C478274BAA9600BE558C /* CollectionPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionPresenter.swift; sourceTree = "<group>"; };
+		0BE0C47A274BAAA200BE558C /* CollectionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionProtocol.swift; sourceTree = "<group>"; };
+		0BE0C47C274BAABF00BE558C /* CollectionInteracter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionInteracter.swift; sourceTree = "<group>"; };
+		0BE0C47E274BAAD600BE558C /* CollectionRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionRouter.swift; sourceTree = "<group>"; };
+		0BE0C481274BB17C00BE558C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		0BE0C483274BB24100BE558C /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
+		0BE0C485274BB24900BE558C /* MainInteracter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInteracter.swift; sourceTree = "<group>"; };
+		0BE0C487274BB25300BE558C /* MainProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainProtocol.swift; sourceTree = "<group>"; };
+		0BE0C489274BB25D00BE558C /* MainRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouter.swift; sourceTree = "<group>"; };
+		0BE0C48B274BCD2E00BE558C /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		0BE0C48F274D29ED00BE558C /* PinchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinchViewController.swift; sourceTree = "<group>"; };
 		0BEAF9E52717F9FF008AAA3D /* AnimationTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationTransition.swift; sourceTree = "<group>"; };
 		0BF238322660C2EE007E48AC /* DogPicture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DogPicture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BF238352660C2EE007E48AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -233,6 +265,8 @@
 		0B734603268347D6007CE6CF /* MainView */ = {
 			isa = PBXGroup;
 			children = (
+				0BE0C480274BB16C00BE558C /* MainView */,
+				0BE0C475274BAA2300BE558C /* HomeCollection */,
 				0BEAF9E42717F9B4008AAA3D /* Transition */,
 				0BF2384C2660D501007E48AC /* Home */,
 				0BB27ED027217E8B00721A5F /* SideMenu */,
@@ -244,6 +278,7 @@
 		0B73461B2686F700007CE6CF /* DataBase */ = {
 			isa = PBXGroup;
 			children = (
+				0BE0C48D274BDCB800BE558C /* New Group */,
 				0B2DFE3B26F70538002D533B /* ModelDatabaseHelper.swift */,
 				0B657DDC270D9D9E009323E9 /* DogInfoDatabaseHelper.swift */,
 			);
@@ -273,7 +308,6 @@
 			isa = PBXGroup;
 			children = (
 				0B734630268CA2C7007CE6CF /* CustomTabBarController.swift */,
-				0BE0C4702743EA1C00BE558C /* CreateViewController.swift */,
 			);
 			path = TabBar;
 			sourceTree = "<group>";
@@ -369,6 +403,59 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		0BE0C475274BAA2300BE558C /* HomeCollection */ = {
+			isa = PBXGroup;
+			children = (
+				0BE0C476274BAA3F00BE558C /* CollectionViewController.swift */,
+				0BE0C478274BAA9600BE558C /* CollectionPresenter.swift */,
+				0BE0C47E274BAAD600BE558C /* CollectionRouter.swift */,
+				0BE0C47A274BAAA200BE558C /* CollectionProtocol.swift */,
+				0BE0C47C274BAABF00BE558C /* CollectionInteracter.swift */,
+				0BE0C48B274BCD2E00BE558C /* CollectionViewCell.swift */,
+			);
+			path = HomeCollection;
+			sourceTree = "<group>";
+		};
+		0BE0C480274BB16C00BE558C /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				0BE0C481274BB17C00BE558C /* MainViewController.swift */,
+				0BE0C483274BB24100BE558C /* MainPresenter.swift */,
+				0BE0C485274BB24900BE558C /* MainInteracter.swift */,
+				0BE0C489274BB25D00BE558C /* MainRouter.swift */,
+				0BE0C487274BB25300BE558C /* MainProtocol.swift */,
+			);
+			path = MainView;
+			sourceTree = "<group>";
+		};
+		0BE0C48D274BDCB800BE558C /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		0BE0C48E274D29CC00BE558C /* TestView */ = {
+			isa = PBXGroup;
+			children = (
+				0BE0C48F274D29ED00BE558C /* PinchViewController.swift */,
+			);
+			path = TestView;
+			sourceTree = "<group>";
+		};
+		0BE0C491274E7CB900BE558C /* CreateView */ = {
+			isa = PBXGroup;
+			children = (
+				0BE0C4702743EA1C00BE558C /* CreateViewController.swift */,
+				0BD7856C27522B2D00E3DB1C /* CreatePresenter.swift */,
+				0BD7857227522B5C00E3DB1C /* CreateRouter.swift */,
+				0BD7857027522B5200E3DB1C /* CreateProtocol.swift */,
+				0BD7856E27522B4900E3DB1C /* CreateInteractor.swift */,
+				0B73460126834780007CE6CF /* Camera */,
+			);
+			path = CreateView;
+			sourceTree = "<group>";
+		};
 		0BEAF9E42717F9B4008AAA3D /* Transition */ = {
 			isa = PBXGroup;
 			children = (
@@ -399,14 +486,15 @@
 		0BF238342660C2EE007E48AC /* DogPicture */ = {
 			isa = PBXGroup;
 			children = (
+				0BE0C48E274D29CC00BE558C /* TestView */,
 				0BE0C44027329A2500BE558C /* CoreDataInfo */,
 				0B9F641C2714610700CF3F0C /* Notification */,
 				0B73461B2686F700007CE6CF /* DataBase */,
 				0BE0C431273039A500BE558C /* InitialSettingView */,
 				0BE0C42827301B7E00BE558C /* TutorialView */,
 				0B73462F268CA28C007CE6CF /* TabBar */,
+				0BE0C491274E7CB900BE558C /* CreateView */,
 				0B734603268347D6007CE6CF /* MainView */,
-				0B73460126834780007CE6CF /* Camera */,
 				0B734623268B19C3007CE6CF /* Library */,
 				0B7346022683479C007CE6CF /* Setting */,
 				0BE0C46B27425E1800BE558C /* Extensions */,
@@ -582,6 +670,7 @@
 				0BF2385B2660D667007E48AC /* MemoViewPresenter.swift in Sources */,
 				0B9F641E2714614100CF3F0C /* NotificationHelper.swift in Sources */,
 				0BE0C43327303A4300BE558C /* InitViewController.swift in Sources */,
+				0BD7857127522B5200E3DB1C /* CreateProtocol.swift in Sources */,
 				0BE0C42E2730219400BE558C /* SecondViewController.swift in Sources */,
 				0BB27ECB271D942900721A5F /* DisMissAnimation.swift in Sources */,
 				0B9F63EA270DDBF400CF3F0C /* LocalPushPresenter.swift in Sources */,
@@ -597,6 +686,7 @@
 				0BF2384F2660D5BE007E48AC /* HomeViewController.swift in Sources */,
 				0BF238592660D64D007E48AC /* MemoViewController.swift in Sources */,
 				0BB27EE62722690800721A5F /* SideMenuInteractor.swift in Sources */,
+				0BE0C484274BB24100BE558C /* MainPresenter.swift in Sources */,
 				0BF2385D2660D693007E48AC /* MemoViewRouter.swift in Sources */,
 				0B73461526861D98007CE6CF /* SettingPresenter.swift in Sources */,
 				0B9F63F8270E911700CF3F0C /* ProfileInteracter.swift in Sources */,
@@ -610,7 +700,10 @@
 				0B734631268CA2C7007CE6CF /* CustomTabBarController.swift in Sources */,
 				0BE0C4712743EA1C00BE558C /* CreateViewController.swift in Sources */,
 				0BB27EE92726EA1B00721A5F /* HomeEventCell.swift in Sources */,
+				0BE0C479274BAA9600BE558C /* CollectionPresenter.swift in Sources */,
 				0BF2385F2660D6A6007E48AC /* MemoViewProtocol.swift in Sources */,
+				0BE0C47D274BAABF00BE558C /* CollectionInteracter.swift in Sources */,
+				0BD7856F27522B4900E3DB1C /* CreateInteractor.swift in Sources */,
 				0BF238612660D6CE007E48AC /* MemoViewInteracter.swift in Sources */,
 				0B2DFE3626F0CB9C002D533B /* PreviewProtocol.swift in Sources */,
 				0B51B1FE26A8210E00216054 /* CameraViewController.swift in Sources */,
@@ -619,34 +712,45 @@
 				0BE0C42C27301FB200BE558C /* FirstViewController.swift in Sources */,
 				0B2DFE3826F0CBAB002D533B /* PreviewRouter.swift in Sources */,
 				0B9F63F0270E909700CF3F0C /* ProfileViewController.swift in Sources */,
+				0BE0C482274BB17C00BE558C /* MainViewController.swift in Sources */,
 				0B657DDD270D9D9E009323E9 /* DogInfoDatabaseHelper.swift in Sources */,
 				0BF238362660C2EE007E48AC /* AppDelegate.swift in Sources */,
+				0BE0C47B274BAAA200BE558C /* CollectionProtocol.swift in Sources */,
+				0BE0C477274BAA3F00BE558C /* CollectionViewController.swift in Sources */,
 				0BB27EDE27225E6F00721A5F /* SideMenuCell.swift in Sources */,
 				0BF238532660D5EE007E48AC /* HomeProtocol.swift in Sources */,
 				0BE0C43727303A6B00BE558C /* InitPresenter.swift in Sources */,
 				0BE0C46727329C1C00BE558C /* Model+CoreDataClass.swift in Sources */,
+				0BE0C488274BB25300BE558C /* MainProtocol.swift in Sources */,
 				0BE0C46D27425EA200BE558C /* Extensions.swift in Sources */,
 				0B73461326861D87007CE6CF /* SettingProtocol.swift in Sources */,
 				0B9F63F6270E910D00CF3F0C /* ProfileRouter.swift in Sources */,
 				0BB27EE4272268F300721A5F /* SideMenuRouter.swift in Sources */,
 				0BB27ECF2721005E00721A5F /* HomeFooterCell.swift in Sources */,
 				0BB27EE0272268C200721A5F /* SideMenuProtocol.swift in Sources */,
+				0BD7857327522B5C00E3DB1C /* CreateRouter.swift in Sources */,
 				0B73460F26861D62007CE6CF /* SettingViewController.swift in Sources */,
 				0B2DFE3426F0CB8B002D533B /* PreviewPresenter.swift in Sources */,
 				0B2DFE3A26F0CBBD002D533B /* PreviewInteracter.swift in Sources */,
 				0B51B20226A8210E00216054 /* CameraPresenter.swift in Sources */,
 				0B2DFE3C26F70538002D533B /* ModelDatabaseHelper.swift in Sources */,
+				0BE0C490274D29ED00BE558C /* PinchViewController.swift in Sources */,
+				0BE0C48A274BB25D00BE558C /* MainRouter.swift in Sources */,
 				0BF238572660D628007E48AC /* HomeInteracter.swift in Sources */,
+				0BE0C486274BB24900BE558C /* MainInteracter.swift in Sources */,
 				0B51B1FF26A8210E00216054 /* CameraRouter.swift in Sources */,
 				0BE0C43527303A5500BE558C /* InitProtocol.swift in Sources */,
 				0BF238512660D5DD007E48AC /* HomePresenter.swift in Sources */,
 				0BE0C46627329C1C00BE558C /* DogInfo+CoreDataProperties.swift in Sources */,
 				0B9F63EC270DDC0400CF3F0C /* LocalPushProtocol.swift in Sources */,
+				0BD7856D27522B2D00E3DB1C /* CreatePresenter.swift in Sources */,
 				0BE0C42A27301BB500BE558C /* TutorialViewController.swift in Sources */,
+				0BE0C48C274BCD2E00BE558C /* CollectionViewCell.swift in Sources */,
 				0B9F63E6270DDB4F00CF3F0C /* LocalPushViewController.swift in Sources */,
 				0B73461126861D76007CE6CF /* SettingInteracter.swift in Sources */,
 				0B73461826861DB5007CE6CF /* SettingRouter.swift in Sources */,
 				0BF238382660C2EE007E48AC /* SceneDelegate.swift in Sources */,
+				0BE0C47F274BAAD600BE558C /* CollectionRouter.swift in Sources */,
 				0B9F63F2270E90BC00CF3F0C /* ProfilePresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

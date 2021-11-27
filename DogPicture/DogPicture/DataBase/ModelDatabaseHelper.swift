@@ -8,10 +8,25 @@
 import Foundation
 import UIKit
 import CoreData
-// doginfo 안에 있는 model
-// create, save
-class ModelDatabaseHelper {
+
+protocol ModelDatabaseHelperInputProtocol: AnyObject {
+    func getAllItems() -> [DogInfo]
+    func createModelItem(photo: Data, memo: String)
+    func deleteItem(items: Model)
+    func updateItem(item: Model, memo: String)
+}
+
+protocol ModelDatabaseHelperOutputProtocol: AnyObject {
+    // 요청한 값 다시 리턴하기 예) getItem 하고 return 값을 돌려주는 메소드
+    func modelDataRetrived()
+    
+}
+
+class ModelDatabaseHelper: ModelDatabaseHelperInputProtocol {
+    
     static let instance = ModelDatabaseHelper()
+    
+    var remoteRequestHandler: ModelDatabaseHelperOutputProtocol?
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
@@ -51,7 +66,7 @@ class ModelDatabaseHelper {
         }
     }
 
-    func deleteItem(item: Model) {
+    func deleteItem(items item: Model) {
         context.delete(item)
         do {
             try context.save()

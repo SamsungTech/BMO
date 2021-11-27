@@ -9,9 +9,6 @@ import Foundation
 import UIKit
 import CoreData
 
-// doginfo -> , , delete, save
-// doginfo 안에 model -> create(addToModel), update(saveContext), delete(deleteToModel), save(saveContext)
-// 이 둘을 나눠어서 DatabaseHelper를 나눠어야되나? 
 class DogInfoDatabaseHelper: SettingDataManagerInputProtocol {
     var requestHandler: SettingDataManagerOutputProtocol?
     

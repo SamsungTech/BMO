@@ -34,6 +34,7 @@ protocol HomePresenterProtocol: AnyObject {
 
 protocol HomeInteracterInputProtocol: AnyObject {
     var presenter: HomeInteracterOutputProtocol? { get set }
+    var localDataManager: ModelDatabaseHelperInputProtocol? { get set }
     
     func retrieveModel()
 }
@@ -41,3 +42,4 @@ protocol HomeInteracterInputProtocol: AnyObject {
 protocol HomeInteracterOutputProtocol: AnyObject {
     func didRetrieveModel(_ data: [Model])
 }
+

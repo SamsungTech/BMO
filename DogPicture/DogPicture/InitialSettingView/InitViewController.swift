@@ -9,6 +9,7 @@
 
 import Foundation
 import UIKit
+import Photos
 
 class InitViewController: UIViewController {
     var presenter: InitPresenterProtocol?
@@ -321,8 +322,12 @@ extension InitViewController: UITextFieldDelegate {
 extension InitViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let image = info[UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerEditedImage")] as? UIImage {
+        if let date = self.getCreateDate(by: info) {
+            print("이 사진의 exif 데이트 값 : ", date.toString())
             
+        }
+        print(info)
+        if let image = info[UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerEditedImage")] as? UIImage {
             profileImageView.image = image
             guard let profileImage = image.pngData() else { return }
             profileImageHolder = profileImage
@@ -333,8 +338,47 @@ extension InitViewController: UIImagePickerControllerDelegate, UINavigationContr
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
+    
+    func getCreateDate(by info: [UIImagePickerController.InfoKey : Any]) -> Date? {
+        guard let asset = info[.phAsset] as? PHAsset else {
+            return getExifDate(by: info)
+        }
+        return asset.creationDate
+    }
+    
+    func getExifDate(by info: [UIImagePickerController.InfoKey : Any]) -> Date? {
+        guard let url = info[.imageURL] as? NSURL else { return nil }
+        guard let imageSource = CGImageSourceCreateWithURL(url, nil) else { return nil }
+        let imageProperties = CGImageSourceCopyPropertiesAtIndex(imageSource, 0, nil) as Dictionary?
+        let exifDict = imageProperties?[kCGImagePropertyExifDictionary]
+        guard let dateTimeOriginal = exifDict?[kCGImagePropertyExifDateTimeOriginal] as? String else { return nil }
+        
+        let format = "yyyy-MM-dd HH:mm:ss"
+        return makeExitDate(of: dateTimeOriginal, by: format)
+    }
+    
+    func makeExitDate(of dateTimeOriginal: String, by format: String) -> Date? {
+        let dateOfFirstSection = String(dateTimeOriginal.split(separator: " ").first ?? "")
+        let dateOfSecondSection = String(dateTimeOriginal.split(separator: " ").last ?? "")
+        var exitDate = dateOfFirstSection.replacingOccurrences(of: ":", with: "-")
+        exitDate = exitDate + " " + dateOfSecondSection
+        let dateFormatter = DateFormatter()
+        
+        dateFormatter.dateFormat = format
+        dateFormatter.date(from: exitDate)
+        return Date()
+    }
 }
 
 extension InitViewController: InitViewControllerProtocol {
     
+}
+
+extension Date {
+    func toString() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .full
+        
+        return dateFormatter.string(from: self)
+    }
 }

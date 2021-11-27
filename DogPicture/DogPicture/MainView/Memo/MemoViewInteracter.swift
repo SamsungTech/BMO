@@ -15,7 +15,7 @@ class MemoViewInteracter: MemoViewInteracterInputProtocol {
         ModelDatabaseHelper.instance.updateItem(item: item, memo: memo)
     }
     func dataBaseHelperDelete(item: Model) {
-        ModelDatabaseHelper.instance.deleteItem(item: item)
+        ModelDatabaseHelper.instance.deleteItem(items: item)
     }
 }
 

@@ -9,6 +9,8 @@ import Foundation
 import UIKit
 
 class CreateViewController: UIViewController {
+    var presenter: CreatePresenterProtocol?
+    
     let dimmedView = UIView()
     let createView = UIView()
     let cameraButton = UIButton()
@@ -264,15 +266,18 @@ class CreateViewController: UIViewController {
         hideBottomSheet()
     }
     @objc func cameraButtonDidTap(sender: UIButton) {
-        guard let presentingView = self.presentingViewController else { return }
+        guard let presentingView = self.presentingViewController as? CustomTabBarControllerProtocol else { return }
         self.dismiss(animated: false) {
-            let cameraView = CameraRouter.createCameraModule()
-            cameraView.modalPresentationStyle = .fullScreen
-            presentingView.present(cameraView, animated: true, completion: nil)
+            self.presenter?.cameraButtonClicked(presentingView: presentingView)
         }
     }
     @objc func diaryButtonDidTap(sender: UIButton) {
         print("다이어리버튼 클릭")
         hideBottomSheet()
     }
+}
+
+extension CreateViewController: CreateViewControllerProtocol {
+    
+    
 }

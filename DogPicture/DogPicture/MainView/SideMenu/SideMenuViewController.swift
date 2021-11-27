@@ -42,6 +42,8 @@ class SideMenuViewController: UIViewController {
         [ sideMenuTitle, sideMenuChangeButton, sideTableView, dogRegisterButton ].forEach() { view.addSubview($0) }
         [ registerButtonImage, registerButtonLabel ].forEach() { dogRegisterButton.addSubview($0) }
         
+        self.transitioningDelegate = self
+        
         sideMenuTitle.do {
             $0.text = "갱쥐스"
             $0.font = UIFont.boldSystemFont(ofSize: 30)
@@ -138,7 +140,7 @@ extension SideMenuViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.transitioningDelegate = self
+        
         self.modalPresentationStyle = .custom
         dismiss(animated: true, completion: nil)
     }

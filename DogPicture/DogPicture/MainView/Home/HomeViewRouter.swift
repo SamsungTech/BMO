@@ -15,12 +15,14 @@ class HomeViewRouter: NSObject, HomeRouterProtocol {
         let presenter: HomePresenterProtocol & HomeInteracterOutputProtocol = HomePresenter()
         let interacter: HomeInteracterInputProtocol = HomeInteracter()
         let router: HomeRouterProtocol = HomeViewRouter()
+        let localDataManager: ModelDatabaseHelperInputProtocol = ModelDatabaseHelper()
         
         view.presenter = presenter
         presenter.view = view
         presenter.router = router
         presenter.interacter = interacter
         interacter.presenter = presenter
+        interacter.localDataManager = localDataManager
         
         if let HomeView = view as? UIViewController {
             return HomeView
@@ -33,7 +35,7 @@ class HomeViewRouter: NSObject, HomeRouterProtocol {
         
         if let memoView = view as? UIViewController {
             MemoViewController.modalPresentationStyle = .formSheet
-//            MemoViewController.transitioningDelegate = self
+            MemoViewController.transitioningDelegate = self
             memoView.present(MemoViewController, animated: true)
         }
     }
@@ -60,6 +62,7 @@ extension HomeViewRouter: UIViewControllerTransitioningDelegate {
         sideTransition.isPresenting = false
         return sideTransition
     }
+//    UIViewControllerContextTransitioning
     
     func interactionControllerForPresentation(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
         return nil

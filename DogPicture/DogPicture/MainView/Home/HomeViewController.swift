@@ -7,6 +7,7 @@
 
 import UIKit
 import Then
+import AVFoundation
 
 class HomeViewController: UIViewController {
     var presenter: HomePresenterProtocol?
@@ -127,6 +128,8 @@ class HomeViewController: UIViewController {
     
     @objc func sideMenuButtonDidTap(sender: UIButton) {
         // present side menu
+        let generator = UIImpactFeedbackGenerator(style: .heavy)
+        generator.impactOccurred()
         presenter?.sideMenuButtonClicked()
     }
     @objc func segmentedButtonDidTap(sender: UISegmentedControl) {
