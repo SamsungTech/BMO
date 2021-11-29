@@ -253,7 +253,7 @@ class CreateViewController: UIViewController {
             self.view.layoutIfNeeded()
         }) { _ in
             if self.presentingViewController != nil {
-                self.dismiss(animated: false)
+                self.presenter?.dismiss()
             }
         }
     }
@@ -267,9 +267,7 @@ class CreateViewController: UIViewController {
     }
     @objc func cameraButtonDidTap(sender: UIButton) {
         guard let presentingView = self.presentingViewController as? CustomTabBarControllerProtocol else { return }
-        self.dismiss(animated: false) {
-            self.presenter?.cameraButtonClicked(presentingView: presentingView)
-        }
+        self.presenter?.cameraButtonClicked(presentingView: presentingView)
     }
     @objc func diaryButtonDidTap(sender: UIButton) {
         print("다이어리버튼 클릭")

@@ -28,11 +28,16 @@ class CreateRouter: CreateRouterProtocol {
         return UIViewController()
     }
     
-    func presentCameraView(presentingView: UITabBarController) {
+    func presentCameraView(view: CreateViewControllerProtocol,
+                           presentingView: UITabBarController) {
         let cameraView = CameraRouter.createCameraModule()
         
         cameraView.modalPresentationStyle = .fullScreen
-        presentingView.present(cameraView, animated: true, completion: nil)
+        
+        guard let createView = view as? UIViewController else { return }
+        createView.dismiss(animated: false) {
+            presentingView.present(cameraView, animated: true, completion: nil)
+        }
     }
     
     func presentLibraryView() {
@@ -44,7 +49,11 @@ class CreateRouter: CreateRouterProtocol {
 
     }
     
-    
+    func dismissView(view: CreateViewControllerProtocol) {
+        if let createView = view as? UIViewController {
+            createView.dismiss(animated: false, completion: nil)
+        }
+    }
     
     
 }

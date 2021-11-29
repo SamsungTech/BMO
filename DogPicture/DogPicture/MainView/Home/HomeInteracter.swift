@@ -24,5 +24,9 @@ extension HomeInteracter {
 }
 
 extension HomeInteracter: ModelDatabaseHelperOutputProtocol {
+    func modelDataRetrived() {
+        print("dpdp")
+    }
+    
     
 }

@@ -26,7 +26,7 @@ class CollectionViewController: UIViewController {
     let segmentedControl = UISegmentedControl()
     var homeCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-
+        
         let collectionView = UICollectionView(frame: .zero,
                                               collectionViewLayout: layout)
         return collectionView

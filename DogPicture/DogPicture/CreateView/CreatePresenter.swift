@@ -14,7 +14,8 @@ class CreatePresenter: CreatePresenterProtocol {
     
     
     func cameraButtonClicked(presentingView: CustomTabBarControllerProtocol) {
-        router?.presentCameraView(presentingView: presentingView)
+        guard let view = view else { return }
+        router?.presentCameraView(view: view, presentingView: presentingView)
     }
     
     func libraryButtonClicked() {
@@ -24,6 +25,11 @@ class CreatePresenter: CreatePresenterProtocol {
     
     func diraryButtonClicked() {
         print("ㅇㅇ")
+    }
+    
+    func dismiss() {
+        guard let view = view else { return }
+        router?.dismissView(view: view)
     }
 }
 
