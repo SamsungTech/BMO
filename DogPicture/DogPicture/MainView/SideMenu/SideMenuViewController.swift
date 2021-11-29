@@ -9,28 +9,31 @@ import Foundation
 import UIKit
 
 class SideMenuViewController: UIViewController {
+    var presenter: SideMenuPresenterProtocol?
+    
+    let dimmedView = UIView()
+    var defaultWidth: CGFloat = 300
+    
+    var sideView = UIView()
     let sideMenuTitle = UILabel()
     let sideMenuChangeButton = UIButton()
     var sideTableView = UITableView()
     let dogRegisterButton = UIButton()
     let registerButtonImage = UIImageView()
     let registerButtonLabel = UILabel()
-    var sideTransition = SlideInTransition()
+    
+    private var sideConstraint: NSLayoutConstraint?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         updateView()
-        view.backgroundColor = .white
+        view.backgroundColor = .clear
         
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        let touch = touches.first
-        if touch?.view != view {
-            self.transitioningDelegate = self
-            self.modalPresentationStyle = .custom
-            dismiss(animated: true, completion: nil)
-        }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        showBottomShett()
     }
     
     func updateView() {
@@ -39,11 +42,20 @@ class SideMenuViewController: UIViewController {
     }
     
     func attribute() {
-        [ sideMenuTitle, sideMenuChangeButton, sideTableView, dogRegisterButton ].forEach() { view.addSubview($0) }
+        [ dimmedView, sideView ].forEach() { view.addSubview($0) }
+        [ sideMenuTitle, sideMenuChangeButton, sideTableView, dogRegisterButton ].forEach() { sideView.addSubview($0) }
         [ registerButtonImage, registerButtonLabel ].forEach() { dogRegisterButton.addSubview($0) }
         
-        self.transitioningDelegate = self
-        
+        dimmedView.do {
+            let dimmedTap = UITapGestureRecognizer(target: self, action: #selector(dimmedViewDidTap(_:)))
+            $0.addGestureRecognizer(dimmedTap)
+            $0.isUserInteractionEnabled = true
+            $0.backgroundColor = .black.withAlphaComponent(0.7)
+            $0.alpha = 0.0
+        }
+        sideView.do {
+            $0.backgroundColor = .white
+        }
         sideMenuTitle.do {
             $0.text = "갱쥐스"
             $0.font = UIFont.boldSystemFont(ofSize: 30)
@@ -82,25 +94,41 @@ class SideMenuViewController: UIViewController {
     }
     
     func layout() {
+        dimmedView.do {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+            $0.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+            $0.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+            $0.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        }
+        sideView.do {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+            $0.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+            sideConstraint = sideView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor,
+                                                                constant: -UIScreen.main.bounds.maxX)
+            sideConstraint?.isActive = true
+            $0.widthAnchor.constraint(equalToConstant: defaultWidth).isActive = true
+        }
         sideMenuTitle.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
             $0.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-            $0.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
+            $0.leadingAnchor.constraint(equalTo: sideView.leadingAnchor, constant: 20).isActive = true
             $0.widthAnchor.constraint(equalToConstant: 100).isActive = true
             $0.heightAnchor.constraint(equalToConstant: 50).isActive = true
         }
         sideMenuChangeButton.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
             $0.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-            $0.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15).isActive = true
+            $0.trailingAnchor.constraint(equalTo: sideView.trailingAnchor, constant: -15).isActive = true
             $0.widthAnchor.constraint(equalToConstant: 50).isActive = true
             $0.heightAnchor.constraint(equalToConstant: 50).isActive = true
         }
         dogRegisterButton.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
-            $0.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-            $0.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-            $0.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+            $0.leadingAnchor.constraint(equalTo: sideView.leadingAnchor).isActive = true
+            $0.trailingAnchor.constraint(equalTo: sideView.trailingAnchor).isActive = true
+            $0.bottomAnchor.constraint(equalTo: sideView.bottomAnchor).isActive = true
             $0.heightAnchor.constraint(equalToConstant: 100).isActive = true
         }
         registerButtonImage.do {
@@ -120,13 +148,12 @@ class SideMenuViewController: UIViewController {
         sideTableView.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
             $0.topAnchor.constraint(equalTo: sideMenuTitle.bottomAnchor, constant: 10).isActive = true
-            $0.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-            $0.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+            $0.leadingAnchor.constraint(equalTo: sideView.leadingAnchor).isActive = true
+            $0.trailingAnchor.constraint(equalTo: sideView.trailingAnchor).isActive = true
             $0.bottomAnchor.constraint(equalTo: dogRegisterButton.topAnchor).isActive = true
         }
     }
 }
-
 
 extension SideMenuViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -140,9 +167,7 @@ extension SideMenuViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        self.modalPresentationStyle = .custom
-        dismiss(animated: true, completion: nil)
+        presenter?.dismiss()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -150,9 +175,41 @@ extension SideMenuViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension SideMenuViewController: UIViewControllerTransitioningDelegate {
-    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        sideTransition.isPresenting = false
-        return sideTransition
+extension SideMenuViewController: SideMenuViewProtocol {
+    
+}
+
+extension SideMenuViewController {
+    @objc private func dimmedViewDidTap(_ tapRecongnizer: UITapGestureRecognizer) {
+        hideBottomSheet()
+    }
+}
+
+extension SideMenuViewController {
+    private func showBottomShett() {
+        sideConstraint?.constant = -UIScreen.main.bounds.maxX + defaultWidth
+        
+        UIView.animate(withDuration: 0.25,
+                       delay: 0,
+                       options: .curveEaseIn,
+                       animations: {
+            self.dimmedView.alpha = 0.7
+            self.view.layoutIfNeeded()
+        }, completion: nil)
+    }
+    private func hideBottomSheet() {
+        sideConstraint?.constant = -UIScreen.main.bounds.maxX
+        
+        UIView.animate(withDuration: 0.25,
+                       delay: 0,
+                       options: .curveEaseIn,
+                       animations: {
+            self.dimmedView.alpha = 0.0
+            self.view.layoutIfNeeded()
+        }) { _ in
+            if self.presentingViewController != nil {
+                self.presenter?.dismiss()
+            }
+        }
     }
 }

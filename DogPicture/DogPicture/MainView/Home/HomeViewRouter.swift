@@ -7,9 +7,7 @@
 
 import UIKit
 
-class HomeViewRouter: NSObject, HomeRouterProtocol {
-    let sideTransition = SlideInTransition()
-    
+class HomeViewRouter: HomeRouterProtocol {
     class func createHomeModule() -> UIViewController {
         let view: HomeViewProtocol = HomeViewController()
         let presenter: HomePresenterProtocol & HomeInteracterOutputProtocol = HomePresenter()
@@ -35,40 +33,15 @@ class HomeViewRouter: NSObject, HomeRouterProtocol {
         
         if let memoView = view as? UIViewController {
             MemoViewController.modalPresentationStyle = .formSheet
-            MemoViewController.transitioningDelegate = self
             memoView.present(MemoViewController, animated: true)
         }
     }
     func presentSideMenu(from view: HomeViewProtocol) {
-        let sideMenuView = SideMenuViewController()
+        let sideMenuView = SideMenuRouter.createSideMenuViewModule()
         
         if let sideView = view as? UIViewController {
-            sideMenuView.modalPresentationStyle = .overCurrentContext
-            sideMenuView.transitioningDelegate = self
-            sideView.present(sideMenuView, animated: true)
+            sideMenuView.modalPresentationStyle = .overFullScreen
+            sideView.present(sideMenuView, animated: false)
         }
-    }
-}
-
-extension HomeViewRouter: UIViewControllerTransitioningDelegate {
-    func animationController(forPresented presented: UIViewController,
-                             presenting: UIViewController,
-                             source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        
-        sideTransition.isPresenting = true
-        return sideTransition
-    }
-    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        sideTransition.isPresenting = false
-        return sideTransition
-    }
-//    UIViewControllerContextTransitioning
-    
-    func interactionControllerForPresentation(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-        return nil
-    }
-    
-    func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-        return nil
     }
 }

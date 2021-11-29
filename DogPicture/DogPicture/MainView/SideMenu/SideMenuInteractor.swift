@@ -6,3 +6,14 @@
 //
 
 import Foundation
+
+class SideMenuInteractor: SideMenuInteractorInputProtocol {
+    weak var presenter: SideMenuInteractorOutputProtocol?
+    
+}
+
+extension SideMenuInteractor: ModelDatabaseHelperOutputProtocol {
+    func modelDataRetrived() {
+        print("모델 데이터 가져오기")
+    }
+}
