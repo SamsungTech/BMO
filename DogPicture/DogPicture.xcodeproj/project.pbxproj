@@ -276,7 +276,6 @@
 		0B73461B2686F700007CE6CF /* DataBase */ = {
 			isa = PBXGroup;
 			children = (
-				0BE0C48D274BDCB800BE558C /* New Group */,
 				0B2DFE3B26F70538002D533B /* ModelDatabaseHelper.swift */,
 				0B657DDC270D9D9E009323E9 /* DogInfoDatabaseHelper.swift */,
 			);
@@ -415,13 +414,6 @@
 				0BE0C487274BB25300BE558C /* MainProtocol.swift */,
 			);
 			path = MainView;
-			sourceTree = "<group>";
-		};
-		0BE0C48D274BDCB800BE558C /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "New Group";
 			sourceTree = "<group>";
 		};
 		0BE0C48E274D29CC00BE558C /* TestView */ = {
