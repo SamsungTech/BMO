@@ -47,6 +47,11 @@
 		0BB27EE62722690800721A5F /* SideMenuInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB27EE52722690800721A5F /* SideMenuInteractor.swift */; };
 		0BB27EE92726EA1B00721A5F /* HomeEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB27EE82726EA1B00721A5F /* HomeEventCell.swift */; };
 		0BB70AD22758F946003956DC /* PreviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB70AD12758F946003956DC /* PreviewCollectionViewCell.swift */; };
+		0BB70AD42759D947003956DC /* TextEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB70AD32759D947003956DC /* TextEditViewController.swift */; };
+		0BB70AD62759D957003956DC /* TextEditProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB70AD52759D957003956DC /* TextEditProtocol.swift */; };
+		0BB70AD82759D961003956DC /* TextEditRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB70AD72759D961003956DC /* TextEditRouter.swift */; };
+		0BB70ADA2759D96B003956DC /* TextEditPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB70AD92759D96B003956DC /* TextEditPresenter.swift */; };
+		0BB70ADC2759D978003956DC /* TextEditInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB70ADB2759D978003956DC /* TextEditInteractor.swift */; };
 		0BD2208A26E776B10064A8F6 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD2208926E776B10064A8F6 /* HomeTableViewCell.swift */; };
 		0BD7856D27522B2D00E3DB1C /* CreatePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7856C27522B2D00E3DB1C /* CreatePresenter.swift */; };
 		0BD7856F27522B4900E3DB1C /* CreateInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7856E27522B4900E3DB1C /* CreateInteractor.swift */; };
@@ -139,6 +144,11 @@
 		0BB27EE52722690800721A5F /* SideMenuInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuInteractor.swift; sourceTree = "<group>"; };
 		0BB27EE82726EA1B00721A5F /* HomeEventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeEventCell.swift; sourceTree = "<group>"; };
 		0BB70AD12758F946003956DC /* PreviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewCollectionViewCell.swift; sourceTree = "<group>"; };
+		0BB70AD32759D947003956DC /* TextEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEditViewController.swift; sourceTree = "<group>"; };
+		0BB70AD52759D957003956DC /* TextEditProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEditProtocol.swift; sourceTree = "<group>"; };
+		0BB70AD72759D961003956DC /* TextEditRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEditRouter.swift; sourceTree = "<group>"; };
+		0BB70AD92759D96B003956DC /* TextEditPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEditPresenter.swift; sourceTree = "<group>"; };
+		0BB70ADB2759D978003956DC /* TextEditInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEditInteractor.swift; sourceTree = "<group>"; };
 		0BD2208926E776B10064A8F6 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		0BD7856C27522B2D00E3DB1C /* CreatePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePresenter.swift; sourceTree = "<group>"; };
 		0BD7856E27522B4900E3DB1C /* CreateInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateInteractor.swift; sourceTree = "<group>"; };
@@ -348,6 +358,11 @@
 		0BB27EE727264BCA00721A5F /* CaptureTextEdit */ = {
 			isa = PBXGroup;
 			children = (
+				0BB70AD32759D947003956DC /* TextEditViewController.swift */,
+				0BB70AD92759D96B003956DC /* TextEditPresenter.swift */,
+				0BB70AD72759D961003956DC /* TextEditRouter.swift */,
+				0BB70AD52759D957003956DC /* TextEditProtocol.swift */,
+				0BB70ADB2759D978003956DC /* TextEditInteractor.swift */,
 			);
 			path = CaptureTextEdit;
 			sourceTree = "<group>";
@@ -656,6 +671,7 @@
 				0BE0C43327303A4300BE558C /* InitViewController.swift in Sources */,
 				0BD7857127522B5200E3DB1C /* CreateProtocol.swift in Sources */,
 				0BE0C42E2730219400BE558C /* SecondViewController.swift in Sources */,
+				0BB70AD82759D961003956DC /* TextEditRouter.swift in Sources */,
 				0BB27ECB271D942900721A5F /* DisMissAnimation.swift in Sources */,
 				0B9F63EA270DDBF400CF3F0C /* LocalPushPresenter.swift in Sources */,
 				0BB27EE2272268E300721A5F /* SideMenuPresenter.swift in Sources */,
@@ -669,6 +685,7 @@
 				0BF2384F2660D5BE007E48AC /* HomeViewController.swift in Sources */,
 				0BF238592660D64D007E48AC /* MemoViewController.swift in Sources */,
 				0BB27EE62722690800721A5F /* SideMenuInteractor.swift in Sources */,
+				0BB70AD42759D947003956DC /* TextEditViewController.swift in Sources */,
 				0BE0C484274BB24100BE558C /* MainPresenter.swift in Sources */,
 				0BF2385D2660D693007E48AC /* MemoViewRouter.swift in Sources */,
 				0B73461526861D98007CE6CF /* SettingPresenter.swift in Sources */,
@@ -679,8 +696,10 @@
 				0BE0C4302730270500BE558C /* ThirdViewController.swift in Sources */,
 				0B2DFE3226F0CB6F002D533B /* PreviewViewController.swift in Sources */,
 				0B51B20126A8210E00216054 /* CameraProtocol.swift in Sources */,
+				0BB70AD62759D957003956DC /* TextEditProtocol.swift in Sources */,
 				0BE0C46527329C1C00BE558C /* DogInfo+CoreDataClass.swift in Sources */,
 				0B734631268CA2C7007CE6CF /* CustomTabBarController.swift in Sources */,
+				0BB70ADC2759D978003956DC /* TextEditInteractor.swift in Sources */,
 				0BE0C4712743EA1C00BE558C /* CreateViewController.swift in Sources */,
 				0BB27EE92726EA1B00721A5F /* HomeEventCell.swift in Sources */,
 				0BE0C479274BAA9600BE558C /* CollectionPresenter.swift in Sources */,
@@ -718,6 +737,7 @@
 				0B51B20226A8210E00216054 /* CameraPresenter.swift in Sources */,
 				0B2DFE3C26F70538002D533B /* ModelDatabaseHelper.swift in Sources */,
 				0BE0C490274D29ED00BE558C /* PinchViewController.swift in Sources */,
+				0BB70ADA2759D96B003956DC /* TextEditPresenter.swift in Sources */,
 				0BE0C48A274BB25D00BE558C /* MainRouter.swift in Sources */,
 				0BF238572660D628007E48AC /* HomeInteracter.swift in Sources */,
 				0BE0C486274BB24900BE558C /* MainInteracter.swift in Sources */,

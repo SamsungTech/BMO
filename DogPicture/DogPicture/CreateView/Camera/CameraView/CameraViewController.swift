@@ -248,7 +248,7 @@ class CameraViewController: UIViewController {
             $0.translatesAutoresizingMaskIntoConstraints = false
             $0.centerXAnchor.constraint(equalTo: dismissCameraButton.centerXAnchor).isActive = true
             $0.centerYAnchor.constraint(equalTo: dismissCameraButton.centerYAnchor).isActive = true
-            $0.widthAnchor.constraint(equalToConstant: 20).isActive = true
+            $0.widthAnchor.constraint(equalToConstant: 18).isActive = true
             $0.heightAnchor.constraint(equalToConstant: 20).isActive = true
         }
         transitionButton.do {
@@ -263,7 +263,7 @@ class CameraViewController: UIViewController {
             $0.centerXAnchor.constraint(equalTo: transitionButton.centerXAnchor).isActive = true
             $0.centerYAnchor.constraint(equalTo: transitionButton.centerYAnchor).isActive = true
             $0.widthAnchor.constraint(equalToConstant: 25).isActive = true
-            $0.heightAnchor.constraint(equalToConstant: 25).isActive = true
+            $0.heightAnchor.constraint(equalToConstant: 23).isActive = true
         }
         nextButton.do {
             $0.translatesAutoresizingMaskIntoConstraints = false

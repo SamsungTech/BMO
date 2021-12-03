@@ -12,7 +12,7 @@ class PreviewViewController: UIViewController {
     
     var topBar = UIView()
     let popButton = UIButton()
-    let popButtonImage = UIImageView()
+    let popLabel = UILabel()
     var photoCount = UILabel()
     var nextButton = UIButton()
     var nextButtonLabel = UILabel()
@@ -48,7 +48,7 @@ class PreviewViewController: UIViewController {
         [ previewCollectionView, topBar ].forEach() { view.addSubview($0) }
         [ popButton, photoCount, nextButton ].forEach() { topBar.addSubview($0) }
         view.bringSubviewToFront(topBar)
-        popButton.addSubview(popButtonImage)
+        popButton.addSubview(popLabel)
         nextButton.addSubview(nextButtonLabel)
         
         topBar.do {
@@ -57,9 +57,10 @@ class PreviewViewController: UIViewController {
         popButton.do {
             $0.addTarget(self, action: #selector(popButtonDidTap(sender:)), for: .touchUpInside)
         }
-        popButtonImage.do {
-            $0.tintColor = .darkGray
-            $0.image = UIImage(systemName: "chevron.backward")
+        popLabel.do {
+            $0.textColor = .darkGray
+            $0.font = UIFont.boldSystemFont(ofSize: 15)
+            $0.text = "이전"
         }
         photoCount.do {
             let photoTotalCount = captureImageHolder.count
@@ -99,12 +100,10 @@ class PreviewViewController: UIViewController {
             $0.widthAnchor.constraint(equalToConstant: 40).isActive = true
             $0.heightAnchor.constraint(equalToConstant: 40).isActive = true
         }
-        popButtonImage.do {
+        popLabel.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
             $0.centerXAnchor.constraint(equalTo: popButton.centerXAnchor).isActive = true
             $0.centerYAnchor.constraint(equalTo: popButton.centerYAnchor).isActive = true
-            $0.widthAnchor.constraint(equalToConstant: 20).isActive = true
-            $0.heightAnchor.constraint(equalToConstant: 20).isActive = true
         }
         photoCount.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
