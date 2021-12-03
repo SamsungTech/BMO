@@ -11,19 +11,17 @@ class PreviewPresenter: PreviewPresenterProtocol {
     weak var view: PreviewViewProtocol?
     var interacter: PreviewInteracterInputProtocol?
     var router: PreviewRouterProtocol?
-    var data: Data?
-    var date: Date?
-    var memo: String?
+    var data: [Data]?
     
     func viewDidLoad() {
         if let data = data {
             view?.showPreviewImage(forImage: data)
         }
     }
-    func handOverImageData(photo: Data, memo: String) {
-        interacter?.saveImageData(photo: photo, memo: memo)
+    func popButtonCilcked() {
+        guard let view = view else { return }
+        router?.popPreview(view: view)
     }
-    
 }
 
 extension PreviewPresenter: PreviewInteracterOutputProtocol {

@@ -8,7 +8,7 @@
 import UIKit
 
 class PreviewRouter: PreviewRouterProtocol {
-    static func createPreviewModule(forImage data: Data) -> UIViewController {
+    static func createPreviewModule(forImage data: [Data]) -> UIViewController {
         let view: PreviewViewProtocol = PreviewViewController()
         let presenter: PreviewPresenterProtocol & PreviewInteracterOutputProtocol = PreviewPresenter()
         let interacter: PreviewInteracterInputProtocol = PreviewInteracter()
@@ -27,10 +27,9 @@ class PreviewRouter: PreviewRouterProtocol {
         return UIViewController()
     }
     
-    func presentHomeScreen(from view: PreviewViewProtocol) {
-        let homeView = HomeViewRouter.createHomeModule()
+    func popPreview(view: PreviewViewProtocol) {
         if let view = view as? UIViewController {
-            view.present(homeView, animated: false, completion: nil)
+            view.navigationController?.popViewController(animated: true)
         }
     }
 }

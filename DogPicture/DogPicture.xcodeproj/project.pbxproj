@@ -46,6 +46,7 @@
 		0BB27EE4272268F300721A5F /* SideMenuRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB27EE3272268F300721A5F /* SideMenuRouter.swift */; };
 		0BB27EE62722690800721A5F /* SideMenuInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB27EE52722690800721A5F /* SideMenuInteractor.swift */; };
 		0BB27EE92726EA1B00721A5F /* HomeEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB27EE82726EA1B00721A5F /* HomeEventCell.swift */; };
+		0BB70AD22758F946003956DC /* PreviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB70AD12758F946003956DC /* PreviewCollectionViewCell.swift */; };
 		0BD2208A26E776B10064A8F6 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD2208926E776B10064A8F6 /* HomeTableViewCell.swift */; };
 		0BD7856D27522B2D00E3DB1C /* CreatePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7856C27522B2D00E3DB1C /* CreatePresenter.swift */; };
 		0BD7856F27522B4900E3DB1C /* CreateInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7856E27522B4900E3DB1C /* CreateInteractor.swift */; };
@@ -137,6 +138,7 @@
 		0BB27EE3272268F300721A5F /* SideMenuRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuRouter.swift; sourceTree = "<group>"; };
 		0BB27EE52722690800721A5F /* SideMenuInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuInteractor.swift; sourceTree = "<group>"; };
 		0BB27EE82726EA1B00721A5F /* HomeEventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeEventCell.swift; sourceTree = "<group>"; };
+		0BB70AD12758F946003956DC /* PreviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewCollectionViewCell.swift; sourceTree = "<group>"; };
 		0BD2208926E776B10064A8F6 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		0BD7856C27522B2D00E3DB1C /* CreatePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePresenter.swift; sourceTree = "<group>"; };
 		0BD7856E27522B4900E3DB1C /* CreateInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateInteractor.swift; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 				0B2DFE3526F0CB9C002D533B /* PreviewProtocol.swift */,
 				0B2DFE3726F0CBAB002D533B /* PreviewRouter.swift */,
 				0B2DFE3926F0CBBD002D533B /* PreviewInteracter.swift */,
+				0BB70AD12758F946003956DC /* PreviewCollectionViewCell.swift */,
 			);
 			path = PreviewView;
 			sourceTree = "<group>";
@@ -722,6 +725,7 @@
 				0BE0C43527303A5500BE558C /* InitProtocol.swift in Sources */,
 				0BF238512660D5DD007E48AC /* HomePresenter.swift in Sources */,
 				0BE0C46627329C1C00BE558C /* DogInfo+CoreDataProperties.swift in Sources */,
+				0BB70AD22758F946003956DC /* PreviewCollectionViewCell.swift in Sources */,
 				0B9F63EC270DDC0400CF3F0C /* LocalPushProtocol.swift in Sources */,
 				0BD7856D27522B2D00E3DB1C /* CreatePresenter.swift in Sources */,
 				0BE0C42A27301BB500BE558C /* TutorialViewController.swift in Sources */,

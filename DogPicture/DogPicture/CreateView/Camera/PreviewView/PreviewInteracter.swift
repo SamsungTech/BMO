@@ -8,15 +8,13 @@
 import Foundation
 
 class PreviewInteracter: PreviewInteracterInputProtocol {
-    
     weak var presenter: PreviewInteracterOutputProtocol?
     
     func prepareImageForSaving(image: Data) {
         
     }
-    func saveImageData(photo: Data, memo: String) {
+    func saveImageData(photo: [Data], memo: String) {
         print("데이터 interacter에 들어왔습니다.",photo)
-        ModelDatabaseHelper.instance.createModelItem(photo: photo, memo: memo)
     }
 }
 

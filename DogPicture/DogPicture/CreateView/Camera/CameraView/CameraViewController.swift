@@ -21,12 +21,12 @@ class CameraViewController: UIViewController {
     var data = Data()
     
     let navigaitionBar = UIView()
-    let settingButton = UIButton()
-    let settingButtonImageView = UIImageView()
-    var ratioButton = UIButton()
-    var ratioButtonImageView = UIImageView()
-    let transitionViewButton = UIButton()
-    let transitionViewButtonImageView = UIImageView()
+    let dismissCameraButton = UIButton()
+    let dismissButtonImageView = UIImageView()
+    var transitionButton = UIButton()
+    var transitionImageView = UIImageView()
+    let nextButton = UIButton()
+    let nextLabel = UILabel()
     let bottomBar = UIView()
     let soundButton = UIButton()
     let soundButtonImageView = UIImageView()
@@ -44,12 +44,19 @@ class CameraViewController: UIViewController {
     let videoButton = UIButton()
     let videoButtonLabel = UILabel()
     
+    var photoDataArray: [Data] = []
+    
+    var soundEffectView = UIView()
+    var soundScrollView = UIScrollView()
+    var soundStackView = UIStackView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         updateView()
         self.view.backgroundColor = .white
         view.bringSubviewToFront(captureButton)
         updateCameraView()
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     override var prefersStatusBarHidden: Bool { return true }
@@ -124,10 +131,10 @@ class CameraViewController: UIViewController {
     
     func attribute() {
         [ navigaitionBar, bottomBar ].forEach() { view.addSubview($0) }
-        [ settingButton, ratioButton, transitionViewButton ].forEach() { navigaitionBar.addSubview($0) }
-        settingButton.addSubview(settingButtonImageView)
-        ratioButton.addSubview(ratioButtonImageView)
-        transitionViewButton.addSubview(transitionViewButtonImageView)
+        [ dismissCameraButton, transitionButton, nextButton ].forEach() { navigaitionBar.addSubview($0) }
+        dismissCameraButton.addSubview(dismissButtonImageView)
+        transitionButton.addSubview(transitionImageView)
+        nextButton.addSubview(nextLabel)
         [ filterNameButton, photoButton, videoButton,
           libraryButton, captureButton, soundButton ].forEach() { bottomBar.addSubview($0) }
         filterNameButton.addSubview(filterNameButtonLabel)
@@ -140,26 +147,27 @@ class CameraViewController: UIViewController {
         navigaitionBar.do {
             $0.backgroundColor = .white
         }
-        settingButton.do {
-            $0.addTarget(self, action: #selector(settingButtonDidTap(sender:)), for: .touchUpInside)
+        dismissCameraButton.do {
+            $0.addTarget(self, action: #selector(dismissButtonDidTap(sender:)), for: .touchUpInside)
         }
-        settingButtonImageView.do {
+        dismissButtonImageView.do {
             $0.tintColor = .darkGray
-            $0.image = UIImage(systemName: "gear")
+            $0.image = UIImage(systemName: "xmark")
         }
-        ratioButton.do {
+        transitionButton.do {
             $0.addTarget(self, action: #selector(ratioButtonDidTap(sender:)), for: .touchUpInside)
         }
-        ratioButtonImageView.do {
+        transitionImageView.do {
             $0.tintColor = .black
-            $0.image = UIImage(systemName: "11.square")
-        }
-        transitionViewButton.do {
-            $0.addTarget(self, action: #selector(transitionViewButtonDidTap(sender:)), for: .touchUpInside)
-        }
-        transitionViewButtonImageView.do {
-            $0.tintColor = .darkGray
             $0.image = UIImage(systemName: "arrow.triangle.2.circlepath")
+        }
+        nextButton.do {
+            $0.addTarget(self, action: #selector(nextButtonDidTap(sender:)), for: .touchUpInside)
+        }
+        nextLabel.do {
+            $0.font = UIFont.boldSystemFont(ofSize: 15)
+            $0.textColor = .darkGray
+            $0.text = "다음"
         }
         
         bottomBar.do {
@@ -227,49 +235,47 @@ class CameraViewController: UIViewController {
             $0.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
             $0.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
             $0.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-            $0.heightAnchor.constraint(equalToConstant: 100).isActive = true
+            $0.heightAnchor.constraint(equalToConstant: 90).isActive = true
         }
-        settingButton.do {
+        dismissCameraButton.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
-            $0.leadingAnchor.constraint(equalTo: navigaitionBar.leadingAnchor, constant: 20).isActive = true
-            $0.bottomAnchor.constraint(equalTo: navigaitionBar.bottomAnchor, constant: -10).isActive = true
-            $0.widthAnchor.constraint(equalToConstant: 50).isActive = true
-            $0.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        }
-        settingButtonImageView.do {
-            $0.translatesAutoresizingMaskIntoConstraints = false
-            $0.centerXAnchor.constraint(equalTo: settingButton.centerXAnchor).isActive = true
-            $0.centerYAnchor.constraint(equalTo: settingButton.centerYAnchor).isActive = true
-            $0.widthAnchor.constraint(equalToConstant: 30).isActive = true
-            $0.heightAnchor.constraint(equalToConstant: 27).isActive = true
-        }
-        ratioButton.do {
-            $0.translatesAutoresizingMaskIntoConstraints = false
-            $0.centerXAnchor.constraint(equalTo: navigaitionBar.centerXAnchor).isActive = true
-            $0.centerYAnchor.constraint(equalTo: settingButton.centerYAnchor).isActive = true
+            $0.leadingAnchor.constraint(equalTo: navigaitionBar.leadingAnchor, constant: 5).isActive = true
+            $0.bottomAnchor.constraint(equalTo: navigaitionBar.bottomAnchor, constant: -5).isActive = true
             $0.widthAnchor.constraint(equalToConstant: 40).isActive = true
             $0.heightAnchor.constraint(equalToConstant: 40).isActive = true
         }
-        ratioButtonImageView.do {
+        dismissButtonImageView.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
-            $0.centerXAnchor.constraint(equalTo: ratioButton.centerXAnchor).isActive = true
-            $0.centerYAnchor.constraint(equalTo: ratioButton.centerYAnchor).isActive = true
+            $0.centerXAnchor.constraint(equalTo: dismissCameraButton.centerXAnchor).isActive = true
+            $0.centerYAnchor.constraint(equalTo: dismissCameraButton.centerYAnchor).isActive = true
+            $0.widthAnchor.constraint(equalToConstant: 20).isActive = true
+            $0.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        }
+        transitionButton.do {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.centerXAnchor.constraint(equalTo: navigaitionBar.centerXAnchor).isActive = true
+            $0.centerYAnchor.constraint(equalTo: dismissCameraButton.centerYAnchor).isActive = true
+            $0.widthAnchor.constraint(equalToConstant: 40).isActive = true
+            $0.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        }
+        transitionImageView.do {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.centerXAnchor.constraint(equalTo: transitionButton.centerXAnchor).isActive = true
+            $0.centerYAnchor.constraint(equalTo: transitionButton.centerYAnchor).isActive = true
             $0.widthAnchor.constraint(equalToConstant: 25).isActive = true
             $0.heightAnchor.constraint(equalToConstant: 25).isActive = true
         }
-        transitionViewButton.do {
+        nextButton.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
-            $0.trailingAnchor.constraint(equalTo: navigaitionBar.trailingAnchor, constant: -20).isActive = true
-            $0.bottomAnchor.constraint(equalTo: navigaitionBar.bottomAnchor, constant: -10).isActive = true
-            $0.widthAnchor.constraint(equalToConstant: 50).isActive = true
-            $0.heightAnchor.constraint(equalToConstant: 50).isActive = true
+            $0.trailingAnchor.constraint(equalTo: navigaitionBar.trailingAnchor, constant: -5).isActive = true
+            $0.bottomAnchor.constraint(equalTo: navigaitionBar.bottomAnchor, constant: -5).isActive = true
+            $0.widthAnchor.constraint(equalToConstant: 40).isActive = true
+            $0.heightAnchor.constraint(equalToConstant: 40).isActive = true
         }
-        transitionViewButtonImageView.do {
+        nextLabel.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
-            $0.centerXAnchor.constraint(equalTo: transitionViewButton.centerXAnchor).isActive = true
-            $0.centerYAnchor.constraint(equalTo: transitionViewButton.centerYAnchor).isActive = true
-            $0.widthAnchor.constraint(equalToConstant: 30).isActive = true
-            $0.heightAnchor.constraint(equalToConstant: 27).isActive = true
+            $0.centerXAnchor.constraint(equalTo: nextButton.centerXAnchor).isActive = true
+            $0.centerYAnchor.constraint(equalTo: nextButton.centerYAnchor).isActive = true
         }
         
         bottomBar.do {
@@ -361,14 +367,18 @@ class CameraViewController: UIViewController {
 }
 
 extension CameraViewController {
-    @objc func settingButtonDidTap(sender: UIButton) {
-        
+    @objc func dismissButtonDidTap(sender: UIButton) {
+        presenter?.dismissButtonCilked()
     }
     @objc func ratioButtonDidTap(sender: UIButton) {
         
     }
-    @objc func transitionViewButtonDidTap(sender: UIButton) {
-        
+    @objc func nextButtonDidTap(sender: UIButton) {
+        print("넥스트버튼 클릭")
+        if photoDataArray.count != 0 {
+            presenter?.nextButtonCilcked(imageData: photoDataArray)
+        }
+        print("찍어놓은 사진이 없습돠")
     }
     @objc func filterButtonDidTap(sender: UIButton) {
         
@@ -402,7 +412,7 @@ extension CameraViewController: AVCapturePhotoCaptureDelegate {
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
         if let imageData = photo.fileDataRepresentation() {
             data = imageData
-            presenter?.showPreview(imageData: data)
+            photoDataArray.append(data)
         }
     }
 }
@@ -414,3 +424,4 @@ extension CameraViewController: CameraViewProtocol {
 extension CameraViewController {
     
 }
+

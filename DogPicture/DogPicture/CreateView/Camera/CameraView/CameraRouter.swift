@@ -26,11 +26,16 @@ class CameraRouter: CameraRouterProtocol {
         return UIViewController()
     }
     
-    func presentPreview(from view: CameraViewProtocol, data: Data) {
+    func pushPreview(from view: CameraViewProtocol, data: [Data]) {
         let previewViewController = PreviewRouter.createPreviewModule(forImage: data)
         if let preview = view as? UIViewController {
             preview.modalPresentationStyle = .fullScreen
-            preview.present(previewViewController, animated: true, completion: nil)
+            preview.navigationController?.pushViewController(previewViewController, animated: true)
+        }
+    }
+    func dismissCameraView(view: CameraViewProtocol) {
+        if let cameraView = view as? UIViewController {
+            cameraView.dismiss(animated: true, completion: nil)
         }
     }
 }

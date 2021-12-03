@@ -15,7 +15,8 @@ protocol CameraViewProtocol: AnyObject {
 protocol CameraRouterProtocol: AnyObject {
     static func createCameraModule() -> UIViewController
     
-    func presentPreview(from view: CameraViewProtocol, data: Data)
+    func pushPreview(from view: CameraViewProtocol, data: [Data])
+    func dismissCameraView(view: CameraViewProtocol)
 }
 
 protocol CameraPresenterProtocol: AnyObject {
@@ -24,7 +25,8 @@ protocol CameraPresenterProtocol: AnyObject {
     var router: CameraRouterProtocol? { get set }
     
     func showCamera()
-    func showPreview(imageData: Data)
+    func nextButtonCilcked(imageData: [Data])
+    func dismissButtonCilked()
 }
 
 protocol CameraInteracterInputProtocol: AnyObject {

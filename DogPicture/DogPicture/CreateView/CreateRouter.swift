@@ -31,12 +31,13 @@ class CreateRouter: CreateRouterProtocol {
     func presentCameraView(view: CreateViewControllerProtocol,
                            presentingView: UITabBarController) {
         let cameraView = CameraRouter.createCameraModule()
+        let cameraViewNavigationView = UINavigationController(rootViewController: cameraView)
         
-        cameraView.modalPresentationStyle = .fullScreen
+        cameraViewNavigationView.modalPresentationStyle = .fullScreen
         
         guard let createView = view as? UIViewController else { return }
         createView.dismiss(animated: false) {
-            presentingView.present(cameraView, animated: true, completion: nil)
+            presentingView.present(cameraViewNavigationView, animated: true, completion: nil)
         }
     }
     
