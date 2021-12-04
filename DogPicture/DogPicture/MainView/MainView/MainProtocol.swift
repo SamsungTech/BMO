@@ -15,6 +15,7 @@ protocol MainViewProtocol: AnyObject {
 protocol MainRouterProtocol: AnyObject {
     static func createMainModule() -> UIViewController
     
+    func presentSideMenu(from view: MainViewProtocol)
 }
 
 protocol MainPresenterProtocol: AnyObject {
@@ -22,6 +23,7 @@ protocol MainPresenterProtocol: AnyObject {
     var interacter: MainInteracterInputProtocol? { get set }
     var router: MainRouterProtocol? { get set }
     
+    func sideMenuButtonClicked()
 }
 
 protocol MainInteracterOutputProtocol: AnyObject {

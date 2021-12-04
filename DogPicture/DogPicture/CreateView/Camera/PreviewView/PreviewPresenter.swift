@@ -22,6 +22,10 @@ class PreviewPresenter: PreviewPresenterProtocol {
         guard let view = view else { return }
         router?.popPreview(view: view)
     }
+    func nextButtonCilcked(selectedImageData: Data) {
+        guard let view = view else { return }
+        router?.pushTextEditView(selectedImageData: selectedImageData, view: view)
+    }
 }
 
 extension PreviewPresenter: PreviewInteracterOutputProtocol {

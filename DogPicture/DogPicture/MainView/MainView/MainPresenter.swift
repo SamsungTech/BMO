@@ -12,7 +12,10 @@ class MainPresenter: MainPresenterProtocol {
     var interacter: MainInteracterInputProtocol?
     var router: MainRouterProtocol?
     
-    
+    func sideMenuButtonClicked() {
+        guard let view = view else { return }
+        router?.presentSideMenu(from: view)
+    }
 }
 
 extension MainPresenter: MainInteracterOutputProtocol {

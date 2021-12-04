@@ -32,4 +32,11 @@ class PreviewRouter: PreviewRouterProtocol {
             view.navigationController?.popViewController(animated: true)
         }
     }
+    func pushTextEditView(selectedImageData: Data, view: PreviewViewProtocol) {
+        let textEditView = TextEditRouter.createTextEditViewModule(selectedPhoto: selectedImageData)
+        
+        if let preview = view as? UIViewController {
+            preview.navigationController?.pushViewController(textEditView, animated: true)
+        }
+    }
 }

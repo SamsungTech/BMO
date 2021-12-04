@@ -10,20 +10,20 @@ import UIKit
 class HomeViewRouter: HomeRouterProtocol {
     class func createHomeModule() -> UIViewController {
         let view: HomeViewProtocol = HomeViewController()
-        let presenter: HomePresenterProtocol & HomeInteracterOutputProtocol = HomePresenter()
-        let interacter: HomeInteracterInputProtocol = HomeInteracter()
-        let router: HomeRouterProtocol = HomeViewRouter()
-        let localDataManager: ModelDatabaseHelperInputProtocol = ModelDatabaseHelper()
-        
-        view.presenter = presenter
-        presenter.view = view
-        presenter.router = router
-        presenter.interacter = interacter
-        interacter.presenter = presenter
-        interacter.localDataManager = localDataManager
-        
-        if let HomeView = view as? UIViewController {
-            return HomeView
+        if let homeView = view as? UIViewController {
+            let presenter: HomePresenterProtocol & HomeInteracterOutputProtocol = HomePresenter()
+            let interacter: HomeInteracterInputProtocol = HomeInteracter()
+            let router: HomeRouterProtocol = HomeViewRouter()
+            let localDataManager: ModelDatabaseHelperInputProtocol = ModelDatabaseHelper()
+            
+            view.presenter = presenter
+            presenter.view = view
+            presenter.router = router
+            presenter.interacter = interacter
+            interacter.presenter = presenter
+            interacter.localDataManager = localDataManager
+            
+            return homeView
         }
         return UIViewController()
     }

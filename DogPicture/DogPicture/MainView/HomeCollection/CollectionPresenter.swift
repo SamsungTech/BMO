@@ -12,11 +12,16 @@ class CollectionPresenter: CollectionPresenterProtocol {
     var router: CollectionRouterProtocol?
     var interacter: CollectionInteracterInputProtocol?
     
-    
+    func viewDidLoad() {
+        interacter?.retriveDogImageData()
+    }
 }
 
 extension CollectionPresenter: CollectionInteracterOutputProtocol {
     
+    func retrivedDogImageData(data: [Model]) {
+        view?.containModelData(data: data)
+    }
 }
 
 

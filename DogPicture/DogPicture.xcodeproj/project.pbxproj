@@ -361,8 +361,8 @@
 				0BB70AD32759D947003956DC /* TextEditViewController.swift */,
 				0BB70AD92759D96B003956DC /* TextEditPresenter.swift */,
 				0BB70AD72759D961003956DC /* TextEditRouter.swift */,
-				0BB70AD52759D957003956DC /* TextEditProtocol.swift */,
 				0BB70ADB2759D978003956DC /* TextEditInteractor.swift */,
+				0BB70AD52759D957003956DC /* TextEditProtocol.swift */,
 			);
 			path = CaptureTextEdit;
 			sourceTree = "<group>";
@@ -427,8 +427,8 @@
 			children = (
 				0BE0C481274BB17C00BE558C /* MainViewController.swift */,
 				0BE0C483274BB24100BE558C /* MainPresenter.swift */,
-				0BE0C485274BB24900BE558C /* MainInteracter.swift */,
 				0BE0C489274BB25D00BE558C /* MainRouter.swift */,
+				0BE0C485274BB24900BE558C /* MainInteracter.swift */,
 				0BE0C487274BB25300BE558C /* MainProtocol.swift */,
 			);
 			path = MainView;

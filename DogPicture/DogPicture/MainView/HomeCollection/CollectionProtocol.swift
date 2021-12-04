@@ -11,6 +11,7 @@ import UIKit
 protocol CollectionViewProtocol: AnyObject {
     var presenter: CollectionPresenterProtocol? { get set }
     
+    func containModelData(data: [Model])
 }
 
 protocol CollectionRouterProtocol: AnyObject {
@@ -23,13 +24,16 @@ protocol CollectionPresenterProtocol: AnyObject {
     var router: CollectionRouterProtocol? { get set }
     var interacter: CollectionInteracterInputProtocol? { get set }
     
+    func viewDidLoad()
 }
 
 protocol CollectionInteracterInputProtocol: AnyObject {
     var presenter: CollectionInteracterOutputProtocol? { get set }
+    
+    func retriveDogImageData()
 }
 
 protocol CollectionInteracterOutputProtocol: AnyObject {
-    
+    func retrivedDogImageData(data: [Model])
 }
 

@@ -18,6 +18,7 @@ protocol PreviewRouterProtocol: AnyObject {
     static func createPreviewModule(forImage data: [Data]) -> UIViewController
     
     func popPreview(view: PreviewViewProtocol)
+    func pushTextEditView(selectedImageData: Data, view: PreviewViewProtocol)
 }
 
 protocol PreviewPresenterProtocol: AnyObject {
@@ -28,6 +29,7 @@ protocol PreviewPresenterProtocol: AnyObject {
     
     func viewDidLoad()
     func popButtonCilcked()
+    func nextButtonCilcked(selectedImageData: Data)
 }
 
 protocol PreviewInteracterInputProtocol: AnyObject {

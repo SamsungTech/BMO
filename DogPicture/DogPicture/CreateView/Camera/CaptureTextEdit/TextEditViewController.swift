@@ -17,9 +17,14 @@ class TextEditViewController: UIViewController {
     let completeButton = UIButton()
     let completeLabel = UILabel()
     
+    var textFiled = UITextField()
+    
+    var textFiledData = String()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         updateView()
+        view.backgroundColor = .white
     }
     
     func updateView() {
@@ -28,7 +33,7 @@ class TextEditViewController: UIViewController {
     }
     
     func attribute() {
-        [ topBar ].forEach() { view.addSubview($0) }
+        [ topBar, textFiled ].forEach() { view.addSubview($0) }
         [ popButton, dateLabel, completeButton].forEach() { topBar.addSubview($0) }
         popButton.addSubview(popLabel)
         completeButton.addSubview(completeLabel)
@@ -56,6 +61,12 @@ class TextEditViewController: UIViewController {
             $0.font = UIFont.boldSystemFont(ofSize: 15)
             $0.text = "완료"
         }
+        textFiled.do {
+            $0.placeholder = "쁘띠의 이야기를 적어주세요~"
+            $0.textColor = .darkGray
+            $0.font = UIFont.boldSystemFont(ofSize: 15)
+            $0.backgroundColor = .white
+        }
     }
     
     func layout() {
@@ -81,12 +92,12 @@ class TextEditViewController: UIViewController {
         dateLabel.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
             $0.centerXAnchor.constraint(equalTo: topBar.centerXAnchor).isActive = true
-            $0.centerYAnchor.constraint(equalTo: topBar.centerYAnchor).isActive = true
+            $0.centerYAnchor.constraint(equalTo: popButton.centerYAnchor).isActive = true
         }
         completeButton.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
             $0.trailingAnchor.constraint(equalTo: topBar.trailingAnchor, constant: -5).isActive = true
-            $0.bottomAnchor.constraint(equalTo: topBar.bottomAnchor, constant: 5).isActive = true
+            $0.bottomAnchor.constraint(equalTo: topBar.bottomAnchor, constant: -5).isActive = true
             $0.widthAnchor.constraint(equalToConstant: 40).isActive = true
             $0.heightAnchor.constraint(equalToConstant: 40).isActive = true
         }
@@ -95,15 +106,23 @@ class TextEditViewController: UIViewController {
             $0.centerXAnchor.constraint(equalTo: completeButton.centerXAnchor).isActive = true
             $0.centerYAnchor.constraint(equalTo: completeButton.centerYAnchor).isActive = true
         }
+        textFiled.do {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.topAnchor.constraint(equalTo: topBar.bottomAnchor).isActive = true
+            $0.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+            $0.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+            $0.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        }
     }
 }
 
 extension TextEditViewController {
     @objc func popButtonDidTap(sender: UIButton) {
-        
+        presenter?.popButtonCilcked()
     }
     @objc func completeButtonDidTap(sender: UIButton) {
-        
+        guard let text = textFiled.text else { return }
+        presenter?.completeButtonCilcked(text: text)
     }
 }
 

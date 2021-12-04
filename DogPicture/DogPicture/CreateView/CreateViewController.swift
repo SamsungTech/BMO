@@ -70,6 +70,7 @@ class CreateViewController: UIViewController {
         }
         libraryButton.do {
             $0.addTarget(self, action: #selector(libraryButtonDidTap(sender:)), for: .touchUpInside)
+            $0.viewShadow()
         }
         libraryButtonCircleView.do {
             let dimmedTap = UITapGestureRecognizer(target: self, action: #selector(libraryButtonDidTap(sender:)))
@@ -91,6 +92,7 @@ class CreateViewController: UIViewController {
         }
         cameraButton.do {
             $0.addTarget(self, action: #selector(cameraButtonDidTap(sender:)), for: .touchUpInside)
+            $0.viewShadow()
         }
         cameraButtonCircleView.do {
             let dimmedTap = UITapGestureRecognizer(target: self, action: #selector(cameraButtonDidTap(sender:)))
@@ -112,6 +114,7 @@ class CreateViewController: UIViewController {
         }
         textButton.do {
             $0.addTarget(self, action: #selector(diaryButtonDidTap(sender:)), for: .touchUpInside)
+            $0.viewShadow()
         }
         textButtonCircleView.do {
             let dimmedTap = UITapGestureRecognizer(target: self, action: #selector(diaryButtonDidTap(sender:)))
@@ -169,7 +172,7 @@ class CreateViewController: UIViewController {
             $0.centerYAnchor.constraint(equalTo: libraryButtonCircleView.centerYAnchor).isActive = true
             $0.centerXAnchor.constraint(equalTo: libraryButtonCircleView.centerXAnchor).isActive = true
             $0.widthAnchor.constraint(equalToConstant: 50).isActive = true
-            $0.heightAnchor.constraint(equalToConstant: 45).isActive = true
+            $0.heightAnchor.constraint(equalToConstant: 40).isActive = true
         }
         libraryButtonTitle.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
@@ -195,7 +198,7 @@ class CreateViewController: UIViewController {
             $0.centerYAnchor.constraint(equalTo: cameraButtonCircleView.centerYAnchor).isActive = true
             $0.centerXAnchor.constraint(equalTo: cameraButtonCircleView.centerXAnchor).isActive = true
             $0.widthAnchor.constraint(equalToConstant: 50).isActive = true
-            $0.heightAnchor.constraint(equalToConstant: 45).isActive = true
+            $0.heightAnchor.constraint(equalToConstant: 40).isActive = true
         }
         cameraButtonTitle.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
@@ -221,7 +224,7 @@ class CreateViewController: UIViewController {
             $0.centerYAnchor.constraint(equalTo: textButtonCircleView.centerYAnchor).isActive = true
             $0.centerXAnchor.constraint(equalTo: textButtonCircleView.centerXAnchor).isActive = true
             $0.widthAnchor.constraint(equalToConstant: 45).isActive = true
-            $0.heightAnchor.constraint(equalToConstant: 50).isActive = true
+            $0.heightAnchor.constraint(equalToConstant: 45).isActive = true
         }
         textButtonTitle.do {
             $0.translatesAutoresizingMaskIntoConstraints = false

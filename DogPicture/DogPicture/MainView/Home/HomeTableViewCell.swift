@@ -41,7 +41,6 @@ class HomeTableViewCell: UITableViewCell {
         cardView.do {
             $0.backgroundColor = .white
             $0.viewRadius(cornerRadius: 20, maskToBounds: false)
-            
             $0.layer.shadowOpacity = 0.5
             $0.layer.shadowColor = UIColor.gray.cgColor
             $0.layer.shadowOffset = CGSize(width: 0, height: 0)

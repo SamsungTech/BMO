@@ -73,11 +73,12 @@ class DogInfoDatabaseHelper: SettingDataManagerInputProtocol {
         }
     }
     
-    func createModelItem(info: DogInfo,
+    func createModelItem(
                          photo: Data,
                          memo: String,
                          date: Date) {
         let newModel = Model(context: context)
+        let info = getAllItems()[0]
         newModel.do {
             $0.photo = photo
             $0.memo = memo

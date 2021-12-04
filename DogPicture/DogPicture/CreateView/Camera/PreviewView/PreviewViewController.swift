@@ -9,16 +9,13 @@ import UIKit
 
 class PreviewViewController: UIViewController {
     var presenter: PreviewPresenterProtocol?
-    
     var topBar = UIView()
     let popButton = UIButton()
     let popLabel = UILabel()
     var photoCount = UILabel()
     var nextButton = UIButton()
     var nextButtonLabel = UILabel()
-    
     var bottomBar = UIView()
-    
     var previewCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -28,8 +25,10 @@ class PreviewViewController: UIViewController {
         return collectionView
     }()
     var captureImageHolder = [UIImage]()
+    var captureImageDataHolder = [Data]()
     var captureImageData = Data()
     var captureIndexPath: Int = 0
+    var selectedImageData = Data()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -137,12 +136,18 @@ extension PreviewViewController {
         presenter?.popButtonCilcked()
     }
     @objc func nextButtonDidTap(sender: UIButton) {
-        
+        if selectedImageData == nil {
+            print("선택한 사진이 없습니다.")
+        }
+        presenter?.nextButtonCilcked(selectedImageData: selectedImageData)
     }
 }
 
 extension PreviewViewController: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectedImageData = captureImageDataHolder[indexPath.item]
+        
+    }
 }
 extension PreviewViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -190,8 +195,7 @@ extension PreviewViewController: PreviewViewProtocol {
         for i in 0...data.count-1 {
             guard let imageData = UIImage(data: data[i]) else { return }
             captureImageHolder.append(imageData)
+            captureImageDataHolder = data
         }
     }
-    
-    
 }

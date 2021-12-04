@@ -34,8 +34,7 @@ class CustomTabBarController: UITabBarController, CustomTabBarControllerProtocol
         [ centerButton, homeButton, settingButton ].forEach() { centerView.addSubview($0) }
         homeButton.addSubview(homeButtonImage)
         settingButton.addSubview(settingButtonImage)
-        
-        self.setViewControllers([HomeViewRouter.createHomeModule(),
+        self.setViewControllers([MainRouter.createMainModule(),
                                  SettingRouter.createSettingModule()], animated: false)
         
         centerView.do {

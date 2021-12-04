@@ -9,4 +9,12 @@ import Foundation
 
 class TextEditInteractor: TextEditInteractorInputProtocol {
     weak var presenter: TextEditInteractorOutputProtocol?
+    
+    func saveData(photo: Data, text: String) {
+        ModelDatabaseHelper.instance.createModelItem(photo: photo, memo: text)
+    }
+}
+
+extension TextEditInteractor {
+    
 }

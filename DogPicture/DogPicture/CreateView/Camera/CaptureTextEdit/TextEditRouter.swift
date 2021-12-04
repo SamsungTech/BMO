@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 class TextEditRouter: TextEditRouterProtocol {
-    static func createTextEditViewModule() -> UIViewController {
+    static func createTextEditViewModule(selectedPhoto data: Data) -> UIViewController {
         let view: TextEditViewControllerProtocol = TextEditViewController()
         if let textEidtView = view as? UIViewController {
             let presenter: TextEditPresenterProtocol & TextEditInteractorOutputProtocol = TextEditPresenter()
@@ -19,11 +19,23 @@ class TextEditRouter: TextEditRouterProtocol {
             view.presenter = presenter
             presenter.view = view
             presenter.router = router
+            presenter.data = data
             presenter.interactor = interactor
             interactor.presenter = presenter
             
             return textEidtView
         }
         return UIViewController()
+    }
+    
+    func popTextEditView(view: TextEditViewControllerProtocol) {
+        if let popTextView = view as? UIViewController {
+            popTextView.navigationController?.popViewController(animated: true)
+        }
+    }
+    func dismissTextEditView(view: TextEditViewControllerProtocol) {
+        if let textView = view as? UIViewController {
+            textView.dismiss(animated: true, completion: nil)
+        }
     }
 }
