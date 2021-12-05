@@ -32,7 +32,7 @@ class HomeViewRouter: HomeRouterProtocol {
         let MemoViewController = MemoViewRouter.createMemoViewRouter(from: name)
         
         if let memoView = view as? UIViewController {
-            MemoViewController.modalPresentationStyle = .formSheet
+            MemoViewController.modalPresentationStyle = .overFullScreen
             memoView.present(MemoViewController, animated: true)
         }
     }

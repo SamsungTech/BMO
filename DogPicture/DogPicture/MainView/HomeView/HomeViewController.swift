@@ -61,7 +61,7 @@ class HomeViewController: UIViewController {
             $0.delaysContentTouches = false
         }
         dateFormatter.do {
-            $0.dateFormat = "yyyy-MM-dd"
+            $0.dateFormat = "yyyy년 MM월 dd일"
             $0.locale = Locale(identifier: "ko_KR")
         }
     }
@@ -111,11 +111,11 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            return CGFloat(UIScreen.main.bounds.maxY*(130/844))
+            return CGFloat(UIScreen.main.bounds.maxY*(120/844))
         } else if indexPath.section == 1 {
-            return CGFloat(UIScreen.main.bounds.maxY*(160/844))
+            return CGFloat(UIScreen.main.bounds.maxY*(180/844))
         } else if indexPath.section == 2 {
-            return CGFloat(UIScreen.main.bounds.maxY*(460/844))
+            return CGFloat(UIScreen.main.bounds.maxY*(470/844))
         } else {
             return CGFloat(UIScreen.main.bounds.maxY*(200/844))
         }
@@ -127,10 +127,9 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         guard let cellOriginFrame = cell.superview?.convert(cell.frame, to: nil) else { return }
         transition.setPoint(point: cellOriginPoint)
         transition.setFrame(frame: cellOriginFrame)
-//        memoView.transitioningDelegate = self
-//        memoView.modalPresentationStyle = .custom
-//        self.present(memoView, animated: true)
-        presenter?.showMemo(for: modelList[indexPath.row], index: indexPath)
+        if indexPath.section == 2 {
+            presenter?.showMemo(for: modelList[indexPath.row], index: indexPath)
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

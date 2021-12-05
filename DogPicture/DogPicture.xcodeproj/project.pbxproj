@@ -278,8 +278,7 @@
 			children = (
 				0BE0C480274BB16C00BE558C /* MainView */,
 				0BE0C475274BAA2300BE558C /* HomeCollection */,
-				0BEAF9E42717F9B4008AAA3D /* Transition */,
-				0BF2384C2660D501007E48AC /* Home */,
+				0BF2384C2660D501007E48AC /* HomeView */,
 				0BB27ED027217E8B00721A5F /* SideMenu */,
 				0BF2384D2660D527007E48AC /* Memo */,
 			);
@@ -507,9 +506,10 @@
 			path = DogPicture;
 			sourceTree = "<group>";
 		};
-		0BF2384C2660D501007E48AC /* Home */ = {
+		0BF2384C2660D501007E48AC /* HomeView */ = {
 			isa = PBXGroup;
 			children = (
+				0BEAF9E42717F9B4008AAA3D /* Transition */,
 				0BF2384E2660D5BE007E48AC /* HomeViewController.swift */,
 				0BB27ECC2720316D00721A5F /* HomeProfileViewCell.swift */,
 				0BB27EE82726EA1B00721A5F /* HomeEventCell.swift */,
@@ -520,7 +520,7 @@
 				0BF238542660D5FE007E48AC /* HomeViewRouter.swift */,
 				0BF238562660D628007E48AC /* HomeInteracter.swift */,
 			);
-			path = Home;
+			path = HomeView;
 			sourceTree = "<group>";
 		};
 		0BF2384D2660D527007E48AC /* Memo */ = {

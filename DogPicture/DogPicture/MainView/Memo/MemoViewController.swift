@@ -10,7 +10,7 @@ import UIKit
 class MemoViewController: UIViewController {
     var presenter: MemoViewPresenterProtocol?
     var dogImageDateLabel = UILabel()
-    var dogImage = UIImageView()
+    var dogImageView = UIImageView()
     var dogImageShadowView = UIView()
     var memoEditView = UIView()
     let textEditImage = UIImageView()
@@ -20,8 +20,11 @@ class MemoViewController: UIViewController {
     var textHolder: String = ""
     let saveButton = UIButton()
     let deleteButton = UIButton()
+    let deleteImage = UIImageView()
     let backButton = UIButton()
+    let backButtonLabel = UILabel()
     let editButton = UIButton()
+    let editButtonLabel = UILabel()
     let dateFormmater = DateFormatter()
 
     override func viewDidLoad() {
@@ -39,9 +42,11 @@ class MemoViewController: UIViewController {
     }
     
     func attribute() {
-        dogImageShadowView.addSubview(dogImage)
-        [ dogImageDateLabel, dogImageShadowView, backButton, memoEditView ].forEach() { view.addSubview($0) }
-        [ textEditImage, textEditTitle, memoTextField, deleteButton, editButton ].forEach() { memoEditView.addSubview($0) }
+        [ dogImageDateLabel, dogImageView, backButton, memoEditView, editButton, memoTextField ].forEach() { view.addSubview($0) }
+        deleteButton.addSubview(deleteImage)
+        dogImageView.addSubview(deleteButton)
+        editButton.addSubview(editButtonLabel)
+        backButton.addSubview(backButtonLabel)
         
         dogImageDateLabel.do {
             $0.textColor = .black
@@ -52,135 +57,104 @@ class MemoViewController: UIViewController {
             $0.dateFormat = "yyyy년 MM월 dd일"
             $0.locale = Locale(identifier: "ko_KR")
         }
-        dogImageShadowView.do {
-            $0.layer.shadowOpacity = 0.5
-            $0.layer.shadowColor = UIColor.gray.cgColor
-            $0.layer.shadowOffset = CGSize(width: 0, height: 0)
-            $0.layer.shadowRadius = 5
-        }
-        dogImage.do {
+        dogImageView.do {
             $0.backgroundColor = .systemPink
-            $0.layer.cornerRadius = 20
             $0.layer.masksToBounds = true
         }
         backButton.do {
-            $0.tintColor = .systemGray6
-            $0.setImage(UIImage(systemName: "xmark"), for: .normal)
             $0.addTarget(self, action: #selector(backButtonDidTap(sender:)), for: .touchUpInside)
         }
-        memoEditView.do {
-            $0.backgroundColor = .white
-            $0.viewRadius(cornerRadius: 20, maskToBounds: true)
-            $0.layer.masksToBounds = false
-            $0.layer.cornerRadius = 20
-            $0.layer.shadowOpacity = 0.5
-            $0.layer.shadowColor = UIColor.gray.cgColor
-            $0.layer.shadowOffset = CGSize(width: 0, height: 0)
-            $0.layer.shadowRadius = 5
-        }
-        textEditImage.do {
-            $0.image = UIImage(systemName: "heart.text.square")
-            $0.tintColor = .black
-        }
-        textEditTitle.do {
-            $0.font = UIFont.boldSystemFont(ofSize: 15)
-            $0.textAlignment = .left
+        backButtonLabel.do {
+            $0.font = UIFont.boldSystemFont(ofSize: 18)
             $0.textColor = .black
-            $0.text = "글을 쓰라개"
+            $0.alpha = 0.9
+            $0.text = "취소"
         }
         memoTextField.do {
-            $0.backgroundColor = .lightGray
             $0.textColor = .black
+            $0.font = UIFont.boldSystemFont(ofSize: 20)
+            $0.placeholder = "이 모먼트에 스토리를 추가해보시개~"
             $0.viewRadius(cornerRadius: 15, maskToBounds: true)
         }
         saveButton.do {
             $0.backgroundColor = .systemRed
         }
         deleteButton.do {
-            $0.tintColor = .systemRed
-            $0.backgroundColor = .systemRed
-            $0.setTitle("삭제하기", for: .normal)
             $0.addTarget(self, action: #selector(deleteButtonDidTap(sender:)), for: .touchUpInside)
-            $0.viewRadius(cornerRadius: 20, maskToBounds: true)
+        }
+        deleteImage.do {
+            $0.tintColor = .black
+            $0.alpha = 0.8
+            $0.image = UIImage(systemName: "trash.circle.fill")
         }
         editButton.do {
-            $0.backgroundColor = .systemBlue
-            $0.setTitle("수정하기", for: .normal)
             $0.addTarget(self, action: #selector(editButtonDidTap(sender:)), for: .touchUpInside)
-            $0.viewRadius(cornerRadius: 20, maskToBounds: true)
+        }
+        editButtonLabel.do {
+            $0.text = "완료"
+            $0.font = UIFont.boldSystemFont(ofSize: 18)
+            $0.textColor = .black
+            $0.alpha = 0.9
         }
     }
     
     func layout() {
         dogImageDateLabel.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
-            $0.topAnchor.constraint(equalTo: view.topAnchor, constant: 10).isActive = true
-            $0.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-            $0.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+            $0.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+            $0.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
             $0.heightAnchor.constraint(equalToConstant: 50).isActive = true
         }
-        dogImageShadowView.do {
+        dogImageView.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
             $0.topAnchor.constraint(equalTo: dogImageDateLabel.bottomAnchor, constant: 10).isActive = true
+            $0.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+            $0.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+            $0.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.maxX).isActive = true
+        }
+        memoTextField.do {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.topAnchor.constraint(equalTo: dogImageView.bottomAnchor, constant: 10).isActive = true
             $0.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
             $0.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
-            $0.bottomAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        }
-        dogImage.do {
-            $0.translatesAutoresizingMaskIntoConstraints = false
-            $0.topAnchor.constraint(equalTo: dogImageDateLabel.bottomAnchor, constant: 10).isActive = true
-            $0.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
-//            $0.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
-            $0.widthAnchor.constraint(equalToConstant: 355).isActive = true
-            $0.heightAnchor.constraint(equalToConstant: 355).isActive = true
+            $0.heightAnchor.constraint(equalToConstant: 100).isActive = true
         }
         backButton.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
             $0.centerYAnchor.constraint(equalTo: dogImageDateLabel.centerYAnchor).isActive = true
             $0.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-            $0.widthAnchor.constraint(equalToConstant: 60).isActive = true
-            $0.heightAnchor.constraint(equalToConstant: 60).isActive = true
+            $0.widthAnchor.constraint(equalToConstant: 50).isActive = true
+            $0.heightAnchor.constraint(equalToConstant: 40).isActive = true
         }
-        memoEditView.do {
+        backButtonLabel.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
-            $0.topAnchor.constraint(equalTo: dogImage.bottomAnchor, constant: 10).isActive = true
-            $0.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
-            $0.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
-            $0.heightAnchor.constraint(equalToConstant: 200).isActive = true
-        }
-        textEditImage.do {
-            $0.translatesAutoresizingMaskIntoConstraints = false
-            $0.topAnchor.constraint(equalTo: memoEditView.topAnchor, constant: 10).isActive = true
-            $0.leadingAnchor.constraint(equalTo: memoEditView.leadingAnchor, constant: 10).isActive = true
-            $0.widthAnchor.constraint(equalToConstant: 30).isActive = true
-            $0.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        }
-        textEditTitle.do {
-            $0.translatesAutoresizingMaskIntoConstraints = false
-            $0.centerYAnchor.constraint(equalTo: textEditImage.centerYAnchor).isActive = true
-            $0.leadingAnchor.constraint(equalTo: textEditImage.trailingAnchor, constant: 10).isActive = true
-            $0.widthAnchor.constraint(equalToConstant: 200).isActive = true
-            $0.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        }
-        memoTextField.do {
-            $0.translatesAutoresizingMaskIntoConstraints = false
-            $0.topAnchor.constraint(equalTo: textEditImage.bottomAnchor, constant: 10).isActive = true
-            $0.leadingAnchor.constraint(equalTo: memoEditView.leadingAnchor, constant: 10).isActive = true
-            $0.trailingAnchor.constraint(equalTo: memoEditView.trailingAnchor, constant: -10).isActive = true
-            $0.heightAnchor.constraint(equalToConstant: 90).isActive = true
+            $0.centerXAnchor.constraint(equalTo: backButton.centerXAnchor).isActive = true
+            $0.centerYAnchor.constraint(equalTo: backButton.centerYAnchor).isActive = true
         }
         editButton.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
-            $0.topAnchor.constraint(equalTo: memoTextField.bottomAnchor, constant: 10).isActive = true
-            $0.trailingAnchor.constraint(equalTo: memoEditView.trailingAnchor, constant: -10).isActive = true
-            $0.widthAnchor.constraint(equalToConstant: 100).isActive = true
+            $0.centerYAnchor.constraint(equalTo: dogImageDateLabel.centerYAnchor).isActive = true
+            $0.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 5).isActive = true
+            $0.widthAnchor.constraint(equalToConstant: 50).isActive = true
             $0.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        }
+        editButtonLabel.do {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.centerXAnchor.constraint(equalTo: editButton.centerXAnchor).isActive = true
+            $0.centerYAnchor.constraint(equalTo: editButton.centerYAnchor).isActive = true
         }
         deleteButton.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
-            $0.centerYAnchor.constraint(equalTo: editButton.centerYAnchor).isActive = true
-            $0.trailingAnchor.constraint(equalTo: editButton.leadingAnchor, constant: -10).isActive = true
-            $0.widthAnchor.constraint(equalToConstant: 100).isActive = true
+            $0.leadingAnchor.constraint(equalTo: dogImageView.leadingAnchor, constant: 10).isActive = true
+            $0.bottomAnchor.constraint(equalTo: dogImageView.bottomAnchor, constant: -10).isActive = true
+            $0.widthAnchor.constraint(equalToConstant: 40).isActive = true
+            $0.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        }
+        deleteImage.do {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.centerXAnchor.constraint(equalTo: deleteButton.centerXAnchor).isActive = true
+            $0.centerYAnchor.constraint(equalTo: deleteButton.centerYAnchor).isActive = true
+            $0.widthAnchor.constraint(equalToConstant: 40).isActive = true
             $0.heightAnchor.constraint(equalToConstant: 40).isActive = true
         }
     }
@@ -196,16 +170,15 @@ class MemoViewController: UIViewController {
         textHolder = memoTextField.text ?? ""
         if let model = modelHolder {
             presenter?.passDataToUpdate(item: model, memo: textHolder)
+            print("저장성공")
         }
-        viewWillAppear(true)
+        self.dismiss(animated: true, completion: nil)
     }
     
     @objc func deleteButtonDidTap(sender: UIButton) {
         if let model = modelHolder {
             presenter?.passDataToDelete(item: model)
         }
-//        self.transitioningDelegate = self
-//        self.dismiss(animated: true, completion: nil)
         presenter?.memoViewDismiss()
     }
 }
@@ -216,7 +189,7 @@ extension MemoViewController: MemoViewProtocol {
         if let photo = model.photo,
            let memo = model.memo,
            let date = model.date {
-            dogImage.image = UIImage(data: photo)
+            dogImageView.image = UIImage(data: photo)
             memoTextField.text = memo
             let dateFommat = dateFormmater.string(from: date)
             dogImageDateLabel.text = dateFommat

@@ -17,7 +17,7 @@ class CollectionViewController: UIViewController {
     var homeCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.itemSize = CGSize(width: (UIScreen.main.bounds.maxX/3)-4,
+        layout.itemSize = CGSize(width: (UIScreen.main.bounds.maxX/3)-1,
                                  height: (UIScreen.main.bounds.maxX/3)-4)
         
         let collectionView = UICollectionView(frame: .zero,
@@ -95,7 +95,7 @@ extension CollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1)
+        return UIEdgeInsets(top: 1, left: 0, bottom: 2, right: 0)
     }
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,

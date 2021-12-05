@@ -45,16 +45,21 @@ class CameraViewController: UIViewController {
     let videoButtonLabel = UILabel()
     
     var photoDataArray: [Data] = []
-    
+    private var topConstraint: NSLayoutConstraint?
+    private var defaultHeight: CGFloat = 200
     var soundEffectView = UIView()
     var soundScrollView = UIScrollView()
     var soundStackView = UIStackView()
+    let effectCancelButton = UIButton()
+    let effectCancelButtonImageView = UIImageView()
+    let secondCaptureButton = UIButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         updateView()
         self.view.backgroundColor = .white
         view.bringSubviewToFront(captureButton)
+        view.bringSubviewToFront(soundEffectView)
         updateCameraView()
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
@@ -130,7 +135,7 @@ class CameraViewController: UIViewController {
     }
     
     func attribute() {
-        [ navigaitionBar, bottomBar ].forEach() { view.addSubview($0) }
+        [ navigaitionBar, bottomBar, soundEffectView ].forEach() { view.addSubview($0) }
         [ dismissCameraButton, transitionButton, nextButton ].forEach() { navigaitionBar.addSubview($0) }
         dismissCameraButton.addSubview(dismissButtonImageView)
         transitionButton.addSubview(transitionImageView)
@@ -143,6 +148,9 @@ class CameraViewController: UIViewController {
         libraryButton.addSubview(libraryButtonImageView)
         captureButton.addSubview(captureButtonImageView)
         soundButton.addSubview(soundButtonImageView)
+        soundEffectView.addSubview(effectCancelButton)
+        soundEffectView.addSubview(secondCaptureButton)
+        effectCancelButton.addSubview(effectCancelButtonImageView)
         
         navigaitionBar.do {
             $0.backgroundColor = .white
@@ -226,6 +234,29 @@ class CameraViewController: UIViewController {
         soundButtonImageView.do {
             $0.tintColor = .black
             $0.image = UIImage(systemName: "bell.circle")
+        }
+        soundEffectView.do {
+            $0.backgroundColor = .white
+        }
+        soundStackView.do {
+            $0.axis = .horizontal
+            $0.spacing = 10
+        }
+        soundScrollView.do {
+            $0.showsHorizontalScrollIndicator = false
+        }
+        effectCancelButton.do {
+            $0.addTarget(self, action: #selector(effectCancelButtonDidTap(sender:)), for: .touchUpInside)
+        }
+        effectCancelButtonImageView.do {
+            $0.tintColor = .black
+            $0.image = UIImage(systemName: "arrow.down.to.line.compact")
+        }
+        secondCaptureButton.do {
+            $0.layer.cornerRadius = 30
+            $0.layer.borderWidth = 5
+            $0.layer.borderColor = UIColor.black.cgColor
+            $0.addTarget(self, action: #selector(captureButtonDidTap(sender:)), for: .touchUpInside)
         }
     }
     
@@ -363,6 +394,84 @@ class CameraViewController: UIViewController {
             $0.widthAnchor.constraint(equalToConstant: 30).isActive = true
             $0.heightAnchor.constraint(equalToConstant: 30).isActive = true
         }
+        soundEffectView.do {
+            $0.addSubview(soundScrollView)
+            topConstraint = $0.topAnchor.constraint(equalTo: view.topAnchor,
+                                                                constant: UIScreen.main.bounds.maxY)
+            topConstraint?.isActive = true
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+            $0.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+            $0.heightAnchor.constraint(equalToConstant: 250).isActive = true
+        }
+        soundScrollView.do {
+            $0.addSubview(soundStackView)
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.topAnchor.constraint(equalTo: soundEffectView.topAnchor, constant: 10).isActive = true
+            $0.leadingAnchor.constraint(equalTo: soundEffectView.leadingAnchor).isActive = true
+            $0.trailingAnchor.constraint(equalTo: soundEffectView.trailingAnchor).isActive = true
+            $0.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        }
+        soundStackView.do {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.topAnchor.constraint(equalTo: soundScrollView.topAnchor).isActive = true
+            $0.leadingAnchor.constraint(equalTo: soundScrollView.leadingAnchor).isActive = true
+            $0.trailingAnchor.constraint(equalTo: soundScrollView.trailingAnchor).isActive = true
+            $0.bottomAnchor.constraint(equalTo: soundScrollView.bottomAnchor).isActive = true
+            for _ in 0..<20 {
+                let buttons = UIButton()
+                buttons.translatesAutoresizingMaskIntoConstraints = false
+                buttons.widthAnchor.constraint(equalToConstant: 40).isActive = true
+                buttons.heightAnchor.constraint(equalToConstant: 40).isActive = true
+                buttons.setImage(UIImage(systemName: "arrow.up.heart.fill"), for: .normal)
+                
+                soundStackView.addArrangedSubview(buttons)
+            }
+        }
+        effectCancelButton.do {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.trailingAnchor.constraint(equalTo: soundEffectView.trailingAnchor, constant: -55).isActive = true
+            $0.bottomAnchor.constraint(equalTo: soundEffectView.bottomAnchor, constant: -115).isActive = true
+            $0.widthAnchor.constraint(equalToConstant: 40).isActive = true
+            $0.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        }
+        effectCancelButtonImageView.do {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.centerXAnchor.constraint(equalTo: effectCancelButton.centerXAnchor).isActive = true
+            $0.centerYAnchor.constraint(equalTo: effectCancelButton.centerYAnchor).isActive = true
+            $0.widthAnchor.constraint(equalToConstant: 30).isActive = true
+            $0.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        }
+        secondCaptureButton.do {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+            $0.centerYAnchor.constraint(equalTo: effectCancelButton.centerYAnchor).isActive = true
+            $0.widthAnchor.constraint(equalToConstant: 60).isActive = true
+            $0.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        }
+    }
+}
+
+extension CameraViewController {
+    private func showBottomShett() {
+        topConstraint?.constant = UIScreen.main.bounds.maxY - defaultHeight
+        
+        UIView.animate(withDuration: 0.25,
+                       delay: 0,
+                       options: .curveEaseIn,
+                       animations: { [self] in
+            self.view.layoutIfNeeded()
+        })
+    }
+    private func hideBottomSheet() {
+        topConstraint?.constant = UIScreen.main.bounds.maxY
+        
+        UIView.animate(withDuration: 0.25,
+                       delay: 0,
+                       options: .curveEaseIn,
+                       animations: { [self] in
+            self.view.layoutIfNeeded()
+        })
     }
 }
 
@@ -404,7 +513,10 @@ extension CameraViewController {
         photoOutput?.capturePhoto(with: settings, delegate: self)
     }
     @objc func soundButtonDidTap(sender: UIButton) {
-        
+        showBottomShett()
+    }
+    @objc func effectCancelButtonDidTap(sender: UIButton) {
+        hideBottomSheet()
     }
 }
 

@@ -33,7 +33,7 @@ class SideMenuViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        showBottomShett()
+        showSideMenu()
     }
     
     func updateView() {
@@ -105,7 +105,7 @@ class SideMenuViewController: UIViewController {
             $0.translatesAutoresizingMaskIntoConstraints = false
             $0.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
             $0.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-            sideConstraint = sideView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor,
+            sideConstraint = $0.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor,
                                                                 constant: -UIScreen.main.bounds.maxX)
             sideConstraint?.isActive = true
             $0.widthAnchor.constraint(equalToConstant: defaultWidth).isActive = true
@@ -181,12 +181,12 @@ extension SideMenuViewController: SideMenuViewProtocol {
 
 extension SideMenuViewController {
     @objc private func dimmedViewDidTap(_ tapRecongnizer: UITapGestureRecognizer) {
-        hideBottomSheet()
+        hideSideMenu()
     }
 }
 
 extension SideMenuViewController {
-    private func showBottomShett() {
+    private func showSideMenu() {
         sideConstraint?.constant = -UIScreen.main.bounds.maxX + defaultWidth
         
         UIView.animate(withDuration: 0.25,
@@ -197,7 +197,7 @@ extension SideMenuViewController {
             self.view.layoutIfNeeded()
         }, completion: nil)
     }
-    private func hideBottomSheet() {
+    private func hideSideMenu() {
         sideConstraint?.constant = -UIScreen.main.bounds.maxX
         
         UIView.animate(withDuration: 0.25,

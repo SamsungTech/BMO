@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 extension UIView {
-    func viewRadius( cornerRadius: CGFloat, maskToBounds: Bool) {
+    func viewRadius(cornerRadius: CGFloat, maskToBounds: Bool) {
         self.layer.cornerRadius = cornerRadius
         self.layer.masksToBounds = maskToBounds
     }
@@ -17,7 +17,7 @@ extension UIView {
         self.layer.shadowColor = UIColor.black.cgColor
         self.layer.shadowOffset = CGSize(width: 1, height: 1)
         self.layer.shadowRadius = 3
-        self.layer.shadowOpacity = 0.5
+        self.layer.shadowOpacity = 0.1
     }
     func imageSizeFit(view: UIButton, buttonSize: CGFloat) {
         view.imageEdgeInsets = UIEdgeInsets(top: UIScreen.main.bounds.maxX*(buttonSize/390),
