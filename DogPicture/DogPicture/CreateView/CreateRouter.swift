@@ -45,7 +45,7 @@ class CreateRouter: CreateRouterProtocol {
         let multiPickView = MultiPickerRouter.createMultiPickerViewModule()
         let multiNavigationView = UINavigationController(rootViewController: multiPickView)
         
-        multiNavigationView.modalPresentationStyle = .fullScreen
+        multiNavigationView.modalPresentationStyle = .formSheet
         
         guard let createView = view as? UIViewController else { return }
         createView.dismiss(animated: false) {

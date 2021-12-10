@@ -62,6 +62,8 @@
 		0BB70AEF2760A9DC003956DC /* MultiPickerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB70AEE2760A9DC003956DC /* MultiPickerPresenter.swift */; };
 		0BB70AF12760A9E6003956DC /* MultiPickerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB70AF02760A9E6003956DC /* MultiPickerRouter.swift */; };
 		0BB70AF32760C6AF003956DC /* SettingFooterViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB70AF22760C6AF003956DC /* SettingFooterViewCell.swift */; };
+		0BB70AF52763035B003956DC /* MultiPickerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB70AF42763035B003956DC /* MultiPickerCollectionViewCell.swift */; };
+		0BB70AF727631370003956DC /* LocalImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB70AF627631370003956DC /* LocalImageManager.swift */; };
 		0BD2208A26E776B10064A8F6 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD2208926E776B10064A8F6 /* HomeTableViewCell.swift */; };
 		0BD7856D27522B2D00E3DB1C /* CreatePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7856C27522B2D00E3DB1C /* CreatePresenter.swift */; };
 		0BD7856F27522B4900E3DB1C /* CreateInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7856E27522B4900E3DB1C /* CreateInteractor.swift */; };
@@ -169,6 +171,8 @@
 		0BB70AEE2760A9DC003956DC /* MultiPickerPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiPickerPresenter.swift; sourceTree = "<group>"; };
 		0BB70AF02760A9E6003956DC /* MultiPickerRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiPickerRouter.swift; sourceTree = "<group>"; };
 		0BB70AF22760C6AF003956DC /* SettingFooterViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingFooterViewCell.swift; sourceTree = "<group>"; };
+		0BB70AF42763035B003956DC /* MultiPickerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiPickerCollectionViewCell.swift; sourceTree = "<group>"; };
+		0BB70AF627631370003956DC /* LocalImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalImageManager.swift; sourceTree = "<group>"; };
 		0BD2208926E776B10064A8F6 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		0BD7856C27522B2D00E3DB1C /* CreatePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePresenter.swift; sourceTree = "<group>"; };
 		0BD7856E27522B4900E3DB1C /* CreateInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateInteractor.swift; sourceTree = "<group>"; };
@@ -406,6 +410,8 @@
 				0BB70AF02760A9E6003956DC /* MultiPickerRouter.swift */,
 				0BB70AEC2760A9D2003956DC /* MultiPickerInteractor.swift */,
 				0BB70AEA2760A9BE003956DC /* MultiPickerProtocol.swift */,
+				0BB70AF42763035B003956DC /* MultiPickerCollectionViewCell.swift */,
+				0BB70AF627631370003956DC /* LocalImageManager.swift */,
 			);
 			path = MultiPicker;
 			sourceTree = "<group>";
@@ -727,6 +733,7 @@
 				0BE0C46827329C1C00BE558C /* Model+CoreDataProperties.swift in Sources */,
 				0BB27ECD2720316D00721A5F /* HomeProfileViewCell.swift in Sources */,
 				0BD2208A26E776B10064A8F6 /* HomeTableViewCell.swift in Sources */,
+				0BB70AF727631370003956DC /* LocalImageManager.swift in Sources */,
 				0B51B20026A8210E00216054 /* CameraInteracter.swift in Sources */,
 				0BEAF9E62717F9FF008AAA3D /* AnimationTransition.swift in Sources */,
 				0B9F63E8270DDB8E00CF3F0C /* LocalPushInteracter.swift in Sources */,
@@ -791,6 +798,7 @@
 				0B2DFE3C26F70538002D533B /* ModelDatabaseHelper.swift in Sources */,
 				0BB70AE92760A98F003956DC /* MultiPickerViewController.swift in Sources */,
 				0BE0C490274D29ED00BE558C /* PinchViewController.swift in Sources */,
+				0BB70AF52763035B003956DC /* MultiPickerCollectionViewCell.swift in Sources */,
 				0BB70ADA2759D96B003956DC /* TextEditPresenter.swift in Sources */,
 				0BE0C48A274BB25D00BE558C /* MainRouter.swift in Sources */,
 				0BF238572660D628007E48AC /* HomeInteracter.swift in Sources */,

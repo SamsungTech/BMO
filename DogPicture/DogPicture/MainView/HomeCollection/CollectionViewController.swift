@@ -12,7 +12,6 @@ class CollectionViewController: UIViewController {
     var presenter: CollectionPresenterProtocol?
     var number: Int = 1
     var dogImageDataHolder: [Model] = []
-    let collectionViewLayout = UICollectionViewFlowLayout()
     let segmentedControl = UISegmentedControl()
     var homeCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -39,9 +38,7 @@ class CollectionViewController: UIViewController {
     
     func attribute() {
         [ homeCollectionView ].forEach() { view.addSubview($0) }
-        collectionViewLayout.do {
-            $0.minimumLineSpacing = 10
-        }
+        
         homeCollectionView.do {
             $0.frame = .zero
             $0.register(CollectionViewCell.self, forCellWithReuseIdentifier: "HomeCollectionViewCell")
@@ -82,10 +79,12 @@ extension CollectionViewController: UICollectionViewDataSource {
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCollectionViewCell",
-                                                      for: indexPath) as! CollectionViewCell
-        let data = dogImageDataHolder[indexPath.item].photo
-        cell.dogImageView.image = UIImage(data: data!)
+                                                      for: indexPath)
+        guard let cell = cell as? CollectionViewCell else { return cell }
         
+        if let data = dogImageDataHolder[indexPath.item].photo {
+            cell.dogImageView.image = UIImage(data: data)
+        }
         return cell
     }
     

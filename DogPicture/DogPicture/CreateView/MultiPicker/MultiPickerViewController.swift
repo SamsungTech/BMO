@@ -8,18 +8,27 @@
 import Foundation
 import UIKit
 import Photos
+import PhotosUI
 
 class MultiPickerViewController: UIViewController {
     var presenter: MultiPickerPresenterProtocol?
     
-    let collectionViewCell = UIImageView()
-    let button = UIButton()
+    var multiPickerCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        layout.itemSize = CGSize(width: (UIScreen.main.bounds.maxX/3)-1,
+                                 height: (UIScreen.main.bounds.maxX/3)-4)
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        
+        return collectionView
+    }()
+    var allPhotos: PHFetchResult<PHAsset>?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         updateView()
         view.backgroundColor = .systemTeal
-        setAllPhotoLibraryImage()
+//        setAllPhotoLibraryImage()
     }
     
     func updateView() {
@@ -28,29 +37,28 @@ class MultiPickerViewController: UIViewController {
     }
     
     func attribute() {
-        view.addSubview(collectionViewCell)
-        view.addSubview(button)
+        [ multiPickerCollectionView ].forEach() { view.addSubview($0) }
         
-        button.do {
-            $0.addTarget(self, action: #selector(buttonDidtap(sender:)), for: .touchUpInside)
-            $0.backgroundColor = .systemPink
-            $0.viewRadius(cornerRadius: 20, maskToBounds: false)
+        multiPickerCollectionView.do {
+            $0.backgroundColor = .blue
+            $0.register(MultiPickerCollectionViewCell.self,
+                        forCellWithReuseIdentifier: "MultiPickerCollectionViewCell")
+            $0.dataSource = self
+            $0.delegate = self
+            $0.reloadData()
         }
+        let fetchOption = PHFetchOptions()
+        fetchOption.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+
+        self.allPhotos = PHAsset.fetchAssets(with: fetchOption)
     }
     func layout() {
-        collectionViewCell.do {
+        multiPickerCollectionView.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
-            $0.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-            $0.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-            $0.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.maxX/3).isActive = true
-            $0.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.maxX/3).isActive = true
-        }
-        button.do {
-            $0.translatesAutoresizingMaskIntoConstraints = false
-            $0.topAnchor.constraint(equalTo: collectionViewCell.bottomAnchor, constant: 10).isActive = true
-            $0.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-            $0.widthAnchor.constraint(equalToConstant: 80).isActive = true
-            $0.heightAnchor.constraint(equalToConstant: 40).isActive = true
+            $0.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+            $0.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+            $0.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+            $0.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         }
     }
     
@@ -75,38 +83,58 @@ class MultiPickerViewController: UIViewController {
 //        }
 //    }
     
-    private func setAllPhotoLibraryImage() {
-        var allPhotos: PHFetchResult<PHAsset>?
-        
-        allPhotos = PHAsset.fetchAssets(with: nil)
-        
-        let asset = allPhotos?.objects(at: )
-    }
     
     
     
     @objc func buttonDidtap(sender: UIButton) {
-        setAllPhotoLibraryImage()
+//        setAllPhotoLibraryImage()
+    }
+}
+
+extension MultiPickerViewController: UICollectionViewDataSource {
+    
+    // 각 section에 들어가는 아이템 갯수
+    func collectionView(_ collectionView: UICollectionView,
+                        numberOfItemsInSection section: Int) -> Int {
+        return allPhotos?.count ?? 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = multiPickerCollectionView.dequeueReusableCell(withReuseIdentifier: "MultiPickerCollectionViewCell", for: indexPath)
+        guard let multiCell = cell as? MultiPickerCollectionViewCell else { return cell }
+        let asset = self.allPhotos?[indexPath.item]
+        let thumnailSize = CGSize(width: 100, height: 100)
+        DispatchQueue.main.async {
+            LocalImageManager.shared.requestImage(with: asset,
+                                                  thumbnailSize: thumnailSize) { (image) in
+                multiCell.imageView.image = image
+            }
+        }
+        
+        return multiCell
+    }
+    
+}
+
+extension MultiPickerViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 1, left: 0, bottom: 2, right: 0)
+    }
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 1
+    }
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 1
     }
 }
 
 extension MultiPickerViewController: MultiPickerViewControllerProtocol {
     
-}
-
-class ImageManager {
-    static let shared = ImageManager()
-    
-    private let imageManager = PHImageManager()
-    
-    func requestImage(from asset: PHAsset,
-                      thumnailSize: CGSize,
-                      completion: @escaping (UIImage?) -> Void) {
-        self.imageManager.requestImage(for: asset,
-                                          targetSize: thumnailSize,
-                                          contentMode: .aspectFill,
-                                          options: nil) { image, info in
-            completion(image)
-        }
-    }
 }

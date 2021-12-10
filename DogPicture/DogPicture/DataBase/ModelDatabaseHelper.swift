@@ -114,9 +114,9 @@ class ModelDatabaseHelper: ModelDatabaseHelperInputProtocol {
         for i in 0..<models.count {
             if models[i].dogInfo == info[0] {
                 model.append(models[i])
-                print("넣기 성공")
+                print("성공")
             }
-            print("넣기 실패 하...")
+            print("실패 하...")
         }
         return model
     }
