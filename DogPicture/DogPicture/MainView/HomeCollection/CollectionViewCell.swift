@@ -35,7 +35,6 @@ class CollectionViewCell: UICollectionViewCell {
         contentView.do {
             $0.backgroundColor = .white
         }
-        self.viewRadius(cornerRadius: 15, maskToBounds: true)
     }
     
     private func layout() {

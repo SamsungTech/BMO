@@ -38,7 +38,7 @@ class LocalPushViewController: UIViewController {
         
         cancelButton.do {
             $0.setTitle("취소", for: .normal)
-            $0.setTitleColor(UIColor.systemBlue, for: .normal)
+            $0.setTitleColor(UIColor.black, for: .normal)
             $0.addTarget(self, action: #selector(cancelButtonDidTap(sender:)), for: .touchUpInside)
         }
         titleLabel.do {
@@ -48,7 +48,7 @@ class LocalPushViewController: UIViewController {
         }
         saveButton.do {
             $0.setTitle("저장", for: .normal)
-            $0.setTitleColor(UIColor.systemBlue, for: .normal)
+            $0.setTitleColor(UIColor.black, for: .normal)
             $0.addTarget(self, action: #selector(saveButtonDidTap(sender:)), for: .touchUpInside)
         }
         timePicker.do {
@@ -79,8 +79,8 @@ class LocalPushViewController: UIViewController {
     func layout() {
         cancelButton.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
-            $0.topAnchor.constraint(equalTo: view.topAnchor, constant: 10).isActive = true
-            $0.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
+            $0.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+            $0.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
             $0.widthAnchor.constraint(equalToConstant: 100).isActive = true
             $0.heightAnchor.constraint(equalToConstant: 80).isActive = true
         }
@@ -93,8 +93,8 @@ class LocalPushViewController: UIViewController {
         }
         saveButton.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
-            $0.topAnchor.constraint(equalTo: view.topAnchor, constant: 10).isActive = true
-            $0.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
+            $0.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+            $0.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
             $0.widthAnchor.constraint(equalToConstant: 100).isActive = true
             $0.heightAnchor.constraint(equalToConstant: 80).isActive = true
         }
@@ -105,14 +105,6 @@ class LocalPushViewController: UIViewController {
             $0.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
             $0.heightAnchor.constraint(equalToConstant: 300).isActive = true
         }
-        dateLabel.do {
-            $0.translatesAutoresizingMaskIntoConstraints = false
-            $0.topAnchor.constraint(equalTo: timePicker.bottomAnchor, constant: 10).isActive = true
-            $0.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-            $0.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-            $0.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        }
-        
     }
     @objc func handleDatePicker(sender: UIDatePicker) {
         let hour = dateFormatter1.string(from: sender.date)

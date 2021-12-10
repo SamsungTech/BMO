@@ -265,8 +265,8 @@ class CreateViewController: UIViewController {
         hideBottomSheet()
     }
     @objc func libraryButtonDidTap(sender: UIButton) {
-        print("앨범버튼 클릭")
-        hideBottomSheet()
+        guard let presentingView = self.presentingViewController as? CustomTabBarControllerProtocol else { return }
+        self.presenter?.libraryButtonClicked(presentingView: presentingView)
     }
     @objc func cameraButtonDidTap(sender: UIButton) {
         guard let presentingView = self.presentingViewController as? CustomTabBarControllerProtocol else { return }
@@ -277,6 +277,7 @@ class CreateViewController: UIViewController {
         hideBottomSheet()
     }
 }
+
 
 extension CreateViewController: CreateViewControllerProtocol {
     

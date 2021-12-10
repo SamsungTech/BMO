@@ -52,6 +52,16 @@
 		0BB70AD82759D961003956DC /* TextEditRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB70AD72759D961003956DC /* TextEditRouter.swift */; };
 		0BB70ADA2759D96B003956DC /* TextEditPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB70AD92759D96B003956DC /* TextEditPresenter.swift */; };
 		0BB70ADC2759D978003956DC /* TextEditInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB70ADB2759D978003956DC /* TextEditInteractor.swift */; };
+		0BB70AE0275C7A91003956DC /* SoundEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB70ADF275C7A91003956DC /* SoundEffect.swift */; };
+		0BB70AE2275C7BAC003956DC /* bellsound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0BB70AE1275C7BAC003956DC /* bellsound.mp3 */; };
+		0BB70AE4275CA06F003956DC /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB70AE3275CA06F003956DC /* SettingTableViewCell.swift */; };
+		0BB70AE6275CB152003956DC /* SettingTableViewIdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB70AE5275CB152003956DC /* SettingTableViewIdCell.swift */; };
+		0BB70AE92760A98F003956DC /* MultiPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB70AE82760A98F003956DC /* MultiPickerViewController.swift */; };
+		0BB70AEB2760A9BE003956DC /* MultiPickerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB70AEA2760A9BE003956DC /* MultiPickerProtocol.swift */; };
+		0BB70AED2760A9D2003956DC /* MultiPickerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB70AEC2760A9D2003956DC /* MultiPickerInteractor.swift */; };
+		0BB70AEF2760A9DC003956DC /* MultiPickerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB70AEE2760A9DC003956DC /* MultiPickerPresenter.swift */; };
+		0BB70AF12760A9E6003956DC /* MultiPickerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB70AF02760A9E6003956DC /* MultiPickerRouter.swift */; };
+		0BB70AF32760C6AF003956DC /* SettingFooterViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB70AF22760C6AF003956DC /* SettingFooterViewCell.swift */; };
 		0BD2208A26E776B10064A8F6 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD2208926E776B10064A8F6 /* HomeTableViewCell.swift */; };
 		0BD7856D27522B2D00E3DB1C /* CreatePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7856C27522B2D00E3DB1C /* CreatePresenter.swift */; };
 		0BD7856F27522B4900E3DB1C /* CreateInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD7856E27522B4900E3DB1C /* CreateInteractor.swift */; };
@@ -149,6 +159,16 @@
 		0BB70AD72759D961003956DC /* TextEditRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEditRouter.swift; sourceTree = "<group>"; };
 		0BB70AD92759D96B003956DC /* TextEditPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEditPresenter.swift; sourceTree = "<group>"; };
 		0BB70ADB2759D978003956DC /* TextEditInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEditInteractor.swift; sourceTree = "<group>"; };
+		0BB70ADF275C7A91003956DC /* SoundEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundEffect.swift; sourceTree = "<group>"; };
+		0BB70AE1275C7BAC003956DC /* bellsound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bellsound.mp3; sourceTree = "<group>"; };
+		0BB70AE3275CA06F003956DC /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
+		0BB70AE5275CB152003956DC /* SettingTableViewIdCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewIdCell.swift; sourceTree = "<group>"; };
+		0BB70AE82760A98F003956DC /* MultiPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiPickerViewController.swift; sourceTree = "<group>"; };
+		0BB70AEA2760A9BE003956DC /* MultiPickerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiPickerProtocol.swift; sourceTree = "<group>"; };
+		0BB70AEC2760A9D2003956DC /* MultiPickerInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiPickerInteractor.swift; sourceTree = "<group>"; };
+		0BB70AEE2760A9DC003956DC /* MultiPickerPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiPickerPresenter.swift; sourceTree = "<group>"; };
+		0BB70AF02760A9E6003956DC /* MultiPickerRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiPickerRouter.swift; sourceTree = "<group>"; };
+		0BB70AF22760C6AF003956DC /* SettingFooterViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingFooterViewCell.swift; sourceTree = "<group>"; };
 		0BD2208926E776B10064A8F6 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		0BD7856C27522B2D00E3DB1C /* CreatePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePresenter.swift; sourceTree = "<group>"; };
 		0BD7856E27522B4900E3DB1C /* CreateInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateInteractor.swift; sourceTree = "<group>"; };
@@ -237,6 +257,9 @@
 				0B73461226861D87007CE6CF /* SettingProtocol.swift */,
 				0B73461726861DB5007CE6CF /* SettingRouter.swift */,
 				0B73461026861D76007CE6CF /* SettingInteracter.swift */,
+				0BB70AE3275CA06F003956DC /* SettingTableViewCell.swift */,
+				0BB70AE5275CB152003956DC /* SettingTableViewIdCell.swift */,
+				0BB70AF22760C6AF003956DC /* SettingFooterViewCell.swift */,
 			);
 			path = SettingView;
 			sourceTree = "<group>";
@@ -366,6 +389,27 @@
 			path = CaptureTextEdit;
 			sourceTree = "<group>";
 		};
+		0BB70ADE275C7981003956DC /* Sound */ = {
+			isa = PBXGroup;
+			children = (
+				0BB70ADF275C7A91003956DC /* SoundEffect.swift */,
+				0BB70AE1275C7BAC003956DC /* bellsound.mp3 */,
+			);
+			path = Sound;
+			sourceTree = "<group>";
+		};
+		0BB70AE72760A96F003956DC /* MultiPicker */ = {
+			isa = PBXGroup;
+			children = (
+				0BB70AE82760A98F003956DC /* MultiPickerViewController.swift */,
+				0BB70AEE2760A9DC003956DC /* MultiPickerPresenter.swift */,
+				0BB70AF02760A9E6003956DC /* MultiPickerRouter.swift */,
+				0BB70AEC2760A9D2003956DC /* MultiPickerInteractor.swift */,
+				0BB70AEA2760A9BE003956DC /* MultiPickerProtocol.swift */,
+			);
+			path = MultiPicker;
+			sourceTree = "<group>";
+		};
 		0BE0C42827301B7E00BE558C /* TutorialView */ = {
 			isa = PBXGroup;
 			children = (
@@ -449,6 +493,7 @@
 				0BD7857227522B5C00E3DB1C /* CreateRouter.swift */,
 				0BD7857027522B5200E3DB1C /* CreateProtocol.swift */,
 				0BD7856E27522B4900E3DB1C /* CreateInteractor.swift */,
+				0BB70AE72760A96F003956DC /* MultiPicker */,
 				0B73460126834780007CE6CF /* Camera */,
 			);
 			path = CreateView;
@@ -484,6 +529,7 @@
 		0BF238342660C2EE007E48AC /* DogPicture */ = {
 			isa = PBXGroup;
 			children = (
+				0BB70ADE275C7981003956DC /* Sound */,
 				0BE0C48E274D29CC00BE558C /* TestView */,
 				0BE0C44027329A2500BE558C /* CoreDataInfo */,
 				0B9F641C2714610700CF3F0C /* Notification */,
@@ -613,6 +659,7 @@
 			files = (
 				0BF238452660C2F1007E48AC /* LaunchScreen.storyboard in Resources */,
 				0BF238422660C2F1007E48AC /* Assets.xcassets in Resources */,
+				0BB70AE2275C7BAC003956DC /* bellsound.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -667,6 +714,7 @@
 			files = (
 				0BE0C43B27303A8200BE558C /* InitRouter.swift in Sources */,
 				0BF2385B2660D667007E48AC /* MemoViewPresenter.swift in Sources */,
+				0BB70AE0275C7A91003956DC /* SoundEffect.swift in Sources */,
 				0B9F641E2714614100CF3F0C /* NotificationHelper.swift in Sources */,
 				0BE0C43327303A4300BE558C /* InitViewController.swift in Sources */,
 				0BD7857127522B5200E3DB1C /* CreateProtocol.swift in Sources */,
@@ -703,6 +751,8 @@
 				0BE0C4712743EA1C00BE558C /* CreateViewController.swift in Sources */,
 				0BB27EE92726EA1B00721A5F /* HomeEventCell.swift in Sources */,
 				0BE0C479274BAA9600BE558C /* CollectionPresenter.swift in Sources */,
+				0BB70AED2760A9D2003956DC /* MultiPickerInteractor.swift in Sources */,
+				0BB70AF12760A9E6003956DC /* MultiPickerRouter.swift in Sources */,
 				0BF2385F2660D6A6007E48AC /* MemoViewProtocol.swift in Sources */,
 				0BE0C47D274BAABF00BE558C /* CollectionInteracter.swift in Sources */,
 				0BD7856F27522B4900E3DB1C /* CreateInteractor.swift in Sources */,
@@ -711,6 +761,8 @@
 				0B51B1FE26A8210E00216054 /* CameraViewController.swift in Sources */,
 				0BF238402660C2EE007E48AC /* DogPicture.xcdatamodeld in Sources */,
 				0B9F63F4270E910000CF3F0C /* ProfileProtocol.swift in Sources */,
+				0BB70AE6275CB152003956DC /* SettingTableViewIdCell.swift in Sources */,
+				0BB70AF32760C6AF003956DC /* SettingFooterViewCell.swift in Sources */,
 				0BE0C42C27301FB200BE558C /* FirstViewController.swift in Sources */,
 				0B2DFE3826F0CBAB002D533B /* PreviewRouter.swift in Sources */,
 				0B9F63F0270E909700CF3F0C /* ProfileViewController.swift in Sources */,
@@ -720,6 +772,7 @@
 				0BE0C47B274BAAA200BE558C /* CollectionProtocol.swift in Sources */,
 				0BE0C477274BAA3F00BE558C /* CollectionViewController.swift in Sources */,
 				0BB27EDE27225E6F00721A5F /* SideMenuCell.swift in Sources */,
+				0BB70AEF2760A9DC003956DC /* MultiPickerPresenter.swift in Sources */,
 				0BF238532660D5EE007E48AC /* HomeProtocol.swift in Sources */,
 				0BE0C43727303A6B00BE558C /* InitPresenter.swift in Sources */,
 				0BE0C46727329C1C00BE558C /* Model+CoreDataClass.swift in Sources */,
@@ -736,11 +789,13 @@
 				0B2DFE3A26F0CBBD002D533B /* PreviewInteracter.swift in Sources */,
 				0B51B20226A8210E00216054 /* CameraPresenter.swift in Sources */,
 				0B2DFE3C26F70538002D533B /* ModelDatabaseHelper.swift in Sources */,
+				0BB70AE92760A98F003956DC /* MultiPickerViewController.swift in Sources */,
 				0BE0C490274D29ED00BE558C /* PinchViewController.swift in Sources */,
 				0BB70ADA2759D96B003956DC /* TextEditPresenter.swift in Sources */,
 				0BE0C48A274BB25D00BE558C /* MainRouter.swift in Sources */,
 				0BF238572660D628007E48AC /* HomeInteracter.swift in Sources */,
 				0BE0C486274BB24900BE558C /* MainInteracter.swift in Sources */,
+				0BB70AEB2760A9BE003956DC /* MultiPickerProtocol.swift in Sources */,
 				0B51B1FF26A8210E00216054 /* CameraRouter.swift in Sources */,
 				0BE0C43527303A5500BE558C /* InitProtocol.swift in Sources */,
 				0BF238512660D5DD007E48AC /* HomePresenter.swift in Sources */,
@@ -751,6 +806,7 @@
 				0BE0C42A27301BB500BE558C /* TutorialViewController.swift in Sources */,
 				0BE0C48C274BCD2E00BE558C /* CollectionViewCell.swift in Sources */,
 				0B9F63E6270DDB4F00CF3F0C /* LocalPushViewController.swift in Sources */,
+				0BB70AE4275CA06F003956DC /* SettingTableViewCell.swift in Sources */,
 				0B73461126861D76007CE6CF /* SettingInteracter.swift in Sources */,
 				0B73461826861DB5007CE6CF /* SettingRouter.swift in Sources */,
 				0BF238382660C2EE007E48AC /* SceneDelegate.swift in Sources */,

@@ -37,6 +37,7 @@ class TextEditViewController: UIViewController {
         [ popButton, dateLabel, completeButton].forEach() { topBar.addSubview($0) }
         popButton.addSubview(popLabel)
         completeButton.addSubview(completeLabel)
+        view.bringSubviewToFront(topBar)
         
         topBar.do {
             $0.backgroundColor = .white
@@ -51,7 +52,8 @@ class TextEditViewController: UIViewController {
             $0.text = "이전"
         }
         dateLabel.do {
-            $0.text = "0000년 00월 00일"
+            $0.text = "이야기를 적어주세요"
+            $0.font = UIFont.boldSystemFont(ofSize: 16)
         }
         completeButton.do {
             $0.addTarget(self, action: #selector(completeButtonDidTap(sender:)), for: .touchUpInside)
@@ -109,9 +111,9 @@ class TextEditViewController: UIViewController {
         textFiled.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
             $0.topAnchor.constraint(equalTo: topBar.bottomAnchor).isActive = true
-            $0.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+            $0.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
             $0.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-            $0.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+            $0.heightAnchor.constraint(equalToConstant: 50).isActive = true
         }
     }
 }

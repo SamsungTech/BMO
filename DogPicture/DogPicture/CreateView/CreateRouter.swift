@@ -41,8 +41,16 @@ class CreateRouter: CreateRouterProtocol {
         }
     }
     
-    func presentLibraryView() {
-        print("dd")
+    func presentLibraryView(view: CreateViewControllerProtocol, presentingView: UITabBarController) {
+        let multiPickView = MultiPickerRouter.createMultiPickerViewModule()
+        let multiNavigationView = UINavigationController(rootViewController: multiPickView)
+        
+        multiNavigationView.modalPresentationStyle = .fullScreen
+        
+        guard let createView = view as? UIViewController else { return }
+        createView.dismiss(animated: false) {
+            presentingView.present(multiNavigationView, animated: true, completion: nil)
+        }
     }
     
     func presentDiraryView() {

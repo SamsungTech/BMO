@@ -142,9 +142,11 @@ class CustomTabBarController: UITabBarController, CustomTabBarControllerProtocol
         if sender.tag == 0 {
             homeButtonImage.image = UIImage(systemName: "house.fill")
             settingButtonImage.image = UIImage(systemName: "seal")
+            navigationController?.isNavigationBarHidden = true
         } else {
             homeButtonImage.image = UIImage(systemName: "house")
             settingButtonImage.image = UIImage(systemName: "seal.fill")
+            navigationController?.isNavigationBarHidden = false
         }
     }
     @objc func centerButtonDidTap(sender: UIButton) {

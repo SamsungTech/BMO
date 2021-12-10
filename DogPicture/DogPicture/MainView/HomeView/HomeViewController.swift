@@ -20,6 +20,7 @@ class HomeViewController: UIViewController {
     let dateFormatter = DateFormatter()
     let transition = AnimationTransition()
     let memoView = MemoViewController()
+    let refreshControl = UIRefreshControl()
     
     override var prefersStatusBarHidden: Bool {
         return false
@@ -48,6 +49,12 @@ class HomeViewController: UIViewController {
     
     func attribute() {
         [ homeTableView ].forEach() { view.addSubview($0) }
+        homeTableView.addSubview(refreshControl)
+        
+        refreshControl.do {
+            $0.attributedTitle = NSAttributedString(string: "돌아버리겠네")
+            $0.addTarget(self, action: #selector(pullToRefresh(sender:)), for: .valueChanged)
+        }
         
         homeTableView.do {
             $0.separatorStyle = .none
@@ -74,6 +81,14 @@ class HomeViewController: UIViewController {
             $0.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
             $0.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         }
+    }
+}
+
+extension HomeViewController {
+    @objc func pullToRefresh(sender: UIRefreshControl) {
+        presenter?.viewDidLoad()
+        refreshControl.endRefreshing()
+        homeTableView.reloadData()
     }
 }
 
@@ -146,6 +161,16 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         } else {
             return 1
         }
+    }
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        if section == 0 {
+            let footer = UIView(frame: CGRect(x: .zero, y: .zero, width: UIScreen.main.bounds.maxX, height: 20))
+            footer.backgroundColor = .white
+            return footer
+        }
+        let footer = UIView(frame: CGRect(x: .zero, y: .zero, width: UIScreen.main.bounds.maxX, height: 20))
+        footer.backgroundColor = .white
+        return footer
     }
 }
 

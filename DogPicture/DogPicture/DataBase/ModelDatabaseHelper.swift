@@ -30,27 +30,98 @@ class ModelDatabaseHelper: ModelDatabaseHelperInputProtocol {
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
+    
+    
     func getAllItems() -> [DogInfo] {
         var info = [DogInfo]()
         do {
             print("DogInfo 안에 Model 데이터 가져오기 성공!")
             info = try context.fetch(DogInfo.fetchRequest())
-            
         } catch {
             print("DogInfo 안에 Model 데이터 가져오기 실패")
         }
         return info
     }
     
+    
+    func updateData() {
+        
+        // DogInfo data fetchRequest
+        var info = [DogInfo]()
+        do {
+            print("DogInfo 안에 Model 데이터 가져오기 성공!")
+            info = try context.fetch(DogInfo.fetchRequest())
+        } catch {
+            print("DogInfo 안에 Model 데이터 가져오기 실패")
+        }
+        
+        // DogInfo [0] 배열에 있는 Model Data 가져오기
+        var model = [Model]()
+        guard let infoModel = info[0].model else { return }
+        
+        model = Array(infoModel)
+        
+        
+        do {
+            try context.save()
+            print("createItem 성공")
+        } catch {
+            print("createItem 실패 ㅠㅠ")
+        }
+        
+//        do {
+//            let test = try context.fetch(fetchRequest)
+//            let objectUpdate = test[0] as! NSManagedObject
+//            objectUpdate.setValue("newName", forKey: "username")
+//            objectUpdate.setValue("newEmail", forKey: "email")
+//            do {
+//                try context.save()
+//            } catch {
+//                print(error)
+//            }
+//        }
+//        catch {
+//            print(error)
+//        }
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    func modelItems() -> [Model] {
+        var models = [Model]()
+        do {
+            print("DogInfo 안에 Model 데이터 가져오기 성공!")
+            models = try context.fetch(Model.fetchRequest())
+        } catch {
+            print("DogInfo 안에 Model 데이터 가져오기 실패")
+        }
+        return models
+    }
+    
     func getModelItems() -> [Model] {
         let info = getAllItems()
+        let models = modelItems()
         var model = [Model]()
-        guard let infoModel = info[0].model else { return model }
-        model = Array(infoModel)
+        
+        for i in 0..<models.count {
+            if models[i].dogInfo == info[0] {
+                model.append(models[i])
+                print("넣기 성공")
+            }
+            print("넣기 실패 하...")
+        }
         return model
     }
     
-    func createModelItem(photo: Data, memo: String) {
+    func createModelItem(photo: Data, memo: String)   {
         let newItem = Model(context: context)
         let info = getAllItems()
         

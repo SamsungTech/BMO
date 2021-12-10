@@ -50,8 +50,10 @@ class PreviewViewController: UIViewController {
         popButton.addSubview(popLabel)
         nextButton.addSubview(nextButtonLabel)
         
+        
         topBar.do {
             $0.backgroundColor = .white
+            $0.viewShadow()
         }
         popButton.do {
             $0.addTarget(self, action: #selector(popButtonDidTap(sender:)), for: .touchUpInside)
@@ -62,10 +64,9 @@ class PreviewViewController: UIViewController {
             $0.text = "이전"
         }
         photoCount.do {
-            let photoTotalCount = captureImageHolder.count
-            let IntIntoString = String(photoTotalCount)
             $0.textColor = .darkGray
-            $0.text = IntIntoString
+            $0.font = UIFont.boldSystemFont(ofSize: 16)
+            $0.text = "베스트 컷을 정하세요!"
         }
         nextButton.do {
             $0.addTarget(self, action: #selector(nextButtonDidTap(sender:)), for: .touchUpInside)
@@ -76,7 +77,7 @@ class PreviewViewController: UIViewController {
             $0.textColor = .darkGray
         }
         previewCollectionView.do {
-            $0.backgroundColor = .systemGreen
+            $0.backgroundColor = .white
             $0.register(PreviewCollectionViewCell.self, forCellWithReuseIdentifier: "PreviewCollectionViewCell")
             $0.dataSource = self
             $0.delegate = self
@@ -136,9 +137,6 @@ extension PreviewViewController {
         presenter?.popButtonCilcked()
     }
     @objc func nextButtonDidTap(sender: UIButton) {
-        if selectedImageData == nil {
-            print("선택한 사진이 없습니다.")
-        }
         presenter?.nextButtonCilcked(selectedImageData: selectedImageData)
     }
 }
@@ -146,7 +144,6 @@ extension PreviewViewController {
 extension PreviewViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedImageData = captureImageDataHolder[indexPath.item]
-        
     }
 }
 extension PreviewViewController: UICollectionViewDataSource {
@@ -168,7 +165,7 @@ extension PreviewViewController: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         let size = UIScreen.main.bounds
-        return CGSize(width: size.width, height: size.height)
+        return CGSize(width: size.width, height: size.height/1.5)
     }
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,

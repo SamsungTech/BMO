@@ -18,9 +18,9 @@ class CreatePresenter: CreatePresenterProtocol {
         router?.presentCameraView(view: view, presentingView: presentingView)
     }
     
-    func libraryButtonClicked() {
-        print("ㅇㅇ")
-
+    func libraryButtonClicked(presentingView: CustomTabBarControllerProtocol) {
+        guard let view = view else { return }
+        router?.presentLibraryView(view: view, presentingView: presentingView)
     }
     
     func diraryButtonClicked() {

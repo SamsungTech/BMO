@@ -10,12 +10,15 @@
 import Foundation
 import UIKit
 import Photos
+import Alamofire
+
 
 class InitViewController: UIViewController {
     var presenter: InitPresenterProtocol?
     var profileImageButton = UIButton()
     var profileImageView = UIImageView()
     var profileImageHolder: Data?
+    var image = PHImageManager()
     
     var dogNameTextField = UITextField()
     var dogNameHolder: String = ""
@@ -45,7 +48,20 @@ class InitViewController: UIViewController {
         super.viewDidLoad()
         updateView()
         view.backgroundColor = .white
-        ModelDatabaseHelper.instance.getModelItems()
+        let modelHolder = ModelDatabaseHelper.instance.getModelItems()
+//        for i in 0..<modelHolder.count {
+//            guard let date = modelHolder[i].date else { return }
+//            print("model 안에 있는 데이트1", date)
+//        }
+        print(modelHolder)
+//
+//
+//        let ready = modelHolder.sorted(by: {
+//            guard let date2 = $1.date else { return false }
+//            return $0.date?.compare(date2) == .orderedDescending
+//        })
+        
+        
     }
     
     func updateView() {
@@ -62,34 +78,37 @@ class InitViewController: UIViewController {
             $0.addTarget(self, action: #selector(profileImageButtonDidTap(sender:)), for: .touchUpInside)
             $0.viewRadius(cornerRadius: 50, maskToBounds: true)
             $0.backgroundColor = .lightGray
+            $0.viewShadow()
         }
         profileImageView.do {
-            $0.image = UIImage(systemName: "person.fill.badge.plus")
-            $0.tintColor = .darkGray
+            $0.image = UIImage(systemName: "pawprint.circle")
+            $0.tintColor = .white
         }
         dogNameTextField.do {
             let placeholderTextColor = NSAttributedString(string: "강쥐 이름",
                                                           attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
-            $0.backgroundColor = .lightGray
-            $0.textAlignment = .left
+            $0.backgroundColor = .white
+            $0.textAlignment = .center
             $0.attributedPlaceholder = placeholderTextColor
-            $0.textColor = .white
+            $0.textColor = .darkGray
             $0.tintColor = .clear
-            $0.viewRadius(cornerRadius: 25, maskToBounds: true)
+            $0.viewRadius(cornerRadius: 25, maskToBounds: false)
             $0.addLeftPadding()
             $0.delegate = self
+            $0.viewShadow()
         }
         dogTypeTextField.do {
             let placeholderTextColor = NSAttributedString(string: "어떤 강쥐?",
                                                           attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
             $0.inputView = dogTypePickerView
-            $0.backgroundColor = .lightGray
+            $0.backgroundColor = .white
             $0.textAlignment = .center
             $0.attributedPlaceholder = placeholderTextColor
-            $0.textColor = .white
+            $0.textColor = .darkGray
             $0.tintColor = .clear
-            $0.viewRadius(cornerRadius: 25, maskToBounds: true)
+            $0.viewRadius(cornerRadius: 25, maskToBounds: false)
             $0.inputAccessoryView = createDogTypeToolbar()
+            $0.viewShadow()
         }
         dogTypePickerView.do {
             $0.delegate = self
@@ -99,12 +118,13 @@ class InitViewController: UIViewController {
             let placeholderTextColor = NSAttributedString(string: "생년월일",
                                                           attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
             $0.inputView = dogBirthDayPicker
-            $0.backgroundColor = .lightGray
+            $0.backgroundColor = .white
             $0.textAlignment = .center
             $0.attributedPlaceholder = placeholderTextColor
             $0.tintColor = .clear
-            $0.viewRadius(cornerRadius: 25, maskToBounds: true)
+            $0.viewRadius(cornerRadius: 25, maskToBounds: false)
             $0.inputAccessoryView = createDogBirthDayDoneToolBar()
+            $0.viewShadow()
         }
         dogBirthDayPicker.do {
             if #available(iOS 13.4, *) {
@@ -119,13 +139,14 @@ class InitViewController: UIViewController {
             let placeholderTextColor = NSAttributedString(string: "어떤 관계인가요?",
                                                           attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
             $0.inputView = dogRelationPicker
-            $0.backgroundColor = .lightGray
+            $0.backgroundColor = .white
             $0.textAlignment = .center
             $0.attributedPlaceholder = placeholderTextColor
-            $0.textColor = .white
+            $0.textColor = .darkGray
             $0.tintColor = .clear
-            $0.viewRadius(cornerRadius: 25, maskToBounds: true)
+            $0.viewRadius(cornerRadius: 25, maskToBounds: false)
             $0.inputAccessoryView = createDogRelationDoneToolBar()
+            $0.viewShadow()
         }
         dogRelationPicker.do {
             $0.dataSource = self
@@ -161,7 +182,7 @@ class InitViewController: UIViewController {
             $0.translatesAutoresizingMaskIntoConstraints = false
             $0.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
             $0.bottomAnchor.constraint(equalTo: dogTypeTextField.topAnchor, constant: -10).isActive = true
-            $0.widthAnchor.constraint(equalToConstant: 300).isActive = true
+            $0.widthAnchor.constraint(equalToConstant: 200).isActive = true
             $0.heightAnchor.constraint(equalToConstant: 50).isActive = true
         }
         dogTypeTextField.do {

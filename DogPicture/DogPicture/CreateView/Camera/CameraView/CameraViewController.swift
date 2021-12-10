@@ -63,6 +63,10 @@ class CameraViewController: UIViewController {
         updateCameraView()
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+    }
     
     override var prefersStatusBarHidden: Bool { return true }
     
@@ -240,7 +244,7 @@ class CameraViewController: UIViewController {
         }
         soundStackView.do {
             $0.axis = .horizontal
-            $0.spacing = 10
+            $0.spacing = 30
         }
         soundScrollView.do {
             $0.showsHorizontalScrollIndicator = false
@@ -250,7 +254,7 @@ class CameraViewController: UIViewController {
         }
         effectCancelButtonImageView.do {
             $0.tintColor = .black
-            $0.image = UIImage(systemName: "arrow.down.to.line.compact")
+            $0.image = UIImage(systemName: "chevron.down")
         }
         secondCaptureButton.do {
             $0.layer.cornerRadius = 30
@@ -407,10 +411,10 @@ class CameraViewController: UIViewController {
         soundScrollView.do {
             $0.addSubview(soundStackView)
             $0.translatesAutoresizingMaskIntoConstraints = false
-            $0.topAnchor.constraint(equalTo: soundEffectView.topAnchor, constant: 10).isActive = true
+            $0.topAnchor.constraint(equalTo: soundEffectView.topAnchor, constant: 20).isActive = true
             $0.leadingAnchor.constraint(equalTo: soundEffectView.leadingAnchor).isActive = true
             $0.trailingAnchor.constraint(equalTo: soundEffectView.trailingAnchor).isActive = true
-            $0.heightAnchor.constraint(equalToConstant: 50).isActive = true
+            $0.heightAnchor.constraint(equalToConstant: 70).isActive = true
         }
         soundStackView.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
@@ -418,13 +422,24 @@ class CameraViewController: UIViewController {
             $0.leadingAnchor.constraint(equalTo: soundScrollView.leadingAnchor).isActive = true
             $0.trailingAnchor.constraint(equalTo: soundScrollView.trailingAnchor).isActive = true
             $0.bottomAnchor.constraint(equalTo: soundScrollView.bottomAnchor).isActive = true
-            for _ in 0..<20 {
+            let soundEffectButtonImageArray: [String] = ["xmark.app.fill", "questionmark.circle", "circle.grid.cross",
+                                                         "externaldrive.connected.to.line.below", "globe.americas",
+                                                         "bolt.square", "airplane", "sun.max", "circle", "play",
+                                                         "questionmark.circle", "sun.max", "command", "globe", "gamecontroller"]
+            let soundEffectTitle: [String] = ["NONE", "RANDOM", "F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8",
+                                              "A1", "A2", "A3", "A4", "A5"]
+            for i in 0..<soundEffectButtonImageArray.count {
                 let buttons = UIButton()
-                buttons.translatesAutoresizingMaskIntoConstraints = false
-                buttons.widthAnchor.constraint(equalToConstant: 40).isActive = true
-                buttons.heightAnchor.constraint(equalToConstant: 40).isActive = true
-                buttons.setImage(UIImage(systemName: "arrow.up.heart.fill"), for: .normal)
+                buttons.frame = CGRect(x: .zero, y: .zero, width: 40, height: 40)
+                buttons.tag = i
+                if buttons.tag == 0 {
+                    buttons.tintColor = .systemRed
+                } else {
+                    buttons.tintColor = .darkGray
+                }
+                buttons.setImage(UIImage(systemName: soundEffectButtonImageArray[i]), for: .normal)
                 
+                buttons.addTarget(self, action: #selector(effectSoundButtonDidTap(sender:)), for: .touchUpInside)
                 soundStackView.addArrangedSubview(buttons)
             }
         }
@@ -517,6 +532,19 @@ extension CameraViewController {
     }
     @objc func effectCancelButtonDidTap(sender: UIButton) {
         hideBottomSheet()
+    }
+    @objc func effectSoundButtonDidTap(sender: UIButton) {
+        print("이펙트사운트버튼 눌렸습니다")
+        switch sender.tag {
+        case 0:
+            print("아무고토없오~")
+        case 1:
+            SoundEffect.instance.playSound(sound: .bellsound)
+        case 2:
+            SoundEffect.instance.playSound(sound: .bellsound)
+        default:
+            SoundEffect.instance.playSound(sound: .bellsound)
+        }
     }
 }
 

@@ -11,6 +11,7 @@ class PreviewCollectionViewCell: UICollectionViewCell {
     static let indentifier = "PreviewCollectionViewCell"
     
     var imageView = UIImageView()
+    var selectedLine = UIView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -27,8 +28,15 @@ class PreviewCollectionViewCell: UICollectionViewCell {
     }
     
     func attribute() {
-        [ imageView ].forEach() { self.addSubview($0) }
+        [ imageView, selectedLine ].forEach() { self.addSubview($0) }
+        self.bringSubviewToFront(selectedLine)
         
+        selectedLine.do {
+            $0.isHidden = true
+            $0.backgroundColor = .clear
+            $0.layer.borderWidth = 5
+            $0.layer.borderColor = UIColor.systemYellow.cgColor
+        }
     }
     
     func layout() {

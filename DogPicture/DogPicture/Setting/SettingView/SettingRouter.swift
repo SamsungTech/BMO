@@ -32,7 +32,8 @@ class SettingRouter: SettingRouterProtocol {
         
         if let view = view as? UIViewController {
             view.modalPresentationStyle = .fullScreen
-            view.present(localPushViewController, animated: true, completion: nil)
+//            view.present(localPushViewController, animated: true, completion: nil)
+            view.navigationController?.pushViewController(localPushViewController, animated: true)
         }
     }
 }

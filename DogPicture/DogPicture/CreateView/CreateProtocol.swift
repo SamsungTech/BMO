@@ -18,7 +18,7 @@ protocol CreateRouterProtocol: AnyObject {
     static func createCreateViewModule() -> UIViewController
     
     func presentCameraView(view: CreateViewControllerProtocol, presentingView: UITabBarController)
-    func presentLibraryView()
+    func presentLibraryView(view: CreateViewControllerProtocol, presentingView: UITabBarController)
     func presentDiraryView()
     func dismissView(view: CreateViewControllerProtocol)
 }
@@ -29,7 +29,7 @@ protocol CreatePresenterProtocol: AnyObject {
     var interactor: CreateInteractorInputProtocol? { get set }
     
     func cameraButtonClicked(presentingView: CustomTabBarControllerProtocol)
-    func libraryButtonClicked()
+    func libraryButtonClicked(presentingView: CustomTabBarControllerProtocol)
     func diraryButtonClicked()
     func dismiss()
 }
