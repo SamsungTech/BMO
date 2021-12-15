@@ -13,6 +13,12 @@ import PhotosUI
 class MultiPickerViewController: UIViewController {
     var presenter: MultiPickerPresenterProtocol?
     
+    var selectedImage = UIImageView()
+    var selectedImageHolder: [Data] = []
+    var selectedImageDateDataHolder: [Date] = []
+    var bottomBar = UIView()
+    var selectedPhotoCountLabel = UILabel()
+    let nextButton = UIButton()
     var multiPickerCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -26,18 +32,15 @@ class MultiPickerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateView()
-        view.backgroundColor = .systemTeal
-//        setAllPhotoLibraryImage()
-    }
-    
-    func updateView() {
-        attribute()
+        configure()
         layout()
+        photoFetchAsset()
+        view.backgroundColor = .systemTeal
     }
     
-    func attribute() {
-        [ multiPickerCollectionView ].forEach() { view.addSubview($0) }
+    func configure() {
+        [ selectedImage, multiPickerCollectionView, bottomBar ].forEach() { view.addSubview($0) }
+        [ selectedPhotoCountLabel, nextButton ].forEach() { bottomBar.addSubview($0) }
         
         multiPickerCollectionView.do {
             $0.backgroundColor = .blue
@@ -47,47 +50,70 @@ class MultiPickerViewController: UIViewController {
             $0.delegate = self
             $0.reloadData()
         }
-        let fetchOption = PHFetchOptions()
-        fetchOption.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
-
-        self.allPhotos = PHAsset.fetchAssets(with: fetchOption)
+        bottomBar.do {
+            $0.backgroundColor = .white
+        }
+        selectedPhotoCountLabel.do {
+            $0.textColor = .black
+            $0.font = UIFont.boldSystemFont(ofSize: 20)
+            $0.text = "0"
+        }
+        nextButton.do {
+            $0.backgroundColor = .systemPink
+            $0.viewRadius(cornerRadius: 15, maskToBounds: false)
+            $0.addTarget(self, action: #selector(nextButtonDidTap(sender:)), for: .touchUpInside)
+        }
     }
+    
     func layout() {
-        multiPickerCollectionView.do {
+        selectedImage.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
             $0.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
             $0.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
             $0.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+            $0.heightAnchor.constraint(equalToConstant: 400).isActive = true
+        }
+        multiPickerCollectionView.do {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.topAnchor.constraint(equalTo: selectedImage.bottomAnchor).isActive = true
+            $0.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+            $0.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+            $0.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -70).isActive = true
+        }
+        bottomBar.do {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.topAnchor.constraint(equalTo: multiPickerCollectionView.bottomAnchor).isActive = true
+            $0.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+            $0.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
             $0.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        }
+        selectedPhotoCountLabel.do {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.topAnchor.constraint(equalTo: bottomBar.topAnchor, constant: 5).isActive = true
+            $0.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
+        }
+        nextButton.do {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.topAnchor.constraint(equalTo: bottomBar.topAnchor, constant: 5).isActive = true
+            $0.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
+            $0.widthAnchor.constraint(equalToConstant: 80).isActive = true
+            $0.heightAnchor.constraint(equalToConstant: 30).isActive = true
         }
     }
     
-//    private func setPhotoLibraryImage() {
-//        let fetchOption = PHFetchOptions()
-//
-//        fetchOption.fetchLimit = 1
-//        fetchOption.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
-//
-//        let fetchPhotos = PHAsset.fetchAssets(with: fetchOption)
-//
-//        if let photo = fetchPhotos.firstObject {
-//            DispatchQueue.main.async {
-//                ImageManager.shared.requestImage(from: photo, thumnailSize: self.collectionViewCell.frame.size) { image in
-//                    // 가져온 이미지로 (image 파라미터) 하고 싶은 행동
-//                    self.collectionViewCell.image = image
-//                }
-//            }
-//        } else {
-//            // 사진이 없을 때, 디폴트 이미지 지정
-//            self.collectionViewCell.image = UIImage(systemName: "xmark")
-//        }
-//    }
-    
-    
-    
-    
+    func photoFetchAsset() {
+        let fetchOption = PHFetchOptions()
+        fetchOption.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+        self.allPhotos = PHAsset.fetchAssets(with: fetchOption)
+    }
+}
+
+extension MultiPickerViewController {
     @objc func buttonDidtap(sender: UIButton) {
-//        setAllPhotoLibraryImage()
+        
+    }
+    @objc func nextButtonDidTap(sender: UIButton) {
+        presenter?.nextButtonCilcked(photo: selectedImageHolder, date: selectedImageDateDataHolder)
     }
 }
 
@@ -114,7 +140,22 @@ extension MultiPickerViewController: UICollectionViewDataSource {
         
         return multiCell
     }
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let asset = self.allPhotos?[indexPath.item]
+        LocalImageManager.shared.requestImage(with: asset,
+                                              thumbnailSize: selectedImage.frame.size) { (image) in
+            self.selectedImage.image = image
+            if let selectedImage = image {
+                guard let imageData = selectedImage.pngData() else { return }
+                self.selectedImageHolder.append(imageData)
+                guard let createDate = asset?.creationDate else { return }
+                print("선택한 사진의 생성 날짜는?? : ", createDate)
+                self.selectedImageDateDataHolder.append(createDate)
+            }
+        }
+        self.selectedPhotoCountLabel.text = String(selectedImageHolder.count)
+    }
 }
 
 extension MultiPickerViewController: UICollectionViewDelegateFlowLayout {

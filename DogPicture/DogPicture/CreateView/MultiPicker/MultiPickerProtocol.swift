@@ -23,6 +23,7 @@ protocol MultiPickerPresenterProtocol: AnyObject {
     var interactor: MultiPickerInteractorInputProtocol? { get set }
     var router: MultiPickerRouterProtocol? { get set }
     
+    func nextButtonCilcked(photo: [Data], date: [Date])
 }
 
 protocol MultiPickerInteractorOutputProtocol: AnyObject {
@@ -32,4 +33,5 @@ protocol MultiPickerInteractorOutputProtocol: AnyObject {
 protocol MultiPickerInteractorInputProtocol: AnyObject {
     var presenter: MultiPickerInteractorOutputProtocol? { get set }
     
+    func createSelectedItem(photo: [Data], date: [Date])
 }

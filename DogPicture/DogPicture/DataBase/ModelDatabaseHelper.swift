@@ -10,10 +10,10 @@ import UIKit
 import CoreData
 
 protocol ModelDatabaseHelperInputProtocol: AnyObject {
-    func getAllItems() -> [DogInfo]
     func createModelItem(photo: Data, memo: String)
     func deleteItem(items: Model)
     func updateItem(item: Model, memo: String)
+    func createSelectedItem(photo: Data, date: Date) 
 }
 
 protocol ModelDatabaseHelperOutputProtocol: AnyObject {
@@ -128,6 +128,23 @@ class ModelDatabaseHelper: ModelDatabaseHelperInputProtocol {
         newItem.photo = photo
         newItem.memo = memo
         newItem.date = Date()
+        
+        info[0].addToModel(newItem)
+        do {
+            try context.save()
+            print("createItem 성공")
+        } catch {
+            print("createItem 실패 ㅠㅠ")
+        }
+    }
+    
+    func createSelectedItem(photo: Data, date: Date)   {
+        let newItem = Model(context: context)
+        let info = getAllItems()
+        
+        newItem.photo = photo
+        newItem.memo = ""
+        newItem.date = date
         
         info[0].addToModel(newItem)
         do {

@@ -17,25 +17,22 @@ class LocalImageManager {
     var representAssetIdentifier: String = ""
     
     func requestImage(with asset: PHAsset?,
-                              thumbnailSize: CGSize,
-                              completion: @escaping (UIImage?) -> Void) {
+                      thumbnailSize: CGSize,
+                      completion: @escaping (UIImage?) -> Void) {
         guard let asset = asset else {
             completion(nil)
             return
         }
-        
-        let fetchOption = PHFetchOptions()
-
-        fetchOption.fetchLimit = 1
-        fetchOption.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
-
-        let fetchPhotos = PHAsset.fetchAssets(with: fetchOption)
+        let options = PHImageRequestOptions()
+        options.deliveryMode = .highQualityFormat
+        options.resizeMode = .none
+        options.version = .original
         
         self.representAssetIdentifier = asset.localIdentifier
         self.imageManager.requestImage(for: asset,
                                           targetSize: thumbnailSize,
                                           contentMode: .aspectFill,
-                                          options: nil,
+                                          options: options,
                                           resultHandler: { image, _ in
             if self.representAssetIdentifier == asset.localIdentifier {
                 completion(image)
